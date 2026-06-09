@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drone Hospital — PQ Robotics</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='35' y='10' width='30' height='80' rx='6' fill='%23e53e3e'/><rect x='10' y='35' width='80' height='30' rx='6' fill='%23e53e3e'/></svg>">
+  <meta name="description" content="Professional drone repair, custom builds, and aerial cinematography services. FAA Part 107 certified.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-deep:    #07090f;
+      --bg-dark:    #0a0f1a;
+      --bg-panel:   #0d1220;
+      --bg-card:    #111827;
+      --border:     rgba(255,255,255,0.07);
+      --border-mid: rgba(255,255,255,0.12);
+      --accent:     #3a7bd5;
+      --accent-dim: rgba(58,123,213,0.12);
+      --accent-glow:rgba(58,123,213,0.25);
+      --text-primary:   #e8eaf0;
+      --text-secondary: #8a9ab5;
+      --text-muted:     #4a5a70;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body:    'Inter', sans-serif;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7,9,15,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 60px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      padding: 0 1.25rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text-primary); border-bottom-color: var(--border-mid); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #fff !important;
+      border: none !important;
+      border-radius: var(--radius-sm) !important;
+      padding: 0 1.1rem !important;
+      height: 34px !important;
+      font-size: 12px !important;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      display: flex !important;
+      align-items: center !important;
+      transition: opacity 0.2s !important;
+    }
+
+    .nav-cta:hover { opacity: 0.88; }
+
+    /* ── HERO ── */
+    #home {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 5rem 2rem 4rem;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(58,123,213,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(58,123,213,0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);
+      animation: gridShift 20s linear infinite;
+    }
+
+    @keyframes gridShift {
+      0%   { background-position: 0 0; }
+      100% { background-position: 60px 60px; }
+    }
+
+    .hero-tag {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+      font-family: var(--font-display);
+      font-weight: 500;
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      max-width: 720px;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 480px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.75;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 12px 28px;
+      font-size: 13px;
+      font-family: var(--font-body);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .btn-primary:hover { opacity: 0.85; }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius-sm);
+      padding: 12px 28px;
+      font-size: 13px;
+      font-family: var(--font-body);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .btn-ghost:hover { color: var(--text-primary); border-color: rgba(255,255,255,0.25); }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      display: flex;
+      justify-content: center;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-dark);
+    }
+
+    .stat {
+      padding: 1.5rem 3rem;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat:first-child { border-left: 1px solid var(--border); }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 6rem 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-full {
+      max-width: 100%;
+      padding: 6rem 0;
+      background: var(--bg-panel);
+    }
+
+    .section-full-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      font-family: var(--font-display);
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .section-sub {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 3rem;
+    }
+
+    /* ── MAINTENANCE ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .img-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      aspect-ratio: 4/3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--text-muted);
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      overflow: hidden;
+    }
+
+    .img-block img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .img-placeholder-icon {
+      font-size: 2rem;
+      opacity: 0.4;
+    }
+
+    .service-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: border-color 0.2s;
+    }
+
+    .service-card:hover { border-color: var(--border-mid); }
+
+    .service-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      background: var(--accent-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .service-icon svg { width: 18px; height: 18px; stroke: var(--accent); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .service-card p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* ── FOOTAGE ── */
+    .footage-intro {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 2rem;
+      gap: 1rem;
+    }
+
+    .footage-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 10px;
+    }
+
+    .footage-thumb {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      aspect-ratio: 16/9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .footage-thumb:hover { border-color: var(--border-mid); }
+
+    .footage-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+    }
+
+    .footage-thumb.featured {
+      grid-column: span 2;
+      grid-row: span 2;
+      aspect-ratio: unset;
+      min-height: 280px;
+    }
+
+    .footage-thumb svg { width: 28px; height: 28px; stroke: var(--text-muted); fill: none; stroke-width: 1.5; }
+
+    .footage-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── ABOUT ── */
+    .about-wrap {
+      background: var(--bg-dark);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 2.5rem;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .team-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .team-photo {
+      height: 120px;
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .team-photo svg { width: 36px; height: 36px; stroke: var(--text-muted); fill: none; stroke-width: 1.5; }
+
+    .team-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .team-info { padding: 1rem 1.1rem; }
+
+    .team-name {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .team-role {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .cred-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .cred-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+    }
+
+    .cred-card svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 1.5; margin-bottom: 0.75rem; }
+
+    .cred-card h4 {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .cred-card p {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--bg-deep);
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .contact-text h2 { margin-bottom: 0.4rem; }
+    .contact-text p { font-size: 0.9rem; color: var(--text-secondary); }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      min-width: 340px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 14px;
+      padding: 10px 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: none;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus { border-color: var(--accent); }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: var(--text-muted); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg-deep);
+      border-top: 1px solid var(--border);
+      padding: 1.75rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text-secondary); }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { display: none; }
+      h1 { font-size: 2.2rem; }
+      .stats-bar { flex-wrap: wrap; }
+      .stat { flex: 1 1 40%; }
+      .two-col, .team-grid, .cred-grid, .footage-grid { grid-template-columns: 1fr; }
+      .footage-thumb.featured { grid-column: span 1; grid-row: span 1; }
+      .contact-inner { flex-direction: column; }
+      .contact-form { min-width: unset; width: 100%; }
+      section, .about-inner { padding: 4rem 1.25rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-grid { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#home" class="nav-logo">PQ <span>ROBOTICS</span></a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#maintenance"><span style="color:#e53e3e;margin-right:5px;font-size:15px">✚</span>Drone Hospital</a></li>
+      <li><a href="#footage">Footage</a></li>
+      <li><a href="#about">About Us</a></li>
+    </ul>
+    <a href="#contact" class="nav-links nav-cta">Get a Quote</a>
+  </nav>
+
+  <!-- HERO -->
+  <div id="home">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-tag">Advanced Drone Systems — Atlanta, GA</div>
+    <h1>Precision Maintenance.<br><em>Cinematic</em> Footage.</h1>
+    <p class="hero-sub">End-to-end drone services built for professionals — from full diagnostics and custom builds to FAA-certified aerial cinematography.</p>
+    <div class="hero-cta">
+      <a href="#maintenance" class="btn-primary">Our Services</a>
+      <a href="#footage" class="btn-ghost">View Footage</a>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat">
+      <span class="stat-num">5+</span>
+      <span class="stat-label">Years Experience</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">DJI & BF</span>
+      <span class="stat-label">Platform Specialist</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">4K</span>
+      <span class="stat-label">Max Resolution</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">Part 107</span>
+      <span class="stat-label">FAA Certified</span>
+    </div>
+  </div>
+
+  <!-- MAINTENANCE -->
+  <section id="maintenance">
+    <div class="section-eyebrow"><span style="color:#e53e3e;margin-right:6px">✚</span>Drone Hospital</div>
+    <h2>Technical Repair & Development</h2>
+    <p class="section-sub">Diagnostic, repair, and custom build services across DJI and Betaflight platforms — from cinematic rigs to high-performance FPV builds. We work across all major systems — flight controllers, ESCs, motors, and firmware.</p>
+    <div class="two-col">
+      <div class="img-block">
+        <!-- Replace src below with your own photo -->
+        <!-- <img src="assets/images/maintenance-hero.jpg" alt="Drone being repaired on workbench"> -->
+        <span class="img-placeholder-icon">&#9135;</span>
+        <span>Add your photo here</span>
+      </div>
+      <div class="service-cards">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <div>
+            <h3>Diagnostics & repair</h3>
+            <p>Full systems check, motor testing, ESC calibration, and crash damage assessment across DJI and Betaflight platforms.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/></svg>
+          </div>
+          <div>
+            <h3>Firmware & flight tuning</h3>
+            <p>PID tuning, flight controller flashing, sensor calibration, and performance optimization for sport and commercial rigs.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          </div>
+          <div>
+            <h3>Custom builds</h3>
+            <p>Bespoke drone builds tailored to specific payload, range, or endurance requirements for professional applications.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTAGE -->
+  <div class="section-full" id="footage">
+    <div class="section-full-inner">
+      <div class="footage-intro">
+        <div>
+          <div class="section-eyebrow">Footage</div>
+          <h2>Aerial Cinematography</h2>
+          <p class="section-sub" style="margin-bottom:0">Licensed, insured, and FAA Part 107 compliant. Available for real estate, events, construction, and creative productions.</p>
+        </div>
+        <a href="#contact" class="btn-ghost" style="flex-shrink:0">Book a Shoot</a>
+      </div>
+      <div class="footage-grid">
+        <div class="footage-thumb featured">
+          <!-- <img src="assets/images/footage-featured.jpg" alt="Featured aerial footage"> -->
+          <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <span class="footage-label">Featured reel</span>
+        </div>
+        <div class="footage-thumb">
+          <!-- <img src="assets/images/footage-realestate.jpg" alt="Real estate aerial"> -->
+          <span class="footage-label">Real estate</span>
+        </div>
+        <div class="footage-thumb">
+          <!-- <img src="assets/images/footage-landscape.jpg" alt="Landscape aerial"> -->
+          <span class="footage-label">Landscape</span>
+        </div>
+        <div class="footage-thumb">
+          <!-- <img src="assets/images/footage-events.jpg" alt="Event aerial"> -->
+          <span class="footage-label">Events</span>
+        </div>
+        <div class="footage-thumb">
+          <!-- <img src="assets/images/footage-construction.jpg" alt="Construction site aerial"> -->
+          <span class="footage-label">Construction</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="about-wrap" id="about">
+    <div class="about-inner">
+      <div class="section-eyebrow">About Us</div>
+      <h2>5 years in the field.<br>Built on precision.</h2>
+      <p class="section-sub">PQ Robotics is a specialized drone services company with over 5 years of hands-on experience. From technical repair and custom builds to professional aerial cinematography, every job is handled with the precision and attention that advanced systems demand.</p>
+
+      <div style="display:grid;grid-template-columns:220px 1fr;gap:2rem;align-items:start;margin-bottom:2.5rem">
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--border-radius-lg,14px);overflow:hidden">
+          <img src="assets/images/founder.jpg" alt="PQ Robotics founder" style="width:100%;display:block;object-fit:cover;aspect-ratio:3/4">
+          <div style="padding:0.9rem 1rem;border-top:1px solid var(--border)">
+            <div style="font-family:var(--font-display);font-size:14px;font-weight:500;color:var(--text-primary)">[ Your Name ]</div>
+            <div style="font-size:12px;color:var(--text-muted);margin-top:2px">Founder & Lead Technician</div>
+          </div>
+        </div>
+        <div style="padding-top:0.25rem">
+          <div style="font-family:var(--font-display);font-size:1.1rem;font-weight:500;color:var(--text-primary);margin-bottom:0.75rem;line-height:1.4">Passionate about drones. Serious about the work.</div>
+          <p style="font-size:14px;color:var(--text-secondary);line-height:1.75;margin-bottom:1rem">With over 5 years of hands-on experience across DJI and Betaflight platforms, PQ Robotics was built to bring professional-grade technical service and aerial cinematography to clients who demand quality.</p>
+          <p style="font-size:14px;color:var(--text-secondary);line-height:1.75">Every repair is personal. Every flight is deliberate.</p>
+        </div>
+      </div>
+
+<div class="cred-grid">
+        <div class="cred-card">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <h4>FAA Part 107 certified</h4>
+          <p>Fully licensed for commercial drone operations in the US.</p>
+        </div>
+        <div class="cred-card">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          <h4>Fully insured</h4>
+          <p>Comprehensive liability coverage on every job, every flight.</p>
+        </div>
+        <div class="cred-card">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <h4>Atlanta-based</h4>
+          <p>Serving Georgia and surrounding states for maintenance and shoots.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact">
+    <div class="contact-inner">
+      <div class="contact-text">
+        <div class="section-eyebrow">Contact</div>
+        <h2>Ready to get started?</h2>
+        <p>Send us a message and we'll get back to you within 24 hours.</p>
+      </div>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <input type="text" placeholder="Your name" required>
+        <input type="email" placeholder="Email address" required>
+        <input type="text" placeholder="Service — Drone Hospital or Footage?">
+        <textarea rows="4" placeholder="Tell us about your project or what needs repair"></textarea>
+        <button type="submit" class="btn-primary" style="text-align:center; cursor:pointer">Send Message</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">PQ ROBOTICS</div>
+    <ul class="footer-links">
+      <li><a href="#maintenance"><span style="color:#e53e3e;margin-right:5px;font-size:15px">✚</span>Drone Hospital</a></li>
+      <li><a href="#footage">Footage</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 PQ Robotics</div>
+  </footer>
+
+  <script>
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('[id]');
+    const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 80) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.style.borderBottomColor = a.getAttribute('href') === '#' + current
+          ? 'rgba(58,123,213,0.7)' : 'transparent';
+        a.style.color = a.getAttribute('href') === '#' + current
+          ? '#e8eaf0' : '';
+      });
+    });
+
+    // Contact form — replace with your backend or Formspree later
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.textContent = 'Message sent!';
+      btn.style.opacity = '0.6';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = 'Send Message';
+        btn.style.opacity = '';
+        btn.disabled = false;
+        e.target.reset();
+      }, 3000);
+    }
+  </script>
+
+</body>
+</html>
