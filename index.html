@@ -438,6 +438,7 @@
     }
 
     .footage-thumb:hover { border-color: var(--border-mid); }
+    .footage-thumb.active-thumb { border-color: var(--accent) !important; }
 
     .footage-thumb img {
       width: 100%;
@@ -760,27 +761,45 @@
         </div>
         <a href="#contact" class="btn-ghost" style="flex-shrink:0">Book a Shoot</a>
       </div>
-      <div class="footage-grid">
-        <div class="footage-thumb featured">
-          <!-- <img src="assets/images/footage-featured.jpg" alt="Featured aerial footage"> -->
-          <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          <span class="footage-label">Featured reel</span>
+
+      <!-- Main player -->
+      <div id="main-player" style="position:relative;width:100%;aspect-ratio:16/9;border-radius:var(--radius-lg);overflow:hidden;background:#000;margin-bottom:1rem">
+        <iframe
+          id="main-iframe"
+          width="100%"
+          height="100%"
+          src="https://www.youtube.com/embed/GPIvTBCQQVc?si=ACVnVe7Ddis8P4jG&controls=1&autoplay=1&mute=1&loop=1&playlist=GPIvTBCQQVc&start=3&rel=0&modestbranding=1"
+          title="PQ Robotics — Cinematic Austin Shot"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          style="position:absolute;inset:0;width:100%;height:100%">
+        </iframe>
+      </div>
+
+      <!-- Thumbnail strip -->
+      <div id="thumb-strip" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+        <div class="footage-thumb active-thumb" onclick="swapVideo('GPIvTBCQQVc','PQ Robotics — Cinematic Austin Shot',this)" style="border-color:var(--accent)">
+          <img src="https://img.youtube.com/vi/GPIvTBCQQVc/mqdefault.jpg" alt="Cinematic Austin Shot" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md)">
+          <div style="position:absolute;inset:0;background:rgba(0,0,0,0.35);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style="opacity:0.9"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+          <span class="footage-label" style="position:absolute;bottom:8px;left:10px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.8)">Austin — COTA 2025</span>
         </div>
-        <div class="footage-thumb">
-          <!-- <img src="assets/images/footage-realestate.jpg" alt="Real estate aerial"> -->
-          <span class="footage-label">Real estate</span>
+
+        <!-- Placeholder thumbs for future clips -->
+        <div class="footage-thumb" style="cursor:default">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
+          <span class="footage-label">Coming soon</span>
         </div>
-        <div class="footage-thumb">
-          <!-- <img src="assets/images/footage-landscape.jpg" alt="Landscape aerial"> -->
-          <span class="footage-label">Landscape</span>
+        <div class="footage-thumb" style="cursor:default">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
+          <span class="footage-label">Coming soon</span>
         </div>
-        <div class="footage-thumb">
-          <!-- <img src="assets/images/footage-events.jpg" alt="Event aerial"> -->
-          <span class="footage-label">Events</span>
-        </div>
-        <div class="footage-thumb">
-          <!-- <img src="assets/images/footage-construction.jpg" alt="Construction site aerial"> -->
-          <span class="footage-label">Construction</span>
+        <div class="footage-thumb" style="cursor:default">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
+          <span class="footage-label">Coming soon</span>
         </div>
       </div>
     </div>
@@ -859,6 +878,15 @@
   </footer>
 
   <script>
+    // Footage thumbnail swap
+    function swapVideo(videoId, title, thumbEl) {
+      const iframe = document.getElementById('main-iframe');
+      iframe.src = `https://www.youtube.com/embed/${videoId}?controls=1&autoplay=1&mute=1&loop=1&playlist=${videoId}&rel=0&modestbranding=1`;
+      iframe.title = title;
+      document.querySelectorAll('.footage-thumb').forEach(t => t.classList.remove('active-thumb'));
+      thumbEl.classList.add('active-thumb');
+    }
+
     // Active nav link on scroll
     const sections = document.querySelectorAll('[id]');
     const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta)');
