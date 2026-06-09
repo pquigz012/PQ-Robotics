@@ -887,12 +887,12 @@
         <h2>Ready to get started?</h2>
         <p>Send us a message and we'll get back to you within 24 hours.</p>
       </div>
-      <form class="contact-form" onsubmit="handleSubmit(event)">
-        <input type="text" placeholder="Your name" required>
-        <input type="email" placeholder="Email address" required>
-        <input type="text" placeholder="Service — Drone Hospital or Footage?">
-        <textarea rows="4" placeholder="Tell us about your project or what needs repair"></textarea>
-        <button type="submit" class="btn-primary" style="text-align:center; cursor:pointer">Send Message</button>
+      <form class="contact-form" action="https://formspree.io/f/mwvjqkqo" method="POST">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Email address" required>
+        <input type="text" name="service" placeholder="Service — Drone Hospital or Footage?">
+        <textarea name="message" rows="4" placeholder="Tell us about your project or what needs repair"></textarea>
+        <button type="submit" class="btn-primary" style="text-align:center;cursor:pointer">Send Message</button>
       </form>
     </div>
   </div>
