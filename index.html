@@ -131,8 +131,6 @@
         linear-gradient(90deg, rgba(58,123,213,0.18) 1px, transparent 1px);
       background-size: 60px 60px;
       mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, black 20%, transparent 100%);
-      animation: gridShift 14s linear infinite;
-      will-change: background-position, opacity;
     }
 
     .hero-grid::after {
@@ -144,19 +142,13 @@
         linear-gradient(90deg, rgba(58,123,213,0.55) 1px, transparent 1px);
       background-size: 60px 60px;
       mask-image: radial-gradient(ellipse 40% 35% at 50% 40%, black, transparent 100%);
-      animation: gridShift 14s linear infinite;
       pointer-events: none;
-    }
-
-    @keyframes gridShift {
-      0%   { background-position: 0 0; }
-      100% { background-position: 60px 60px; }
     }
 
     .hero-tag {
       font-size: 11px;
       letter-spacing: 0.22em;
-      color: var(--accent);
+      color: #8a9ab5;
       font-family: var(--font-display);
       font-weight: 500;
       margin-bottom: 1.25rem;
@@ -289,6 +281,25 @@
       font-weight: 500;
       text-transform: uppercase;
       margin-bottom: 0.75rem;
+    }
+
+    .section-eyebrow-lg {
+      font-size: 15px;
+      letter-spacing: 0.18em;
+      color: #e53e3e;
+      font-family: var(--font-display);
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-eyebrow-lg::before {
+      content: '✚';
+      font-size: 18px;
+      color: #e53e3e;
     }
 
     h2 {
@@ -664,7 +675,7 @@
   <div id="home">
     <div class="hero-grid" aria-hidden="true"></div>
     <div class="hero-tag">Advanced Drone Systems — Atlanta, GA</div>
-    <h1>Precision Maintenance.<br><em>Cinematic</em> Footage.</h1>
+    <h1><em>Precision Maintenance</em><br>Cinematic Footage</h1>
     <p class="hero-sub">End-to-end drone services built for professionals — from full diagnostics and custom builds to FAA-certified aerial cinematography.</p>
     <div class="hero-cta">
       <a href="#maintenance" class="btn-primary">Our Services</a>
@@ -694,16 +705,16 @@
 
   <!-- MAINTENANCE -->
   <section id="maintenance">
-    <div class="section-eyebrow"><span style="color:#e53e3e;margin-right:6px">✚</span>Drone Hospital</div>
+    <div class="section-eyebrow-lg">Drone Hospital</div>
     <h2>Technical Repair & Development</h2>
     <p class="section-sub">Diagnostic, repair, and custom build services across DJI and Betaflight platforms — from cinematic rigs to high-performance FPV builds. We work across all major systems — flight controllers, ESCs, motors, and firmware.</p>
     <div class="two-col">
       <div style="display:flex;flex-direction:column;gap:1rem">
-        <div class="img-block">
-          <img src="assets/images/DJI_Assembly2.jpeg" alt="DJI drone assembly">
+        <div class="img-block" style="aspect-ratio:unset;padding:0">
+          <img src="assets/images/DJI_Assembly2.jpeg" alt="DJI drone assembly" style="width:100%;height:auto;display:block;object-fit:contain;border-radius:var(--radius-lg)">
         </div>
-        <div class="img-block">
-          <img src="assets/images/DJI_Assembly.jpeg" alt="DJI drone components">
+        <div class="img-block" style="aspect-ratio:unset;padding:0">
+          <img src="assets/images/DJI_Assembly.jpeg" alt="DJI drone components" style="width:100%;height:auto;display:block;object-fit:contain;border-radius:var(--radius-lg)">
         </div>
       </div>
       <div class="service-cards">
@@ -848,18 +859,6 @@
   </footer>
 
   <script>
-    // Hero grid scroll parallax
-    const heroGrid = document.querySelector('.hero-grid');
-    if (heroGrid) {
-      window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        const offset = scrollY * 0.4;
-        const fade = Math.max(0, 1 - scrollY / 500);
-        heroGrid.style.transform = `translateY(${offset}px)`;
-        heroGrid.style.opacity = fade;
-      }, { passive: true });
-    }
-
     // Active nav link on scroll
     const sections = document.querySelectorAll('[id]');
     const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta)');
