@@ -779,7 +779,7 @@
       </div>
 
       <!-- Thumbnail strip -->
-      <div id="thumb-strip" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+      <div id="thumb-strip" style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:500px">
         <div class="footage-thumb active-thumb" onclick="swapVideo('GPIvTBCQQVc','PQ Robotics — Cinematic Austin Shot',this)" style="border-color:var(--accent)">
           <img src="https://img.youtube.com/vi/GPIvTBCQQVc/mqdefault.jpg" alt="Cinematic Austin Shot" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md)">
           <div style="position:absolute;inset:0;background:rgba(0,0,0,0.35);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center">
@@ -787,24 +787,12 @@
           </div>
           <span class="footage-label" style="position:absolute;bottom:8px;left:10px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.8)">Austin — COTA 2025</span>
         </div>
-
         <div class="footage-thumb" onclick="swapVideo('vEFhLO_AttM','PQ Robotics — COTA 2025 Vol. 2',this)">
           <img src="https://img.youtube.com/vi/vEFhLO_AttM/mqdefault.jpg" alt="COTA 2025 Vol 2" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md)">
           <div style="position:absolute;inset:0;background:rgba(0,0,0,0.35);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style="opacity:0.9"><polygon points="5 3 19 12 5 21 5 3"/></svg>
           </div>
           <span class="footage-label" style="position:absolute;bottom:8px;left:10px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.8)">Austin — COTA Vol. 2</span>
-        </div>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
-          <span class="footage-label">Coming soon</span>
-        </div>
-        <div class="footage-thumb" style="cursor:default">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
-          <span class="footage-label">Coming soon</span>
-        </div>
-        <div class="footage-thumb" style="cursor:default">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
-          <span class="footage-label">Coming soon</span>
         </div>
       </div>
     </div>
@@ -814,25 +802,26 @@
   <div class="about-wrap" id="about">
     <div class="about-inner">
       <div class="section-eyebrow">About Us</div>
-      <h2>5 years in the field.<br>Built on precision.</h2>
-      <p class="section-sub">PQ Robotics is a specialized drone services company with over 5 years of hands-on experience. From technical repair and custom builds to professional aerial cinematography, every job is handled with the precision and attention that advanced systems demand.</p>
+      <h2>Engineered from the ground up.<br>Flown from experience.</h2>
+      <p class="section-sub">PQ Robotics isn't a hobby shop. It's the product of a formal engineering education, hands-on development across military and commercial platforms, and a genuine obsession with what unmanned systems can do when they're built and maintained right.</p>
 
       <div style="display:grid;grid-template-columns:300px 1fr;gap:2rem;align-items:start;margin-bottom:2.5rem">
-        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--border-radius-lg,14px);overflow:hidden">
-          <img src="assets/images/founder.jpg" alt="PQ Robotics founder" style="width:100%;display:block;object-fit:cover;aspect-ratio:3/4">
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:14px;overflow:hidden">
+          <img src="assets/images/founder.jpg" alt="Paul Quigley — PQ Robotics founder" style="width:100%;display:block;object-fit:cover;aspect-ratio:3/4">
           <div style="padding:0.9rem 1rem;border-top:1px solid var(--border)">
             <div style="font-family:var(--font-display);font-size:14px;font-weight:500;color:var(--text-primary)">Paul Quigley</div>
-            <div style="font-size:12px;color:var(--text-muted);margin-top:2px">Founder & Lead Technician</div>
+            <div style="font-size:12px;color:var(--text-muted);margin-top:2px">Founder & Lead Engineer</div>
           </div>
         </div>
         <div style="padding-top:0.25rem">
-          <div style="font-family:var(--font-display);font-size:1.1rem;font-weight:500;color:var(--text-primary);margin-bottom:0.75rem;line-height:1.4">Passionate about drones. Serious about the work.</div>
-          <p style="font-size:14px;color:var(--text-secondary);line-height:1.75;margin-bottom:1rem">With over 5 years of hands-on experience across DJI and Betaflight platforms, PQ Robotics was built to bring professional-grade technical service and aerial cinematography to clients who demand quality.</p>
-          <p style="font-size:14px;color:var(--text-secondary);line-height:1.75">Every repair is personal. Every flight is deliberate.</p>
+          <div style="font-family:var(--font-display);font-size:1.15rem;font-weight:600;color:var(--text-primary);margin-bottom:1rem;line-height:1.4">Indiana University — B.S. Intelligent Systems Engineering</div>
+          <p style="font-size:14px;color:var(--text-secondary);line-height:1.8;margin-bottom:1rem">Paul's background is in intelligent systems — the intersection of hardware, autonomy, and software integration that most drone operators never get close to. At IU he specialized in the design and engineering of unmanned systems, which led directly to work developing custom drone platforms for <strong style="color:var(--text-primary)">military applications</strong> — where tolerances are tight, failure isn't an option, and off-the-shelf solutions rarely cut it.</p>
+          <p style="font-size:14px;color:var(--text-secondary);line-height:1.8;margin-bottom:1rem">He has built autonomous and manually-piloted aircraft from scratch — from agile FPV platforms to multi-rotor hexacopters — and handled the full engineering stack: airframe design, flight controller configuration, sensor integration, firmware troubleshooting, and cross-system compatibility. When something isn't performing, Paul doesn't guess. He diagnoses.</p>
+          <p style="font-size:14px;color:var(--text-secondary);line-height:1.8">PQ Robotics brings that same rigor to every job — whether it's a DJI diagnostic, a custom build spec, or a cinematic shoot. <strong style="color:var(--text-primary)">This is precision work. Not toy repair.</strong></p>
         </div>
       </div>
 
-<div class="cred-grid">
+      <div class="cred-grid">
         <div class="cred-card">
           <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           <h4>FAA Part 107 certified</h4>
