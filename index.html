@@ -656,6 +656,57 @@
     @media (prefers-reduced-motion: reduce) {
       .hero-grid { animation: none; }
     }
+
+    /* ── LOCATION TABS ── */
+    .location-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .loc-tab {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border-mid);
+      background: var(--bg-panel);
+      color: var(--text-secondary);
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      transition: background 0.18s, border-color 0.18s, color 0.18s;
+      user-select: none;
+    }
+
+    .loc-tab:hover:not(.loc-tab--disabled) {
+      background: var(--bg-card);
+      border-color: rgba(255,255,255,0.22);
+      color: var(--text-primary);
+    }
+
+    .loc-tab.active {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .loc-tab--disabled {
+      opacity: 0.45;
+      cursor: default;
+    }
+
+    .loc-tab .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      flex-shrink: 0;
+    }
   </style>
 </head>
 <body>
@@ -762,6 +813,19 @@
         <a href="#contact" class="btn-ghost" style="flex-shrink:0">Book a Shoot</a>
       </div>
 
+      <!-- Location tabs -->
+      <div class="location-tabs">
+        <button class="loc-tab active" onclick="switchLocation('austin', this)">
+          Austin, TX: COTA
+        </button>
+        <button class="loc-tab" onclick="switchLocation('sailing', this)">
+          Buford, GA: Sailing
+        </button>
+        <button class="loc-tab" onclick="switchLocation('foiling', this)">
+          Lake Lanier, GA: Foiling
+        </button>
+      </div>
+
       <!-- Main player -->
       <div id="main-player" style="position:relative;width:100%;aspect-ratio:16/9;border-radius:var(--radius-lg);overflow:hidden;background:#000;margin-bottom:1rem">
         <iframe
@@ -794,6 +858,18 @@
           </div>
           <span class="footage-label" style="position:absolute;bottom:8px;left:10px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.8)">Austin — COTA Vol. 2</span>
         </div>
+      </div>
+
+      <!-- Photo grid (shown per location) -->
+      <div id="photo-grid" style="display:none;margin-top:2rem">
+        <div style="font-size:11px;letter-spacing:0.16em;color:var(--text-muted);text-transform:uppercase;margin-bottom:0.9rem;font-family:var(--font-display)">Photos</div>
+        <div id="photo-grid-inner" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px"></div>
+      </div>
+
+      <!-- Lightbox -->
+      <div id="lightbox" onclick="closeLightbox()" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.88);backdrop-filter:blur(6px);align-items:center;justify-content:center;cursor:zoom-out">
+        <img id="lightbox-img" src="" alt="" style="max-width:92vw;max-height:88vh;border-radius:var(--radius-lg);box-shadow:0 24px 80px rgba(0,0,0,0.7);object-fit:contain">
+        <button onclick="closeLightbox()" style="position:fixed;top:20px;right:24px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:50%;width:38px;height:38px;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1">✕</button>
       </div>
     </div>
   </div>
@@ -910,13 +986,152 @@
   </footer>
 
   <script>
+    // ── Location libraries ──────────────────────────────────────────────────
+    const libraries = {
+      austin: {
+        videos: [
+          { id: 'GPIvTBCQQVc', label: 'Austin — COTA 2025' },
+          { id: 'vEFhLO_AttM', label: 'Austin — COTA Vol. 2' },
+        ],
+        photos: [
+          { src: 'assets/images/cinematic_footage/Turn1_GT3.png',      label: 'Turn 1 — GT3' },
+          { src: 'assets/images/cinematic_footage/Downtown_Tower.png',  label: 'Downtown Tower' },
+          { src: 'assets/images/cinematic_footage/Finish_line.png',     label: 'Finish Line' },
+          { src: 'assets/images/cinematic_footage/GT3&Flag.png',        label: 'GT3 & Flag' },
+        ]
+      },
+      sailing: {
+        videos: [
+          { id: '', label: 'Sailing 1', placeholder: true },
+          { id: '', label: 'Sailing 2', placeholder: true },
+          { id: '', label: 'Sailing 3', placeholder: true },
+        ]
+      },
+      foiling: {
+        videos: [
+          { id: 'y-3xkvc2WIM', label: 'Foiling 1' },
+          { id: 'cPvdT7yULa0', label: 'Foiling 2' },
+          { id: '2zbzFx8yzaw', label: 'Foiling 3' },
+        ]
+      }
+    };
+
+    function buildPhotoGrid(locationKey) {
+      const lib = libraries[locationKey];
+      const grid = document.getElementById('photo-grid');
+      const inner = document.getElementById('photo-grid-inner');
+      inner.innerHTML = '';
+
+      if (!lib.photos || lib.photos.length === 0) {
+        grid.style.display = 'none';
+        return;
+      }
+
+      lib.photos.forEach(p => {
+        const div = document.createElement('div');
+        div.style.cssText = 'position:relative;aspect-ratio:16/9;border-radius:var(--radius-md);overflow:hidden;cursor:zoom-in;background:var(--bg-card)';
+        div.onclick = () => openLightbox(p.src, p.label);
+        div.innerHTML = `
+          <img src="${p.src}" alt="${p.label}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.3s" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+          <span style="position:absolute;bottom:8px;left:10px;color:#fff;font-size:11px;font-family:var(--font-display);text-shadow:0 1px 4px rgba(0,0,0,0.9)">${p.label}</span>`;
+        inner.appendChild(div);
+      });
+
+      grid.style.display = 'block';
+    }
+
+    function openLightbox(src, alt) {
+      const lb = document.getElementById('lightbox');
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-img').alt = alt;
+      lb.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    function buildThumbStrip(locationKey) {
+      const strip = document.getElementById('thumb-strip');
+      const lib = libraries[locationKey];
+      strip.innerHTML = '';
+
+      lib.videos.forEach((v, i) => {
+        const div = document.createElement('div');
+        div.className = 'footage-thumb' + (i === 0 ? ' active-thumb' : '');
+        div.style.cssText = i === 0 ? 'border-color:var(--accent)' : '';
+
+        if (v.placeholder) {
+          div.innerHTML = `
+            <div style="position:absolute;inset:0;background:var(--bg-card);border-radius:var(--radius-md);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <span style="font-size:11px;color:var(--text-muted)">Coming soon</span>
+            </div>
+            <span class="footage-label" style="position:absolute;bottom:8px;left:10px;color:var(--text-muted)">${v.label}</span>`;
+        } else {
+          div.onclick = function() { swapVideo(v.id, v.label, this); };
+          div.innerHTML = `
+            <img src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" alt="${v.label}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md)">
+            <div style="position:absolute;inset:0;background:rgba(0,0,0,0.35);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style="opacity:0.9"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+            <span class="footage-label" style="position:absolute;bottom:8px;left:10px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.8)">${v.label}</span>`;
+        }
+
+        strip.appendChild(div);
+      });
+    }
+
+    function setMainVideo(locationKey) {
+      const first = libraries[locationKey].videos[0];
+      const iframe = document.getElementById('main-iframe');
+
+      if (first.placeholder) {
+        // Show a placeholder panel instead of an iframe
+        iframe.style.display = 'none';
+        let ph = document.getElementById('main-placeholder');
+        if (!ph) {
+          ph = document.createElement('div');
+          ph.id = 'main-placeholder';
+          ph.style.cssText = 'position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--bg-card);border-radius:var(--radius-lg)';
+          ph.innerHTML = `<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.2"><polygon points="5 3 19 12 5 21 5 3"/></svg><span style="font-family:var(--font-display);font-size:14px;color:var(--text-muted)">Videos coming soon</span>`;
+          document.getElementById('main-player').appendChild(ph);
+        }
+        ph.style.display = 'flex';
+      } else {
+        const ph = document.getElementById('main-placeholder');
+        if (ph) ph.style.display = 'none';
+        iframe.style.display = '';
+        iframe.src = `https://www.youtube.com/embed/${first.id}?controls=1&autoplay=1&mute=1&loop=1&playlist=${first.id}&start=3&rel=0&modestbranding=1`;
+        iframe.title = first.label;
+      }
+    }
+
+    function switchLocation(key, tabEl) {
+      // Update tabs
+      document.querySelectorAll('.loc-tab').forEach(t => t.classList.remove('active'));
+      tabEl.classList.add('active');
+      // Rebuild library
+      buildThumbStrip(key);
+      setMainVideo(key);
+      buildPhotoGrid(key);
+    }
+
     // Footage thumbnail swap
     function swapVideo(videoId, title, thumbEl) {
       const iframe = document.getElementById('main-iframe');
+      const ph = document.getElementById('main-placeholder');
+      if (ph) ph.style.display = 'none';
+      iframe.style.display = '';
       iframe.src = `https://www.youtube.com/embed/${videoId}?controls=1&autoplay=1&mute=1&loop=1&playlist=${videoId}&rel=0&modestbranding=1`;
       iframe.title = title;
       document.querySelectorAll('.footage-thumb').forEach(t => t.classList.remove('active-thumb'));
       thumbEl.classList.add('active-thumb');
+      thumbEl.style.borderColor = 'var(--accent)';
     }
 
     // Active nav link on scroll
@@ -950,6 +1165,9 @@
         e.target.reset();
       }, 3000);
     }
+
+    // Init photo grid for default tab (Austin)
+    buildPhotoGrid('austin');
   </script>
 
 </body>
