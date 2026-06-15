@@ -418,6 +418,8 @@
       gap: 10px;
     }
 
+    #thumb-strip::-webkit-scrollbar { display: none; }
+
     .footage-thumb {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -435,6 +437,8 @@
       transition: border-color 0.2s;
       overflow: hidden;
       position: relative;
+      flex: 0 0 260px;
+      scroll-snap-align: start;
     }
 
     .footage-thumb:hover { border-color: var(--border-mid); }
@@ -738,7 +742,7 @@
   <!-- STATS -->
   <div class="stats-bar">
     <div class="stat">
-      <span class="stat-num">5+</span>
+      <span class="stat-num">4+</span>
       <span class="stat-label">Years Experience</span>
     </div>
     <div class="stat">
@@ -808,7 +812,7 @@
         <div>
           <div class="section-eyebrow">Footage</div>
           <h2>Aerial Cinematography</h2>
-          <p class="section-sub" style="margin-bottom:0">Licensed, insured, and FAA Part 107 compliant. Available for real estate, events, construction, and creative productions.</p>
+          <p class="section-sub" style="margin-bottom:0">Licensed and FAA Part 107 compliant. Available for real estate, events, construction, and creative productions.</p>
         </div>
         <a href="#contact" class="btn-ghost" style="flex-shrink:0">Book a Shoot</a>
       </div>
@@ -842,22 +846,12 @@
         </iframe>
       </div>
 
-      <!-- Thumbnail strip -->
-      <div id="thumb-strip" style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:500px">
-        <div class="footage-thumb active-thumb" onclick="swapVideo('GPIvTBCQQVc','PQ Robotics — Cinematic Austin Shot',this)" style="border-color:var(--accent)">
-          <img src="https://img.youtube.com/vi/GPIvTBCQQVc/mqdefault.jpg" alt="Cinematic Austin Shot" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md)">
-          <div style="position:absolute;inset:0;background:rgba(0,0,0,0.35);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style="opacity:0.9"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          </div>
-          <span class="footage-label" style="position:absolute;bottom:8px;left:10px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.8)">Austin — COTA 2025</span>
+      <!-- Thumbnail strip — horizontal scroll slider -->
+      <div style="position:relative">
+        <div id="thumb-strip" style="display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:none;-ms-overflow-style:none">
         </div>
-        <div class="footage-thumb" onclick="swapVideo('vEFhLO_AttM','PQ Robotics — COTA 2025 Vol. 2',this)">
-          <img src="https://img.youtube.com/vi/vEFhLO_AttM/mqdefault.jpg" alt="COTA 2025 Vol 2" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md)">
-          <div style="position:absolute;inset:0;background:rgba(0,0,0,0.35);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style="opacity:0.9"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          </div>
-          <span class="footage-label" style="position:absolute;bottom:8px;left:10px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.8)">Austin — COTA Vol. 2</span>
-        </div>
+        <!-- Fade edges -->
+        <div style="pointer-events:none;position:absolute;top:0;right:0;bottom:6px;width:60px;background:linear-gradient(to left,var(--bg-deep),transparent)"></div>
       </div>
 
       <!-- Photo grid (shown per location) -->
@@ -942,11 +936,6 @@
           <p>Fully licensed for commercial drone operations in the US.</p>
         </div>
         <div class="cred-card">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-          <h4>Fully insured</h4>
-          <p>Comprehensive liability coverage on every job, every flight.</p>
-        </div>
-        <div class="cred-card">
           <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <h4>Atlanta-based</h4>
           <p>Serving Georgia and surrounding states for maintenance and shoots.</p>
@@ -1012,6 +1001,10 @@
           { id: 'y-3xkvc2WIM', label: 'Foiling 1' },
           { id: 'cPvdT7yULa0', label: 'Foiling 2' },
           { id: '2zbzFx8yzaw', label: 'Foiling 3' },
+        ],
+        photos: [
+          { src: 'assets/images/cinematic_footage/solo_farshot3.JPG', label: 'Solo Far Shot' },
+          { src: 'assets/images/cinematic_footage/boat_hang2.JPG',    label: 'Boat Hang' },
         ]
       }
     };
@@ -1063,7 +1056,7 @@
       lib.videos.forEach((v, i) => {
         const div = document.createElement('div');
         div.className = 'footage-thumb' + (i === 0 ? ' active-thumb' : '');
-        div.style.cssText = i === 0 ? 'border-color:var(--accent)' : '';
+        if (i === 0) div.style.borderColor = 'var(--accent)';
 
         if (v.placeholder) {
           div.innerHTML = `
