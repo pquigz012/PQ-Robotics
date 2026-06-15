@@ -655,6 +655,10 @@
       .contact-form { min-width: unset; width: 100%; }
       section, .about-inner { padding: 4rem 1.25rem; }
       footer { flex-direction: column; gap: 1rem; text-align: center; }
+      .about-bio-grid { grid-template-columns: 1fr !important; }
+      .platforms-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .location-tabs { gap: 6px; }
+      .loc-tab { font-size: 12px; padding: 6px 12px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -881,7 +885,7 @@
       <h2>Engineered from the ground up.<br>Flown from experience.</h2>
       <p class="section-sub">PQ Robotics isn't a hobby shop. It's the product of a formal engineering education, hands-on development across military and commercial platforms, and a genuine obsession with what unmanned systems can do when they're built and maintained right.</p>
 
-      <div style="display:grid;grid-template-columns:300px 1fr;gap:2rem;align-items:start;margin-bottom:2.5rem">
+      <div style="display:grid;grid-template-columns:300px 1fr;gap:2rem;align-items:start;margin-bottom:2.5rem" class="about-bio-grid">
         <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:14px;overflow:hidden">
           <img src="assets/images/founder.jpg" alt="Paul Quigley — PQ Robotics founder" style="width:100%;display:block;object-fit:cover;aspect-ratio:3/4">
           <div style="padding:0.9rem 1rem;border-top:1px solid var(--border)">
@@ -897,7 +901,7 @@
 
           <div style="margin-top:1.75rem">
             <p style="font-size:11px;letter-spacing:0.16em;color:var(--text-muted);text-transform:uppercase;margin-bottom:0.75rem">Platforms & Tools</p>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px">
+            <div class="platforms-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px">
               <div style="background:var(--bg-panel);border:1px solid var(--border);border-radius:var(--radius-md);padding:0.75rem 0.9rem">
                 <div style="font-size:11px;letter-spacing:0.1em;color:#76b900;font-weight:500;margin-bottom:3px">NVIDIA</div>
                 <div style="font-size:12px;color:var(--text-muted)">Edge compute & GPU acceleration</div>
@@ -939,12 +943,17 @@
         <div class="cred-card">
           <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           <h4>FAA Part 107 certified</h4>
-          <p>Fully licensed for commercial drone operations in the US.</p>
+          <p>Fully licensed for commercial drone operations in the US, including Remote ID compliant flights.</p>
         </div>
         <div class="cred-card">
           <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <h4>Atlanta-based</h4>
           <p>Serving Georgia and surrounding states for maintenance and shoots.</p>
+        </div>
+        <div class="cred-card">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <h4>Public Safety Partner</h4>
+          <p>Collaborating with local law enforcement and first responder organizations to support community safety operations.</p>
         </div>
       </div>
     </div>
