@@ -734,8 +734,8 @@
     <h1><em>Precision Maintenance</em><br>Cinematic Footage</h1>
     <p class="hero-sub">End-to-end drone services built for professionals — from full diagnostics and custom builds to FAA-certified aerial cinematography.</p>
     <div class="hero-cta">
-      <a href="#maintenance" class="btn-primary">Our Services</a>
-      <a href="#footage" class="btn-ghost">View Footage</a>
+      <a href="#maintenance" class="btn-primary" onclick="document.getElementById('maintenance').scrollIntoView({behavior:'smooth'});return false;">Our Services</a>
+      <a href="#footage" class="btn-ghost" onclick="document.getElementById('footage').scrollIntoView({behavior:'smooth'});return false;">View Footage</a>
     </div>
   </div>
 
@@ -819,14 +819,17 @@
 
       <!-- Location tabs -->
       <div class="location-tabs">
-        <button class="loc-tab active" onclick="switchLocation('austin', this)">
-          Austin, TX: COTA
+        <button class="loc-tab active" onclick="switchLocation('foiling', this)">
+          Watersports
+        </button>
+        <button class="loc-tab" onclick="switchLocation('austin', this)">
+          Racing
         </button>
         <button class="loc-tab" onclick="switchLocation('sailing', this)">
-          Buford, GA: Sailing
+          Special Events
         </button>
-        <button class="loc-tab" onclick="switchLocation('foiling', this)">
-          Lake Lanier, GA: Foiling
+        <button class="loc-tab" onclick="switchLocation('realestate', this)">
+          Real Estate
         </button>
       </div>
 
@@ -836,8 +839,8 @@
           id="main-iframe"
           width="100%"
           height="100%"
-          data-src="https://www.youtube.com/embed/GPIvTBCQQVc?si=ACVnVe7Ddis8P4jG&controls=1&autoplay=1&mute=1&loop=1&playlist=GPIvTBCQQVc&start=3&rel=0&modestbranding=1"
-          title="PQ Robotics — Cinematic Austin Shot"
+          data-src="https://www.youtube.com/embed/y-3xkvc2WIM?controls=1&autoplay=1&mute=1&loop=1&playlist=y-3xkvc2WIM&start=3&rel=0&modestbranding=1"
+          title="Lake Lanier — Foiling 1"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerpolicy="strict-origin-when-cross-origin"
@@ -845,6 +848,9 @@
           style="position:absolute;inset:0;width:100%;height:100%">
         </iframe>
       </div>
+
+      <!-- Location subtitle -->
+      <div id="location-subtitle" style="margin-bottom:0.75rem;font-family:var(--font-display);font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted)">Lake Lanier, GA &mdash; Foiling</div>
 
       <!-- Thumbnail strip — horizontal scroll slider -->
       <div style="position:relative">
@@ -996,6 +1002,13 @@
           { id: '', label: 'Sailing 3', placeholder: true },
         ]
       },
+      realestate: {
+        videos: [
+          { id: '', label: 'Real Estate 1', placeholder: true },
+          { id: '', label: 'Real Estate 2', placeholder: true },
+          { id: '', label: 'Real Estate 3', placeholder: true },
+        ]
+      },
       foiling: {
         videos: [
           { id: 'y-3xkvc2WIM', label: 'Foiling 1' },
@@ -1116,11 +1129,17 @@
       }
     }
 
+    const locationSubtitles = {
+      foiling:     'Lake Lanier, GA \u2014 Foiling',
+      austin:      'Austin, TX \u2014 Circuit of the Americas',
+      sailing:     'Buford, GA \u2014 Lake Lanier Sailing',
+      realestate:  'Real Estate \u2014 Coming Soon',
+    };
+
     function switchLocation(key, tabEl) {
-      // Update tabs
       document.querySelectorAll('.loc-tab').forEach(t => t.classList.remove('active'));
       tabEl.classList.add('active');
-      // Rebuild library
+      document.getElementById('location-subtitle').textContent = locationSubtitles[key];
       buildThumbStrip(key);
       setMainVideo(key);
       buildPhotoGrid(key);
@@ -1171,9 +1190,9 @@
       }, 3000);
     }
 
-    // Init default tab (Austin) on page load
-    buildThumbStrip('austin');
-    buildPhotoGrid('austin');
+    // Init default tab (Foiling) on page load
+    buildThumbStrip('foiling');
+    buildPhotoGrid('foiling');
 
     // Autoplay only when the player scrolls into view
     const playerObserver = new IntersectionObserver((entries) => {
