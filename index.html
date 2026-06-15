@@ -836,7 +836,7 @@
           id="main-iframe"
           width="100%"
           height="100%"
-          src="https://www.youtube.com/embed/GPIvTBCQQVc?si=ACVnVe7Ddis8P4jG&controls=1&autoplay=1&mute=1&loop=1&playlist=GPIvTBCQQVc&start=3&rel=0&modestbranding=1"
+          data-src="https://www.youtube.com/embed/GPIvTBCQQVc?si=ACVnVe7Ddis8P4jG&controls=1&autoplay=1&mute=1&loop=1&playlist=GPIvTBCQQVc&start=3&rel=0&modestbranding=1"
           title="PQ Robotics — Cinematic Austin Shot"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -1083,9 +1083,11 @@
     function setMainVideo(locationKey) {
       const first = libraries[locationKey].videos[0];
       const iframe = document.getElementById('main-iframe');
+      const player = document.getElementById('main-player');
 
       if (first.placeholder) {
-        // Show a placeholder panel instead of an iframe
+        iframe.src = '';
+        iframe.removeAttribute('data-src');
         iframe.style.display = 'none';
         let ph = document.getElementById('main-placeholder');
         if (!ph) {
@@ -1093,14 +1095,22 @@
           ph.id = 'main-placeholder';
           ph.style.cssText = 'position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--bg-card);border-radius:var(--radius-lg)';
           ph.innerHTML = `<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.2"><polygon points="5 3 19 12 5 21 5 3"/></svg><span style="font-family:var(--font-display);font-size:14px;color:var(--text-muted)">Videos coming soon</span>`;
-          document.getElementById('main-player').appendChild(ph);
+          player.appendChild(ph);
         }
         ph.style.display = 'flex';
       } else {
         const ph = document.getElementById('main-placeholder');
         if (ph) ph.style.display = 'none';
         iframe.style.display = '';
-        iframe.src = `https://www.youtube.com/embed/${first.id}?controls=1&autoplay=1&mute=1&loop=1&playlist=${first.id}&start=3&rel=0&modestbranding=1`;
+        const newSrc = `https://www.youtube.com/embed/${first.id}?controls=1&autoplay=1&mute=1&loop=1&playlist=${first.id}&start=3&rel=0&modestbranding=1`;
+        iframe.dataset.src = newSrc;
+        // If player is already in view, load immediately
+        const rect = player.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          iframe.src = newSrc;
+        } else {
+          iframe.src = '';
+        }
         iframe.title = first.label;
       }
     }
@@ -1160,8 +1170,21 @@
       }, 3000);
     }
 
-    // Init photo grid for default tab (Austin)
+    // Init default tab (Austin) on page load
+    buildThumbStrip('austin');
     buildPhotoGrid('austin');
+
+    // Autoplay only when the player scrolls into view
+    const playerObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const iframe = document.getElementById('main-iframe');
+        if (entry.isIntersecting && iframe.dataset.src && !iframe.src) {
+          iframe.src = iframe.dataset.src;
+        }
+      });
+    }, { threshold: 0.4 });
+
+    playerObserver.observe(document.getElementById('main-player'));
   </script>
 
 </body>
