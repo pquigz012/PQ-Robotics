@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Footage — PQ Robotics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-deep:    #07090f;
+      --bg-card:    #111827;
+      --bg-panel:   #0d1220;
+      --border:     rgba(255,255,255,0.06);
+      --border-mid: rgba(255,255,255,0.12);
+      --text-primary:   #e8eaf0;
+      --text-secondary: #8b92a5;
+      --text-muted:     #4b5263;
+      --accent:         #3a7bd5;
+      --accent-dim:     rgba(58,123,213,0.12);
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body:    'Inter', sans-serif;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── TOP BAR ── */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 60px;
+      background: rgba(7,9,15,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .btn-back {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius-sm);
+      padding: 8px 18px;
+      font-size: 13px;
+      font-family: var(--font-body);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-back:hover { color: var(--text-primary); border-color: rgba(255,255,255,0.25); }
+    .btn-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .top-logo {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--text-primary);
+      text-transform: uppercase;
+    }
+    .top-logo span { color: var(--accent); }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 3.5rem 2rem 1rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .page-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      text-transform: uppercase;
+      font-family: var(--font-display);
+      margin-bottom: 0.6rem;
+    }
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.2;
+      margin-bottom: 0.6rem;
+    }
+    .page-header p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* ── SECTIONS ── */
+    .footage-sections {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+    }
+
+    .footage-section {}
+
+    .section-meta {
+      margin-bottom: 1rem;
+    }
+
+    .section-subject {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.3;
+      margin-bottom: 3px;
+    }
+
+    .section-location {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-family: var(--font-display);
+    }
+
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 1.25rem;
+    }
+
+    /* ── SCROLL STRIP ── */
+    .scroll-strip-wrap { position: relative; }
+
+    .scroll-strip {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 6px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .scroll-strip::-webkit-scrollbar { display: none; }
+
+    .fade-right {
+      pointer-events: none;
+      position: absolute;
+      top: 0; right: 0; bottom: 6px;
+      width: 80px;
+      background: linear-gradient(to left, var(--bg-deep), transparent);
+    }
+
+    /* ── THUMB ── */
+    .thumb {
+      flex: 0 0 280px;
+      scroll-snap-align: start;
+      position: relative;
+      aspect-ratio: 16/9;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .thumb:hover { border-color: var(--border-mid); }
+    .thumb.active-thumb { border-color: var(--accent) !important; }
+
+    .thumb img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .thumb .play-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.32);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .thumb:hover .play-overlay { background: rgba(0,0,0,0.18); }
+    .thumb .play-overlay svg { width: 30px; height: 30px; fill: white; opacity: 0.9; }
+
+    .thumb .thumb-label {
+      position: absolute;
+      bottom: 8px; left: 10px;
+      color: #fff;
+      font-size: 11px;
+      font-family: var(--font-display);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.9);
+    }
+
+    .thumb.placeholder {
+      cursor: default;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 6px;
+    }
+    .thumb.placeholder span { font-size: 11px; color: var(--text-muted); }
+
+    /* ── MAIN PLAYER ── */
+    .main-player {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: #000;
+      margin-bottom: 1rem;
+    }
+    .main-player iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+    }
+    .main-player-placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px;
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+    }
+    .main-player-placeholder svg { width: 48px; height: 48px; stroke: var(--text-muted); fill: none; stroke-width: 1.2; }
+    .main-player-placeholder span { font-size: 14px; color: var(--text-muted); font-family: var(--font-display); }
+
+    /* ── LIGHTBOX ── */
+    #lightbox {
+      display: none;
+      position: fixed; inset: 0; z-index: 999;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(6px);
+      align-items: center; justify-content: center;
+      cursor: zoom-out;
+    }
+    #lightbox img {
+      max-width: 92vw; max-height: 88vh;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.7);
+      object-fit: contain;
+    }
+    #lightbox-close {
+      position: fixed; top: 20px; right: 24px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+      width: 38px; height: 38px;
+      color: #fff; font-size: 18px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ── PHOTO GRID ── */
+    .photo-grid { margin-top: 1.5rem; }
+    .photo-grid-label {
+      font-size: 11px; letter-spacing: 0.16em;
+      color: var(--text-muted); text-transform: uppercase;
+      margin-bottom: 0.9rem; font-family: var(--font-display);
+    }
+    .photo-grid-inner {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 10px;
+    }
+    .photo-item {
+      position: relative; aspect-ratio: 16/9;
+      border-radius: var(--radius-md); overflow: hidden;
+      cursor: zoom-in; background: var(--bg-card);
+    }
+    .photo-item img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .photo-item:hover img { transform: scale(1.04); }
+    .photo-item span {
+      position: absolute; bottom: 8px; left: 10px;
+      color: #fff; font-size: 11px;
+      font-family: var(--font-display);
+      text-shadow: 0 1px 4px rgba(0,0,0,0.9);
+    }
+
+    @media (max-width: 768px) {
+      .top-bar { padding: 0 1rem; }
+      .page-header { padding: 2rem 1.25rem 0.5rem; }
+      .page-header h1 { font-size: 1.6rem; }
+      .footage-sections { padding: 1rem 1.25rem 4rem; gap: 2.5rem; }
+      .thumb { flex: 0 0 220px; }
+      .photo-grid-inner { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <nav class="top-bar">
+    <a href="index.html" class="btn-back">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Back
+    </a>
+    <div class="top-logo">PQ <span>ROBOTICS</span></div>
+    <div style="width:80px"></div><!-- spacer to center logo -->
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-eyebrow">Footage</div>
+    <h1>Aerial Cinematography</h1>
+    <p>Licensed and FAA Part 107 compliant. Available for real estate, events, construction, and creative productions.</p>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="">
+    <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+  </div>
+
+  <!-- FOOTAGE SECTIONS -->
+  <div class="footage-sections" id="footage-sections"></div>
+
+  <script>
+    const sections = [
+      {
+        subject:  'Watersports',
+        location: 'Lake Lanier, GA — Foiling',
+        videos: [
+          { id: 'y-3xkvc2WIM', label: 'Foiling 1' },
+          { id: 'cPvdT7yULa0', label: 'Foiling 2' },
+          { id: '2zbzFx8yzaw', label: 'Foiling 3' },
+          { id: 'WI3ggBwCP0M', label: 'Foiling 4' },
+        ],
+        photos: [
+          { src: 'assets/images/cinematic_footage/solo_farshot3.JPG', label: 'Solo Far Shot' },
+          { src: 'assets/images/cinematic_footage/boat_hang2.JPG',    label: 'Boat Hang' },
+          { src: 'assets/images/cinematic_footage/Boardprep.JPG',     label: 'Board Prep' },
+        ]
+      },
+      {
+        subject:  'Racing',
+        location: 'Austin, TX — Circuit of the Americas',
+        videos: [
+          { id: 'GPIvTBCQQVc', label: 'COTA 2025' },
+          { id: 'vEFhLO_AttM', label: 'COTA Vol. 2' },
+        ],
+        photos: [
+          { src: 'assets/images/cinematic_footage/Turn1_GT3.png',     label: 'Turn 1 — GT3' },
+          { src: 'assets/images/cinematic_footage/Downtown_Tower.png', label: 'Downtown Tower' },
+          { src: 'assets/images/cinematic_footage/Finish_line.png',    label: 'Finish Line' },
+          { src: 'assets/images/cinematic_footage/GT3&Flag.png',       label: 'GT3 & Flag' },
+        ]
+      },
+      {
+        subject:  'Special Events',
+        location: 'Buford, GA — Lake Lanier Sailing',
+        videos: [
+          { id: 'fC0gNgaaUlE', label: 'Sailing 1' },
+          { id: 'i75sZMDeH9w', label: 'Sailing 2' },
+          { id: 'SxxkvKRsjI8', label: 'Sailing 3' },
+          { id: 'XHGkpU6_lOU', label: 'Sailing 4' },
+        ],
+        photos: []
+      },
+      {
+        subject:  'Real Estate',
+        location: 'Coming Soon',
+        videos: [
+          { id: '', label: 'Real Estate 1', placeholder: true },
+          { id: '', label: 'Real Estate 2', placeholder: true },
+          { id: '', label: 'Real Estate 3', placeholder: true },
+        ],
+        photos: []
+      },
+    ];
+
+    function buildSection(sec, index) {
+      const wrap = document.createElement('div');
+      wrap.className = 'footage-section';
+
+      // Meta
+      wrap.innerHTML = `
+        <div class="section-meta">
+          <div class="section-subject">${sec.subject}</div>
+          <div class="section-location">${sec.location}</div>
+        </div>
+        <div class="section-divider"></div>
+      `;
+
+      // Main player
+      const playerDiv = document.createElement('div');
+      playerDiv.className = 'main-player';
+      playerDiv.id = `player-${index}`;
+
+      const firstVideo = sec.videos[0];
+      if (firstVideo.placeholder) {
+        playerDiv.innerHTML = `
+          <div class="main-player-placeholder">
+            <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span>Videos coming soon</span>
+          </div>`;
+      } else {
+        const iframe = document.createElement('iframe');
+        iframe.id = `iframe-${index}`;
+        iframe.dataset.src = `https://www.youtube.com/embed/${firstVideo.id}?controls=1&autoplay=1&mute=1&loop=1&playlist=${firstVideo.id}&rel=0&modestbranding=1`;
+        iframe.title = firstVideo.label;
+        iframe.frameBorder = '0';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+        playerDiv.appendChild(iframe);
+
+        // IntersectionObserver per player
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            if (e.isIntersecting && iframe.dataset.src && !iframe.src) {
+              iframe.src = iframe.dataset.src;
+            }
+          });
+        }, { threshold: 0.3 });
+        obs.observe(playerDiv);
+      }
+      wrap.appendChild(playerDiv);
+
+      // Thumb strip
+      const stripWrap = document.createElement('div');
+      stripWrap.className = 'scroll-strip-wrap';
+
+      const strip = document.createElement('div');
+      strip.className = 'scroll-strip';
+      strip.id = `strip-${index}`;
+
+      sec.videos.forEach((v, i) => {
+        const thumb = document.createElement('div');
+        thumb.className = 'thumb' + (i === 0 ? ' active-thumb' : '') + (v.placeholder ? ' placeholder' : '');
+
+        if (v.placeholder) {
+          thumb.innerHTML = `
+            <svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:var(--text-muted);fill:none;stroke-width:1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span>Coming soon</span>`;
+        } else {
+          thumb.innerHTML = `
+            <img src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" alt="${v.label}">
+            <div class="play-overlay">
+              <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+            <span class="thumb-label">${v.label}</span>`;
+          thumb.onclick = () => swapVideo(index, v.id, v.label, thumb);
+        }
+        strip.appendChild(thumb);
+      });
+
+      const fadeRight = document.createElement('div');
+      fadeRight.className = 'fade-right';
+
+      stripWrap.appendChild(strip);
+      stripWrap.appendChild(fadeRight);
+      wrap.appendChild(stripWrap);
+
+      // Photos
+      if (sec.photos && sec.photos.length > 0) {
+        const photoGrid = document.createElement('div');
+        photoGrid.className = 'photo-grid';
+        photoGrid.innerHTML = `<div class="photo-grid-label">Photos</div><div class="photo-grid-inner" id="photos-${index}"></div>`;
+        const inner = photoGrid.querySelector(`#photos-${index}`);
+        sec.photos.forEach(p => {
+          const item = document.createElement('div');
+          item.className = 'photo-item';
+          item.innerHTML = `<img src="${p.src}" alt="${p.label}"><span>${p.label}</span>`;
+          item.onclick = () => openLightbox(p.src, p.label);
+          inner.appendChild(item);
+        });
+        wrap.appendChild(photoGrid);
+      }
+
+      return wrap;
+    }
+
+    function swapVideo(sectionIndex, videoId, label, thumbEl) {
+      const iframe = document.getElementById(`iframe-${sectionIndex}`);
+      if (!iframe) return;
+      iframe.src = `https://www.youtube.com/embed/${videoId}?controls=1&autoplay=1&mute=1&loop=1&playlist=${videoId}&rel=0&modestbranding=1`;
+      iframe.title = label;
+      const strip = document.getElementById(`strip-${sectionIndex}`);
+      strip.querySelectorAll('.thumb').forEach(t => t.classList.remove('active-thumb'));
+      thumbEl.classList.add('active-thumb');
+    }
+
+    function openLightbox(src, alt) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-img').alt = alt;
+      document.getElementById('lightbox').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    // Build all sections
+    const container = document.getElementById('footage-sections');
+    sections.forEach((sec, i) => container.appendChild(buildSection(sec, i)));
+  </script>
+
+</body>
+</html>
