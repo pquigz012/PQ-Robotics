@@ -316,6 +316,10 @@
       color: #e53e3e;
     }
 
+    .section-eyebrow-lg.no-cross::before {
+      display: none;
+    }
+
     h2 {
       font-family: var(--font-display);
       font-size: clamp(1.6rem, 3.5vw, 2.4rem);
@@ -780,41 +784,43 @@
   <!-- MAINTENANCE -->
   <section id="maintenance">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem">
-      <div class="section-eyebrow-lg">Drone Hospital</div>
-      <svg height="180" viewBox="0 0 680 500" xmlns="http://www.w3.org/2000/svg" style="width:auto">
-        <g transform="translate(340, 230)">
-          <rect x="-50" y="-130" width="100" height="260" rx="10" fill="#c62828"/>
-          <rect x="-130" y="-50" width="260" height="100" rx="10" fill="#c62828"/>
-          <rect x="-42" y="-122" width="84" height="244" rx="7" fill="#e53935" opacity="0.3"/>
-          <rect x="-122" y="-42" width="244" height="84" rx="7" fill="#e53935" opacity="0.3"/>
-          <circle cx="-46" cy="-46" r="22" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.12"/>
-          <circle cx="-46" cy="-46" r="18" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.18"/>
-          <circle cx="-46" cy="-46" r="14" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.25"/>
-          <circle cx="46" cy="-46" r="22" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.12"/>
-          <circle cx="46" cy="-46" r="18" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.18"/>
-          <circle cx="46" cy="-46" r="14" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.25"/>
-          <circle cx="-46" cy="46" r="22" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.12"/>
-          <circle cx="-46" cy="46" r="18" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.18"/>
-          <circle cx="-46" cy="46" r="14" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.25"/>
-          <circle cx="46" cy="46" r="22" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.12"/>
-          <circle cx="46" cy="46" r="18" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.18"/>
-          <circle cx="46" cy="46" r="14" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.25"/>
-          <rect x="-65" y="-5" width="130" height="10" rx="4" fill="#eeeeee" transform="rotate(45)"/>
-          <rect x="-65" y="-5" width="130" height="10" rx="4" fill="#eeeeee" transform="rotate(-45)"/>
-          <rect x="-22" y="-14" width="44" height="28" rx="4" fill="#f0f0f0"/>
-          <rect x="-22" y="6" width="44" height="8" rx="4" fill="#cccccc"/>
-          <circle cx="10" cy="-4" r="3.5" fill="#00e676" opacity="0.95"/>
-          <circle cx="10" cy="-4" r="6" fill="#00e676" opacity="0.2"/>
-          <rect x="-2" y="-22" width="4" height="10" rx="2" fill="#dddddd"/>
-          <circle cx="0" cy="-23" r="3.5" fill="#ffffff" stroke="#cccccc" stroke-width="0.5"/>
-          <circle cx="-46" cy="-46" r="7" fill="#111111" stroke="#ffffff" stroke-width="1.5"/>
-          <circle cx="46" cy="-46" r="7" fill="#111111" stroke="#ffffff" stroke-width="1.5"/>
-          <circle cx="-46" cy="46" r="7" fill="#111111" stroke="#ffffff" stroke-width="1.5"/>
-          <circle cx="46" cy="46" r="7" fill="#111111" stroke="#ffffff" stroke-width="1.5"/>
-        </g>
-        <text x="340" y="395" text-anchor="middle" font-family="Arial Black, Arial" font-size="36" font-weight="900" fill="#ffffff" letter-spacing="6">PQ</text>
-        <text x="340" y="425" text-anchor="middle" font-family="Arial" font-size="14" font-weight="500" fill="#e53935" letter-spacing="8">ROBOTICS</text>
-      </svg>
+      <div style="display:flex;align-items:center;gap:16px">
+        <svg height="180" viewBox="0 0 680 500" xmlns="http://www.w3.org/2000/svg" style="width:auto">
+          <g transform="translate(340, 230)">
+            <rect x="-50" y="-130" width="100" height="260" rx="10" fill="#c62828"/>
+            <rect x="-130" y="-50" width="260" height="100" rx="10" fill="#c62828"/>
+            <rect x="-42" y="-122" width="84" height="244" rx="7" fill="#e53935" opacity="0.3"/>
+            <rect x="-122" y="-42" width="244" height="84" rx="7" fill="#e53935" opacity="0.3"/>
+            <circle cx="-46" cy="-46" r="22" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.12"/>
+            <circle cx="-46" cy="-46" r="18" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.18"/>
+            <circle cx="-46" cy="-46" r="14" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.25"/>
+            <circle cx="46" cy="-46" r="22" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.12"/>
+            <circle cx="46" cy="-46" r="18" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.18"/>
+            <circle cx="46" cy="-46" r="14" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.25"/>
+            <circle cx="-46" cy="46" r="22" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.12"/>
+            <circle cx="-46" cy="46" r="18" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.18"/>
+            <circle cx="-46" cy="46" r="14" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.25"/>
+            <circle cx="46" cy="46" r="22" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.12"/>
+            <circle cx="46" cy="46" r="18" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.18"/>
+            <circle cx="46" cy="46" r="14" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.25"/>
+            <rect x="-65" y="-5" width="130" height="10" rx="4" fill="#eeeeee" transform="rotate(45)"/>
+            <rect x="-65" y="-5" width="130" height="10" rx="4" fill="#eeeeee" transform="rotate(-45)"/>
+            <rect x="-22" y="-14" width="44" height="28" rx="4" fill="#f0f0f0"/>
+            <rect x="-22" y="6" width="44" height="8" rx="4" fill="#cccccc"/>
+            <circle cx="10" cy="-4" r="3.5" fill="#00e676" opacity="0.95"/>
+            <circle cx="10" cy="-4" r="6" fill="#00e676" opacity="0.2"/>
+            <rect x="-2" y="-22" width="4" height="10" rx="2" fill="#dddddd"/>
+            <circle cx="0" cy="-23" r="3.5" fill="#ffffff" stroke="#cccccc" stroke-width="0.5"/>
+            <circle cx="-46" cy="-46" r="7" fill="#111111" stroke="#ffffff" stroke-width="1.5"/>
+            <circle cx="46" cy="-46" r="7" fill="#111111" stroke="#ffffff" stroke-width="1.5"/>
+            <circle cx="-46" cy="46" r="7" fill="#111111" stroke="#ffffff" stroke-width="1.5"/>
+            <circle cx="46" cy="46" r="7" fill="#111111" stroke="#ffffff" stroke-width="1.5"/>
+          </g>
+          <text x="340" y="395" text-anchor="middle" font-family="Arial Black, Arial" font-size="36" font-weight="900" fill="#ffffff" letter-spacing="6">PQ</text>
+          <text x="340" y="425" text-anchor="middle" font-family="Arial" font-size="14" font-weight="500" fill="#e53935" letter-spacing="8">ROBOTICS</text>
+        </svg>
+        <div class="section-eyebrow-lg no-cross">Drone Hospital</div>
+      </div>
     </div>
     <h2>Technical Repair & Development</h2>
     <p class="section-sub">Diagnostic, repair, and custom build services across DJI and Betaflight platforms — from cinematic rigs to high-performance FPV builds. We work across all major systems — flight controllers, ESCs, motors, and firmware.</p>
