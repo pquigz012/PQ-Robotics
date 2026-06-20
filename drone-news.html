@@ -63,6 +63,17 @@
       z-index: 1;
     }
 
+    .feed-panel {
+      max-width: 820px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(10px);
+      border-radius: 14px;
+      padding: 0.75rem;
+      position: relative;
+      z-index: 1;
+    }
+
     header {
       background: rgba(255,255,255,0.15);
       border-radius: 10px;
@@ -128,7 +139,7 @@
     }
 
     .filter-btn {
-      background: transparent;
+      background: #fff;
       border: 0.5px solid var(--border-strong);
       border-radius: 20px;
       padding: 4px 14px;
@@ -182,7 +193,7 @@
     }
 
     .card {
-      background: rgba(255,255,255,0.15);
+      background: #fff;
       border: 0.5px solid var(--border);
       border-radius: var(--radius);
       padding: 1.1rem 1.25rem;
@@ -203,9 +214,8 @@
     .card-title {
       font-size: 15px;
       font-weight: 500;
-      color: #fff;
+      color: var(--text-primary);
       line-height: 1.45;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.7);
       flex: 1;
     }
 
@@ -218,14 +228,14 @@
 
     .card-date {
       font-size: 12px;
-      color: rgba(255,255,255,0.8);
+      color: var(--text-muted);
       white-space: nowrap;
       padding-top: 2px;
     }
 
     .card-snippet {
       font-size: 13px;
-      color: rgba(255,255,255,0.85);
+      color: var(--text-secondary);
       line-height: 1.55;
       margin-bottom: 0.6rem;
       display: -webkit-box;
@@ -294,7 +304,7 @@
   </div>
 </header>
 
-<div class="controls">
+<div class="feed-panel"><div class="controls" style="max-width:100%;padding:0.5rem 0.75rem 0;">
   <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
   <button class="filter-btn" onclick="setFilter('drone', this)">Drone events</button>
   <button class="filter-btn" onclick="setFilter('show', this)">Drone shows</button>
@@ -305,7 +315,7 @@
   <div id="content">
     <div class="status"><span class="spinner"></span> Fetching feeds…</div>
   </div>
-</main>
+</main></div>
 
 <script>
   /* feeds are served from feed-cache.json, built hourly by GitHub Actions */
