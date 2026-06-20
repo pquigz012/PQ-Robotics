@@ -96,20 +96,18 @@
     h1 {
       font-size: 28px;
       font-weight: 600;
-      color: #fff;
+      color: var(--text-primary);
       margin-bottom: 0.3rem;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.7);
     }
 
     .header-meta {
       font-size: 13px;
-      color: #fff;
+      color: var(--text-muted);
       display: flex;
       align-items: center;
       gap: 1rem;
       flex-wrap: wrap;
       margin-top: 0.75rem;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.6);
     }
 
     .dot { opacity: 0.4; }
@@ -134,7 +132,6 @@
       max-width: 780px;
       margin: 0 auto;
       padding: 1rem 1.5rem 0.5rem;
-      background: transparent;
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -294,7 +291,7 @@
 <body>
 
 <header>
-  <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:rgba(255,255,255,0.85);text-decoration:none;margin-bottom:1rem;text-shadow:0 1px 4px rgba(0,0,0,0.6);" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">
+  <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-muted);text-decoration:none;margin-bottom:1rem;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-muted)'">
     ← Back to PQ Robotics
   </a>
   <p class="header-eyebrow">Atlanta · Live Feed</p>
