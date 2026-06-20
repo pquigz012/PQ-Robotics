@@ -112,12 +112,13 @@
     .dot { opacity: 0.4; }
 
     .refresh-btn {
-      background: none;
-      border: 0.5px solid var(--border-strong);
+      background: var(--accent-bg);
+      border: 0.5px solid var(--accent);
       border-radius: var(--radius-sm);
-      color: var(--text-secondary);
+      color: var(--accent-text);
       font-size: 12px;
-      padding: 3px 10px;
+      font-weight: 500;
+      padding: 4px 12px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -149,7 +150,12 @@
     }
 
     .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
-    .filter-btn.active { background: var(--accent-bg); color: var(--accent-text); border-color: var(--accent); font-weight: 500; }
+    .filter-btn.active { font-weight: 500; }
+
+    .filter-drone.active, .filter-drone:hover { background: var(--tag-drone-bg); color: var(--tag-drone-text); border-color: var(--tag-drone-text); }
+    .filter-show.active, .filter-show:hover   { background: var(--tag-show-bg);  color: var(--tag-show-text);  border-color: var(--tag-show-text); }
+    .filter-reg.active, .filter-reg:hover     { background: var(--tag-reg-bg);   color: var(--tag-reg-text);   border-color: var(--tag-reg-text); }
+    .filter-btn:not(.filter-drone):not(.filter-show):not(.filter-reg).active { background: var(--accent-bg); color: var(--accent-text); border-color: var(--accent); }
 
     main {
       max-width: 780px;
@@ -290,7 +296,7 @@
 <body>
 
 <header style="background:rgba(255,255,255,0.55);backdrop-filter:blur(10px);border-radius:14px;max-width:820px;margin:1rem auto 0;">
-  <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-muted);text-decoration:none;margin-bottom:1rem;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-muted)'">
+  <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--accent);text-decoration:none;margin-bottom:1rem;border:0.5px solid var(--accent);border-radius:6px;padding:4px 10px;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-muted)'">
     ← Back to PQ Robotics
   </a>
   <p class="header-eyebrow">Atlanta · Live Feed</p>
@@ -305,9 +311,9 @@
 
 <div class="feed-panel" style="margin-top:1.5rem;"><div class="controls" style="max-width:100%;padding:0.5rem 0.75rem 0;">
   <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
-  <button class="filter-btn" onclick="setFilter('drone', this)">Drone events</button>
-  <button class="filter-btn" onclick="setFilter('show', this)">Drone shows</button>
-  <button class="filter-btn" onclick="setFilter('reg', this)">Regulations</button>
+  <button class="filter-btn filter-drone" onclick="setFilter('drone', this)">Drone events</button>
+  <button class="filter-btn filter-show" onclick="setFilter('show', this)">Drone shows</button>
+  <button class="filter-btn filter-reg" onclick="setFilter('reg', this)">Regulations</button>
 </div>
 
 <main>
