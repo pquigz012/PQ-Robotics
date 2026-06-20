@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Atlanta Drone News</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📰</text></svg>">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -57,8 +58,24 @@
       line-height: 1.6;
     }
 
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: url('atlanta-bg.jpg') center center / cover no-repeat;
+      opacity: 0.18;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    header, .controls, main {
+      position: relative;
+      z-index: 1;
+    }
+
     header {
-      background: var(--surface);
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(8px);
       border-bottom: 0.5px solid var(--border-strong);
       padding: 2rem 1.5rem 1.5rem;
       max-width: 780px;
@@ -174,7 +191,8 @@
     }
 
     .card {
-      background: var(--surface);
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(6px);
       border: 0.5px solid var(--border);
       border-radius: var(--radius);
       padding: 1.1rem 1.25rem;
