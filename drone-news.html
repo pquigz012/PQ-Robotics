@@ -295,28 +295,7 @@
 </main>
 
 <script>
-  /* --- GOOGLE ALERT RSS FEEDS ------------------------------------------------ */
-  const FEEDS = [
-    {
-      label: "Atlanta Drone",
-      url: "https://www.google.com/alerts/feeds/14071526862971928921/11257640413982761547"
-    },
-    {
-      label: "Drone competition Atlanta",
-      url: "https://www.google.com/alerts/feeds/14071526862971928921/17148330842456058979"
-    },
-    {
-      label: "Drone contracts Atlanta/Georgia",
-      url: "https://www.google.com/alerts/feeds/14071526862971928921/1264784910286108843"
-    },
-    {
-      label: "Drone regulation Georgia",
-      url: "https://www.google.com/alerts/feeds/14071526862971928921/7079306208049522120"
-    }
-  ];
-  /* --------------------------------------------------------------------------- */
-
-  const API = "https://api.rss2json.com/v1/api.json?rss_url=";
+  /* feeds are served from feed-cache.json, built hourly by GitHub Actions */
 
   let allItems = [];
   let activeFilter = "all";
@@ -393,51 +372,42 @@
 
   async function loadFeeds() {
     document.getElementById("content").innerHTML =
-      '<div class="status"><span class="spinner"></span> Fetching feeds…</div>';
+      '<div class="status"><span class="spinner"></span> Loading news…</div>';
     document.getElementById("last-updated").textContent = "Loading…";
     allItems = [];
 
-    const results = await Promise.allSettled(
-      FEEDS.map(feed =>
-        fetch(API + encodeURIComponent(feed.url))
-          .then(r => r.json())
-          .then(data => ({ feed, data }))
-      )
-    );
+    let data;
+    try {
+      const res = await fetch("feed-cache.json?t=" + Date.now());
+      data = await res.json();
+    } catch(e) {
+      document.getElementById("content").innerHTML =
+        '<div class="error-banner">⚠️ Could not load feed-cache.json. Make sure the GitHub Action has run at least once.</div>';
+      return;
+    }
 
-    const errors = [];
-
-    results.forEach(result => {
-      if (result.status === "rejected") {
-        errors.push("A feed failed to load.");
-        return;
-      }
-      const { feed, data } = result.value;
-      if (data.status !== "ok") {
-        errors.push(`"${feed.label}" returned an error. Check your RSS URL.`);
-        return;
-      }
-      (data.items || []).forEach(item => {
-        allItems.push({
-          ...item,
-          feedLabel: feed.label,
-          tag: tagItem(item.title || "", item.description || ""),
-          source: data.feed?.title || ""
-        });
+    (data.items || []).forEach(item => {
+      allItems.push({
+        ...item,
+        tag: tagItem(item.title || "", item.description || ""),
       });
     });
 
-    allItems.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
-
-    document.getElementById("last-updated").textContent =
-      "Updated " + new Date().toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
+    const updated = data.updated
+      ? new Date(data.updated).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })
+      : "unknown";
+    document.getElementById("last-updated").textContent = "Updated " + updated;
 
     const el = document.getElementById("content");
-    let errorHtml = errors.map(e => `<div class="error-banner">⚠️ ${e}</div>`).join("");
+    let errorHtml = (data.errors || []).map(e => `<div class="error-banner">⚠️ ${e}</div>`).join("");
     el.innerHTML = errorHtml;
 
     document.getElementById("article-count").textContent =
       `${allItems.length} article${allItems.length !== 1 ? "s" : ""}`;
+
+    if (allItems.length === 0 && (data.errors || []).length === 0) {
+      el.innerHTML += '<div class="empty">No articles yet — the GitHub Action may still be running for the first time.</div>';
+    }
 
     render();
   }
