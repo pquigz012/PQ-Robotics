@@ -308,12 +308,17 @@
     <!-- Player -->
     <div class="stream-player">
       <div class="scan-line"></div>
-      <iframe
-        src="https://customer-er1i035n4bgch658.cloudflarestream.com/99926d2eb229af86e1a56cc0787fae76/iframe"
-        style="border:none;position:absolute;top:0;left:0;height:100%;width:100%;"
-        allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-        allowfullscreen="true">
-      </iframe>
+      <video id="stream-video" autoplay muted playsinline
+        style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
+      </video>
+      <div id="stream-offline" class="stream-placeholder" style="display:none;">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#3a7bd5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 10l4.553-2.069A1 1 0 0 1 21 8.845v6.31a1 1 0 0 1-1.447.894L15 14"/>
+          <rect x="1" y="6" width="14" height="12" rx="2"/>
+        </svg>
+        <h2>Stream offline</h2>
+        <p>Waiting for drone feed to connect.</p>
+      </div>
     </div>
 
     <!-- Sidebar -->
@@ -327,15 +332,23 @@
         </div>
         <div class="stat-row">
           <span class="stat-label">Latency</span>
-          <span class="stat-value">200–600ms</span>
+          <span class="stat-value" id="stat-latency">—</span>
         </div>
         <div class="stat-row">
           <span class="stat-label">Protocol</span>
-          <span class="stat-value">WebRTC / HLS</span>
+          <span class="stat-value">WebRTC (WHEP)</span>
         </div>
         <div class="stat-row">
           <span class="stat-label">Resolution</span>
-          <span class="stat-value">—</span>
+          <span class="stat-value" id="stat-resolution">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Bitrate</span>
+          <span class="stat-value" id="stat-bitrate">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Frame rate</span>
+          <span class="stat-value" id="stat-fps">—</span>
         </div>
         <div class="stat-row">
           <span class="stat-label">Viewer</span>
@@ -375,5 +388,100 @@
   </div>
 </main>
 
+
+<script>
+  // Cloudflare Stream WebRTC (WHEP) playback
+  const WHEP_URL = "https://customer-er1i035n4bgch658.cloudflarestream.com/99926d2eb229af86e1a56cc0787fae76/webRTC/play";
+
+  // Live stats polling
+  let pc_ref = null;
+  let lastBytes = 0;
+  let lastStatsTime = 0;
+
+  async function pollStats() {
+    if (!pc_ref) return;
+    const stats = await pc_ref.getStats();
+    stats.forEach(report => {
+      if (report.type === 'inbound-rtp' && report.kind === 'video') {
+        // Resolution
+        if (report.frameWidth && report.frameHeight) {
+          document.getElementById('stat-resolution').textContent =
+            `${report.frameWidth}×${report.frameHeight}`;
+        }
+        // FPS
+        if (report.framesPerSecond) {
+          document.getElementById('stat-fps').textContent =
+            `${Math.round(report.framesPerSecond)} fps`;
+        }
+        // Bitrate
+        const now = Date.now();
+        if (lastStatsTime && report.bytesReceived) {
+          const elapsed = (now - lastStatsTime) / 1000;
+          const bitsPerSec = ((report.bytesReceived - lastBytes) * 8) / elapsed;
+          const mbps = (bitsPerSec / 1_000_000).toFixed(2);
+          document.getElementById('stat-bitrate').textContent = `${mbps} Mbps`;
+        }
+        lastBytes = report.bytesReceived || lastBytes;
+        lastStatsTime = now;
+      }
+      // Latency via round-trip time
+      if (report.type === 'candidate-pair' && report.state === 'succeeded' && report.currentRoundTripTime !== undefined) {
+        const ms = Math.round(report.currentRoundTripTime * 1000);
+        document.getElementById('stat-latency').textContent = `${ms} ms`;
+      }
+    });
+  }
+
+  async function startWebRTC() {
+    const video = document.getElementById('stream-video');
+    const offline = document.getElementById('stream-offline');
+
+    const pc = new RTCPeerConnection();
+    pc_ref = pc;
+    pc.addTransceiver('video', { direction: 'recvonly' });
+    pc.addTransceiver('audio', { direction: 'recvonly' });
+
+    pc.ontrack = e => {
+      if (e.track.kind === 'video') {
+        video.srcObject = e.streams[0];
+        offline.style.display = 'none';
+        video.style.display = 'block';
+        document.getElementById('stream-status').textContent = 'Live';
+        document.getElementById('stream-status').className = 'stat-value green';
+        setInterval(pollStats, 1000);
+      }
+    };
+
+    pc.oniceconnectionstatechange = () => {
+      if (['disconnected','failed','closed'].includes(pc.iceConnectionState)) {
+        video.style.display = 'none';
+        offline.style.display = 'flex';
+        document.getElementById('stream-status').textContent = 'Offline';
+        document.getElementById('stream-status').className = 'stat-value yellow';
+        ['stat-latency','stat-resolution','stat-bitrate','stat-fps'].forEach(id => {
+          document.getElementById(id).textContent = '—';
+        });
+      }
+    };
+
+    const offer = await pc.createOffer();
+    await pc.setLocalDescription(offer);
+
+    const res = await fetch(WHEP_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/sdp' },
+      body: offer.sdp
+    });
+
+    if (res.ok) {
+      const answer = await res.text();
+      await pc.setRemoteDescription({ type: 'answer', sdp: answer });
+    } else {
+      offline.style.display = 'flex';
+    }
+  }
+
+  startWebRTC();
+</script>
 </body>
 </html>
