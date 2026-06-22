@@ -308,18 +308,12 @@
     <!-- Player -->
     <div class="stream-player">
       <div class="scan-line"></div>
-      <!--
-        REPLACE THIS BLOCK WITH YOUR COSMOSTREAMING EMBED:
-        <iframe src="YOUR_COSMOSTREAMING_URL" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
-      -->
-      <div class="stream-placeholder">
-        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#3a7bd5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M15 10l4.553-2.069A1 1 0 0 1 21 8.845v6.31a1 1 0 0 1-1.447.894L15 14"/>
-          <rect x="1" y="6" width="14" height="12" rx="2"/>
-        </svg>
-        <h2>Stream not connected</h2>
-        <p>CosmoStreaming feed will appear here.<br/>Replace the placeholder with your embed code.</p>
-      </div>
+      <iframe
+        src="https://customer-er1i035n4bgch658.cloudflarestream.com/99926d2eb229af86e1a56cc0787fae76/iframe"
+        style="border:none;position:absolute;top:0;left:0;height:100%;width:100%;"
+        allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+        allowfullscreen="true">
+      </iframe>
     </div>
 
     <!-- Sidebar -->
@@ -329,7 +323,7 @@
         <p class="info-card-title">Stream Status</p>
         <div class="stat-row">
           <span class="stat-label">Connection</span>
-          <span class="stat-value yellow">Awaiting feed</span>
+          <span class="stat-value green">Cloudflare Stream</span>
         </div>
         <div class="stat-row">
           <span class="stat-label">Latency</span>
