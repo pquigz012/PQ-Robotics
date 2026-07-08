@@ -22,9 +22,15 @@ if [ -z "$COMMIT_MSG" ]; then
   exit 1
 fi
 
-# Push
 cd "$REPO"
-git pull --rebase
+
+# Stage and commit first
 git add index.html
 git commit -m "$COMMIT_MSG"
+
+# Stash any other unstaged changes, rebase, then pop
+git stash
+git pull --rebase
+git stash pop
+
 git push
