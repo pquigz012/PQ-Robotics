@@ -113,7 +113,7 @@
     main {
       flex: 1;
       padding: 2rem;
-      max-width: 1200px;
+      max-width: 1600px;
       margin: 0 auto;
       width: 100%;
     }
@@ -165,8 +165,8 @@
 
     /* ── Stream area ── */
     .stream-grid {
-      display: grid;
-      grid-template-columns: 1fr 280px;
+      display: flex;
+      flex-direction: column;
       gap: 1.5rem;
     }
 
@@ -222,55 +222,55 @@
       100% { top: 100%; }
     }
 
-    /* ── Sidebar ── */
-    .sidebar { display: flex; flex-direction: column; gap: 1rem; }
-
-    .info-card {
+    /* ── Details strip (below player) ── */
+    .details-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
       background: var(--bg-card);
       border: 1px solid var(--border-mid);
       border-radius: 12px;
-      padding: 1.25rem;
+      overflow: hidden;
     }
 
-    .info-card-title {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-      margin-bottom: 1rem;
-    }
-
-    .stat-row {
+    .detail-group {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 13px;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding: 0.9rem 1.25rem;
+      border-right: 1px solid var(--border);
     }
-    .stat-row:last-child { border-bottom: none; }
-    .stat-label { color: var(--text-secondary); }
-    .stat-value { font-weight: 500; font-family: var(--font-display); }
+    .detail-group:last-child { border-right: none; }
+    .detail-group.grow { flex: 1; }
+
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .detail-item .stat-label { color: var(--text-secondary); }
+    .detail-item .stat-value { font-weight: 500; font-family: var(--font-display); }
     .stat-value.green { color: #22c55e; }
     .stat-value.yellow { color: #facc15; }
 
-    .cosmo-badge {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--accent-dim);
-      border: 1px solid rgba(58,123,213,0.2);
-      border-radius: 8px;
-      padding: 10px 12px;
-      font-size: 12px;
+    .powered-by {
+      font-size: 11px;
       color: var(--text-secondary);
-      margin-top: 0.75rem;
+      opacity: 0.55;
+      text-align: right;
+      margin-top: -0.75rem;
     }
-    .cosmo-badge svg { color: var(--accent); flex-shrink: 0; }
+
+    @media (max-width: 900px) {
+      .details-strip { flex-direction: column; }
+      .detail-group { border-right: none; border-bottom: 1px solid var(--border); }
+      .detail-group:last-child { border-bottom: none; }
+    }
 
     @media (max-width: 768px) {
-      .stream-grid { grid-template-columns: 1fr; }
       main { padding: 1rem; }
     }
   </style>
@@ -282,7 +282,7 @@
   <div class="nav-right">
     <div class="latency-badge">
       <span class="latency-dot"></span>
-      ~200–600ms latency
+      Low-latency HLS
     </div>
     <a href="login.html" class="sign-out">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -316,66 +316,46 @@
       </iframe>
     </div>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
+    <!-- Details -->
+    <p class="powered-by">Powered by CosmoStreaming</p>
 
-      <div class="info-card">
-        <p class="info-card-title">Stream Status</p>
-        <div class="stat-row">
+    <div class="details-strip">
+
+      <div class="detail-group grow">
+        <div class="detail-item">
           <span class="stat-label">Connection</span>
           <span class="stat-value green">Cloudflare Stream</span>
         </div>
-        <div class="stat-row">
-          <span class="stat-label">Latency</span>
-          <span class="stat-value" id="stat-latency">—</span>
+        <div class="detail-item">
+          <span class="stat-label">Playback</span>
+          <span class="stat-value" id="stat-live">Connecting…</span>
         </div>
-        <div class="stat-row">
+        <div class="detail-item">
           <span class="stat-label">Protocol</span>
-          <span class="stat-value">WebRTC (WHEP)</span>
+          <span class="stat-value">HLS (Low-Latency)</span>
         </div>
-        <div class="stat-row">
+        <div class="detail-item">
           <span class="stat-label">Resolution</span>
           <span class="stat-value" id="stat-resolution">—</span>
         </div>
-        <div class="stat-row">
-          <span class="stat-label">Bitrate</span>
-          <span class="stat-value" id="stat-bitrate">—</span>
-        </div>
-        <div class="stat-row">
-          <span class="stat-label">Frame rate</span>
-          <span class="stat-value" id="stat-fps">—</span>
-        </div>
-        <div class="stat-row">
+        <div class="detail-item">
           <span class="stat-label">Viewer</span>
           <span class="stat-value green">Authenticated</span>
         </div>
       </div>
 
-      <div class="info-card">
-        <p class="info-card-title">Drone Info</p>
-        <div class="stat-row">
+      <div class="detail-group">
+        <div class="detail-item">
           <span class="stat-label">Unit</span>
           <span class="stat-value">PQ-01</span>
         </div>
-        <div class="stat-row">
+        <div class="detail-item">
           <span class="stat-label">Location</span>
           <span class="stat-value">Atlanta, GA</span>
         </div>
-        <div class="stat-row">
+        <div class="detail-item">
           <span class="stat-label">Status</span>
           <span class="stat-value yellow">Standby</span>
-        </div>
-      </div>
-
-      <div class="info-card">
-        <p class="info-card-title">Provider</p>
-        <div class="cosmo-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="2" y1="12" x2="22" y2="12"/>
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-          </svg>
-          Powered by CosmoStreaming
         </div>
       </div>
 
@@ -384,99 +364,47 @@
 </main>
 
 
+<script src="https://embed.cloudflarestream.com/embed/sdk.latest.js"></script>
 <script>
-  // Cloudflare Stream WebRTC (WHEP) playback
-  const WHEP_URL = "https://customer-er1i035n4bgch658.cloudflarestream.com/99926d2eb229af86e1a56cc0787fae76/webRTC/play";
+  // Wire the sidebar stats to the REAL player — the iframe that's already
+  // rendering your video via Cloudflare's Stream Player (LL-HLS under the hood).
+  // No separate WebRTC/WHEP connection is opened here, because Cosmostreamer
+  // publishes via RTMPS, not WHIP — this just reads the state of the player
+  // that's actually delivering your video.
 
-  // Live stats polling
-  let pc_ref = null;
-  let lastBytes = 0;
-  let lastStatsTime = 0;
+  const iframe = document.querySelector('.stream-player iframe');
+  const player = Stream(iframe);
 
-  async function pollStats() {
-    if (!pc_ref) return;
-    const stats = await pc_ref.getStats();
-    stats.forEach(report => {
-      if (report.type === 'inbound-rtp' && report.kind === 'video') {
-        // Resolution
-        if (report.frameWidth && report.frameHeight) {
-          document.getElementById('stat-resolution').textContent =
-            `${report.frameWidth}×${report.frameHeight}`;
-        }
-        // FPS
-        if (report.framesPerSecond) {
-          document.getElementById('stat-fps').textContent =
-            `${Math.round(report.framesPerSecond)} fps`;
-        }
-        // Bitrate
-        const now = Date.now();
-        if (lastStatsTime && report.bytesReceived) {
-          const elapsed = (now - lastStatsTime) / 1000;
-          const bitsPerSec = ((report.bytesReceived - lastBytes) * 8) / elapsed;
-          const mbps = (bitsPerSec / 1_000_000).toFixed(2);
-          document.getElementById('stat-bitrate').textContent = `${mbps} Mbps`;
-        }
-        lastBytes = report.bytesReceived || lastBytes;
-        lastStatsTime = now;
-      }
-      // Latency via round-trip time
-      if (report.type === 'candidate-pair' && report.state === 'succeeded' && report.currentRoundTripTime !== undefined) {
-        const ms = Math.round(report.currentRoundTripTime * 1000);
-        document.getElementById('stat-latency').textContent = `${ms} ms`;
-      }
-    });
+  const liveEl = document.getElementById('stat-live');
+  const resEl  = document.getElementById('stat-resolution');
+
+  function setLive(isLive) {
+    liveEl.textContent = isLive ? 'Live' : 'Offline';
+    liveEl.className = 'stat-value ' + (isLive ? 'green' : 'yellow');
   }
 
-  async function startWebRTC() {
-    const video = document.getElementById('stream-video');
-    const offline = document.getElementById('stream-offline');
-
-    const pc = new RTCPeerConnection();
-    pc_ref = pc;
-    pc.addTransceiver('video', { direction: 'recvonly' });
-    pc.addTransceiver('audio', { direction: 'recvonly' });
-
-    pc.ontrack = e => {
-      if (e.track.kind === 'video') {
-        video.srcObject = e.streams[0];
-        offline.style.display = 'none';
-        video.style.display = 'block';
-        document.getElementById('stream-status').textContent = 'Live';
-        document.getElementById('stream-status').className = 'stat-value green';
-        setInterval(pollStats, 1000);
-      }
-    };
-
-    pc.oniceconnectionstatechange = () => {
-      if (['disconnected','failed','closed'].includes(pc.iceConnectionState)) {
-        video.style.display = 'none';
-        offline.style.display = 'flex';
-        document.getElementById('stream-status').textContent = 'Offline';
-        document.getElementById('stream-status').className = 'stat-value yellow';
-        ['stat-latency','stat-resolution','stat-bitrate','stat-fps'].forEach(id => {
-          document.getElementById(id).textContent = '—';
-        });
-      }
-    };
-
-    const offer = await pc.createOffer();
-    await pc.setLocalDescription(offer);
-
-    const res = await fetch(WHEP_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/sdp' },
-      body: offer.sdp
-    });
-
-    if (res.ok) {
-      const answer = await res.text();
-      await pc.setRemoteDescription({ type: 'answer', sdp: answer });
-    } else {
-      offline.style.display = 'flex';
+  player.addEventListener('playing', () => {
+    setLive(true);
+    if (player.videoWidth && player.videoHeight) {
+      resEl.textContent = `${player.videoWidth}×${player.videoHeight}`;
     }
-  }
+  });
 
-  startWebRTC();
+  player.addEventListener('resize', () => {
+    if (player.videoWidth && player.videoHeight) {
+      resEl.textContent = `${player.videoWidth}×${player.videoHeight}`;
+    }
+  });
+
+  // These are Cloudflare Stream Player-specific events that fire when the
+  // underlying live input actually starts/stops broadcasting.
+  player.addEventListener('stream-live', () => setLive(true));
+  player.addEventListener('stream-offline', () => {
+    setLive(false);
+    resEl.textContent = '—';
+  });
+
+  player.addEventListener('error', () => setLive(false));
 </script>
 </body>
 </html>
