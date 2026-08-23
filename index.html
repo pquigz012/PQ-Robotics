@@ -420,6 +420,33 @@
       line-height: 1.65;
     }
 
+    /* ── DRONE HOSPITAL WORDMARK LINK ── */
+    .dh-wordmark-link { display:inline-block; text-decoration:none; color:inherit; cursor:pointer; }
+    .dh-wordmark-link .section-eyebrow-lg {
+      border-bottom: 2px solid rgba(229,62,62,0.55);
+      padding-bottom: 10px;
+      transition: border-color .18s, color .18s;
+    }
+    .dh-wordmark-link:hover .section-eyebrow-lg,
+    .dh-wordmark-link:focus-visible .section-eyebrow-lg {
+      border-bottom-color: #e53e3e;
+      color: #e53e3e;
+    }
+    .dh-cue {
+      display: block;
+      margin-top: 12px;
+      font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      transition: color .18s;
+    }
+    .dh-wordmark-link:hover .dh-cue { color: var(--text-primary); }
+    .dh-arrow { display:inline-block; color:#e53e3e; transition: transform .18s; }
+    .dh-wordmark-link:hover .dh-arrow { transform: translateX(5px); }
+    .dh-wordmark-link:focus-visible { outline: 2.5px solid #e53e3e; outline-offset: 6px; }
+
     /* ── FOOTAGE ── */
     .footage-intro {
       display: flex;
@@ -820,7 +847,10 @@
           <text x="340" y="425" text-anchor="middle" font-family="Arial" font-size="14" font-weight="500" fill="#e53935" letter-spacing="8">ROBOTICS</text>
         </svg>
         <div style="width:1px;height:100px;background:rgba(255,255,255,0.15);flex-shrink:0"></div>
-        <div class="section-eyebrow-lg no-cross" style="font-size:28px;letter-spacing:0.22em">Drone Hospital</div>
+        <a class="dh-wordmark-link" href="/drone-repair-atlanta.html">
+          <div class="section-eyebrow-lg no-cross" style="font-size:28px;letter-spacing:0.22em">Drone Hospital</div>
+          <span class="dh-cue">Repairs, diagnostics &amp; drop-off <span class="dh-arrow">&rarr;</span></span>
+        </a>
       </div>
     </div>
     <h2>Technical Repair & Development</h2>
