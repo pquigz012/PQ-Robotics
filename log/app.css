@@ -41,7 +41,6 @@ button:focus-visible,a:focus-visible,select:focus-visible{outline:2px solid #5A8
 .gap-3{gap:0.75rem}
 .grid{display:grid}
 .grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-.grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
 .h-1{height:.25rem}
 .h-full{height:100%}
 .hidden{display:none}
