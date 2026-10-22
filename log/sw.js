@@ -1,7 +1,7 @@
 // Keeps the app working offline. Tries the network first so updates show up,
 // and falls back to the saved copy with no signal. GitHub backup calls are never cached.
-const CACHE = "pq-log-v13";
-const SHELL = ["./", "index.html", "app.js?v=13", "app.css?v=13", "manifest.webmanifest", "icon-180.png", "icon-192.png"];
+const CACHE = "pq-log-v14";
+const SHELL = ["./", "index.html", "app.js?v=14", "app.css?v=14", "manifest.webmanifest", "icon-180.png", "icon-192.png"];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));
