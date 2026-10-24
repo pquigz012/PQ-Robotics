@@ -8,16 +8,16 @@
   var STATUS_URL = "/log/status.json";
   var TEXT_BODY = "Hi PQ Robotics — I've got a drone that needs a look. ";
 
-  // Must match the app's schedule. staff = front desk in Suite 200 (takes drop-offs
-  // and writes up the job). tech = Paul on site, so diagnosis happens.
+  // Must match the app's schedule (2026-10-24): Paul on site Mon–Fri 9 AM–6 PM,
+  // weekends closed. staff = the old front-desk hours, no longer on the schedule.
   var SCHEDULE = [
-    { staff: null,        tech: [780, 900] },   // Sun 1–3
-    { staff: [540, 840],  tech: [900, 1110] },  // Mon 9–2, 3–6:30
-    { staff: [540, 840],  tech: [900, 1110] },
-    { staff: [540, 840],  tech: [900, 1110] },
-    { staff: [540, 840],  tech: [900, 1110] },
-    { staff: [540, 840],  tech: [900, 1050] },  // Fri closes 5:30
-    { staff: null,        tech: [720, 960] },   // Sat 12–4
+    { staff: null, tech: null },        // Sun closed
+    { staff: null, tech: [540, 1080] }, // Mon 9–6
+    { staff: null, tech: [540, 1080] },
+    { staff: null, tech: [540, 1080] },
+    { staff: null, tech: [540, 1080] },
+    { staff: null, tech: [540, 1080] }, // Fri 9–6
+    { staff: null, tech: null },        // Sat closed
   ];
   var DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   var COLORS = { open: "#6FAE86", staff: "#5A86D5", lunch: "#C9A45C", closed: "#B5503F" };
@@ -49,7 +49,7 @@
       return { c: COLORS.closed, status: "Closed", body: "Nobody's in the shop right now. Send a text with your name and what's wrong and we'll get back to you. " + nextLine };
     if (mode === "client")
       return staffNow || techNow
-        ? { c: COLORS.staff, status: "Out with a client", body: "The tech is out, but the front desk in Suite 200 is open and can take your drone in and write up the job. Text and we'll call you back about the repair." }
+        ? { c: COLORS.staff, status: "Out with a client", body: "The tech is out with a client right now. You can drop your drone off at the inbox upstairs in Suite 200 \u2014 add your name, number and what's wrong \u2014 and we'll call you about the repair. Or send a text and we'll ring you back." }
         : { c: COLORS.lunch, status: "Out with a client", body: "We'll miss the call right now. Send a text with your name and what's wrong and we'll ring you straight back." };
     if (mode === "open")
       return { c: COLORS.open, status: "Open", body: "Someone's here now. Walk in, no appointment needed." };
