@@ -9,7 +9,7 @@ jobs:
   fetch:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Fetch and merge RSS feeds
         run: python3 fetch_feeds.py
