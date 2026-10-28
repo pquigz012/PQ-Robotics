@@ -30,9 +30,9 @@ GOOGLE_ALERTS = "https://www.google.com/alerts/feeds/14071526862971928921/"
 # max: most stories taken from this source per run, so no single feed crowds out the rest
 FEEDS = [
     # ---- General drone news: local first, then the day's drone headlines
-    {"label": "Atlanta drone (Google News)", "topic": None, "max": 30,
+    {"label": "Atlanta drone (Google News)", "topic": None, "max": 30, "local": True,
      "url": google_news("Atlanta drone when:30d")},
-    {"label": "Georgia drone (Google News)", "topic": None, "max": 30,
+    {"label": "Georgia drone (Google News)", "topic": None, "max": 30, "local": True,
      "url": google_news("Georgia drone when:30d")},
     {"label": "Drone headlines today (Google News)", "topic": None, "max": 40,
      "url": google_news("drones when:1d")},
@@ -64,23 +64,27 @@ FEEDS = [
      "url": google_news('(drone OR drones) (FAA OR law OR lawmakers OR bill OR legislation OR Congress OR senator '
                         'OR ban OR ordinance OR regulation OR "Remote ID" OR "Part 107" OR tariff '
                         'OR "Commerce Department") when:7d')},
-    {"label": "Georgia drone laws (Google News)", "topic": "laws", "max": 15,
+    {"label": "Georgia drone laws (Google News)", "topic": "laws", "max": 15, "local": True,
      "url": google_news("(drone OR drones) Georgia (law OR bill OR lawmakers OR ordinance OR council OR FAA) when:30d")},
 
     # ---- Original Google Alerts (light volume, kept as extra local coverage)
-    {"label": "Alert: Atlanta Drone", "topic": None, "max": 10, "url": GOOGLE_ALERTS + "11257640413982761547"},
-    {"label": "Alert: Drone competition Atlanta", "topic": None, "max": 10, "url": GOOGLE_ALERTS + "17148330842456058979"},
-    {"label": "Alert: Drone contracts Atlanta/Georgia", "topic": None, "max": 10, "url": GOOGLE_ALERTS + "1264784910286108843"},
-    {"label": "Alert: Drone regulation Georgia", "topic": "laws", "max": 10, "url": GOOGLE_ALERTS + "7079306208049522120"},
+    {"label": "Alert: Atlanta Drone", "local": True, "topic": None, "max": 10, "url": GOOGLE_ALERTS + "11257640413982761547"},
+    {"label": "Alert: Drone competition Atlanta", "local": True, "topic": None, "max": 10, "url": GOOGLE_ALERTS + "17148330842456058979"},
+    {"label": "Alert: Drone contracts Atlanta/Georgia", "local": True, "topic": None, "max": 10, "url": GOOGLE_ALERTS + "1264784910286108843"},
+    {"label": "Alert: Drone regulation Georgia", "local": True, "topic": "laws", "max": 10, "url": GOOGLE_ALERTS + "7079306208049522120"},
 ]
 
 MAX_AGE_DAYS = 30
-MAX_ITEMS = 160          # whole paper, newest first
+MAX_ITEMS = 200          # whole paper; local Atlanta/Georgia stories are always kept on top of the newest national ones
 SNIPPET_CHARS = 420
 
 # Every story has to be drone news
 DRONE = re.compile(r"drone|beyond-visual-line|\bbvlos\b|\buav|\buas\b|unmanned aircraft|unmanned aerial|quadcopter|"
                    r"multirotor|\bfpv\b|counter-drone|remote id|part 10[78]\b|\bdji\b|mavic", re.I)
+
+# Press-release mills that post "drone market will reach $X" reports
+BLOCKED_SOURCES = re.compile(r"openpr|ein presswire|einpresswire", re.I)
+MARKET_REPORT = re.compile(r"\bmarket (size|share|report|to reach|will reach|forecast|growth|analysis|outlook|research)\b|\bCAGR\b", re.I)
 
 ATOM = "{http://www.w3.org/2005/Atom}"
 NOW = datetime.datetime.now(datetime.timezone.utc)
@@ -126,6 +130,16 @@ def snippet(desc, title):
     return text
 
 
+def headline_only(title):
+    return re.sub(r"\s+[-|]\s+[^-|]{2,60}$", "", title)
+
+
+def is_english(title):
+    """Keep English headlines. Publisher names in other scripts are fine; the headline itself must be Latin script."""
+    letters = re.findall(r"[^\W\d_]", headline_only(title))
+    return not letters or sum(c.isascii() for c in letters) / len(letters) >= 0.8
+
+
 def text_of(el):
     return (el.text or "").strip() if el is not None else ""
 
@@ -159,7 +173,12 @@ def parse_feed(xml_bytes, feed):
         dt = parse_date(it["pubDate"])
         if dt is not None and dt < CUTOFF:
             continue
-        if not DRONE.search(plain(it["title"]) + " " + plain(it["description"])):
+        title = plain(it["title"])
+        if not DRONE.search(title + " " + plain(it["description"])):
+            continue
+        if not is_english(title) or MARKET_REPORT.search(title):
+            continue
+        if BLOCKED_SOURCES.search(it["source"] or "") or BLOCKED_SOURCES.search(it["link"] or "") or BLOCKED_SOURCES.search(title):
             continue
         kept.append({
             "title": plain(it["title"]),
@@ -169,6 +188,7 @@ def parse_feed(xml_bytes, feed):
             "source": it["source"],
             "feedLabel": feed["label"],
             "topics": [feed["topic"]] if feed["topic"] else [],
+            "local": bool(feed.get("local")),
         })
     kept.sort(key=lambda x: parse_date(x["pubDate"]) or EPOCH, reverse=True)
     return kept[: feed["max"]]
@@ -215,6 +235,7 @@ def main():
                 first["source"] = item["source"]
             if item["description"] and not first["description"]:
                 first["description"] = item["description"]
+            first["local"] = first["local"] or item["local"]
             continue
         if u:
             by_url[u] = item
@@ -222,10 +243,13 @@ def main():
             by_title[k] = item
         unique.append(item)
 
-    unique.sort(key=lambda x: parse_date(x["pubDate"]) or EPOCH, reverse=True)
-    unique = unique[:MAX_ITEMS]
+    # Fill the paper: every local story, then the newest of everything else, then newest first overall
+    by_date = lambda x: parse_date(x["pubDate"]) or EPOCH
+    local = sorted((i for i in unique if i["local"]), key=by_date, reverse=True)
+    rest = sorted((i for i in unique if not i["local"]), key=by_date, reverse=True)
+    unique = sorted(local + rest[: max(0, MAX_ITEMS - len(local))], key=by_date, reverse=True)
 
-    counts = {"general": len(unique)}
+    counts = {"general": len(unique), "local": sum(1 for i in unique if i["local"])}
     for t in ("robotics", "military", "consumer", "laws"):
         counts[t] = sum(1 for i in unique if t in i["topics"])
 
