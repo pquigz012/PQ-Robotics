@@ -2,8 +2,14 @@ name: Fetch Drone News Feeds
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    # every 10 minutes, offset from the top of the hour when GitHub's schedulers are busiest
+    - cron: '4-59/10 * * * *'
   workflow_dispatch:
+
+# never run two fetches at once; a late run simply waits for the one before it
+concurrency:
+  group: fetch-feeds
+  cancel-in-progress: false
 
 jobs:
   fetch:
