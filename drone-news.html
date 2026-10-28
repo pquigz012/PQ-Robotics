@@ -1,545 +1,944 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Atlanta Drone News</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📰</text></svg>">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drone Hospital Daily | Drone News: Robotics, Military, DJI &amp; Laws | PQ Robotics</title>
+<meta name="description" content="Drone Hospital Daily from PQ Robotics: drone news refreshed every hour, with topics for robotics, military, DJI and consumer drones, and drone laws and politics, plus live flight conditions for Atlanta pilots.">
+<link rel="canonical" href="https://pq-robotics.com/drone-news.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Drone Hospital Daily">
+<meta property="og:description" content="Atlanta's daily checkup on the drone world, from PQ Robotics.">
+<meta property="og:url" content="https://pq-robotics.com/drone-news.html">
+<meta property="og:image" content="https://pq-robotics.com/assets/images/og-image.png">
+<meta name="theme-color" content="#0A1628">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230A1628'/%3E%3Crect x='38' y='14' width='24' height='72' rx='4' fill='%23C62828'/%3E%3Crect x='14' y='38' width='72' height='24' rx='4' fill='%23C62828'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400..800&family=Newsreader:ital,opsz,wght@0,6..72,400..800;1,6..72,400..600&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none !important}
+:root{
+  --paper:#EEF1F4;
+  --paper-2:#E3E8EE;
+  --ink:#0A1628;
+  --ink-2:#34425A;
+  --ink-3:#56637A;
+  --rule:#B3BCC8;
+  --red:#C62828;
+  --red-hi:#E53935;
+  --link:#24589F;
+  --amber:#9A5B00;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Libre Franklin","Franklin Gothic Medium","Helvetica Neue",Arial,sans-serif;
+  --blackletter:"UnifrakturMaguntia","Old English Text MT",serif;
+  --pad:clamp(16px,3vw,40px);
+}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#0A1628;color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:var(--link)}
+:focus-visible{outline:2px solid var(--link);outline-offset:3px}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
 
-    :root {
-      --bg: #f5f4f0;
-      --surface: #ffffff;
-      --border: rgba(0,0,0,0.10);
-      --border-strong: rgba(0,0,0,0.18);
-      --text-primary: #1a1a18;
-      --text-secondary: #5f5e5a;
-      --text-muted: #888780;
-      --accent: #185FA5;
-      --accent-bg: #e6f1fb;
-      --accent-text: #0c447c;
-      --tag-drone-bg: #e1f5ee;
-      --tag-drone-text: #0f6e56;
-      --tag-show-bg: #eeedfe;
-      --tag-show-text: #3c3489;
-      --tag-reg-bg: #faeeda;
-      --tag-reg-text: #633806;
-      --radius: 10px;
-      --radius-sm: 6px;
-    }
+/* Atlanta behind the paper, on every screen size */
+.city{position:fixed;inset:0;z-index:-1;background:url('assets/images/atlanta-bg.jpg') center/cover no-repeat}
+.city::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,22,40,.55),rgba(10,22,40,.25) 40%,rgba(10,22,40,.6))}
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #1c1c1a;
-        --surface: #252523;
-        --border: rgba(255,255,255,0.08);
-        --border-strong: rgba(255,255,255,0.15);
-        --text-primary: #f0ede6;
-        --text-secondary: #b4b2a9;
-        --text-muted: #888780;
-        --accent: #378add;
-        --accent-bg: #042c53;
-        --accent-text: #85b7eb;
-        --tag-drone-bg: #04342c;
-        --tag-drone-text: #9fe1cb;
-        --tag-show-bg: #26215c;
-        --tag-show-text: #cecbf6;
-        --tag-reg-bg: #412402;
-        --tag-reg-text: #fac775;
-      }
-    }
+/* Top bar over the skyline */
+.topbar{max-width:1240px;margin:0 auto;padding:14px var(--pad) 12px;display:flex;align-items:center;justify-content:space-between;gap:16px;color:#E8ECF2;font:500 .82rem/1.2 var(--sans)}
+.topbar a{color:inherit;text-decoration:none}
+.topbar a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.tb-brand{font-weight:700;letter-spacing:.2em;font-size:.84rem}
+.tb-brand em{font-style:normal;color:var(--red-hi)}
+.tb-dh .x{color:var(--red-hi);font-weight:800;margin-right:5px}
+.tb-date{opacity:.85}
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: url('assets/images/atlanta-bg.jpg') center center / cover no-repeat fixed;
-      color: #fff;
-      min-height: 100vh;
-      line-height: 1.6;
-    }
+/* The sheet */
+.sheet{max-width:1240px;margin:0 auto 56px;padding:0 var(--pad) 8px;background-color:var(--paper);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .04 0 0 0 0 .09 0 0 0 0 .16 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  box-shadow:0 2px 0 rgba(255,255,255,.4) inset,0 30px 80px rgba(0,0,0,.55)}
 
-    header, .controls, main {
-      position: relative;
-      z-index: 1;
-    }
+/* Masthead */
+.masthead{display:grid;grid-template-columns:184px minmax(0,1fr) 184px;align-items:center;gap:24px;padding:26px 0 12px}
+.ear{border:1px solid var(--rule);padding:10px 12px;width:184px;font:500 .74rem/1.42 var(--sans);color:var(--ink-2)}
+.ear-l{justify-self:start}
+.ear-r{justify-self:end;text-align:right}
+.ear-h{font-weight:800;color:var(--ink);font-size:.78rem;margin:0 0 4px}
+.ear p{margin:0}
+.ear a{color:var(--ink);font-weight:700;text-decoration:none}
+.ear a:hover{text-decoration:underline}
+.ear .x{color:var(--red);font-weight:800}
+.ear-verdict{font-weight:800}
+.ear-verdict.good{color:var(--link)}
+.ear-verdict.caution{color:var(--amber)}
+.ear-verdict.nofly{color:var(--red)}
 
-    .feed-panel {
-      max-width: 820px;
-      margin: 0 auto;
-      background: rgba(255,255,255,0.55);
-      backdrop-filter: blur(10px);
-      border-radius: 14px;
-      padding: 0.75rem;
-      position: relative;
-      z-index: 1;
-    }
+.plate{text-align:center}
+.nameplate{margin:0;font-family:var(--blackletter);font-weight:400;font-size:clamp(2.4rem,5.3vw,4.9rem);line-height:.95;letter-spacing:.005em;color:var(--ink)}
+.nameplate a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:.16em;flex-wrap:wrap;justify-content:center}
+.seal{width:.66em;height:.66em;flex:none;transform:translateY(.04em)}
+.np-2{display:inline-flex;align-items:center;gap:.16em}
+.motto{margin:8px 0 0;font-style:italic;font-size:clamp(.92rem,1.6vw,1.06rem);color:var(--ink-2)}
 
-    header {
-      background: transparent;
-      border-bottom: none;
-      padding: 2rem 1.5rem 1.5rem;
-      max-width: 780px;
-      margin: 0 auto;
-    }
+/* Dateline: thin rule over thick rule */
+.dateline{position:relative;margin-top:12px;border-top:3px solid var(--ink);border-bottom:1px solid var(--ink);display:flex;justify-content:space-between;flex-wrap:wrap;font:600 .82rem/1.3 var(--sans);font-variant:small-caps;letter-spacing:.03em;color:var(--ink)}
+.dateline::before{content:"";position:absolute;left:0;right:0;top:-7px;border-top:1px solid var(--ink)}
+.dateline > span{padding:7px 14px;border-left:1px solid var(--rule);flex:1 1 auto;text-align:center}
+.dateline > span:first-child{border-left:0;text-align:left;padding-left:0}
+.dateline > span:last-child{text-align:right;padding-right:0}
 
-    .header-eyebrow {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.4rem;
-    }
+/* Section bar */
+.desks{display:flex;overflow-x:auto;scrollbar-width:none;background:var(--ink);margin:0 calc(-1 * var(--pad));padding:0 calc(var(--pad) - 10px)}
+.desks::-webkit-scrollbar{display:none}
+.desk{flex:none;color:#C9D2DF;font:600 .88rem/1 var(--sans);padding:14px 10px 11px;border-bottom:3px solid transparent;white-space:nowrap}
+.desk:hover{color:#fff}
+.desk[aria-pressed="true"]{color:#fff;border-bottom-color:var(--red-hi)}
+.desk .n{font-weight:500;font-size:.74rem;opacity:.65;margin-left:5px}
+.desk:focus-visible{outline-color:#fff;outline-offset:-4px}
 
-    h1 {
-      font-size: 28px;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 0.3rem;
-      text-shadow: 0 1px 6px rgba(0,0,0,0.8);
-    }
+.desk.is-empty{color:#73839B}
+.desk .star{color:var(--red-hi);margin-right:5px}
+.desk-gap{flex:1 0 8px}
+.desk-mine{border-left:1px solid #2A3A55;padding-left:14px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.finder{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--rule)}
+.search{flex:1 1 260px;max-width:440px;position:relative;display:block}
+.search::before{content:"";position:absolute;left:11px;top:50%;width:15px;height:15px;transform:translateY(-50%);pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2356637A' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cpath d='M15.5 15.5 21 21'/%3E%3C/svg%3E") center/contain no-repeat}
+.search input{width:100%;font:500 .92rem/1.2 var(--sans);color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-bottom:2px solid var(--ink);border-radius:0;padding:10px 12px 9px 34px;-webkit-appearance:none;appearance:none}
+.search input::placeholder{color:var(--ink-3)}
+.search input:focus{outline:2px solid var(--link);outline-offset:1px}
+.range{display:flex;border:1px solid var(--ink)}
+.range button{font:600 .82rem/1 var(--sans);padding:10px 13px;color:var(--ink)}
+.range button + button{border-left:1px solid var(--ink)}
+.range button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.range button:focus-visible{outline-offset:-4px}
+.topic-head{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:30px;padding:22px 0;border-bottom:1px solid var(--ink)}
+.th-main{min-width:0}
+.th-h{font-weight:800;font-size:clamp(1.9rem,3.6vw,2.7rem);line-height:1.04;letter-spacing:-.012em;margin:0 0 10px;text-wrap:balance}
+.th-b{font-size:1.06rem;line-height:1.5;color:var(--ink-2);margin:0 0 10px;max-width:62ch}
+.follow,.chip{font:700 .84rem/1 var(--sans);color:var(--ink);border:1.5px solid var(--ink);padding:9px 14px;margin-top:8px}
+.follow[aria-pressed="true"],.chip[aria-pressed="true"]{background:var(--ink);color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.chip{margin-top:0}
+.th-cta{border:1px solid var(--ink);padding:14px 16px 16px;align-self:start;background:var(--paper)}
+.th-cta .house-tag{text-align:left}
+.th-cta-h{font-weight:800;font-size:1.25rem;line-height:1.15;margin:0 0 6px;text-wrap:balance}
+.th-cta-b{font-size:.95rem;line-height:1.45;color:var(--ink-2);margin:0 0 14px}
+.more-row{text-align:center;margin:6px 0 4px}
+.more{font:700 .88rem/1 var(--sans);color:var(--ink);border:1.5px solid var(--ink);padding:12px 22px}
+.more:hover{background:var(--ink);color:#fff}
+.actions{display:flex;flex-wrap:wrap;gap:8px 20px;margin:4px 0 0}
 
-    .header-meta {
-      font-size: 13px;
-      color: rgba(255,255,255,0.85);
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 0.75rem;
-    }
+@media (max-width:820px){
+  .topic-head{grid-template-columns:1fr;gap:18px}
+  .range{flex:1 1 100%}
+  .range button{flex:1}
+  .search{max-width:none}
+}
 
-    .dot { opacity: 0.4; }
+/* Ticker: the page's one moving element */
+.ticker{display:flex;align-items:stretch;height:42px;border-bottom:1px solid var(--ink);margin:10px calc(-1 * var(--pad)) 0;background:var(--paper-2)}
+.tk-label{flex:none;display:flex;align-items:center;background:var(--red);color:#fff;font:700 .82rem/1 var(--sans);padding:0 16px 0 var(--pad)}
+.tk-view{flex:1;overflow:hidden;display:flex;align-items:center;mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent)}
+.tk-track{display:inline-flex;white-space:nowrap;animation:tick var(--tk-dur,60s) linear infinite}
+.ticker:hover .tk-track,.ticker:focus-within .tk-track{animation-play-state:paused}
+.tk-track a{color:var(--ink);text-decoration:none;font-weight:600;font-size:.97rem;padding:0 4px}
+.tk-track a:hover{text-decoration:underline}
+.tk-track .src{font:500 .76rem var(--sans);color:var(--ink-3);margin-left:6px}
+.tk-track .sep{color:var(--red);font-weight:800;margin:0 18px;font-family:var(--sans)}
+@keyframes tick{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){
+  .tk-track{animation:none}
+  .tk-view{overflow-x:auto;mask-image:none}
+}
 
-    .refresh-btn {
-      background: var(--accent-bg);
-      border: 0.5px solid var(--accent);
-      border-radius: var(--radius-sm);
-      color: var(--accent-text);
-      font-size: 12px;
-      font-weight: 500;
-      padding: 4px 12px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      transition: background 0.15s;
-    }
+/* Front page grid */
+.fold{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.15fr) minmax(0,1fr);grid-template-areas:"left lead rail";padding:24px 0 10px}
+.col-left{grid-area:left;padding-right:22px}
+.lead{grid-area:lead;padding:0 26px;border-left:1px solid var(--rule);border-right:1px solid var(--rule);min-width:0}
+.rail{grid-area:rail;padding-left:22px}
 
-    .refresh-btn:hover { background: var(--accent-bg); color: var(--accent-text); }
+.col-h{font:800 .92rem/1.2 var(--sans);color:var(--ink);border-top:3px solid var(--ink);padding-top:7px;margin:0 0 14px}
+.col-h + .fine{margin-top:-8px}
+.block + .block{margin-top:30px}
 
-    .controls {
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
+.kicker{font:700 .82rem/1.2 var(--sans);color:var(--red);margin:0 0 8px}
+.lead-h{font-family:var(--serif);font-optical-sizing:auto;font-weight:800;font-size:clamp(2rem,3.9vw,3.3rem);line-height:1.04;letter-spacing:-.014em;margin:0 0 16px;text-wrap:balance}
+.lead-h a,.story-h a,.brief-h a{color:inherit;text-decoration:none}
+.lead-h a:hover,.story-h a:hover,.brief-h a:hover{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:.12em}
+.byline{font:500 .8rem/1.4 var(--sans);color:var(--ink-3);margin:0 0 16px;padding:8px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.byline b,.meta b{color:var(--ink);font-weight:700}
+.lead-body{font-size:1.16rem;line-height:1.62;color:var(--ink-2);margin:0 0 14px;hyphens:auto}
+.dropcap::first-letter{float:left;font-weight:800;font-size:3.7em;line-height:.8;padding:7px 9px 0 0;color:var(--ink)}
+.read{font:700 .86rem/1.3 var(--sans);color:var(--link);text-decoration:none}
+.read:hover{text-decoration:underline;text-underline-offset:3px}
 
-    .filter-btn {
-      background: #fff;
-      border: 0.5px solid var(--border-strong);
-      border-radius: 20px;
-      padding: 4px 14px;
-      font-size: 13px;
-      cursor: pointer;
-      color: var(--text-secondary);
-      transition: all 0.15s;
-    }
+.seconds{display:grid;grid-template-columns:1fr 1fr;margin-top:26px;border-top:1px solid var(--ink);padding-top:18px}
+.seconds .story:first-child{padding-right:20px}
+.seconds .story + .story{padding-left:20px;border-left:1px solid var(--rule)}
+.seconds:has(.story:only-child){grid-template-columns:1fr}
+.story-h{font-weight:700;font-size:1.34rem;line-height:1.16;letter-spacing:-.005em;margin:0 0 8px;text-wrap:balance}
+.snip{font-size:.99rem;line-height:1.55;color:var(--ink-2);margin:0 0 8px}
+.meta{font:500 .76rem/1.4 var(--sans);color:var(--ink-3);margin:0}
 
-    .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
-    .filter-btn.active { font-weight: 500; }
+.brief{padding:12px 0;border-bottom:1px solid var(--rule)}
+.brief:first-child{padding-top:0}
+.brief .kicker{font-size:.74rem;margin-bottom:4px}
+.brief-h{font-weight:650;font-size:1.06rem;line-height:1.24;margin:0 0 5px}
 
-    .filter-drone.active, .filter-drone:hover { background: var(--tag-drone-bg); color: var(--tag-drone-text); border-color: var(--tag-drone-text); }
-    .filter-show.active, .filter-show:hover   { background: var(--tag-show-bg);  color: var(--tag-show-text);  border-color: var(--tag-show-text); }
-    .filter-reg.active, .filter-reg:hover     { background: var(--tag-reg-bg);   color: var(--tag-reg-text);   border-color: var(--tag-reg-text); }
-    .filter-btn:not(.filter-drone):not(.filter-show):not(.filter-reg).active { background: var(--accent-bg); color: var(--accent-text); border-color: var(--accent); }
+/* Rail boxes */
+.verdict{display:inline-block;border:2px solid currentColor;padding:6px 10px 5px;font:800 .92rem/1.2 var(--sans);margin:0 0 12px}
+.verdict.good{color:var(--link)}
+.verdict.caution{color:var(--amber)}
+.verdict.nofly{color:var(--red)}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;margin:0 0 12px;font:500 .86rem/1.35 var(--sans)}
+.facts dt{color:var(--ink-3)}
+.facts dd{margin:0;color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums}
+.fine{font:400 .74rem/1.45 var(--sans);color:var(--ink-3);margin:0}
+.fine a{color:var(--link)}
 
-    main {
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem 3rem;
-    }
+.house{margin-top:30px;border:1px solid var(--ink);padding:16px 16px 18px;text-align:center;background:var(--paper)}
+.house-tag{font:600 .68rem/1 var(--sans);color:var(--ink-3);margin:0 0 12px;font-variant:small-caps;letter-spacing:.06em}
+.house .seal{width:40px;height:40px;display:block;margin:0 auto 10px}
+.house-h{font-weight:800;font-size:1.5rem;line-height:1.1;margin:0 0 8px;text-wrap:balance}
+.house-b{font-size:.95rem;line-height:1.45;color:var(--ink-2);margin:0 0 14px}
+.house-cta{display:inline-block;background:var(--red);color:#fff;text-decoration:none;font:700 .86rem/1 var(--sans);padding:12px 18px}
+.house-cta:hover{background:#A91F1F}
+.house-tel{display:block;margin-top:10px;font:600 .84rem/1 var(--sans);color:var(--ink);text-decoration:none;font-variant-numeric:tabular-nums}
+.house-tel:hover{text-decoration:underline}
 
-    .status {
-      text-align: center;
-      padding: 3rem 1rem;
-      color: var(--text-muted);
-      font-size: 14px;
-    }
+/* Below the fold */
+.section{padding:18px 0 8px}
+.sec-h{font-weight:800;font-size:1.65rem;line-height:1.1;letter-spacing:-.01em;margin:0 0 18px;border-top:3px solid var(--ink);padding-top:10px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.sec-h small{font:500 .78rem var(--sans);color:var(--ink-3);letter-spacing:0}
+.wire{column-count:3;column-gap:40px;column-rule:1px solid var(--rule)}
+.wire .story{break-inside:avoid;padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid var(--rule)}
+.wire .story-h{font-size:1.16rem}
+.pubs{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 26px;font:500 .86rem/1.5 var(--sans);color:var(--ink-2)}
+.pubs b{color:var(--ink)}
 
-    .spinner {
-      display: inline-block;
-      width: 18px;
-      height: 18px;
-      border: 2px solid var(--border-strong);
-      border-top-color: var(--accent);
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
-      vertical-align: middle;
-      margin-right: 8px;
-    }
+.notice{font:500 .8rem/1.45 var(--sans);color:var(--ink-3);border-left:3px solid var(--amber);padding:4px 0 4px 10px;margin:14px 0 0}
+.empty{padding:6px 0 10px}
+.empty .story-h{font-size:1.6rem}
+.btn-line{font:700 .86rem var(--sans);color:var(--link);text-decoration:underline;text-underline-offset:3px}
+.loading{font:500 .9rem var(--sans);color:var(--ink-3);padding:30px 0}
 
-    @keyframes spin { to { transform: rotate(360deg); } }
+/* Colophon */
+.colophon{border-top:3px solid var(--ink);margin-top:26px;padding:22px 0 26px;text-align:center;font:400 .84rem/1.6 var(--sans);color:var(--ink-2)}
+.colophon .np-small{font-family:var(--blackletter);font-size:2rem;line-height:1;color:var(--ink);margin:0 0 10px;display:inline-flex;align-items:center;gap:.16em}
+.colophon p{margin:0 auto 10px;max-width:68ch}
+.colophon nav{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 22px;margin:12px 0}
+.colophon nav a{color:var(--ink);font-weight:700;text-decoration:none}
+.colophon nav a:hover{text-decoration:underline;text-underline-offset:3px}
+.colophon .x{color:var(--red);font-weight:800;margin-right:4px}
+.site-nap{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 22px;color:var(--ink-2)}
+.site-nap b{color:var(--ink)}
+.site-nap a{color:inherit;text-decoration:none}
 
-    .feed-section { margin-bottom: 2.5rem; }
-
-    .feed-label {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 0.5px solid var(--border);
-    }
-
-    .card {
-      background: #fff;
-      border: 0.5px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.1rem 1.25rem;
-      margin-bottom: 0.75rem;
-      transition: border-color 0.15s;
-    }
-
-    .card:hover { border-color: var(--border-strong); }
-
-    .card-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .card-title {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--text-primary);
-      line-height: 1.45;
-      flex: 1;
-    }
-
-    .card-title a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .card-title a:hover { color: var(--accent); }
-
-    .card-date {
-      font-size: 12px;
-      color: var(--text-muted);
-      white-space: nowrap;
-      padding-top: 2px;
-    }
-
-    .card-snippet {
-      font-size: 13px;
-      color: var(--text-secondary);
-      line-height: 1.55;
-      margin-bottom: 0.6rem;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .card-footer {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-
-    .source-tag {
-      font-size: 11px;
-      color: var(--text-muted);
-      background: transparent;
-      border: 0.5px solid rgba(255,255,255,0.4);
-      border-radius: 4px;
-      padding: 1px 7px;
-      color: rgba(255,255,255,0.8);
-    }
-
-    .topic-tag {
-      font-size: 11px;
-      border-radius: 4px;
-      padding: 1px 7px;
-    }
-
-    .topic-drone { background: var(--tag-drone-bg); color: var(--tag-drone-text); }
-    .topic-show  { background: var(--tag-show-bg);  color: var(--tag-show-text); }
-    .topic-reg   { background: var(--tag-reg-bg);   color: var(--tag-reg-text); }
-
-    .error-banner {
-      background: #fcebeb;
-      border: 0.5px solid #f09595;
-      border-radius: var(--radius);
-      padding: 1rem 1.25rem;
-      font-size: 14px;
-      color: #791f1f;
-      margin-bottom: 1rem;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .error-banner { background: #501313; border-color: #a32d2d; color: #f7c1c1; }
-    }
-
-    .empty { padding: 2rem 0; text-align: center; color: var(--text-muted); font-size: 14px; }
-  
-    /* ── Galaxy background for mobile ── */
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.2; }
-      50%       { opacity: 1; }
-    }
-
-    @media (max-width: 768px) {
-      body {
-        background: #0a0a1a !important;
-      }
-      body::before {
-        background: none !important;
-      }
-      #galaxy-canvas {
-        display: block;
-      }
-    }
-
-    @media (min-width: 769px) {
-      #galaxy-canvas { display: none; }
-    }
-
-    #galaxy-canvas {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-  </style>
+/* Tablet */
+@media (max-width:1020px){
+  .fold{grid-template-columns:1fr 1fr;grid-template-areas:"lead lead" "left rail"}
+  .lead{border:0;padding:0 0 24px;margin-bottom:24px;border-bottom:1px solid var(--ink)}
+  .col-left{padding-right:20px;border-right:1px solid var(--rule)}
+  .rail{padding-left:20px}
+  .wire{column-count:2}
+}
+/* Phone */
+@media (max-width:1180px){
+  .masthead{grid-template-columns:1fr;padding-top:22px}
+  .ear{display:none}
+  .nameplate{font-size:clamp(2.4rem,7.4vw,4.9rem)}
+}
+@media (max-width:820px){
+  .dateline > span{flex:1 1 50%;text-align:center !important;padding:6px 8px !important;border-left:0;border-top:1px solid var(--rule)}
+  .dateline > span:nth-child(-n+2){border-top:0}
+  .dateline .d-long{display:none}
+  .dateline .d-short{display:inline !important}
+  .dateline .dl-vol{display:none}
+  .tb-date{display:none}
+}
+@media (max-width:680px){
+  body{font-size:16.5px}
+  .fold{grid-template-columns:1fr;grid-template-areas:"lead" "left" "rail";padding-top:18px}
+  .col-left{padding:0;border:0}
+  .rail{padding:0;margin-top:30px}
+  .seconds{grid-template-columns:1fr}
+  .seconds .story:first-child{padding:0 0 16px}
+  .seconds .story + .story{padding:16px 0 0;border-left:0;border-top:1px solid var(--rule)}
+  .wire{column-count:1}
+  .sec-h{font-size:1.4rem}
+  .lead-body{hyphens:manual}
+}
+</style>
 </head>
 <body>
 
-<canvas id="galaxy-canvas"></canvas>
-<header style="background:rgba(255,255,255,0.55);backdrop-filter:blur(10px);border-radius:14px;max-width:820px;margin:1rem auto 0;">
-  <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--accent);text-decoration:none;margin-bottom:1rem;border:0.5px solid var(--accent);border-radius:6px;padding:4px 10px;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-muted)'">
-    ← Back to PQ Robotics
-  </a>
-  <p class="header-eyebrow">Atlanta · Live Feed</p>
-  <h1>Drone News</h1>
-  <div class="header-meta">
-    <span id="last-updated">Loading…</span>
-    <span class="dot">·</span>
-    <span id="article-count">—</span>
-    <button class="refresh-btn" onclick="loadFeeds()">↻ Refresh</button>
-  </div>
-</header>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="seal" viewBox="-140 -140 280 280">
+    <rect x="-50" y="-132" width="100" height="264" rx="16" fill="#C62828"/>
+    <rect x="-132" y="-50" width="264" height="100" rx="16" fill="#C62828"/>
+    <rect x="-40" y="-122" width="80" height="244" rx="10" fill="#E53935" opacity=".35"/>
+    <rect x="-122" y="-40" width="244" height="80" rx="10" fill="#E53935" opacity=".35"/>
+    <g fill="none" stroke="#fff" stroke-width="6" opacity=".7">
+      <circle cx="-48" cy="-48" r="21"/><circle cx="48" cy="-48" r="21"/>
+      <circle cx="-48" cy="48" r="21"/><circle cx="48" cy="48" r="21"/>
+    </g>
+    <g stroke="#fff" stroke-width="9" stroke-linecap="round" opacity=".9">
+      <line x1="-14" y1="-14" x2="-40" y2="-40"/><line x1="14" y1="-14" x2="40" y2="-40"/>
+      <line x1="-14" y1="14" x2="-40" y2="40"/><line x1="14" y1="14" x2="40" y2="40"/>
+    </g>
+    <rect x="-20" y="-20" width="40" height="40" rx="8" fill="#0A1628"/>
+  </symbol>
+</svg>
 
-<div class="feed-panel" style="margin-top:1.5rem;"><div class="controls" style="max-width:100%;padding:0.5rem 0.75rem 0;">
-  <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
-  <button class="filter-btn filter-drone" onclick="setFilter('drone', this)">Drone events</button>
-  <button class="filter-btn filter-show" onclick="setFilter('show', this)">Drone shows</button>
-  <button class="filter-btn filter-reg" onclick="setFilter('reg', this)">Regulations</button>
+<div class="city" aria-hidden="true"></div>
+
+<div class="topbar">
+  <a class="tb-brand" href="/">PQ <em>ROBOTICS</em></a>
+  <span class="tb-date" id="tb-date"></span>
+  <a class="tb-dh" href="/drone-repair-atlanta.html"><span class="x" aria-hidden="true">&#10010;</span>Drone Hospital repairs</a>
 </div>
 
-<main>
-  <div id="content">
-    <div class="status"><span class="spinner"></span> Fetching feeds…</div>
+<div class="sheet">
+  <header class="masthead">
+    <div class="ear ear-l" id="ear-wx">
+      <p class="ear-h">Flight conditions</p>
+      <p id="ear-wx-body">Checking Peachtree-DeKalb Airport&hellip;</p>
+    </div>
+    <div class="plate">
+      <h1 class="nameplate"><a href="/drone-news.html"><span>Drone Hospital</span><span class="np-2"><svg class="seal" role="img" aria-label="Drone Hospital cross"><use href="#seal"/></svg>Daily</span></a></h1>
+      <p class="motto">Atlanta&rsquo;s daily checkup on the drone world</p>
+    </div>
+    <div class="ear ear-r">
+      <p class="ear-h"><span class="x" aria-hidden="true">&#10010;</span> Drone Hospital</p>
+      <p>Crash damage, gimbals, motors and FPV builds, repaired in Atlanta.</p>
+      <p><a href="tel:+14044089063">(404) 408-9063</a></p>
+    </div>
+  </header>
+
+  <div class="dateline">
+    <span class="dl-vol" id="dl-vol">Vol. I</span>
+    <span id="dl-date">Atlanta, Georgia</span>
+    <span id="dl-count">&nbsp;</span>
+    <span id="dl-upd">&nbsp;</span>
   </div>
-</main></div>
 
-<script>
-  /* feeds are served from feed-cache.json, built hourly by GitHub Actions */
+  <div class="ticker" id="ticker" hidden>
+    <span class="tk-label">Latest</span>
+    <div class="tk-view"><div class="tk-track" id="tk-track"></div></div>
+  </div>
 
-  let allItems = [];
-  let activeFilter = "all";
+  <nav class="desks" id="desks" aria-label="Topics"></nav>
 
-  function tagItem(title, snippet) {
-    const text = (title + " " + snippet).toLowerCase();
-    if (/\bshow\b|light show|display|spectacle/.test(text)) return "show";
-    if (/regulat|faa|airspace|permit|law|ban|ordinance|policy/.test(text)) return "reg";
-    return "drone";
-  }
+  <div class="finder">
+    <label class="search" for="q"><span class="sr">Search headlines</span>
+      <input id="q" type="search" placeholder="Search headlines, places or topics" autocomplete="off" enterkeyhint="search">
+    </label>
+    <div class="range" role="group" aria-label="Time range">
+      <button type="button" data-range="24" aria-pressed="false">24 hours</button>
+      <button type="button" data-range="168" aria-pressed="true">7 days</button>
+      <button type="button" data-range="720" aria-pressed="false">30 days</button>
+    </div>
+  </div>
 
-  function formatDate(dateStr) {
-    if (!dateStr) return "";
-    const d = new Date(dateStr);
-    if (isNaN(d)) return dateStr;
-    return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
-  }
+  <section class="topic-head" id="topic-head" aria-live="polite" hidden></section>
 
-  function stripHtml(html) {
-    const tmp = document.createElement("div");
-    tmp.innerHTML = html;
-    return tmp.textContent || tmp.innerText || "";
-  }
+  <main id="front">
+    <div class="fold">
+      <article class="lead" id="lead" aria-live="polite">
+        <p class="loading">Setting today&rsquo;s front page&hellip;</p>
+      </article>
 
-  function topicLabel(tag) {
-    return { drone: "Drone event", show: "Drone show", reg: "Regulations" }[tag] || "Drone";
-  }
+      <div class="col-left">
+        <section class="block" id="briefs-block" hidden>
+          <h2 class="col-h">In brief</h2>
+          <div id="briefs"></div>
+        </section>
+        <section class="block" id="almanac">
+          <h2 class="col-h">Pilot&rsquo;s almanac</h2>
+          <dl class="facts" id="alm-facts"></dl>
+          <p class="fine">Atlanta times. Flying in civil twilight or at night requires anti-collision lighting visible for 3 statute miles (14 CFR 107.29).</p>
+        </section>
+      </div>
 
-  function render() {
-    const filtered = activeFilter === "all"
-      ? allItems
-      : allItems.filter(i => i.tag === activeFilter);
+      <aside class="rail">
+        <section class="block" id="wx">
+          <h2 class="col-h">Flight conditions</h2>
+          <div id="wx-body"><p class="fine">Checking the latest observation&hellip;</p></div>
+        </section>
 
-    const el = document.getElementById("content");
+        <section class="house" aria-label="From the publisher">
+          <p class="house-tag">From the publisher</p>
+          <svg class="seal" aria-hidden="true"><use href="#seal"/></svg>
+          <p class="house-h">Crashed it? Bring it in.</p>
+          <p class="house-b">Drone Hospital repairs DJI, FPV and custom builds on our Atlanta bench, with diagnostics before any work starts.</p>
+          <a class="house-cta" href="/drone-repair-atlanta.html">Book a repair</a>
+          <a class="house-tel" href="tel:+14044089063">(404) 408-9063</a>
+        </section>
+      </aside>
+    </div>
 
-    if (filtered.length === 0) {
-      el.innerHTML = '<div class="empty">No articles found for this filter.</div>';
-      return;
-    }
+    <section class="section" id="wire-sec" hidden>
+      <h2 class="sec-h">More from the wire <small id="wire-count"></small></h2>
+      <div class="wire" id="wire"></div>
+      <p class="more-row"><button class="more" type="button" id="more" hidden>Show more stories</button></p>
+    </section>
 
-    const grouped = {};
-    filtered.forEach(item => {
-      if (!grouped[item.feedLabel]) grouped[item.feedLabel] = [];
-      grouped[item.feedLabel].push(item);
-    });
+    <section class="section" id="pubs-sec" hidden>
+      <h2 class="sec-h">Publishers in this edition</h2>
+      <ul class="pubs" id="pubs"></ul>
+      <div id="notices"></div>
+    </section>
+  </main>
 
-    let html = "";
-    for (const [label, items] of Object.entries(grouped)) {
-      html += `<div class="feed-section">
-        <p class="feed-label">${label}</p>`;
-      items.forEach(item => {
-        const snippet = item.description ? stripHtml(item.description).slice(0, 200) : "";
-        html += `
-        <div class="card">
-          <div class="card-top">
-            <p class="card-title"><a href="${item.link}" target="_blank" rel="noopener">${item.title}</a></p>
-            <span class="card-date">${formatDate(item.pubDate)}</span>
-          </div>
-          ${snippet ? `<p class="card-snippet">${snippet}…</p>` : ""}
-          <div class="card-footer">
-            ${item.source ? `<span class="source-tag">${item.source}</span>` : ""}
-            <span class="topic-tag topic-${item.tag}">${topicLabel(item.tag)}</span>
-          </div>
-        </div>`;
-      });
-      html += `</div>`;
-    }
+  <footer class="colophon">
+    <p class="np-small">Drone Hospital<svg class="seal" aria-hidden="true"><use href="#seal"/></svg>Daily</p>
+    <p>Published by PQ Robotics in Atlanta, Georgia. Headlines are gathered every hour from Google Alerts and Google News. Each story belongs to its publisher and opens on their site.</p>
+    <nav aria-label="PQ Robotics">
+      <a href="/">PQ Robotics home</a>
+      <a href="/drone-repair-atlanta.html"><span class="x" aria-hidden="true">&#10010;</span>Drone Hospital</a>
+      <a href="/footage.html">Footage</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+    <div class="site-nap">
+      <span><b>PQ Robotics</b> &mdash; Drone Hospital</span>
+      <span>6059 Boylston Dr NE, Atlanta, GA 30328</span>
+      <span><a href="tel:+14044089063">(404) 408-9063</a></span>
+    </div>
+    <p style="margin-top:12px">&copy; <span id="yr">2026</span> PQ Robotics</p>
+  </footer>
+</div>
 
-    el.innerHTML = html;
-
-    document.getElementById("article-count").textContent =
-      `${filtered.length} article${filtered.length !== 1 ? "s" : ""}`;
-  }
-
-  async function loadFeeds() {
-    document.getElementById("content").innerHTML =
-      '<div class="status"><span class="spinner"></span> Loading news…</div>';
-    document.getElementById("last-updated").textContent = "Loading…";
-    allItems = [];
-
-    let data;
-    try {
-      const res = await fetch("feed-cache.json?t=" + Date.now());
-      data = await res.json();
-    } catch(e) {
-      document.getElementById("content").innerHTML =
-        '<div class="error-banner">⚠️ Could not load feed-cache.json. Make sure the GitHub Action has run at least once.</div>';
-      return;
-    }
-
-    (data.items || []).forEach(item => {
-      allItems.push({
-        ...item,
-        tag: tagItem(item.title || "", item.description || ""),
-      });
-    });
-
-    const updated = data.updated
-      ? new Date(data.updated).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })
-      : "unknown";
-    document.getElementById("last-updated").textContent = "Updated " + updated;
-
-    const el = document.getElementById("content");
-    let errorHtml = (data.errors || []).map(e => `<div class="error-banner">⚠️ ${e}</div>`).join("");
-    el.innerHTML = errorHtml;
-
-    document.getElementById("article-count").textContent =
-      `${allItems.length} article${allItems.length !== 1 ? "s" : ""}`;
-
-    if (allItems.length === 0 && (data.errors || []).length === 0) {
-      el.innerHTML += '<div class="empty">No articles yet — the GitHub Action may still be running for the first time.</div>';
-    }
-
-    render();
-  }
-
-  function setFilter(filter, btn) {
-    activeFilter = filter;
-    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-    render();
-  }
-
-
-  // Galaxy canvas for mobile
-  (function() {
-    const canvas = document.getElementById('galaxy-canvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let stars = [];
-
-    function resize() {
-      canvas.width  = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-
-    function initStars() {
-      stars = [];
-      for (let i = 0; i < 220; i++) {
-        stars.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          r: Math.random() * 1.5 + 0.3,
-          speed: Math.random() * 0.004 + 0.001,
-          offset: Math.random() * Math.PI * 2,
-        });
-      }
-    }
-
-    function draw(t) {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      stars.forEach(s => {
-        const alpha = 0.2 + 0.8 * (0.5 + 0.5 * Math.sin(t * s.speed * 1000 + s.offset));
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255,255,255,${alpha.toFixed(2)})`;
-        ctx.fill();
-      });
-      requestAnimationFrame(draw);
-    }
-
-    resize();
-    initStars();
-    window.addEventListener('resize', () => { resize(); initStars(); });
-    requestAnimationFrame(draw);
-  })();
-
-  loadFeeds();
-  setInterval(loadFeeds, 30 * 60 * 1000);
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://pq-robotics.com/drone-news.html",
+  "url": "https://pq-robotics.com/drone-news.html",
+  "name": "Drone Hospital Daily",
+  "description": "Drone news refreshed hourly: robotics, military, DJI and consumer drones, and drone laws and politics.",
+  "publisher": { "@id": "https://pq-robotics.com/#business", "@type": "LocalBusiness", "name": "PQ Robotics" }
+}
 </script>
 
-<style>
-.site-nap{display:flex;flex-wrap:wrap;gap:8px 26px;font-size:13px;
-  color:var(--text-secondary,#9a9aa4);
-  max-width:1080px;margin:0 auto;padding:28px;
-  border-top:1px solid var(--border,#26262c);margin-top:48px}
-.site-nap b{color:var(--text-primary,#f2f2f4)}
-.site-nap a{color:inherit;text-decoration:none}
-.site-nap a:hover{color:var(--accent,#e53e3e)}
-@media(max-width:600px){.site-nap{flex-direction:column;gap:4px}}
-</style>
-<div class="site-nap">
-  <span><b>PQ Robotics</b> &mdash; Drone Hospital</span>
-  <span>6059 Boylston Dr NE, Atlanta, GA 30328</span>
-  <span><a href="tel:+14044089063">(404) 408-9063</a></span>
-</div>
+<script>
+(function () {
+  "use strict";
+  var TZ = "America/New_York";
+  var ATL = { lat: 33.749, lng: -84.388 };
+  var NOW = function () { return new Date(); };
+
+  /* ---------- Sections ---------- */
+  var LOCAL = /atlanta|georgia|\bga\b(?!-)|sandy springs|marietta|alpharetta|roswell|decatur|dunwoody|brookhaven|savannah|augusta|macon|columbus, ga|athens, ga|dekalb|fulton|cobb|gwinnett|hartsfield|peachtree/i;
+
+  /* ---------- Topics: every story is drone news; General holds all of it ---------- */
+  var DRONE = /drone|beyond-visual-line|\bbvlos\b|\buav|\buas\b|unmanned|quadcopter|multirotor|\bfpv\b|counter-drone|remote id|part 10[78]|\bDJI\b|mavic/i;
+  var TOPICS = [
+    { id: "robotics", name: "Robotics", short: "Robotics",
+      blurb: "Autonomy, AI, swarms, sensors and the research labs and startups teaching drones to fly themselves.",
+      re: /robot|autonom|\bAI\b|artificial intelligence|machine learning|swarm|computer vision|lidar|sensor|sensing|research|lab\b|universit|self-flying|docks?\b|recharg|flapping|insect/i,
+      cta: { h: "Building something autonomous?", b: "PQ Robotics develops robotic autonomy for public safety and builds custom aircraft for research and industry.", label: "Talk to our engineers", href: "/#contact" } },
+    { id: "military", name: "Military", short: "Military",
+      blurb: "Drones in defense and conflict: strikes, counter-drone systems, swarms and the companies supplying militaries.",
+      re: /military|militar|army|navy|naval|air force|marines?|pentagon|defen[cs]e|missile|strikes?\b|attack|\bwar\b|warfare|combat|battlefield|troops|soldier|interceptor|counter-drone|loitering|kamikaze|ukrain|russia|iran|sudan|fuel depot/i,
+      cta: { h: "Built to a military standard", b: "Our founder developed military and commercial unmanned platforms. That same rigor goes into every Drone Hospital repair.", label: "Book a repair", href: "/drone-repair-atlanta.html" } },
+    { id: "consumer", name: "DJI & consumer", short: "DJI & consumer",
+      blurb: "DJI and other camera drones, firmware and new models, and how people use drones day to day: photos, deliveries, racing and light shows.",
+      re: /\bDJI\b|mavic|avata|autel|skydio|consumer|hobby|recreational|camera drone|compact camera|first drone|buying|shoppers?|firmware|gimbal|delivery|deliveries|real estate|light shows?|drone shows?|drone racing|fpv racing|selfie|photograph/i,
+      cta: { h: "DJI acting up?", b: "Drone Hospital repairs Mavic, Mini, Air and Avata drones: crash damage, gimbals, motors and firmware.", label: "Book a DJI repair", href: "/drone-repair-atlanta.html" } },
+    { id: "laws", name: "Laws & politics", short: "Laws & politics",
+      blurb: "FAA rules, Part 107, Remote ID, airspace, local ordinances, privacy bills and the politics around foreign-made drones.",
+      re: /\bFAA\b|\blaws?\b|lawmakers?|legislat|\bbills?\b|congress|senat|governor|council|commission|ordinance|regulat|\brules?\b|\bban(s|ned)?\b|permit|airspace|authoriz|remote id|part 10[78]|court|lawsuit|privacy|policy|politic|tariff|foreign-made|sanction|national security|enforcement/i,
+      cta: { h: "Not sure you can fly there?", b: "Ask before the shoot. We fly under Part 107 and handle airspace authorizations around Atlanta's airports.", label: "Ask us a question", href: "/#contact" } }
+  ];
+  var TOPIC = {};
+  TOPICS.forEach(function (t) { TOPIC[t.id] = t; });
+  var RANGE_NAME = { 24: "last 24 hours", 168: "last 7 days", 720: "last 30 days" };
+
+  var PUBS = {
+    "wsbradio.com": "WSB Radio", "wsbtv.com": "WSB-TV", "ajc.com": "The Atlanta Journal-Constitution",
+    "11alive.com": "11Alive", "fox5atlanta.com": "FOX 5 Atlanta", "atlantanewsfirst.com": "Atlanta News First",
+    "wabe.org": "WABE", "gpb.org": "GPB", "accessnorthga.com": "AccessWDUN", "hoodline.com": "Hoodline",
+    "timesofisrael.com": "The Times of Israel", "bizjournals.com": "Business Journals", "reuters.com": "Reuters",
+    "apnews.com": "AP News", "dronelife.com": "DroneLife", "dronexl.co": "DroneXL", "dronedj.com": "DroneDJ",
+    "faa.gov": "FAA", "savannahnow.com": "Savannah Morning News", "patch.com": "Patch", "yahoo.com": "Yahoo News",
+    "msn.com": "MSN", "nytimes.com": "The New York Times", "wsj.com": "The Wall Street Journal", "cnn.com": "CNN",
+    "foxnews.com": "Fox News", "nbcnews.com": "NBC News", "cbsnews.com": "CBS News", "bbc.com": "BBC",
+    "bbc.co.uk": "BBC", "theverge.com": "The Verge", "techcrunch.com": "TechCrunch", "defensenews.com": "Defense News",
+    "breakingdefense.com": "Breaking Defense", "roughdraftatlanta.com": "Rough Draft Atlanta",
+    "saportareport.com": "SaportaReport", "decaturish.com": "Decaturish", "appenmedia.com": "Appen Media",
+    "mdjonline.com": "Marietta Daily Journal", "gwinnettdailypost.com": "Gwinnett Daily Post",
+    "atlantaciviccircle.org": "Atlanta Civic Circle", "georgiarecorder.com": "Georgia Recorder",
+    "augustachronicle.com": "The Augusta Chronicle", "onlineathens.com": "Athens Banner-Herald",
+    "ledger-enquirer.com": "Ledger-Enquirer", "macon.com": "The Telegraph", "11alive.org": "11Alive",
+    "wtoc.com": "WTOC", "wrdw.com": "WRDW", "wmaz.com": "13WMAZ", "wjcl.com": "WJCL", "forbes.com": "Forbes",
+    "axios.com": "Axios", "usatoday.com": "USA Today", "washingtonpost.com": "The Washington Post",
+    "politico.com": "Politico", "npr.org": "NPR", "dronelife.net": "DroneLife", "suasnews.com": "sUAS News",
+    "commercialuavnews.com": "Commercial UAV News", "insideunmannedsystems.com": "Inside Unmanned Systems"
+  };
+
+  /* ---------- Helpers ---------- */
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  var decoder = document.createElement("textarea");
+  function toText(html) {
+    // strip tags, then decode entities (twice covers double-encoded feeds)
+    var s = String(html || "").replace(/<[^>]*>/g, "");
+    for (var i = 0; i < 2; i++) { decoder.innerHTML = s; s = decoder.value; }
+    return s.replace(/\s+/g, " ").trim();
+  }
+  function realUrl(link) {
+    try {
+      var u = new URL(link);
+      if (/(^|\.)google\.com$/.test(u.hostname) && u.pathname === "/url") {
+        var t = u.searchParams.get("url") || u.searchParams.get("q");
+        if (t) return t;
+      }
+      return u.href;
+    } catch (e) { return ""; }
+  }
+  function safeHref(url) { return /^https?:\/\//i.test(url) ? url : "#"; }
+  function pubFromUrl(url) {
+    try {
+      var host = new URL(url).hostname.replace(/^www\./, "");
+      for (var key in PUBS) {
+        if (host === key || host.slice(-(key.length + 1)) === "." + key) return PUBS[key];
+      }
+      if (/news\.google\.com$/.test(host)) return "";
+      var parts = host.split(".");
+      var name = parts.length > 1 ? parts[parts.length - 2] : parts[0];
+      return name.split("-").map(function (w) { return w.charAt(0).toUpperCase() + w.slice(1); }).join("-");
+    } catch (e) { return ""; }
+  }
+  // Google Alerts snippets mix the story with site menus ("Atlanta Braves · Atlanta Falcons").
+  // Keep only the pieces that read like sentences.
+  function cleanSnippet(html) {
+    var text = toText(html);
+    if (!text) return "";
+    var parts = text.split(/\s*(?:\.\.\.|…|·|\|)\s*/);
+    var keep = parts.filter(function (p) {
+      var words = p.split(/\s+/).filter(Boolean);
+      if (words.length < 6) return false;
+      var lower = words.filter(function (w) { return /^[a-z(]/.test(w); }).length;
+      return lower / words.length >= 0.35;
+    });
+    var out = keep.join(" … ").replace(/\s*\(\w*$/, "").trim();
+    if (out.length > 280) out = out.slice(0, 280).replace(/\s+\S*$/, "") + "…";
+    return out;
+  }
+  function relTime(d) {
+    if (!d) return "";
+    var mins = Math.round((NOW() - d) / 60000);
+    if (mins < 2) return "Just now";
+    if (mins < 60) return mins + " min ago";
+    var hrs = Math.round(mins / 60);
+    if (hrs < 24) return hrs + (hrs === 1 ? " hr ago" : " hrs ago");
+    var days = Math.round(hrs / 24);
+    if (days === 1) return "Yesterday";
+    if (days < 7) return days + " days ago";
+    return d.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: TZ });
+  }
+  function fullTime(d) {
+    return d ? d.toLocaleString("en-US", { month: "long", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: TZ }) : "";
+  }
+  function atlParts(d) {
+    var f = new Intl.DateTimeFormat("en-US", { timeZone: TZ, year: "numeric", month: "numeric", day: "numeric", hour: "numeric", hourCycle: "h23" });
+    var o = {};
+    f.formatToParts(d).forEach(function (p) { o[p.type] = p.value; });
+    return { y: +o.year, m: +o.month, d: +o.day, h: +o.hour };
+  }
+  function roman(n) {
+    var map = [[10, "X"], [9, "IX"], [5, "V"], [4, "IV"], [1, "I"]], s = "";
+    map.forEach(function (p) { while (n >= p[0]) { s += p[1]; n -= p[0]; } });
+    return s;
+  }
+
+  /* ---------- Edition line ---------- */
+  function setEdition() {
+    var now = NOW(), p = atlParts(now);
+    var long = now.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric", timeZone: TZ });
+    var start = Date.UTC(p.y, 0, 1), today = Date.UTC(p.y, p.m - 1, p.d);
+    var issue = Math.round((today - start) / 86400000) + 1;
+    var edition = p.h < 12 ? "Morning edition" : p.h < 17 ? "Afternoon edition" : "Late edition";
+    document.getElementById("tb-date").textContent = long;
+    document.getElementById("dl-vol").textContent = "Vol. " + roman(Math.max(1, p.y - 2025)) + ", No. " + issue;
+    var short = now.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", year: "numeric", timeZone: TZ });
+    document.getElementById("dl-date").innerHTML = '<span class="d-long">' + long + '</span><span class="d-short" style="display:none">' + short + "</span>";
+    document.getElementById("yr").textContent = p.y;
+    return edition;
+  }
+
+  /* ---------- Stories ---------- */
+  var stories = [], view = "all", range = 168, query = "", followed = [], updatedAt = null, feedErrors = [], wireShown = 24;
+  var WIRE_STEP = 24;
+  try {
+    followed = JSON.parse(localStorage.getItem("dhd-topics") || "[]").filter(function (id) { return TOPIC[id]; });
+  } catch (e) { followed = []; }
+  function saveFollowed() { try { localStorage.setItem("dhd-topics", JSON.stringify(followed)); } catch (e) {} }
+
+  function topicsFor(title) {
+    return TOPICS.filter(function (t) { return t.re.test(title); }).map(function (t) { return t.id; });
+  }
+  function score(s) {
+    var hours = s.date ? (NOW() - s.date) / 3600000 : 72;
+    var onTopic = TOPIC[view] && TOPIC[view].re.test(s.title) ? 4 : 0;   // inside a topic, lead with a headline about it
+    return onTopic + (s.local ? 3 : 0) + (/drone|uas|uav|unmanned/i.test(s.title) ? 1 : 0) + (s.snippet ? 0.5 : 0) - hours / 24;
+  }
+  function byline(s, cls) {
+    var parts = [];
+    if (s.source) parts.push("From <b>" + esc(s.source) + "</b>");
+    if (s.date) parts.push('<time datetime="' + s.date.toISOString() + '" title="' + esc(fullTime(s.date)) + '">' + esc(relTime(s.date)) + "</time>");
+    return '<p class="' + cls + '">' + parts.join(", ") + "</p>";
+  }
+  function link(s, inner) {
+    return '<a href="' + esc(safeHref(s.url)) + '" target="_blank" rel="noopener">' + inner + "</a>";
+  }
+  function kicker(s) {
+    var t = view !== "all" && view !== "mine" && s.topics.indexOf(view) >= 0 ? view : s.topics[0];
+    return '<p class="kicker">' + esc(t ? TOPIC[t].short : "General") + "</p>";
+  }
+  function leadHtml(s) {
+    return kicker(s) +
+      '<h2 class="lead-h">' + link(s, esc(s.title)) + "</h2>" + byline(s, "byline") +
+      (s.snippet ? '<p class="lead-body' + (s.snippet.length > 150 ? " dropcap" : "") + '">' + esc(s.snippet) + "</p>" : "") +
+      '<p style="margin:0"><a class="read" href="' + esc(safeHref(s.url)) + '" target="_blank" rel="noopener">Read the full story' + (s.source ? " at " + esc(s.source) : "") + "</a></p>";
+  }
+  function storyHtml(s) {
+    return '<div class="story">' + kicker(s) + '<h3 class="story-h">' + link(s, esc(s.title)) + "</h3>" +
+      (s.snippet ? '<p class="snip">' + esc(s.snippet) + "</p>" : "") + byline(s, "meta") + "</div>";
+  }
+  function briefHtml(s) {
+    return '<div class="brief">' + kicker(s) + '<h3 class="brief-h">' + link(s, esc(s.title)) + "</h3>" + byline(s, "meta") + "</div>";
+  }
+
+  function inRange(s) { return !s.date || NOW() - s.date <= range * 3600000; }
+  function matchesQuery(s) {
+    if (!query) return true;
+    var hay = (s.title + " " + s.snippet + " " + s.source + " " + s.topics.map(function (t) { return TOPIC[t].name; }).join(" ")).toLowerCase();
+    return query.split(/\s+/).every(function (w) { return hay.indexOf(w) >= 0; });
+  }
+  function pool() { return stories.filter(function (s) { return inRange(s) && matchesQuery(s); }); }
+  function inView(s, v) {
+    if (v === "all") return true;
+    if (v === "mine") return s.topics.some(function (t) { return followed.indexOf(t) >= 0; });
+    return s.topics.indexOf(v) >= 0;
+  }
+
+  function renderDesks(p) {
+    function count(v) { return p.filter(function (s) { return inView(s, v); }).length; }
+    function btn(id, label, n, cls) {
+      return '<button class="desk' + (n === 0 ? " is-empty" : "") + (cls ? " " + cls : "") + '" type="button" data-view="' + id + '" aria-pressed="' + (view === id) + '">' +
+        label + (n == null ? "" : '<span class="n">' + n + "</span>") + "</button>";
+    }
+    var html = btn("all", "General drone news", count("all"));
+    TOPICS.forEach(function (t) {
+      html += btn(t.id, (followed.indexOf(t.id) >= 0 ? '<span class="star" aria-hidden="true">&#9733;</span>' : "") + esc(t.name), count(t.id));
+    });
+    html += '<span class="desk-gap" aria-hidden="true"></span>' +
+      btn("mine", '<span class="star" aria-hidden="true">&#9733;</span>My topics', followed.length ? count("mine") : null, "desk-mine");
+    var bar = document.getElementById("desks");
+    bar.innerHTML = html;
+    // keep the selected topic visible when the bar scrolls sideways on phones
+    var on = bar.querySelector('[aria-pressed="true"]');
+    if (on && bar.scrollWidth > bar.clientWidth) bar.scrollLeft = Math.max(0, on.offsetLeft - 24);
+  }
+
+  function renderHead(p) {
+    var el = document.getElementById("topic-head");
+    if (view === "all") { el.hidden = true; el.innerHTML = ""; return; }
+    if (view === "mine") {
+      el.innerHTML = '<div class="th-main"><p class="kicker">My topics</p>' +
+        '<h2 class="th-h">' + (followed.length ? "Your front page" : "Choose the topics you want first") + "</h2>" +
+        '<p class="th-b">' + (followed.length
+          ? "Stories from the topics you follow. Tap a topic to add or remove it."
+          : "Pick a few topics. This browser remembers them, and the paper opens to your topics next time.") + "</p>" +
+        '<div class="chips">' + TOPICS.map(function (t) {
+          var on = followed.indexOf(t.id) >= 0;
+          return '<button class="chip" type="button" data-follow="' + t.id + '" aria-pressed="' + on + '">' + (on ? "&#9733; " : "&#9734; ") + esc(t.name) + "</button>";
+        }).join("") + "</div></div>";
+      el.hidden = false;
+      return;
+    }
+    var t = TOPIC[view], list = p.filter(function (s) { return inView(s, view); });
+    var newest = null;
+    list.forEach(function (s) { if (s.date && (!newest || s.date > newest)) newest = s.date; });
+    var on = followed.indexOf(t.id) >= 0;
+    el.innerHTML = '<div class="th-main"><p class="kicker">Topic</p><h2 class="th-h">' + esc(t.name) + "</h2>" +
+      '<p class="th-b">' + esc(t.blurb) + "</p>" +
+      '<p class="meta">' + list.length + (list.length === 1 ? " story" : " stories") + " in the " + RANGE_NAME[range] +
+      (newest ? ". Newest " + esc(relTime(newest).toLowerCase()) + "." : ".") + "</p>" +
+      '<button class="follow" type="button" data-follow="' + t.id + '" aria-pressed="' + on + '">' + (on ? "&#9733; Following" : "&#9734; Follow this topic") + "</button></div>" +
+      '<aside class="th-cta" aria-label="From the publisher"><p class="house-tag">From the publisher</p>' +
+      '<p class="th-cta-h">' + esc(t.cta.h) + '</p><p class="th-cta-b">' + esc(t.cta.b) + "</p>" +
+      '<a class="house-cta" href="' + esc(t.cta.href) + '">' + esc(t.cta.label) + "</a></aside>";
+    el.hidden = false;
+  }
+
+  function emptyHtml() {
+    var name = view === "all" ? "General drone news" : view === "mine" ? "My topics" : TOPIC[view].name;
+    var h, b = "", actions = [];
+    if (view === "mine" && !followed.length) {
+      return '<div class="empty"><p class="snip">Follow a topic above and its stories land here.</p></div>';
+    }
+    if (query) {
+      h = "No headlines match “" + esc(query) + "”.";
+      b = "Try fewer words" + (range < 720 ? " or a longer time range." : ".");
+      actions.push('<button class="btn-line" type="button" data-clear>Clear search</button>');
+    } else {
+      h = "No " + (view === "all" ? "drone " : esc(name) + " ") + "stories in the " + RANGE_NAME[range] + ".";
+      b = "New stories land here as soon as a wire files one. The paper refreshes every hour.";
+    }
+    if (range < 720) actions.push('<button class="btn-line" type="button" data-range="720">Show the last 30 days</button>');
+    return '<div class="empty"><p class="kicker">' + esc(name) + '</p><h2 class="story-h">' + h + '</h2><p class="snip">' + b + "</p>" +
+      '<p class="actions">' + actions.join("") + "</p></div>";
+  }
+
+  function render(p) {
+    var list = p.filter(function (s) { return inView(s, view); });
+    var leadEl = document.getElementById("lead");
+    var briefsBlock = document.getElementById("briefs-block");
+    var wireSec = document.getElementById("wire-sec");
+    document.querySelector(".house").hidden = view !== "all";   // topic pages carry their own pitch
+
+    if (!list.length) {
+      leadEl.innerHTML = emptyHtml();
+      briefsBlock.hidden = true; wireSec.hidden = true;
+      renderPubs([]);
+      return;
+    }
+    var lead = list.reduce(function (a, b) { return score(b) > score(a) ? b : a; });
+    var rest = list.filter(function (s) { return s !== lead; });
+    var seconds = rest.slice(0, 2), briefs = rest.slice(2, 8), wire = rest.slice(8);
+    leadEl.innerHTML = leadHtml(lead) + (seconds.length ? '<div class="seconds">' + seconds.map(storyHtml).join("") + "</div>" : "");
+    briefsBlock.hidden = !briefs.length;
+    document.getElementById("briefs").innerHTML = briefs.map(briefHtml).join("");
+    wireSec.hidden = !wire.length;
+    document.getElementById("wire").innerHTML = wire.slice(0, wireShown).map(storyHtml).join("");
+    document.getElementById("wire-count").textContent = wire.length ? wire.length + (wire.length === 1 ? " story" : " stories") : "";
+    var more = document.getElementById("more"), left = wire.length - wireShown;
+    more.hidden = left <= 0;
+    more.textContent = "Show " + Math.min(WIRE_STEP, left) + " more " + (Math.min(WIRE_STEP, left) === 1 ? "story" : "stories");
+    renderPubs(list);
+  }
+
+  function renderPubs(list) {
+    var pubCount = {};
+    list.forEach(function (s) { if (s.source) pubCount[s.source] = (pubCount[s.source] || 0) + 1; });
+    var names = Object.keys(pubCount).sort(function (a, b) { return pubCount[b] - pubCount[a] || a.localeCompare(b); }).slice(0, 30);
+    document.getElementById("pubs").innerHTML = names.map(function (n) { return "<li><b>" + esc(n) + "</b> " + pubCount[n] + "</li>"; }).join("");
+    document.getElementById("notices").innerHTML = feedErrors.length
+      ? '<p class="notice">' + (feedErrors.length === 1 ? "One source" : feedErrors.length + " sources") +
+        " didn&rsquo;t report in the last refresh. Stories from the other sources are shown.</p>" : "";
+    document.getElementById("pubs-sec").hidden = !names.length && !feedErrors.length;
+  }
+
+  function renderTicker() {
+    var latest = stories.slice().sort(function (a, b) { return (b.date || 0) - (a.date || 0); }).slice(0, 12);
+    var tk = document.getElementById("ticker");
+    if (!latest.length) { tk.hidden = true; return; }
+    var one = latest.map(function (s) {
+      return link(s, esc(s.title)) + (s.source ? '<span class="src">' + esc(s.source) + "</span>" : "") + '<span class="sep" aria-hidden="true">&#10010;</span>';
+    }).join("");
+    var track = document.getElementById("tk-track");
+    track.innerHTML = '<span class="tk-set">' + one + '</span><span class="tk-set" aria-hidden="true">' + one.replace(/<a /g, '<a tabindex="-1" ') + "</span>";
+    var chars = latest.reduce(function (n, s) { return n + s.title.length + s.source.length; }, 0);
+    track.style.setProperty("--tk-dur", Math.max(30, Math.round(chars / 7)) + "s");
+    tk.hidden = false;
+  }
+
+  function renderCounts(edition) {
+    var n = stories.length;
+    document.getElementById("dl-count").textContent = n + (n === 1 ? " story" : " stories") + " this month";
+    document.getElementById("dl-upd").textContent = edition + (updatedAt ? ", updated " + updatedAt.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZone: TZ }) : "");
+  }
+
+  function renderAll(keepWire) {
+    if (!keepWire) wireShown = WIRE_STEP;
+    var p = pool();
+    renderDesks(p);
+    renderHead(p);
+    render(p);
+    Array.prototype.forEach.call(document.querySelectorAll(".range [data-range]"), function (b) {
+      b.setAttribute("aria-pressed", String(+b.getAttribute("data-range") === range));
+    });
+  }
+
+  function normalize(raw) {
+    var title = toText(raw.title);
+    var url = realUrl(raw.url || raw.link || "");
+    var source = toText(raw.source || "");
+    var m = title.match(/^(.*\S)\s+[-–—|]\s+([^-–—|]{2,60})$/);
+    if (m) { title = m[1]; if (!source) source = m[2].trim(); }
+    if (!source) source = pubFromUrl(url);
+    var snippet = cleanSnippet(raw.description);
+    var date = raw.pubDate ? new Date(raw.pubDate) : null;
+    if (date && isNaN(date)) date = null;
+    // topics the feed tagged by source, plus any the headline itself points to
+    var topics = (raw.topics || []).filter(function (t) { return TOPIC[t]; });
+    topicsFor(title).forEach(function (t) { if (topics.indexOf(t) < 0) topics.push(t); });
+    topics.sort(function (a, b) { return TOPICS.indexOf(TOPIC[a]) - TOPICS.indexOf(TOPIC[b]); });
+    return { title: title, url: url, source: source, snippet: snippet, date: date, topics: topics,
+      local: !!raw.local && LOCAL.test(title + " " + snippet) || LOCAL.test(title) };
+  }
+
+  function loadFeeds() {
+    var edition = setEdition();
+    return fetch("feed-cache.json?t=" + Date.now(), { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (data) {
+        var seen = {};
+        stories = (data.items || []).map(normalize).filter(function (s) {
+          if (!s.title || !DRONE.test(s.title + " " + s.snippet)) return false;
+          var key = s.title.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 80);
+          if (seen[key]) return false;
+          seen[key] = 1; return true;
+        }).sort(function (a, b) { return (b.date || 0) - (a.date || 0); });
+        updatedAt = data.updated ? new Date(data.updated) : null;
+        if (updatedAt && isNaN(updatedAt)) updatedAt = null;
+        feedErrors = data.errors || [];
+        renderCounts(edition);
+        renderTicker();
+        renderAll();
+      })
+      .catch(function () {
+        document.getElementById("lead").innerHTML =
+          '<div class="empty"><p class="kicker">General drone news</p><h2 class="story-h">Today&rsquo;s headlines didn&rsquo;t load.</h2>' +
+          '<p class="snip">Check your connection, then reload the headlines.</p>' +
+          '<button class="btn-line" type="button" id="retry">Reload headlines</button></div>';
+        var b = document.getElementById("retry");
+        if (b) b.addEventListener("click", loadFeeds);
+      });
+  }
+
+  function setView(id, scroll) {
+    if (id !== "all" && id !== "mine" && !TOPIC[id]) id = "all";
+    view = id;
+    renderAll();
+    try { history.replaceState(null, "", id === "all" ? location.pathname + location.search : "#" + id); } catch (e) {}
+    if (scroll) document.getElementById("desks").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  function toggleFollow(id) {
+    var i = followed.indexOf(id);
+    if (i >= 0) followed.splice(i, 1); else followed.push(id);
+    saveFollowed();
+    renderAll();
+  }
+  document.addEventListener("click", function (e) {
+    var t = e.target.closest ? e.target.closest("[data-view],[data-follow],[data-range],[data-clear]") : null;
+    if (!t) return;
+    if (t.hasAttribute("data-view")) setView(t.getAttribute("data-view"));
+    else if (t.hasAttribute("data-follow")) toggleFollow(t.getAttribute("data-follow"));
+    else if (t.hasAttribute("data-range")) { range = +t.getAttribute("data-range"); renderAll(); }
+    else if (t.hasAttribute("data-clear")) { query = ""; document.getElementById("q").value = ""; renderAll(); }
+  });
+  document.getElementById("q").addEventListener("input", function (e) {
+    query = e.target.value.trim().toLowerCase();
+    renderAll();
+  });
+  document.getElementById("more").addEventListener("click", function () {
+    wireShown += WIRE_STEP;
+    renderAll(true);
+  });
+  window.addEventListener("hashchange", function () { setView((location.hash || "").slice(1) || "all"); });
+
+  /* ---------- Pilot's almanac (NOAA sunrise equation, no network needed) ---------- */
+  function sunUT(y, m, d, rising, zenith) {
+    var rad = Math.PI / 180;
+    var N = Math.round((Date.UTC(y, m - 1, d) - Date.UTC(y, 0, 0)) / 86400000);
+    var lngHour = ATL.lng / 15;
+    var t = N + ((rising ? 6 : 18) - lngHour) / 24;
+    var M = 0.9856 * t - 3.289;
+    var L = (M + 1.916 * Math.sin(M * rad) + 0.020 * Math.sin(2 * M * rad) + 282.634 + 360) % 360;
+    var RA = (Math.atan(0.91764 * Math.tan(L * rad)) / rad + 360) % 360;
+    RA = (RA + Math.floor(L / 90) * 90 - Math.floor(RA / 90) * 90) / 15;
+    var sinDec = 0.39782 * Math.sin(L * rad), cosDec = Math.cos(Math.asin(sinDec));
+    var cosH = (Math.cos(zenith * rad) - sinDec * Math.sin(ATL.lat * rad)) / (cosDec * Math.cos(ATL.lat * rad));
+    if (cosH > 1 || cosH < -1) return null;
+    var H = (rising ? 360 - Math.acos(cosH) / rad : Math.acos(cosH) / rad) / 15;
+    var T = H + RA - 0.06571 * t - 6.622;
+    return ((T - lngHour) % 24 + 24) % 24;
+  }
+  function renderAlmanac() {
+    var p = atlParts(NOW());
+    var base = Date.UTC(p.y, p.m - 1, p.d);
+    function at(ut, after) {
+      if (ut == null) return null;
+      if (after != null && ut < after) ut += 24; // evening times can roll past midnight UTC
+      return new Date(base + ut * 3600000);
+    }
+    var dawnUT = sunUT(p.y, p.m, p.d, true, 96), riseUT = sunUT(p.y, p.m, p.d, true, 90.833);
+    var dawn = at(dawnUT), rise = at(riseUT);
+    var set = at(sunUT(p.y, p.m, p.d, false, 90.833), riseUT), dusk = at(sunUT(p.y, p.m, p.d, false, 96), riseUT);
+    function fmt(d) { return d ? d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZone: TZ }) : "—"; }
+    var len = rise && set ? (set - rise) / 60000 : 0;
+    var rows = [["First light", fmt(dawn)], ["Sunrise", fmt(rise)], ["Sunset", fmt(set)], ["Last light", fmt(dusk)],
+      ["Daylight", len ? Math.floor(len / 60) + " hr " + Math.round(len % 60) + " min" : "—"]];
+    document.getElementById("alm-facts").innerHTML = rows.map(function (r) {
+      return "<dt>" + r[0] + "</dt><dd>" + r[1] + "</dd>";
+    }).join("");
+  }
+
+  /* ---------- Flight conditions (National Weather Service, Peachtree-DeKalb Airport) ---------- */
+  var DIRS = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+  function toMph(q) {
+    if (!q || q.value == null) return null;
+    return /m_s-1/.test(q.unitCode || "") ? q.value * 2.23694 : q.value * 0.621371;
+  }
+  function renderWeather() {
+    var body = document.getElementById("wx-body"), ear = document.getElementById("ear-wx-body");
+    var fallback = '<p class="fine">Live conditions aren&rsquo;t available right now. See the <a href="https://forecast.weather.gov/MapClick.php?lat=33.749&amp;lon=-84.388" target="_blank" rel="noopener">National Weather Service forecast for Atlanta</a>.</p>';
+    fetch("https://api.weather.gov/stations/KPDK/observations/latest", { headers: { Accept: "application/geo+json" } })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (j) {
+        var o = j.properties || {};
+        var tempF = o.temperature && o.temperature.value != null ? o.temperature.value * 9 / 5 + 32 : null;
+        var wind = toMph(o.windSpeed), gust = toMph(o.windGust);
+        var visMi = o.visibility && o.visibility.value != null ? o.visibility.value / 1609.34 : null;
+        var sky = o.textDescription || "";
+        var dir = o.windDirection && o.windDirection.value != null ? DIRS[Math.round(o.windDirection.value / 22.5) % 16] : "";
+        var wet = /rain|storm|thunder|snow|sleet|drizzle|shower|fog|ice/i.test(sky);
+        var w = wind || 0, g = gust || w;
+        var level, text;
+        if (w > 22 || g > 28 || (visMi != null && visMi < 3) || /thunder|storm/i.test(sky)) { level = "nofly"; text = "Not flying weather"; }
+        else if (w > 15 || g > 20 || wet) { level = "caution"; text = "Fly with caution"; }
+        else { level = "good"; text = "Good flying weather"; }
+        var when = o.timestamp ? new Date(o.timestamp).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZone: TZ }) : "";
+        var r = function (n) { return n == null ? "—" : Math.round(n); };
+        var rows = [
+          ["Sky", sky ? esc(sky) : "—"],
+          ["Temperature", tempF == null ? "—" : r(tempF) + "°F"],
+          ["Wind", wind == null ? "—" : (w < 1 ? "Calm" : r(wind) + " mph" + (dir ? " " + dir : ""))],
+          ["Gusts", gust == null ? "None reported" : r(gust) + " mph"],
+          ["Visibility", visMi == null ? "—" : (visMi >= 10 ? "10+ mi" : visMi.toFixed(1) + " mi")]
+        ];
+        body.innerHTML = '<p class="verdict ' + level + '">' + text + "</p>" +
+          '<dl class="facts">' + rows.map(function (x) { return "<dt>" + x[0] + "</dt><dd>" + x[1] + "</dd>"; }).join("") + "</dl>" +
+          '<p class="fine">Observed at Peachtree-DeKalb Airport (KPDK)' + (when ? " at " + when : "") +
+          ". A general guide, not a go/no-go call. Check airspace in B4UFLY or LAANC before you launch.</p>";
+        ear.innerHTML = '<span class="ear-verdict ' + level + '">' + text + "</span><br>" +
+          (tempF == null ? "" : r(tempF) + "°F, ") + (wind == null ? "" : (w < 1 ? "calm" : "wind " + r(wind) + " mph")) +
+          '<br><span style="opacity:.8">Peachtree-DeKalb' + (when ? ", " + when : "") + "</span>";
+      })
+      .catch(function () {
+        body.innerHTML = fallback;
+        ear.innerHTML = 'Live conditions unavailable. <a href="https://forecast.weather.gov/MapClick.php?lat=33.749&amp;lon=-84.388" target="_blank" rel="noopener">NWS forecast</a>';
+      });
+  }
+
+  /* ---------- Go ---------- */
+  var startView = (location.hash || "").slice(1);
+  if (startView === "mine" || TOPIC[startView]) view = startView;
+  else if (!startView && followed.length) view = "mine";
+  renderAlmanac();
+  renderWeather();
+  loadFeeds();
+  setInterval(function () { loadFeeds(); renderWeather(); renderAlmanac(); }, 30 * 60 * 1000);
+})();
+</script>
 </body>
 </html>
