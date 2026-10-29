@@ -240,6 +240,45 @@
 
     .btn-ghost:hover { color: var(--text-primary); border-color: rgba(255,255,255,0.25); }
 
+    .hero-btn { display: inline-flex; align-items: center; gap: 9px; }
+    .hero-btn svg { width: 17px; height: 17px; flex: none; }
+
+    /* ── EDUCATION POPUP ── */
+    .edu-dialog {
+      border: 1px solid var(--border-mid);
+      border-radius: 12px;
+      background: var(--bg-panel);
+      color: var(--text-primary);
+      padding: 0;
+      width: min(440px, calc(100vw - 32px));
+      margin: auto;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+    }
+    .edu-dialog::backdrop { background: rgba(3,5,10,0.72); backdrop-filter: blur(4px); }
+    .edu-dialog[open] { animation: edu-in 0.18s ease-out; }
+    @keyframes edu-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .edu-body { padding: 1.8rem 1.8rem 1.6rem; position: relative; text-align: center; }
+    .edu-close {
+      position: absolute; top: 10px; right: 10px;
+      width: 34px; height: 34px; border-radius: 8px;
+      background: transparent; border: none; color: var(--text-secondary);
+      font-size: 22px; line-height: 1; cursor: pointer;
+    }
+    .edu-close:hover { color: var(--text-primary); background: rgba(255,255,255,0.06); }
+    .edu-icon {
+      width: 48px; height: 48px; margin: 0 auto 1rem; border-radius: 12px;
+      background: var(--accent-dim); color: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .edu-icon svg { width: 24px; height: 24px; }
+    .edu-kicker { font-family: var(--font-display); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #e53935; margin-bottom: 0.4rem; }
+    .edu-title { font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; margin: 0 0 0.6rem; }
+    .edu-text { font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin: 0 0 1.2rem; }
+    .edu-phone { display: block; font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--text-primary); text-decoration: none; letter-spacing: 0.02em; margin-bottom: 1.2rem; }
+    .edu-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .edu-actions a { justify-content: center; }
+    .edu-dialog a:focus-visible, .edu-close:focus-visible, .hero-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
 
     /* ── DRONE HOSPITAL DAILY BAND ── */
     .daily-band {
@@ -355,7 +394,7 @@
       color: #34425A;
       align-self: center;
     }
-    .nav-daily-cross { color: #e53e3e; margin-right: 5px; font-size: 15px; }
+    .nav-dhd-icon { width: 15px; height: 15px; color: #e53e3e; margin-right: 6px; flex: none; vertical-align: -2px; }
     @media (max-width: 900px) {
       .daily-inner { grid-template-columns: 1fr; padding: 1.6rem 1.25rem 1.8rem; }
       .daily-mast { border-right: none; padding-right: 0; border-bottom: 1px solid #B3BCC8; padding-bottom: 1.2rem; margin-bottom: 0.4rem; }
@@ -904,7 +943,7 @@
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="/drone-repair-atlanta.html"><span style="color:#e53e3e;margin-right:5px;font-size:15px">✚</span>Drone Hospital</a></li>
-      <li><a href="/drone-news.html"><span class="nav-daily-cross" aria-hidden="true">✚</span>Daily</a></li>
+      <li><a href="/drone-news.html" title="Drone Hospital Daily" aria-label="DHD, Drone Hospital Daily"><svg class="nav-dhd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18h-5"/><path d="M18 14h-8"/><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><rect width="8" height="4" x="10" y="6" rx="1"/></svg>DHD</a></li>
       <li><a href="footage.html">Footage</a></li>
       <li><a href="#about">About Us</a></li>
     </ul>
@@ -918,8 +957,8 @@
     <h1><em>Precision Maintenance</em><br>Cinematic Footage</h1>
     <p class="hero-sub">End-to-end drone services built for professionals, from full diagnostics and custom builds to FAA-certified aerial cinematography.</p>
     <div class="hero-cta">
-      <button class="btn-primary" onclick="document.querySelector('#maintenance').scrollIntoView({behavior:'smooth'})">Our Services</button>
-      <button class="btn-ghost" onclick="window.location.href='footage.html'">View Footage</button>
+      <a class="btn-primary hero-btn" href="/drone-repair-atlanta.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6v4"/><path d="M14 8h-4"/><path d="M14 14h-4"/><path d="M14 18h-4"/><path d="M18 12h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h2"/><path d="M18 22V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v18"/></svg>Drone Hospital</a>
+      <button type="button" class="btn-ghost hero-btn" id="edu-open" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>Education / Lessons</button>
     </div>
   </div>
 
@@ -943,6 +982,34 @@
     </div>
   </div>
 
+
+  <!-- EDUCATION POPUP -->
+  <dialog class="edu-dialog" id="edu-dialog" aria-labelledby="edu-title">
+    <div class="edu-body">
+      <button type="button" class="edu-close" id="edu-close" aria-label="Close">&times;</button>
+      <div class="edu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></div>
+      <div class="edu-kicker">PQ Robotics Education</div>
+      <p class="edu-title" id="edu-title">Coming soon</p>
+      <p class="edu-text">This page has not been fully set up yet. For lessons, classes or lectures, please contact us directly and we will get you the details.</p>
+      <a class="edu-phone" href="tel:+14044089063">(404) 408-9063</a>
+      <div class="edu-actions">
+        <a class="btn-primary hero-btn" href="tel:+14044089063"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call</a>
+        <a class="btn-ghost hero-btn" href="sms:+14044089063"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Text</a>
+      </div>
+    </div>
+  </dialog>
+  <script>
+  (function () {
+    var dlg = document.getElementById("edu-dialog");
+    var openBtn = document.getElementById("edu-open");
+    if (!dlg || !openBtn) return;
+    openBtn.addEventListener("click", function () {
+      if (dlg.showModal) dlg.showModal(); else window.location.href = "tel:+14044089063";
+    });
+    document.getElementById("edu-close").addEventListener("click", function () { dlg.close(); });
+    dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
+  })();
+  </script>
 
   <!-- DRONE HOSPITAL DAILY -->
   <aside class="daily-band" aria-label="Drone Hospital Daily: today's drone headlines">
@@ -1215,7 +1282,7 @@
     <div class="footer-logo">PQ <span>ROBOTICS</span></div>
     <ul class="footer-links">
       <li><a href="/drone-repair-atlanta.html"><span style="color:#e53e3e;margin-right:5px;font-size:15px">✚</span>Drone Hospital</a></li>
-      <li><a href="/drone-news.html"><span class="nav-daily-cross" aria-hidden="true">✚</span>Daily</a></li>
+      <li><a href="/drone-news.html" title="Drone Hospital Daily" aria-label="DHD, Drone Hospital Daily"><svg class="nav-dhd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18h-5"/><path d="M18 14h-8"/><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><rect width="8" height="4" x="10" y="6" rx="1"/></svg>DHD</a></li>
       <li><a href="footage.html">Footage</a></li>
       <li><a href="#about">About Us</a></li>
       <li><a href="#contact">Contact</a></li>
