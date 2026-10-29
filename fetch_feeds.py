@@ -36,9 +36,9 @@ FEEDS = [
      "url": google_news("Georgia drone when:30d")},
     {"label": "Drone headlines today (Google News)", "topic": None, "max": 40,
      "url": google_news("drones when:1d")},
-    {"label": "DroneXL", "source": "DroneXL", "topic": None, "max": 15,
+    {"label": "DroneXL", "source": "DroneXL", "drone_only": True, "topic": None, "max": 15,
      "url": "https://dronexl.co/feed.xml"},
-    {"label": "DroneLife", "source": "DroneLife", "topic": None, "max": 10,
+    {"label": "DroneLife", "source": "DroneLife", "drone_only": True, "topic": None, "max": 10,
      "url": "https://dronelife.com/feed/"},
 
     # ---- Robotics
@@ -56,7 +56,7 @@ FEEDS = [
      "url": google_news("DJI drone when:14d")},
     {"label": "Consumer use (Google News)", "topic": "consumer", "max": 20,
      "url": google_news('(drone OR drones) (consumer OR hobbyist OR delivery OR "drone show" OR photography) when:7d')},
-    {"label": "DroneDJ", "source": "DroneDJ", "topic": "consumer", "max": 15,
+    {"label": "DroneDJ", "source": "DroneDJ", "drone_only": True, "topic": "consumer", "max": 15,
      "url": "https://dronedj.com/feed/"},
 
     # ---- Laws & politics
@@ -122,7 +122,7 @@ def plain(text):
 def snippet(desc, title):
     """Short plain-text summary. Google News descriptions only repeat the headline, so those come back empty."""
     text = plain(desc)
-    t = re.sub(r"\s+[-|]\s+[^-|]{2,48}$", "", plain(title))
+    t = re.sub(r"\s+[-|]\s+(?:(?!\s[-|]\s).){2,60}$", "", plain(title))
     if not text or text.lower().startswith(t[:40].lower()):
         return ""
     if len(text) > SNIPPET_CHARS:
@@ -131,13 +131,28 @@ def snippet(desc, title):
 
 
 def headline_only(title):
-    return re.sub(r"\s+[-|]\s+[^-|]{2,60}$", "", title)
+    return re.sub(r"\s+[-|]\s+(?:(?!\s[-|]\s).){2,60}$", "", title)
 
 
 def is_english(title):
     """Keep English headlines. Publisher names in other scripts are fine; the headline itself must be Latin script."""
     letters = re.findall(r"[^\W\d_]", headline_only(title))
     return not letters or sum(c.isascii() for c in letters) / len(letters) >= 0.8
+
+
+DRONE_PUBS = {"dronexl", "dronelife", "dronedj"}
+SOCIAL = {"facebook", "instagram", "tiktok", "youtube", "x", "twitter", "linkedin", "reddit", "threads", "pinterest"}
+
+
+def publisher(title, source):
+    """Publisher name from the feed, or from a " - Publisher" headline suffix, lowercased letters only."""
+    suffix = title[len(headline_only(title)):]
+    return re.sub(r"[^a-z]", "", (source or suffix).lower())
+
+
+def from_drone_pub(title, source):
+    """True when Google News carries a story from a drone-only publication ("... - DroneXL")."""
+    return publisher(title, source) in DRONE_PUBS
 
 
 def text_of(el):
@@ -174,7 +189,11 @@ def parse_feed(xml_bytes, feed):
         if dt is not None and dt < CUTOFF:
             continue
         title = plain(it["title"])
-        if not DRONE.search(title + " " + plain(it["description"])):
+        # The headline itself has to be about drones. Google Alerts often match "drone" in a site menu
+        # or a passing mention; drone-only publications are trusted for every story they run.
+        if not (feed.get("drone_only") or from_drone_pub(title, it["source"]) or DRONE.search(headline_only(title))):
+            continue
+        if publisher(title, it["source"]) in SOCIAL:        # social media posts aren't news stories
             continue
         if not is_english(title) or MARKET_REPORT.search(title):
             continue
@@ -207,7 +226,7 @@ def real_url(link):
 
 
 def title_key(title):
-    t = re.sub(r"\s+[-|]\s+[^-|]{2,48}$", "", title or "")   # drop " - Publisher" suffix
+    t = re.sub(r"\s+[-|]\s+(?:(?!\s[-|]\s).){2,60}$", "", title or "")   # drop " - Publisher" suffix
     return re.sub(r"[^a-z0-9]", "", t.lower())[:80]
 
 

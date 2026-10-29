@@ -243,6 +243,16 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .site-nap a{color:inherit;text-decoration:none}
 
 /* Tablet */
+/* Desktop: flight conditions live in the top-left box only. Narrower screens hide that box and keep this one. */
+@media (min-width:1181px){
+  #wx{display:none}
+  .rail .house{margin-top:0}
+  /* topic pages carry their own pitch, so with the weather gone the right column would be empty */
+  .fold.no-rail{grid-template-columns:minmax(0,1fr) minmax(0,3.15fr);grid-template-areas:"left lead"}
+  .fold.no-rail .rail{display:none}
+  .fold.no-rail .lead{border-right:0;padding-right:0}
+  .fold.no-rail .lead-body{max-width:68ch}
+}
 @media (max-width:1020px){
   .fold{grid-template-columns:1fr 1fr;grid-template-areas:"lead lead" "left rail"}
   .lead{border:0;padding:0 0 24px;margin-bottom:24px;border-bottom:1px solid var(--ink)}
@@ -713,6 +723,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
     var briefsBlock = document.getElementById("briefs-block");
     var wireSec = document.getElementById("wire-sec");
     document.querySelector(".house").hidden = view !== "all";   // topic pages carry their own pitch
+    document.querySelector(".fold").classList.toggle("no-rail", view !== "all");
 
     if (!list.length) {
       leadEl.innerHTML = emptyHtml();
@@ -720,7 +731,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
       renderPubs([]);
       return;
     }
-    var lead = list.reduce(function (a, b) { return score(b) > score(a) ? b : a; });
+    // the lead always has a drone headline
+    var leadPool = list.filter(function (s) { return DRONE.test(s.title); });
+    var lead = (leadPool.length ? leadPool : list).reduce(function (a, b) { return score(b) > score(a) ? b : a; });
     var rest = list.filter(function (s) { return s !== lead; });
     var seconds = rest.slice(0, 2), briefs = rest.slice(2, 8), wire = rest.slice(8);
     leadEl.innerHTML = leadHtml(lead) + (seconds.length ? '<div class="seconds">' + seconds.map(storyHtml).join("") + "</div>" : "");
@@ -796,7 +809,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
     var title = toText(raw.title);
     var url = realUrl(raw.url || raw.link || "");
     var source = toText(raw.source || "");
-    var m = title.match(/^(.*\S)\s+[-–—|]\s+([^-–—|]{2,60})$/);
+    var m = title.match(/^(.*\S)\s+[-–—|]\s+((?:(?!\s[-–—|]\s).){2,60})$/);
     if (m) { title = m[1]; if (!source) source = m[2].trim(); }
     if (!source) source = pubFromUrl(url);
     var snippet = cleanSnippet(raw.description);
