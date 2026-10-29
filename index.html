@@ -808,31 +808,68 @@
 
     .cred-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
     }
 
     .cred-card {
       background: var(--bg-panel);
       border: 1px solid var(--border);
+      border-top: 2px solid var(--accent);
       border-radius: var(--radius-md);
-      padding: 1.25rem 1.5rem;
+      padding: 1.5rem 1.5rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
     }
 
-    .cred-card svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 1.5; margin-bottom: 0.75rem; }
+    .cred-kicker {
+      font-family: var(--font-display);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #e53935;
+      margin-bottom: 0.35rem;
+    }
 
     .cred-card h4 {
       font-family: var(--font-display);
-      font-size: 13px;
-      font-weight: 500;
+      font-size: 1.15rem;
+      font-weight: 600;
+      line-height: 1.3;
       color: var(--text-primary);
-      margin-bottom: 0.3rem;
+      margin: 0 0 1.1rem;
     }
 
+    .cred-media {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at 50% 40%, rgba(58,123,213,0.10), transparent 70%), var(--bg-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-bottom: 1.1rem;
+    }
+
+    .cred-media svg { width: 56px; height: 56px; stroke: var(--accent); fill: none; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* When a photo is added it covers the icon */
+    .cred-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: var(--bg-dark); opacity: 0; transition: opacity 0.3s; }
+    .cred-media img.loaded { opacity: 1; }
+
     .cred-card p {
-      font-size: 12px;
-      color: var(--text-muted);
-      line-height: 1.6;
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    @media (max-width: 900px) {
+      .cred-grid { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
     }
 
     /* ── CONTACT ── */
@@ -1261,16 +1298,39 @@
       </div>
 
       <div class="cred-grid">
-        <div class="cred-card">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <h4>FAA Part 107 certified</h4>
-          <p>Fully licensed for commercial drone operations in the US, including Remote ID compliant flights.</p>
-        </div>
-        <div class="cred-card">
-          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <h4>Atlanta-based</h4>
-          <p>Serving Georgia and surrounding states for maintenance and shoots.</p>
-        </div>
+        <article class="cred-card">
+          <div class="cred-head">
+            <div class="cred-kicker">Licensed</div>
+            <h4>Part 107 Certified</h4>
+          </div>
+          <div class="cred-media">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            <img src="assets/images/cred-part107.jpg" alt="FAA Part 107 remote pilot certificate" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()">
+          </div>
+          <p>Licensed by the FAA for commercial drone operations in the US, including Remote ID compliant flights.</p>
+        </article>
+        <article class="cred-card">
+          <div class="cred-head">
+            <div class="cred-kicker">Qualified</div>
+            <h4>Intelligent Systems Engineer</h4>
+          </div>
+          <div class="cred-media">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
+            <img src="assets/images/cred-iu.png" alt="Indiana University" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()">
+          </div>
+          <p>B.S. in Intelligent Systems Engineering from Indiana University. An engineer&rsquo;s approach to every repair, build and lesson.</p>
+        </article>
+        <article class="cred-card">
+          <div class="cred-head">
+            <div class="cred-kicker">Locally owned</div>
+            <h4>Born and Raised in Atlanta</h4>
+          </div>
+          <div class="cred-media">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.5c-1.6-1.1-3.4-1.4-5-.9C4.4 7.4 3 10 3 13c0 4.4 3.9 8 9 8s9-3.6 9-8c0-3-1.4-5.6-4-6.4-1.6-.5-3.4-.2-5 .9z"/><path d="M12 7.5c-.9 2.6-.9 6.8 1.2 10.5"/><path d="M12 7.5c.2-1.8 1.2-3.4 2.8-4.2"/><path d="M13.6 4.4c1.9-1.3 4.3-1.1 5.4.3-1.7 1.3-4 1.4-5.4-.3z"/></svg>
+            <img src="assets/images/cred-atlanta.jpg" alt="Georgia peach" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()">
+          </div>
+          <p>Owner-operated and Atlanta born and raised. Serving Georgia and surrounding states for repairs, lessons and shoots.</p>
+        </article>
       </div>
     </div>
   </div>
