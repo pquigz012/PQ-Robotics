@@ -280,6 +280,67 @@
     .edu-dialog a:focus-visible, .edu-close:focus-visible, .hero-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 
+    /* ── INSTAGRAM CARD ── */
+    .ig-card {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      padding: 12px 22px 12px 12px;
+      border: 1.5px solid transparent;
+      border-radius: 20px;
+      background:
+        linear-gradient(var(--bg-panel), var(--bg-panel)) padding-box,
+        linear-gradient(135deg, #feda75, #fa7e1e 30%, #d62976 62%, #962fbf 85%, #4f5bd5) border-box;
+      box-shadow: 0 12px 40px rgba(214, 41, 118, 0.14);
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .ig-card:hover { transform: translateY(-2px); box-shadow: 0 16px 48px rgba(214, 41, 118, 0.24); }
+    .ig-card:focus-visible { outline: 2px solid #fa7e1e; outline-offset: 4px; }
+    .ig-qr { flex: none; line-height: 0; }
+    .ig-qr img { width: 132px; height: 132px; display: block; }
+    .ig-badge { display: none; }
+    .ig-text { display: flex; flex-direction: column; gap: 3px; }
+    .ig-kicker {
+      font-family: var(--font-display);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+    .ig-handle { font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; line-height: 1.2; }
+    .ig-hint { font-size: 12.5px; color: var(--text-secondary); }
+    .ig-hint-tap { display: none; }
+
+    /* Phones and tablets can't scan their own screen: show a tap-to-open button instead */
+    @media (max-width: 768px), (hover: none) and (pointer: coarse) {
+      .ig-qr, .ig-hint-scan { display: none; }
+      .ig-hint-tap { display: inline; }
+      .ig-badge {
+        display: grid; place-items: center; flex: none;
+        width: 46px; height: 46px; border-radius: 14px;
+        background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+      }
+      .ig-badge svg { width: 26px; height: 26px; fill: none; stroke: #fff; stroke-width: 2; }
+      .ig-badge svg .dot { fill: #fff; stroke: none; }
+      .ig-card { padding: 12px 18px 12px 12px; }
+      .ig-handle { font-size: 1.1rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { .ig-card { transition: none; } .ig-card:hover { transform: none; } }
+
+    .ig-band { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg-dark); }
+    .ig-band-inner {
+      max-width: 1100px; margin: 0 auto; padding: 3.5rem 2.5rem;
+      display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 1.5rem 3rem;
+    }
+    .ig-band-title { font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; line-height: 1.15; color: var(--text-primary); margin: 0.3rem 0 0.6rem; }
+    .ig-band-link { color: var(--accent); text-decoration: none; white-space: nowrap; }
+    .ig-band-link:hover { text-decoration: underline; }
+    @media (max-width: 768px) {
+      .ig-band-inner { grid-template-columns: 1fr; padding: 2.5rem 1.25rem; }
+    }
+
     /* ── DRONE HOSPITAL DAILY BAND ── */
     .daily-band {
       background: #EEF1F4;
@@ -1114,72 +1175,27 @@
     </div>
   </section>
 
-  <!-- FOOTAGE -->
-  <div class="section-full" id="footage">
-    <div class="section-full-inner">
-      <div class="footage-intro">
-        <div>
-          <div class="section-eyebrow">Footage</div>
-          <h2>Aerial Cinematography</h2>
-          <p class="section-sub" style="margin-bottom:0">Licensed and FAA Part 107 compliant. Available for real estate, events, construction, and creative productions.</p>
-        </div>
-        <a href="#contact" class="btn-ghost" style="flex-shrink:0">Book a Shoot</a>
+  <!-- INSTAGRAM -->
+  <div class="ig-band" id="footage">
+    <div class="ig-band-inner">
+      <div class="ig-band-text">
+        <div class="section-eyebrow">On Instagram</div>
+        <p class="ig-band-title">See our latest flights</p>
+        <p class="section-sub" style="margin-bottom:0">Aerial footage, builds and repairs from the PQ Robotics shop. <a href="footage.html" class="ig-band-link">Full footage gallery &rarr;</a></p>
       </div>
-
-      <!-- Location tabs -->
-      <div class="location-tabs">
-        <button class="loc-tab active" onclick="switchLocation('foiling', this)">
-          Watersports
-        </button>
-        <button class="loc-tab" onclick="switchLocation('austin', this)">
-          Racing
-        </button>
-        <button class="loc-tab" onclick="switchLocation('sailing', this)">
-          Special Events
-        </button>
-        <button class="loc-tab" onclick="switchLocation('realestate', this)">
-          Real Estate
-        </button>
-      </div>
-
-      <!-- Main player -->
-      <div id="main-player" style="position:relative;width:100%;aspect-ratio:16/9;border-radius:var(--radius-lg);overflow:hidden;background:#000;margin-bottom:1rem">
-        <iframe
-          id="main-iframe"
-          width="100%"
-          height="100%"
-          data-src="https://www.youtube.com/embed/y-3xkvc2WIM?controls=1&autoplay=1&mute=1&loop=1&playlist=y-3xkvc2WIM&start=3&rel=0&modestbranding=1"
-          title="Lake Lanier: Foiling 1"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-          style="position:absolute;inset:0;width:100%;height:100%">
-        </iframe>
-      </div>
-
-      <!-- Location subtitle -->
-      <div id="location-subtitle" style="margin-bottom:0.75rem;font-family:var(--font-display);font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted)">Lake Lanier, GA · Foiling</div>
-
-      <!-- Thumbnail strip — horizontal scroll slider -->
-      <div style="position:relative">
-        <div id="thumb-strip" style="display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:none;-ms-overflow-style:none">
-        </div>
-        <!-- Fade edges -->
-        <div style="pointer-events:none;position:absolute;top:0;right:0;bottom:6px;width:60px;background:linear-gradient(to left,var(--bg-deep),transparent)"></div>
-      </div>
-
-      <!-- Photo grid (shown per location) -->
-      <div id="photo-grid" style="display:none;margin-top:2rem">
-        <div style="font-size:11px;letter-spacing:0.16em;color:var(--text-muted);text-transform:uppercase;margin-bottom:0.9rem;font-family:var(--font-display)">Photos</div>
-        <div id="photo-grid-inner" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px"></div>
-      </div>
-
-      <!-- Lightbox -->
-      <div id="lightbox" onclick="closeLightbox()" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.88);backdrop-filter:blur(6px);align-items:center;justify-content:center;cursor:zoom-out">
-        <img id="lightbox-img" src="" alt="" style="max-width:92vw;max-height:88vh;border-radius:var(--radius-lg);box-shadow:0 24px 80px rgba(0,0,0,0.7);object-fit:contain">
-        <button onclick="closeLightbox()" style="position:fixed;top:20px;right:24px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:50%;width:38px;height:38px;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1">✕</button>
-      </div>
+      <!-- Instagram: QR to scan on a computer, a tap-to-open button on phones and tablets -->
+      <a class="ig-card" href="https://www.instagram.com/pqrobotics/" target="_blank" rel="noopener" aria-label="Follow PQ Robotics on Instagram, @pqrobotics">
+        <span class="ig-qr"><img src="assets/images/instagram-qr.png" width="132" height="132" alt="Instagram QR code for @pqrobotics"></span>
+        <span class="ig-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" class="dot"/></svg>
+        </span>
+        <span class="ig-text">
+          <span class="ig-kicker">Follow PQ Robotics</span>
+          <span class="ig-handle">@pqrobotics</span>
+          <span class="ig-hint ig-hint-scan">Scan with your phone camera</span>
+          <span class="ig-hint ig-hint-tap">Open in Instagram</span>
+        </span>
+      </a>
     </div>
   </div>
 
@@ -1303,183 +1319,6 @@
 </footer>
 
   <script>
-    // ── Location libraries ──────────────────────────────────────────────────
-    const libraries = {
-      austin: {
-        videos: [
-          { id: 'GPIvTBCQQVc', label: 'Austin: COTA 2025' },
-          { id: 'vEFhLO_AttM', label: 'Austin: COTA Vol. 2' },
-        ],
-        photos: [
-          { src: 'assets/images/cinematic_footage/Turn1_GT3.png',      label: 'Turn 1: GT3' },
-          { src: 'assets/images/cinematic_footage/Downtown_Tower.png',  label: 'Downtown Tower' },
-          { src: 'assets/images/cinematic_footage/Finish_line.png',     label: 'Finish Line' },
-          { src: 'assets/images/cinematic_footage/GT3&Flag.png',        label: 'GT3 & Flag' },
-        ]
-      },
-      sailing: {
-        videos: [
-          { id: 'fC0gNgaaUlE', label: 'Sailing 1' },
-          { id: 'i75sZMDeH9w', label: 'Sailing 2' },
-          { id: 'SxxkvKRsjI8', label: 'Sailing 3' },
-          { id: 'XHGkpU6_lOU', label: 'Sailing 4' },
-        ]
-      },
-      realestate: {
-        videos: [
-          { id: 'omftV84pbxY', label: 'Real Estate 1' },
-          { id: 'MGUXpKn2LHg', label: 'Real Estate 2' },
-        ]
-      },
-      foiling: {
-        videos: [
-          { id: 'y-3xkvc2WIM', label: 'Foiling 1' },
-          { id: 'cPvdT7yULa0', label: 'Foiling 2' },
-          { id: '2zbzFx8yzaw', label: 'Foiling 3' },
-          { id: 'WI3ggBwCP0M', label: 'Foiling 4' },
-        ],
-        photos: [
-          { src: 'assets/images/cinematic_footage/solo_farshot3.JPG', label: 'Solo Far Shot' },
-          { src: 'assets/images/cinematic_footage/boat_hang2.JPG',    label: 'Boat Hang' },
-          { src: 'assets/images/cinematic_footage/Boardprep.JPG',     label: 'Board Prep' },
-        ]
-      }
-    };
-
-    function buildPhotoGrid(locationKey) {
-      const lib = libraries[locationKey];
-      const grid = document.getElementById('photo-grid');
-      const inner = document.getElementById('photo-grid-inner');
-      inner.innerHTML = '';
-
-      if (!lib.photos || lib.photos.length === 0) {
-        grid.style.display = 'none';
-        return;
-      }
-
-      lib.photos.forEach(p => {
-        const div = document.createElement('div');
-        div.style.cssText = 'position:relative;aspect-ratio:16/9;border-radius:var(--radius-md);overflow:hidden;cursor:zoom-in;background:var(--bg-card)';
-        div.onclick = () => openLightbox(p.src, p.label);
-        div.innerHTML = `
-          <img src="${p.src}" alt="${p.label}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.3s" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
-          <span style="position:absolute;bottom:8px;left:10px;color:#fff;font-size:11px;font-family:var(--font-display);text-shadow:0 1px 4px rgba(0,0,0,0.9)">${p.label}</span>`;
-        inner.appendChild(div);
-      });
-
-      grid.style.display = 'block';
-    }
-
-    function openLightbox(src, alt) {
-      const lb = document.getElementById('lightbox');
-      document.getElementById('lightbox-img').src = src;
-      document.getElementById('lightbox-img').alt = alt;
-      lb.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox() {
-      document.getElementById('lightbox').style.display = 'none';
-      document.body.style.overflow = '';
-    }
-
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
-
-    function buildThumbStrip(locationKey) {
-      const strip = document.getElementById('thumb-strip');
-      const lib = libraries[locationKey];
-      strip.innerHTML = '';
-
-      lib.videos.forEach((v, i) => {
-        const div = document.createElement('div');
-        div.className = 'footage-thumb' + (i === 0 ? ' active-thumb' : '');
-        if (i === 0) div.style.borderColor = 'var(--accent)';
-
-        if (v.placeholder) {
-          div.innerHTML = `
-            <div style="position:absolute;inset:0;background:var(--bg-card);border-radius:var(--radius-md);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              <span style="font-size:11px;color:var(--text-muted)">Coming soon</span>
-            </div>
-            <span class="footage-label" style="position:absolute;bottom:8px;left:10px;color:var(--text-muted)">${v.label}</span>`;
-        } else {
-          div.onclick = function() { swapVideo(v.id, v.label, this); };
-          div.innerHTML = `
-            <img src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" alt="${v.label}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md)">
-            <div style="position:absolute;inset:0;background:rgba(0,0,0,0.35);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style="opacity:0.9"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            </div>
-            <span class="footage-label" style="position:absolute;bottom:8px;left:10px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.8)">${v.label}</span>`;
-        }
-
-        strip.appendChild(div);
-      });
-    }
-
-    function setMainVideo(locationKey) {
-      const first = libraries[locationKey].videos[0];
-      const iframe = document.getElementById('main-iframe');
-      const player = document.getElementById('main-player');
-
-      if (first.placeholder) {
-        iframe.src = '';
-        iframe.removeAttribute('data-src');
-        iframe.style.display = 'none';
-        let ph = document.getElementById('main-placeholder');
-        if (!ph) {
-          ph = document.createElement('div');
-          ph.id = 'main-placeholder';
-          ph.style.cssText = 'position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--bg-card);border-radius:var(--radius-lg)';
-          ph.innerHTML = `<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.2"><polygon points="5 3 19 12 5 21 5 3"/></svg><span style="font-family:var(--font-display);font-size:14px;color:var(--text-muted)">Videos coming soon</span>`;
-          player.appendChild(ph);
-        }
-        ph.style.display = 'flex';
-      } else {
-        const ph = document.getElementById('main-placeholder');
-        if (ph) ph.style.display = 'none';
-        iframe.style.display = '';
-        const newSrc = `https://www.youtube.com/embed/${first.id}?controls=1&autoplay=1&mute=1&loop=1&playlist=${first.id}&start=3&rel=0&modestbranding=1`;
-        iframe.dataset.src = newSrc;
-        // If player is already in view, load immediately
-        const rect = player.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-          iframe.src = newSrc;
-        } else {
-          iframe.src = '';
-        }
-        iframe.title = first.label;
-      }
-    }
-
-    const locationSubtitles = {
-      foiling:     'Lake Lanier, GA \u00b7 Foiling',
-      austin:      'Austin, TX \u00b7 Circuit of the Americas',
-      sailing:     'Buford, GA \u00b7 Lake Lanier Sailing',
-      realestate:  'Real Estate \u00b7 Property Showcase',
-    };
-
-    function switchLocation(key, tabEl) {
-      document.querySelectorAll('.loc-tab').forEach(t => t.classList.remove('active'));
-      tabEl.classList.add('active');
-      document.getElementById('location-subtitle').textContent = locationSubtitles[key];
-      buildThumbStrip(key);
-      setMainVideo(key);
-      buildPhotoGrid(key);
-    }
-
-    // Footage thumbnail swap
-    function swapVideo(videoId, title, thumbEl) {
-      const iframe = document.getElementById('main-iframe');
-      const ph = document.getElementById('main-placeholder');
-      if (ph) ph.style.display = 'none';
-      iframe.style.display = '';
-      iframe.src = `https://www.youtube.com/embed/${videoId}?controls=1&autoplay=1&mute=1&loop=1&playlist=${videoId}&rel=0&modestbranding=1`;
-      iframe.title = title;
-      document.querySelectorAll('.footage-thumb').forEach(t => t.classList.remove('active-thumb'));
-      thumbEl.classList.add('active-thumb');
-      thumbEl.style.borderColor = 'var(--accent)';
-    }
-
     // Active nav link on scroll
     const sections = document.querySelectorAll('[id]');
     const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta)');
@@ -1511,22 +1350,6 @@
         e.target.reset();
       }, 3000);
     }
-
-    // Init default tab (Foiling) on page load
-    buildThumbStrip('foiling');
-    buildPhotoGrid('foiling');
-
-    // Autoplay only when the player scrolls into view
-    const playerObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const iframe = document.getElementById('main-iframe');
-        if (entry.isIntersecting && iframe.dataset.src && !iframe.src) {
-          iframe.src = iframe.dataset.src;
-        }
-      });
-    }, { threshold: 0.4 });
-
-    playerObserver.observe(document.getElementById('main-player'));
   </script>
 
 
