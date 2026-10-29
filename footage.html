@@ -124,6 +124,66 @@
       max-width: 520px;
       line-height: 1.7;
     }
+    .page-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+      column-gap: 2.5rem;
+    }
+    .page-intro { min-width: 0; }
+
+    /* ── INSTAGRAM CARD ── */
+    .ig-card {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      padding: 12px 22px 12px 12px;
+      border: 1.5px solid transparent;
+      border-radius: 20px;
+      background:
+        linear-gradient(var(--bg-panel), var(--bg-panel)) padding-box,
+        linear-gradient(135deg, #feda75, #fa7e1e 30%, #d62976 62%, #962fbf 85%, #4f5bd5) border-box;
+      box-shadow: 0 12px 40px rgba(214, 41, 118, 0.14);
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .ig-card:hover { transform: translateY(-2px); box-shadow: 0 16px 48px rgba(214, 41, 118, 0.24); }
+    .ig-card:focus-visible { outline: 2px solid #fa7e1e; outline-offset: 4px; }
+    .ig-qr { flex: none; line-height: 0; }
+    .ig-qr img { width: 132px; height: 132px; display: block; }
+    .ig-badge { display: none; }
+    .ig-text { display: flex; flex-direction: column; gap: 3px; }
+    .ig-kicker {
+      font-family: var(--font-display);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+    .ig-handle { font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; line-height: 1.2; }
+    .ig-hint { font-size: 12.5px; color: var(--text-secondary); }
+    .ig-hint-tap { display: none; }
+
+    /* Phones and tablets can't scan their own screen: show a tap-to-open button instead */
+    @media (max-width: 768px), (hover: none) and (pointer: coarse) {
+      .ig-qr, .ig-hint-scan { display: none; }
+      .ig-hint-tap { display: inline; }
+      .ig-badge {
+        display: grid; place-items: center; flex: none;
+        width: 46px; height: 46px; border-radius: 14px;
+        background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+      }
+      .ig-badge svg { width: 26px; height: 26px; fill: none; stroke: #fff; stroke-width: 2; }
+      .ig-badge svg .dot { fill: #fff; stroke: none; }
+      .ig-card { padding: 12px 18px 12px 12px; }
+      .ig-handle { font-size: 1.1rem; }
+    }
+    @media (max-width: 768px) {
+      .page-header { grid-template-columns: 1fr; row-gap: 1.25rem; }
+      .ig-card { justify-self: stretch; }
+    }
+    @media (prefers-reduced-motion: reduce) { .ig-card { transition: none; } .ig-card:hover { transform: none; } }
 
     /* ── SECTIONS ── */
     .footage-sections {
@@ -339,9 +399,25 @@
 
   <!-- PAGE HEADER -->
   <div class="page-header">
-    <div class="page-eyebrow">Footage</div>
-    <h1>Aerial Cinematography</h1>
-    <p>Licensed and FAA Part 107 compliant. Available for real estate, events, construction, and creative productions.</p>
+    <div class="page-intro">
+      <div class="page-eyebrow">Footage</div>
+      <h1>Aerial Cinematography</h1>
+      <p>Licensed and FAA Part 107 compliant. Available for real estate, events, construction, and creative productions.</p>
+    </div>
+
+    <!-- Instagram: QR to scan on a computer, a tap-to-open button on phones and tablets -->
+    <a class="ig-card" href="https://www.instagram.com/pqrobotics/" target="_blank" rel="noopener" aria-label="Follow PQ Robotics on Instagram, @pqrobotics">
+      <span class="ig-qr"><img src="assets/images/instagram-qr.png" width="132" height="132" alt="Instagram QR code for @pqrobotics"></span>
+      <span class="ig-badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" class="dot"/></svg>
+      </span>
+      <span class="ig-text">
+        <span class="ig-kicker">Follow PQ Robotics</span>
+        <span class="ig-handle">@pqrobotics</span>
+        <span class="ig-hint ig-hint-scan">Scan with your phone camera</span>
+        <span class="ig-hint ig-hint-tap">Open in Instagram</span>
+      </span>
+    </a>
   </div>
 
   <!-- LIGHTBOX -->
