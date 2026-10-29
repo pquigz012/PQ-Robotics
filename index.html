@@ -27,6 +27,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -238,6 +239,132 @@
     }
 
     .btn-ghost:hover { color: var(--text-primary); border-color: rgba(255,255,255,0.25); }
+
+
+    /* ── DRONE HOSPITAL DAILY BAND ── */
+    .daily-band {
+      background: #EEF1F4;
+      color: #0A1628;
+      border-bottom: 1px solid var(--border);
+    }
+    .daily-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 2.5rem 2.1rem;
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 0 2.5rem;
+      align-items: stretch;
+    }
+    .daily-mast {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid #B3BCC8;
+      padding-right: 2.5rem;
+    }
+    .daily-kicker {
+      font: 700 11px/1 'DM Sans', sans-serif;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #C62828;
+      margin-bottom: 0.6rem;
+    }
+    .daily-name {
+      font-family: 'UnifrakturMaguntia', 'Old English Text MT', serif;
+      font-size: 2.15rem;
+      line-height: 1;
+      color: #0A1628;
+      text-decoration: none;
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.18em;
+    }
+    .daily-name svg { width: 0.8em; height: 0.8em; flex: none; }
+    .daily-date {
+      font: 500 12px/1.4 'DM Sans', sans-serif;
+      color: #56637A;
+      border-top: 1px solid #0A1628;
+      border-bottom: 1px solid #0A1628;
+      padding: 5px 0;
+      margin: 0.85rem 0 1.1rem;
+    }
+    .daily-btn {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #C62828;
+      color: #fff;
+      text-decoration: none;
+      font: 600 13px/1 'DM Sans', sans-serif;
+      letter-spacing: 0.04em;
+      padding: 12px 18px;
+      border-radius: 6px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .daily-btn:hover { background: #E53935; transform: translateY(-1px); }
+    .daily-btn:focus-visible, .daily-story a:focus-visible, .daily-name:focus-visible { outline: 2px solid #24589F; outline-offset: 3px; }
+    .daily-stories {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+      margin: 0;
+      padding: 0;
+    }
+    .daily-story {
+      padding: 0.2rem 1.5rem;
+      border-left: 1px solid #B3BCC8;
+      display: flex;
+      flex-direction: column;
+    }
+    .daily-story:first-child { border-left: none; padding-left: 0; }
+    .daily-tag {
+      font: 700 10.5px/1 'DM Sans', sans-serif;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #C62828;
+      margin-bottom: 0.55rem;
+    }
+    .daily-story a {
+      font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+      font-weight: 700;
+      font-size: 1.12rem;
+      line-height: 1.25;
+      color: #0A1628;
+      text-decoration: none;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .daily-story a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .daily-meta {
+      font: 400 12px/1.4 'DM Sans', sans-serif;
+      color: #56637A;
+      margin-top: auto;
+      padding-top: 0.6rem;
+    }
+    .daily-meta b { font-weight: 600; color: #34425A; }
+    .daily-empty {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 1.15rem;
+      line-height: 1.4;
+      color: #34425A;
+      align-self: center;
+    }
+    .nav-daily-cross { color: #e53e3e; margin-right: 5px; font-size: 15px; }
+    @media (max-width: 900px) {
+      .daily-inner { grid-template-columns: 1fr; padding: 1.6rem 1.25rem 1.8rem; }
+      .daily-mast { border-right: none; padding-right: 0; border-bottom: 1px solid #B3BCC8; padding-bottom: 1.2rem; margin-bottom: 0.4rem; }
+      .daily-stories { grid-template-columns: 1fr; }
+      .daily-story, .daily-story:first-child { border-left: none; padding: 0.95rem 0; border-top: 1px solid #B3BCC8; }
+      .daily-story:first-child { border-top: none; }
+      .daily-story a { -webkit-line-clamp: 3; }
+      .daily-btn { align-self: stretch; justify-content: center; }
+    }
 
     /* ── STATS BAR ── */
     .stats-bar {
@@ -777,6 +904,7 @@
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="/drone-repair-atlanta.html"><span style="color:#e53e3e;margin-right:5px;font-size:15px">✚</span>Drone Hospital</a></li>
+      <li><a href="/drone-news.html"><span class="nav-daily-cross" aria-hidden="true">✚</span>Daily</a></li>
       <li><a href="footage.html">Footage</a></li>
       <li><a href="#about">About Us</a></li>
     </ul>
@@ -814,6 +942,22 @@
       <span class="stat-label">FAA Certified</span>
     </div>
   </div>
+
+
+  <!-- DRONE HOSPITAL DAILY -->
+  <aside class="daily-band" aria-label="Drone Hospital Daily: today's drone headlines">
+    <div class="daily-inner">
+      <div class="daily-mast">
+        <div class="daily-kicker">Today&rsquo;s paper</div>
+        <a class="daily-name" href="/drone-news.html"><span>Drone Hospital</span><svg viewBox="-140 -140 280 280" aria-hidden="true"><rect x="-50" y="-132" width="100" height="264" rx="16" fill="#C62828"/><rect x="-132" y="-50" width="264" height="100" rx="16" fill="#C62828"/><rect x="-20" y="-20" width="40" height="40" rx="8" fill="#0A1628"/></svg><span>Daily</span></a>
+        <div class="daily-date" id="daily-date">Atlanta&rsquo;s daily checkup on the drone world</div>
+        <a class="daily-btn" href="/drone-news.html">Read today&rsquo;s paper <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <ul class="daily-stories" id="daily-stories">
+        <li class="daily-empty">Drone headlines from Atlanta and around the world, updated through the day.</li>
+      </ul>
+    </div>
+  </aside>
 
   <!-- MAINTENANCE -->
   <section id="maintenance">
@@ -1071,6 +1215,7 @@
     <div class="footer-logo">PQ <span>ROBOTICS</span></div>
     <ul class="footer-links">
       <li><a href="/drone-repair-atlanta.html"><span style="color:#e53e3e;margin-right:5px;font-size:15px">✚</span>Drone Hospital</a></li>
+      <li><a href="/drone-news.html"><span class="nav-daily-cross" aria-hidden="true">✚</span>Daily</a></li>
       <li><a href="footage.html">Footage</a></li>
       <li><a href="#about">About Us</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -1317,33 +1462,95 @@
     playerObserver.observe(document.getElementById('main-player'));
   </script>
 
-  <!-- Floating Drone News Button -->
-  <a href="drone-news.html" style="
-    position: fixed;
-    bottom: 28px;
-    right: 28px;
-    z-index: 999;
-    background: #3a7bd5;
-    color: #fff;
-    text-decoration: none;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    padding: 11px 18px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 4px 20px rgba(58,123,213,0.35);
-    transition: opacity 0.2s, transform 0.2s;
-  " onmouseover="this.style.opacity='0.88';this.style.transform='translateY(-2px)'" onmouseout="this.style.opacity='1';this.style.transform='translateY(0)'">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/>
-      <path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/>
-    </svg>
-    Drone News
-  </a>
+
+  <script>
+  (function () {
+    var TZ = "America/New_York";
+    var DRONE = /drone|beyond-visual-line|\bbvlos\b|\buav|\buas\b|unmanned|quadcopter|multirotor|\bfpv\b|counter-drone|remote id|part 10[78]|\bDJI\b|mavic/i;
+    var LOCAL = /atlanta|georgia|\bga\b(?!-)|sandy springs|marietta|alpharetta|roswell|decatur|dunwoody|brookhaven|savannah|augusta|macon|columbus, ga|athens, ga|dekalb|fulton|cobb|gwinnett|hartsfield|peachtree/i;
+    var SOCIAL = /^(facebook|instagram|x|twitter|tiktok|reddit|youtube|linkedin|threads)\b/i;
+    var list = document.getElementById("daily-stories");
+    var dateEl = document.getElementById("daily-date");
+    var decoder = document.createElement("textarea");
+    function text(html) {
+      var s = String(html || "").replace(/<[^>]*>/g, "");
+      for (var i = 0; i < 2; i++) { decoder.innerHTML = s; s = decoder.value; }
+      return s.replace(/\s+/g, " ").trim();
+    }
+    function esc(s) {
+      return String(s).replace(/[&<>"']/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+      });
+    }
+    function realUrl(link) {
+      try {
+        var u = new URL(link);
+        if (/(^|\.)google\.com$/.test(u.hostname) && u.pathname === "/url") {
+          var t = u.searchParams.get("url") || u.searchParams.get("q");
+          if (t) return t;
+        }
+        return /^https?:$/.test(u.protocol) ? u.href : "";
+      } catch (e) { return ""; }
+    }
+    function ago(d) {
+      var m = Math.round((Date.now() - d) / 60000);
+      if (m < 2) return "Just now";
+      if (m < 60) return m + " min ago";
+      var h = Math.round(m / 60);
+      if (h < 24) return h + (h === 1 ? " hour ago" : " hours ago");
+      var days = Math.round(h / 24);
+      return days + (days === 1 ? " day ago" : " days ago");
+    }
+    function setDate() {
+      var d = new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric", timeZone: TZ });
+      dateEl.textContent = d + " \u00b7 Atlanta edition";
+    }
+    function stories(data) {
+      var seen = {};
+      return (data.items || []).map(function (r) {
+        var title = text(r.title), source = text(r.source || "");
+        var m = title.match(/^(.*\S)\s+[-\u2013\u2014|]\s+((?:(?!\s[-\u2013\u2014|]\s).){2,60})$/);
+        if (m) { title = m[1]; if (!source) source = m[2].trim(); }
+        var date = r.pubDate ? new Date(r.pubDate) : null;
+        if (date && isNaN(date)) date = null;
+        var snippet = text(r.description);
+        return { title: title, source: source, url: realUrl(r.url || r.link || ""), date: date,
+          local: (!!r.local && LOCAL.test(title + " " + snippet)) || LOCAL.test(title) };
+      }).filter(function (s) {
+        if (!s.title || !s.url || !DRONE.test(s.title)) return false;
+        if (SOCIAL.test(s.source) || SOCIAL.test(s.url.replace(/^https?:\/\/(www\.)?/, ""))) return false;
+        var k = s.title.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 80);
+        if (seen[k]) return false;
+        seen[k] = 1; return true;
+      });
+    }
+    function score(s) {
+      var hours = s.date ? (Date.now() - s.date) / 3600000 : 72;
+      return (s.local ? 3 : 0) - hours / 24;
+    }
+    function render(data) {
+      var top = stories(data).sort(function (a, b) { return score(b) - score(a); }).slice(0, 3);
+      if (!top.length) return;
+      list.innerHTML = top.map(function (s) {
+        var meta = [];
+        if (s.source) meta.push("<b>" + esc(s.source) + "</b>");
+        if (s.date) meta.push('<time datetime="' + s.date.toISOString() + '">' + ago(s.date) + "</time>");
+        return '<li class="daily-story"><div class="daily-tag">' + (s.local ? "Atlanta" : "Drone news") + "</div>" +
+          '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title) + "</a>" +
+          (meta.length ? '<div class="daily-meta">' + meta.join(" \u00b7 ") + "</div>" : "") + "</li>";
+      }).join("");
+    }
+    function load() {
+      setDate();
+      fetch("feed-cache.json?t=" + Date.now(), { cache: "no-store" })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(render)
+        .catch(function () {});
+    }
+    load();
+    setInterval(load, 10 * 60 * 1000);
+  })();
+  </script>
 
 <script type="application/ld+json">
 {
