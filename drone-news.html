@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Drone Hospital Daily | Drone News: Robotics, Military, DJI &amp; Laws | PQ Robotics</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
 <meta name="description" content="Drone Hospital Daily from PQ Robotics: drone news refreshed every hour, with topics for robotics, military, DJI and consumer drones, and drone laws and politics, plus live flight conditions for Atlanta pilots.">
 <link rel="canonical" href="https://pq-robotics.com/drone-news.html">
 <meta property="og:type" content="website">
@@ -12,7 +17,6 @@
 <meta property="og:url" content="https://pq-robotics.com/drone-news.html">
 <meta property="og:image" content="https://pq-robotics.com/assets/images/og-image.png">
 <meta name="theme-color" content="#0A1628">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230A1628'/%3E%3Crect x='38' y='14' width='24' height='72' rx='4' fill='%23C62828'/%3E%3Crect x='14' y='38' width='72' height='24' rx='4' fill='%23C62828'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400..800&family=Newsreader:ital,opsz,wght@0,6..72,400..800;1,6..72,400..600&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
@@ -422,7 +426,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
       <a href="/#contact">Contact</a>
     </nav>
     <div class="site-nap">
-      <span><b>PQ Robotics</b> &mdash; Drone Hospital</span>
+      <span><b>PQ Robotics</b> · Drone Hospital</span>
       <span>6059 Boylston Dr NE, Atlanta, GA 30328</span>
       <span><a href="tel:+14044089063">(404) 408-9063</a></span>
     </div>
@@ -952,10 +956,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
     var dawnUT = sunUT(p.y, p.m, p.d, true, 96), riseUT = sunUT(p.y, p.m, p.d, true, 90.833);
     var dawn = at(dawnUT), rise = at(riseUT);
     var set = at(sunUT(p.y, p.m, p.d, false, 90.833), riseUT), dusk = at(sunUT(p.y, p.m, p.d, false, 96), riseUT);
-    function fmt(d) { return d ? d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZone: TZ }) : "—"; }
+    function fmt(d) { return d ? d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZone: TZ }) : "n/a"; }
     var len = rise && set ? (set - rise) / 60000 : 0;
     var rows = [["First light", fmt(dawn)], ["Sunrise", fmt(rise)], ["Sunset", fmt(set)], ["Last light", fmt(dusk)],
-      ["Daylight", len ? Math.floor(len / 60) + " hr " + Math.round(len % 60) + " min" : "—"]];
+      ["Daylight", len ? Math.floor(len / 60) + " hr " + Math.round(len % 60) + " min" : "n/a"]];
     document.getElementById("alm-facts").innerHTML = rows.map(function (r) {
       return "<dt>" + r[0] + "</dt><dd>" + r[1] + "</dd>";
     }).join("");
@@ -986,13 +990,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
         else if (w > 15 || g > 20 || wet) { level = "caution"; text = "Fly with caution"; }
         else { level = "good"; text = "Good flying weather"; }
         var when = o.timestamp ? new Date(o.timestamp).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZone: TZ }) : "";
-        var r = function (n) { return n == null ? "—" : Math.round(n); };
+        var r = function (n) { return n == null ? "Not reported" : Math.round(n); };
         var rows = [
-          ["Sky", sky ? esc(sky) : "—"],
-          ["Temperature", tempF == null ? "—" : r(tempF) + "°F"],
-          ["Wind", wind == null ? "—" : (w < 1 ? "Calm" : r(wind) + " mph" + (dir ? " " + dir : ""))],
+          ["Sky", sky ? esc(sky) : "Not reported"],
+          ["Temperature", tempF == null ? "Not reported" : r(tempF) + "°F"],
+          ["Wind", wind == null ? "Not reported" : (w < 1 ? "Calm" : r(wind) + " mph" + (dir ? " " + dir : ""))],
           ["Gusts", gust == null ? "None reported" : r(gust) + " mph"],
-          ["Visibility", visMi == null ? "—" : (visMi >= 10 ? "10+ mi" : visMi.toFixed(1) + " mi")]
+          ["Visibility", visMi == null ? "Not reported" : (visMi >= 10 ? "10+ mi" : visMi.toFixed(1) + " mi")]
         ];
         body.innerHTML = '<p class="verdict ' + level + '">' + text + "</p>" +
           '<dl class="facts">' + rows.map(function (x) { return "<dt>" + x[0] + "</dt><dd>" + x[1] + "</dd>"; }).join("") + "</dl>" +
