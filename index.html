@@ -984,6 +984,51 @@
     .cred-media img.loaded { opacity: 1; }
     .cred-media img.full-color { filter: none; }
 
+    /* Licensed and Qualified: 2x2 logo grid inside the picture window */
+    .cred-logos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 1px;
+      background: var(--line);
+      background-image: none;
+      padding: 0;
+      align-items: stretch;
+      justify-content: stretch;
+      justify-items: stretch;
+    }
+    .cred-logo {
+      position: relative;
+      background: var(--navy);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      text-align: center;
+      padding: 1.1rem 0.6rem 0.6rem;
+      min-height: 0;
+      overflow: hidden;
+    }
+    .cred-logo-no {
+      position: absolute; top: 6px; left: 8px;
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; color: rgba(255,255,255,0.45);
+    }
+    .cred-logo-name {
+      font-family: var(--font-display); font-size: 0.82rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; color: #fff; line-height: 1.15;
+    }
+    .cred-logo-sub {
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+    }
+    /* a real logo, once added, sits on the navy square with breathing room */
+    .cred-logos .cred-logo img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: contain; padding: 16%; box-sizing: border-box;
+      background: var(--navy); filter: none;
+    }
+
     .cred-text {
       font-size: 13.5px;
       line-height: 1.7;
@@ -1456,10 +1501,31 @@
           <span class="cred-crop" aria-hidden="true"></span>
           <div class="cred-meta"><span>PQ Robotics</span><span>02 / 03</span></div>
           <h4 class="cred-title">Licensed and Qualified</h4>
-          <div class="cred-media">
-            <span class="cred-cross" aria-hidden="true"></span>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
-            <img src="assets/images/cred-iu.png" alt="Indiana University" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()">
+          <div class="cred-media cred-logos">
+            <div class="cred-logo">
+              <span class="cred-logo-no">01</span>
+              <span class="cred-logo-name">Indiana University</span>
+              <span class="cred-logo-sub">B.S. ISE</span>
+              <img src="assets/images/cred-logo-iu.png" alt="Indiana University logo" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()">
+            </div>
+            <div class="cred-logo">
+              <span class="cred-logo-no">02</span>
+              <span class="cred-logo-name">Anduril</span>
+              <span class="cred-logo-sub">Hardware Tech</span>
+              <img src="assets/images/cred-logo-anduril.png" alt="Anduril logo" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()">
+            </div>
+            <div class="cred-logo">
+              <span class="cred-logo-no">03</span>
+              <span class="cred-logo-name">DJI</span>
+              <span class="cred-logo-sub">Repair &amp; Diagnostics</span>
+              <img src="assets/images/cred-logo-dji.png" alt="DJI logo" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()">
+            </div>
+            <div class="cred-logo">
+              <span class="cred-logo-no">04</span>
+              <span class="cred-logo-name">FAA Part 107</span>
+              <span class="cred-logo-sub">Remote Pilot</span>
+              <img src="assets/images/cred-logo-part107.png" alt="FAA Part 107 logo" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()">
+            </div>
           </div>
           <p class="cred-text">B.S. in Intelligent Systems Engineering from Indiana University. Retired Anduril hardware technician. Hundreds of DJI drones, gimbals and accessories diagnosed on the bench.</p>
           <div class="cred-meta cred-meta-foot"><span>B.S. ISE · IU</span><span>33.92&deg; N &nbsp;84.38&deg; W</span></div>
