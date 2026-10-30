@@ -32,15 +32,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg-deep:    #07090f;
-      --bg-dark:    #0a0f1a;
-      --bg-panel:   #0d1220;
-      --bg-card:    #111827;
+      --bg-deep:    #0a1324;
+      --bg-dark:    #0c172b;
+      --bg-panel:   #0f1b31;
+      --bg-card:    #13213a;
       --border:     rgba(255,255,255,0.07);
       --border-mid: rgba(255,255,255,0.12);
-      --accent:     #3a7bd5;
-      --accent-dim: rgba(58,123,213,0.12);
-      --accent-glow:rgba(58,123,213,0.25);
+      --accent:     #d63c35;
+      --accent-dim: rgba(214,60,53,0.14);
+      --accent-glow:rgba(214,60,53,0.28);
       --text-primary:   #e8eaf0;
       --text-secondary: #8a9ab5;
       --text-muted:     #4a5a70;
@@ -60,19 +60,14 @@
       --bg-card:    #ffffff;
       --border:     rgba(13,22,39,0.10);
       --border-mid: rgba(13,22,39,0.18);
-      --accent:     #2f6bc4;
-      --accent-dim: rgba(47,107,196,0.10);
-      --accent-glow:rgba(47,107,196,0.22);
+      --accent:     #c62828;
+      --accent-dim: rgba(198,40,40,0.10);
+      --accent-glow:rgba(198,40,40,0.22);
       --text-primary:   #0d1627;
       --text-secondary: #44536b;
       --text-muted:     #6b7a90;
     }
     html[data-theme="light"] nav { background: rgba(255,255,255,0.92); }
-    html[data-theme="light"] .hero-grid {
-      background-image:
-        linear-gradient(rgba(47,107,196,0.13) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(47,107,196,0.13) 1px, transparent 1px);
-    }
     html[data-theme="light"] .btn-ghost:hover { border-color: rgba(13,22,39,0.35); }
     html[data-theme="light"] .edu-close:hover { background: rgba(13,22,39,0.06); }
     html[data-theme="light"] .edu-dialog::backdrop { background: rgba(13,22,39,0.45); }
@@ -173,28 +168,43 @@
       overflow: hidden;
     }
 
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(58,123,213,0.18) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(58,123,213,0.18) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, black 20%, transparent 100%);
+    /* Mission-planning map behind the hero */
+    .hero-map {
+      position: absolute; inset: 0; pointer-events: none;
+      background: url("assets/images/hero-map.svg") center / cover no-repeat;
+      mask-image: radial-gradient(ellipse 95% 90% at 50% 45%, #000 45%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 95% 90% at 50% 45%, #000 45%, transparent 100%);
     }
-
-    .hero-grid::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(58,123,213,0.55) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(58,123,213,0.55) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 40% 35% at 50% 40%, black, transparent 100%);
-      pointer-events: none;
+    .hero-route { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .hero-route .route { fill: none; stroke: #e53935; stroke-width: 2; stroke-opacity: .7; stroke-dasharray: 7 9; animation: route-march 1.6s linear infinite; }
+    .hero-route .route-done { fill: none; stroke: #ffffff; stroke-opacity: .12; stroke-width: 6; stroke-linecap: round; }
+    .hero-route .wp circle { fill: #0a1324; stroke: #ffffff; stroke-opacity: .75; stroke-width: 1.6; }
+    .hero-route .wp text, .hero-route .lbl { fill: #ffffff; fill-opacity: .55; font: 600 11px ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; letter-spacing: .12em; }
+    .hero-route .search rect { fill: rgba(229,57,53,.05); stroke: #ffffff; stroke-opacity: .35; stroke-dasharray: 4 6; }
+    .hero-route .search path { fill: none; stroke: #ffffff; stroke-opacity: .16; stroke-width: 1.2; }
+    .hero-route .ping { fill: none; stroke: #e53935; stroke-width: 1.5; animation: ping 2.4s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+    @keyframes route-march { to { stroke-dashoffset: -32; } }
+    @keyframes ping { 0% { transform: scale(.4); opacity: .9; } 100% { transform: scale(2.4); opacity: 0; } }
+    /* navy shade behind the words so they stay crisp */
+    .hero-scrim {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 46% 42% at 50% 50%, rgba(10,19,36,.92) 0%, rgba(10,19,36,.75) 45%, rgba(10,19,36,0) 100%);
     }
+    #home > :not(.hero-map):not(.hero-route):not(.hero-scrim) { position: relative; z-index: 1; }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-route .route, .hero-route .ping { animation: none; }
+      .hero-route .drone { display: none; }
+    }
+    @media (max-width: 768px) {
+      .hero-route { width: 340%; left: -40%; opacity: .45; }
+      .hero-route .wp text, .hero-route .lbl { display: none; }
+      .hero-scrim { background: radial-gradient(ellipse 90% 48% at 50% 52%, rgba(10,19,36,.95) 0%, rgba(10,19,36,.75) 55%, rgba(10,19,36,.1) 100%); }
+    }
+    html[data-theme="light"] .hero-map { filter: invert(1) brightness(.35); opacity: .6; }
+    html[data-theme="light"] .hero-scrim { background: radial-gradient(ellipse 46% 42% at 50% 50%, rgba(244,246,250,.95), rgba(244,246,250,0) 100%); }
+    html[data-theme="light"] .hero-route .wp circle { fill: #f4f6fa; stroke: #0d1627; }
+    html[data-theme="light"] .hero-route .wp text, html[data-theme="light"] .hero-route .lbl { fill: #0d1627; }
+    html[data-theme="light"] .hero-route .search rect, html[data-theme="light"] .hero-route .search path, html[data-theme="light"] .hero-route .route-done { stroke: #0d1627; }
 
     .hero-tag {
       font-size: 11px;
@@ -275,7 +285,9 @@
     .hero-btn svg { width: 17px; height: 17px; flex: none; }
 
     /* R&D button + restricted popup */
-    .rd-btn { font-family: var(--font-body); font-weight: 500; }
+    .rd-btn { font-family: var(--font-body); font-weight: 500; background: transparent !important; border: 1px solid rgba(255,255,255,0.35) !important; color: #fff !important; }
+    .rd-btn:hover { border-color: #fff !important; opacity: 1 !important; }
+    html[data-theme="light"] .rd-btn { border-color: rgba(13,22,39,0.35) !important; color: #0d1627 !important; }
     .rd-dialog { border-radius: 4px; border-color: rgba(255,255,255,0.22); background: #0d1627; }
     .rd-dialog .edu-body { padding: 2rem 1.8rem 1.6rem; }
     .rd-lock { width: 52px; height: 52px; margin: 0 auto 1rem; border: 1px solid rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: center; color: #fff; }
@@ -1122,9 +1134,13 @@
       border-top: 1px solid var(--border);
       padding: 1.75rem 2.5rem;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
+      gap: 1rem 2rem;
     }
+    .footer-links li, .footer-copy { white-space: nowrap; }
+    footer .site-nap { flex-basis: 100%; margin: 0 !important; padding-top: 1rem; border-top: 1px solid var(--border); }
 
     .footer-logo {
       font-family: var(--font-display);
@@ -1171,6 +1187,7 @@
       .contact-form { min-width: unset; width: 100%; }
       section, .about-inner { padding: 4rem 1.25rem; }
       footer { flex-direction: column; gap: 1rem; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.25rem; }
       .about-bio-grid { grid-template-columns: 1fr !important; }
       .team-col { display: grid !important; grid-template-columns: 1fr 1fr; gap: 0.75rem !important; }
       .location-tabs { gap: 6px; }
@@ -1178,7 +1195,6 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .hero-grid { animation: none; }
     }
 
     /* ── LOCATION TABS ── */
@@ -1250,10 +1266,34 @@
 
   <!-- HERO -->
   <div id="home">
-    <div class="hero-grid" aria-hidden="true"></div>
-    <div class="hero-tag">Advanced Drone Systems · Atlanta, GA</div>
-    <h1><em>Precision Maintenance</em><br>Cinematic Footage</h1>
-    <p class="hero-sub">End-to-end drone services built for professionals, from full diagnostics and custom builds to FAA-certified aerial cinematography.</p>
+    <div class="hero-map" aria-hidden="true"></div>
+    <svg class="hero-route" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <path class="route-done" d="M170 760 C230 650 250 600 300 540 C350 470 200 380 190 270 C185 190 380 150 560 140 C760 128 920 150 1080 160 C1180 166 1230 200 1250 240"/>
+      <path id="flight" class="route" d="M170 760 C230 650 250 600 300 540 C350 470 200 380 190 270 C185 190 380 150 560 140 C760 128 920 150 1080 160 C1180 166 1230 200 1250 240 L1470 240 L1470 290 L1250 290 L1250 340 L1470 340 L1470 390 L1250 390 L1250 440 L1470 440 C1470 520 1460 580 1420 640 C1360 720 1250 770 1120 790"/>
+      <g class="search"><rect x="1230" y="222" width="260" height="236"/>
+        <path d="M1250 265H1470M1250 315H1470M1250 365H1470M1250 415H1470"/>
+        <text class="lbl" x="1232" y="212">SEARCH AREA 04</text></g>
+      <g class="wp"><rect x="156" y="746" width="28" height="28" fill="#0a1324" stroke="#e53935" stroke-width="1.6"/><text x="163" y="765" style="fill:#e53935;fill-opacity:.9">H</text><text x="196" y="765">HOME</text></g>
+      <g class="wp"><circle cx="300" cy="540" r="7"/><text x="316" y="544">WP 01</text></g>
+      <g class="wp"><circle cx="190" cy="270" r="7"/><text x="206" y="274">WP 02</text></g>
+      <g class="wp"><circle cx="560" cy="140" r="7"/><text x="576" y="144">WP 03</text></g>
+      <g class="wp"><circle cx="1080" cy="160" r="7"/><text x="1096" y="164">WP 04</text></g>
+      <g class="wp"><circle cx="1420" cy="640" r="7"/><text x="1436" y="644">WP 05</text></g>
+      <circle class="ping" cx="1360" cy="340" r="14"/>
+      <text class="lbl" x="1120" y="830">AUTO MISSION · 33.92° N 84.38° W</text>
+      <g class="drone">
+        <g transform="translate(-14 -14)">
+          <circle cx="5" cy="5" r="4.5" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="23" cy="5" r="4.5" fill="none" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="5" cy="23" r="4.5" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="23" cy="23" r="4.5" fill="none" stroke="#fff" stroke-width="1.5"/>
+          <path d="M8 8L20 20M20 8L8 20" stroke="#fff" stroke-width="2"/><rect x="10" y="10" width="8" height="8" rx="2" fill="#e53935"/>
+        </g>
+        <animateMotion dur="40s" repeatCount="indefinite" rotate="auto"><mpath href="#flight"/></animateMotion>
+      </g>
+    </svg>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-tag">Autonomous Robotics Development · Atlanta, GA</div>
+    <h1><em>Autonomous Robotics</em><br>Specialized in Drones</h1>
+    <p class="hero-sub">We develop autonomous drone systems for public safety and EMS, and bring the same engineering to drone repair, custom builds and pilot education.</p>
     <div class="hero-cta">
       <a class="btn-primary hero-btn" href="/drone-repair-atlanta.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6v4"/><path d="M14 8h-4"/><path d="M14 14h-4"/><path d="M14 18h-4"/><path d="M18 12h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h2"/><path d="M18 22V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v18"/></svg>Drone Hospital</a>
       <button type="button" class="btn-ghost hero-btn" id="edu-open" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>Education / Lessons</button>
@@ -1653,7 +1693,7 @@
       });
       navLinks.forEach(a => {
         a.style.borderBottomColor = a.getAttribute('href') === '#' + current
-          ? 'rgba(58,123,213,0.7)' : 'transparent';
+          ? 'rgba(214,60,53,0.8)' : 'transparent';
         a.style.color = a.getAttribute('href') === '#' + current
           ? 'var(--text-primary)' : '';
       });
