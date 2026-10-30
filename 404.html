@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Page not found · PQ Robotics</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#07090f; --panel:#0d1220; --border:rgba(255,255,255,.08); --text:#e8eaf0; --muted:#8a9ab5; --dim:#5d6c84; --accent:#3a7bd5; --red:#e53935; }
+    * { box-sizing:border-box; }
+    html, body { margin:0; min-height:100%; }
+    body { background:var(--bg); color:var(--muted); font:15px/1.7 Inter, system-ui, -apple-system, "Segoe UI", sans-serif; display:flex; flex-direction:column; min-height:100vh; }
+    body::before { content:""; position:fixed; inset:0; pointer-events:none;
+      background-image:linear-gradient(rgba(58,123,213,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(58,123,213,.09) 1px,transparent 1px);
+      background-size:60px 60px; mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 20%,transparent 100%); -webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 20%,transparent 100%); }
+    header { position:relative; border-bottom:1px solid var(--border); }
+    .bar { max-width:1100px; margin:0 auto; padding:18px 20px; display:flex; justify-content:space-between; align-items:center; }
+    .logo { font-family:"Exo 2",sans-serif; font-weight:600; font-size:13px; letter-spacing:.22em; color:var(--text); text-decoration:none; }
+    .logo span { color:var(--red); }
+    main { position:relative; flex:1; display:flex; align-items:center; justify-content:center; padding:40px 20px 56px; }
+    .wrap { max-width:980px; width:100%; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); gap:48px; align-items:center; }
+    .ward { width:100%; max-width:380px; justify-self:center; overflow:visible; }
+    .ward .bot { transform-origin:200px 380px; animation:wobble 3.6s ease-in-out infinite; }
+    .ward .eye { transform-origin:174px 134px; animation:blink 5s infinite; }
+    .ward .spark { animation:spark 1.6s steps(1) infinite; }
+    .ward .spark.s2 { animation-delay:.8s; }
+    @keyframes wobble { 0%,100% { transform:rotate(-1.2deg); } 50% { transform:rotate(1.4deg); } }
+    @keyframes blink { 0%,92%,100% { transform:scaleY(1); } 95% { transform:scaleY(.1); } }
+    @keyframes spark { 0% { opacity:1; } 50% { opacity:0; } }
+    @media (prefers-reduced-motion: reduce) { .ward .bot, .ward .eye, .ward .spark { animation:none; } }
+    .code { font-family:"Exo 2",sans-serif; font-weight:800; font-size:clamp(4.5rem,11vw,7.5rem); line-height:.9; letter-spacing:.02em; color:transparent; -webkit-text-stroke:2px rgba(232,234,240,.85); margin:0 0 14px; }
+    .kicker { font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--red); margin:0 0 10px; }
+    h1 { font-family:"Exo 2",sans-serif; font-weight:700; font-size:clamp(1.7rem,3.6vw,2.4rem); line-height:1.12; color:var(--text); margin:0 0 12px; }
+    p { margin:0 0 14px; max-width:46ch; }
+    .btns { display:flex; flex-wrap:wrap; gap:10px; margin:22px 0 18px; }
+    .btn { display:inline-flex; align-items:center; gap:8px; padding:12px 20px; border-radius:6px; font:500 13px/1 Inter,sans-serif; letter-spacing:.05em; text-decoration:none; }
+    .btn svg { width:16px; height:16px; }
+    .btn-primary { background:var(--accent); color:#fff; }
+    .btn-primary:hover { background:#4a8be5; }
+    .btn-ghost { border:1px solid rgba(255,255,255,.16); color:var(--muted); }
+    .btn-ghost:hover { color:var(--text); border-color:rgba(255,255,255,.3); }
+    .btn:focus-visible, a:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+    .note { font-size:13px; color:var(--dim); }
+    .note a { color:var(--muted); }
+    footer { position:relative; border-top:1px solid var(--border); }
+    footer .bar { font-size:12px; color:var(--dim); flex-wrap:wrap; gap:8px; }
+    footer a { color:var(--dim); }
+    @media (max-width: 760px) {
+      .wrap { grid-template-columns:1fr; gap:18px; text-align:center; }
+      .ward { max-width:250px; }
+      p { margin-left:auto; margin-right:auto; }
+      .btns { justify-content:center; }
+    }
+  </style>
+</head>
+<body>
+<header><div class="bar"><a class="logo" href="/">PQ <span>ROBOTICS</span></a></div></header>
+
+<main>
+  <div class="wrap">
+    <!-- Ward, the PQ Robotics shop bot, after a rough landing -->
+    <svg class="ward" viewBox="0 0 400 420" role="img" aria-labelledby="ward-t">
+      <title id="ward-t">Ward, the PQ Robotics shop robot, with a bandaged head, his arm in a sling, a leg in a cast and a crutch</title>
+      <!-- floor shadow and scattered parts -->
+      <ellipse cx="200" cy="392" rx="128" ry="10" fill="#000" opacity=".45"/>
+      <g fill="none" stroke="#5d6c84" stroke-width="3" stroke-linecap="round">
+        <path d="M58 384c12-7 34-9 48-4" /><circle cx="82" cy="382" r="3.5" fill="#5d6c84"/>
+        <path d="M330 389h18M339 383v12"/><polygon points="356,390 361,386 367,386 370,390 367,394 361,394" />
+      </g>
+
+      <g class="bot">
+        <!-- legs -->
+        <rect x="158" y="298" width="30" height="72" rx="10" fill="#142339" stroke="#e8eaf0" stroke-width="3"/>
+        <rect x="148" y="364" width="48" height="18" rx="8" fill="#142339" stroke="#e8eaf0" stroke-width="3"/>
+        <rect x="212" y="298" width="30" height="40" rx="10" fill="#142339" stroke="#e8eaf0" stroke-width="3"/>
+        <!-- leg cast -->
+        <rect x="205" y="318" width="44" height="58" rx="12" fill="#f4f1ea" stroke="#c9ccd3" stroke-width="2"/>
+        <rect x="202" y="364" width="52" height="20" rx="9" fill="#f4f1ea" stroke="#c9ccd3" stroke-width="2"/>
+        <g stroke="#b9bdc6" stroke-width="1.5" stroke-linecap="round"><path d="M209 332h36M209 346h36"/></g>
+        <g stroke="#e53935" stroke-width="3" stroke-linecap="round"><path d="M227 352v14M220 359h14"/></g>
+        <path d="M212 375c5-4 9 2 14-2s8 2 12-1" fill="none" stroke="#3a7bd5" stroke-width="1.8" stroke-linecap="round"/>
+
+        <!-- crutch (behind the right hand) -->
+        <g stroke="#c9d3e0" stroke-width="5" stroke-linecap="round" fill="none">
+          <path d="M291 214 L305 330"/><path d="M315 214 L307 330"/><path d="M306 330 L309 384"/>
+          <path d="M296 270 L312 270"/>
+        </g>
+        <rect x="282" y="204" width="40" height="13" rx="6" fill="#2a3a55" stroke="#c9d3e0" stroke-width="3"/>
+        <rect x="302" y="380" width="14" height="9" rx="3" fill="#2a3a55"/>
+
+        <!-- torso -->
+        <rect x="134" y="188" width="132" height="118" rx="24" fill="#142339" stroke="#e8eaf0" stroke-width="3"/>
+        <rect x="170" y="218" width="60" height="54" rx="9" fill="#0a1220" stroke="rgba(232,234,240,.45)" stroke-width="2"/>
+        <rect x="193" y="226" width="14" height="38" rx="3" fill="#e53935"/>
+        <rect x="181" y="238" width="38" height="14" rx="3" fill="#e53935"/>
+        <circle cx="156" cy="206" r="4.5" fill="#6fd38f"/><circle cx="244" cy="206" r="4.5" fill="#f2b84b"/>
+        <g stroke="rgba(232,234,240,.35)" stroke-width="2" stroke-linecap="round"><path d="M228 288h22"/></g>
+
+        <!-- right arm on the crutch grip -->
+        <path d="M262 212 C282 228 290 248 296 268" fill="none" stroke="#e8eaf0" stroke-width="22" stroke-linecap="round"/>
+        <path d="M262 212 C282 228 290 248 296 268" fill="none" stroke="#142339" stroke-width="16" stroke-linecap="round"/>
+        <circle cx="300" cy="271" r="12" fill="#142339" stroke="#e8eaf0" stroke-width="3"/>
+
+        <!-- left arm in a sling -->
+        <path d="M140 212 C120 232 114 256 122 274" fill="none" stroke="#e8eaf0" stroke-width="22" stroke-linecap="round"/>
+        <path d="M140 212 C120 232 114 256 122 274" fill="none" stroke="#142339" stroke-width="16" stroke-linecap="round"/>
+        <path d="M176 190 L150 196 L112 270 L186 300 Z" fill="#3a7bd5" stroke="#e8eaf0" stroke-width="2.5" stroke-linejoin="round" opacity=".95"/>
+        <path d="M176 190 L170 286" stroke="#e8eaf0" stroke-width="2" opacity=".6"/>
+        <rect x="116" y="272" width="72" height="22" rx="11" fill="#f4f1ea" stroke="#c9ccd3" stroke-width="2" transform="rotate(10 152 283)"/>
+        <g stroke="#b9bdc6" stroke-width="1.5" stroke-linecap="round" transform="rotate(10 152 283)"><path d="M136 276v14M150 276v14"/></g>
+        <circle cx="194" cy="292" r="10" fill="#142339" stroke="#e8eaf0" stroke-width="3"/>
+
+        <!-- neck -->
+        <rect x="186" y="174" width="28" height="18" rx="4" fill="#0f1a2e" stroke="#e8eaf0" stroke-width="3"/>
+
+        <!-- head -->
+        <circle cx="116" cy="132" r="10" fill="#0f1a2e" stroke="#e8eaf0" stroke-width="3"/>
+        <circle cx="284" cy="132" r="10" fill="#0f1a2e" stroke="#e8eaf0" stroke-width="3"/>
+        <rect x="120" y="84" width="160" height="96" rx="30" fill="#142339" stroke="#e8eaf0" stroke-width="3"/>
+        <rect x="140" y="106" width="120" height="54" rx="18" fill="#0a1220"/>
+        <g class="eye"><circle cx="174" cy="134" r="10" fill="#7fd0ff"/><circle cx="177" cy="131" r="3" fill="#fff"/></g>
+        <g stroke="#7fd0ff" stroke-width="5" stroke-linecap="round"><path d="M217 126l16 16M233 126l-16 16"/></g>
+        <path d="M186 150q7-5 14 0t14 0" fill="none" stroke="#7fd0ff" stroke-width="3" stroke-linecap="round"/>
+
+        <!-- bandage -->
+        <g transform="rotate(-16 156 92)">
+          <rect x="118" y="83" width="78" height="18" rx="5" fill="#f2e3c6" stroke="#d5c19c" stroke-width="1.5"/>
+          <rect x="146" y="85" width="22" height="14" rx="3" fill="#e9d6b2"/>
+          <g fill="#d5c19c"><circle cx="128" cy="89" r="1.3"/><circle cx="134" cy="95" r="1.3"/><circle cx="178" cy="89" r="1.3"/><circle cx="186" cy="95" r="1.3"/></g>
+        </g>
+
+        <!-- bent antenna and sparks -->
+        <path d="M232 85 L238 60 L258 50" fill="none" stroke="#e8eaf0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="260" cy="49" r="7" fill="#e53935"/>
+        <g class="spark" stroke="#f2b84b" stroke-width="3" stroke-linecap="round"><path d="M274 38l8-6M276 50h10M270 30l2-9"/></g>
+        <g class="spark s2" stroke="#7fd0ff" stroke-width="3" stroke-linecap="round"><path d="M248 34l-4-9M280 60l8 4"/></g>
+      </g>
+    </svg>
+
+    <div>
+      <p class="code" aria-hidden="true">404</p>
+      <p class="kicker">Error 404 &middot; Page not found</p>
+      <h1>Ward took a tumble.</h1>
+      <p>The page you were looking for crashed on the way in. Ward is on the bench waiting for parts, but the rest of the site is flying fine.</p>
+      <div class="btns">
+        <a class="btn btn-primary" href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>Back to home</a>
+        <a class="btn btn-ghost" href="/drone-repair-atlanta.html"><span style="color:#e53935">&#10010;</span>Drone Hospital</a>
+      </div>
+      <p class="note">Fun fact: 404 is also our area code. Need a hand? <a href="tel:+14044089063" style="white-space:nowrap">(404) 408-9063</a></p>
+    </div>
+  </div>
+</main>
+
+<footer><div class="bar"><span>&copy; 2026 PQ Technologies LLC</span><span><a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a></span></div></footer>
+<script defer src="/log/hospital-status.js"></script>
+</body>
+</html>

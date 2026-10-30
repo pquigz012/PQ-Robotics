@@ -10,6 +10,9 @@
   <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <meta name="description" content="Drone repair in Atlanta, GA. Diagnostics from $50 on DJI, Betaflight FPV and custom builds. Crash damage, gimbals, motors, ESCs, flight controllers and firmware. Walk in to our Sandy Springs shop or mail your aircraft in. Call (404) 408-9063.">
 <link rel="canonical" href="https://pq-robotics.com/drone-repair-atlanta.html">
 
@@ -32,7 +35,8 @@
   --red-hi:#DC5A50;
   --blue:#4A82D8;
   --mono:ui-monospace,"SF Mono",SFMono-Regular,"Cascadia Mono","Roboto Mono",Menlo,Consolas,monospace;
-  --sans:"Helvetica Neue",Helvetica,Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  --sans:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --display:"Exo 2",Inter,-apple-system,"Segoe UI",sans-serif;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -43,7 +47,7 @@ body{
 }
 .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
 a{color:var(--red-hi)}
-h1,h2,h3{line-height:1.14;letter-spacing:-.02em;margin:0}
+h1,h2,h3{font-family:var(--display);line-height:1.14;letter-spacing:-.01em;margin:0}
 h1{font-size:clamp(2.1rem,5.6vw,3.5rem);font-weight:800}
 h2{font-size:clamp(1.5rem,3.2vw,2.1rem);font-weight:800;margin-bottom:.6rem}
 h3{font-size:1.06rem;font-weight:700}
@@ -57,7 +61,7 @@ p{margin:0 0 1rem}
 /* header: mirrors the main site nav */
 .bar{border-bottom:1px solid var(--rule);position:sticky;top:0;background:rgba(10,10,12,.92);backdrop-filter:blur(10px);z-index:20}
 .bar .wrap{display:flex;align-items:center;gap:26px;min-height:66px;flex-wrap:wrap}
-.brand{font-family:var(--sans);font-weight:700;letter-spacing:.14em;font-size:.92rem;text-decoration:none;color:#fff}
+.brand{font-family:var(--display);font-weight:700;letter-spacing:.14em;font-size:.92rem;text-decoration:none;color:#fff}
 .brand em{font-style:normal;color:var(--blue)}
 .bar nav{display:flex;gap:26px;align-items:center;font-size:.97rem;margin-left:8px}
 .bar nav a{color:#CFCFD6;text-decoration:none}
@@ -473,10 +477,11 @@ footer .fnap b{color:var(--text)}
       <span>6059 Boylston Dr NE, Atlanta, GA 30328</span>
       <span><a href="tel:+14044089063">(404) 408-9063</a></span>
     </div>
-    <p style="margin:0">&copy; 2026 PQ Robotics. FAA Part 107 certified. &nbsp;·&nbsp;
+    <p style="margin:0">&copy; 2026 PQ Technologies LLC. FAA Part 107 certified. &nbsp;·&nbsp;
       <a href="https://pq-robotics.com/">Home</a> ·
       <a href="https://pq-robotics.com/footage.html">Footage</a> ·
-      <a href="https://pq-robotics.com/drone-news.html">Drone Hospital Daily</a>
+      <a href="https://pq-robotics.com/drone-news.html">Drone Hospital Daily</a> &nbsp;·&nbsp;
+      <a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a>
     </p>
   </div>
 </footer>

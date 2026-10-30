@@ -132,6 +132,10 @@
     }
     .page-intro { min-width: 0; }
 
+    .legal-foot { max-width: 1100px; margin: 0 auto; padding: 1.5rem 2rem 2.5rem; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-muted); }
+    .legal-foot a { color: inherit; }
+    .legal-foot a:hover { color: var(--text-secondary); }
+
     /* ── INSTAGRAM CARD ── */
     .ig-card {
       display: flex;
@@ -422,12 +426,14 @@
 
   <!-- LIGHTBOX -->
   <div id="lightbox" onclick="closeLightbox()">
-    <img id="lightbox-img" src="" alt="">
+    <img id="lightbox-img" alt="">
     <button id="lightbox-close" onclick="closeLightbox()">✕</button>
   </div>
 
   <!-- FOOTAGE SECTIONS -->
   <div class="footage-sections" id="footage-sections"></div>
+
+  <footer class="legal-foot">&copy; 2026 PQ Technologies LLC &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a></footer>
 
   <script>
     const sections = [
