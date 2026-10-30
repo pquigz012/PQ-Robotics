@@ -982,6 +982,7 @@
     /* When a photo is added it covers the icon, in black and white to match */
     .cred-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: var(--navy); filter: grayscale(1) contrast(1.05); opacity: 0; transition: opacity 0.3s; }
     .cred-media img.loaded { opacity: 1; }
+    .cred-media img.full-color { filter: none; }
 
     .cred-text {
       font-size: 13.5px;
@@ -1446,7 +1447,7 @@
           <div class="cred-media">
             <span class="cred-cross" aria-hidden="true"></span>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-            <img src="assets/images/cred-experienced.jpg" alt="Custom autonomous drone built by PQ Robotics, showing the compute stack, ESCs and wiring" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()">
+            <img class="full-color" src="assets/images/cred-experienced.jpg" alt="Custom autonomous drone built by PQ Robotics, showing the compute stack, ESCs and wiring" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()">
           </div>
           <p class="cred-text">Building drones from scratch for more than six years. Developed autonomous UAS and rover systems with guidance from PhD-level advisors. FAA Part 107 certified.</p>
           <div class="cred-meta cred-meta-foot"><span>PQ Technologies LLC</span><span>33.92&deg; N &nbsp;84.38&deg; W</span></div>
