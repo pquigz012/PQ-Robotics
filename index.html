@@ -1006,7 +1006,7 @@
       justify-content: center;
       gap: 4px;
       text-align: center;
-      padding: 1.1rem 0.6rem 0.6rem;
+      padding: 1rem 0.5rem 0.5rem;
       min-height: 0;
       overflow: hidden;
     }
@@ -1014,13 +1014,21 @@
       position: absolute; top: 6px; left: 8px;
       font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; color: rgba(255,255,255,0.45);
     }
+    .cred-logos .cred-logo-icon {
+      flex: none;
+      width: 28px; height: 28px; margin-bottom: 4px;
+      padding: 0; border: 0; background: none; box-sizing: border-box;
+      fill: none; stroke: #fff; stroke-width: 1.3;
+      stroke-linecap: square; stroke-linejoin: miter;
+    }
     .cred-logo-name {
-      font-family: var(--font-display); font-size: 0.82rem; font-weight: 600;
+      font-family: var(--font-display); font-size: 0.78rem; font-weight: 600;
       letter-spacing: 0.08em; text-transform: uppercase; color: #fff; line-height: 1.15;
     }
     .cred-logo-sub {
       font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
       color: rgba(255,255,255,0.55);
+      white-space: nowrap;
     }
     /* a real logo, once added, sits on the navy square with breathing room */
     .cred-logos .cred-logo img {
@@ -1504,24 +1512,28 @@
           <div class="cred-media cred-logos">
             <div class="cred-logo">
               <span class="cred-logo-no">01</span>
+              <svg class="cred-logo-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 5 3 11l13 6 13-6z"/><path d="M8 13.5V19c0 1.8 3.6 3.5 8 3.5s8-1.7 8-3.5v-5.5"/><path d="M29 11v6"/><path d="M5 26c3.5-1.6 7.5-1.6 11 0 3.5-1.6 7.5-1.6 11 0"/></svg>
               <span class="cred-logo-name">Indiana University</span>
               <span class="cred-logo-sub">B.S. ISE</span>
               <img src="assets/images/cred-logo-iu.png" alt="Indiana University logo" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()">
             </div>
             <div class="cred-logo">
               <span class="cred-logo-no">02</span>
+              <svg class="cred-logo-icon" viewBox="0 0 32 32" aria-hidden="true"><rect x="9" y="9" width="14" height="14"/><rect x="13" y="13" width="6" height="6"/><path d="M12 9V5M16 9V5M20 9V5M12 27v-4M16 27v-4M20 27v-4M9 12H5M9 16H5M9 20H5M27 12h-4M27 16h-4M27 20h-4"/></svg>
               <span class="cred-logo-name">Anduril</span>
               <span class="cred-logo-sub">Hardware Tech</span>
               <img src="assets/images/cred-logo-anduril.png" alt="Anduril logo" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()">
             </div>
             <div class="cred-logo">
               <span class="cred-logo-no">03</span>
+              <svg class="cred-logo-icon" viewBox="0 0 32 32" aria-hidden="true"><rect x="13" y="13" width="6" height="6"/><path d="M13 13 8.5 8.5M19 13l4.5-4.5M13 19l-4.5 4.5M19 19l4.5 4.5"/><circle cx="7" cy="7" r="4"/><circle cx="25" cy="7" r="4"/><circle cx="7" cy="25" r="4"/><circle cx="25" cy="25" r="4"/></svg>
               <span class="cred-logo-name">DJI</span>
-              <span class="cred-logo-sub">Repair &amp; Diagnostics</span>
+              <span class="cred-logo-sub">Drone Repair</span>
               <img src="assets/images/cred-logo-dji.png" alt="DJI logo" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()">
             </div>
             <div class="cred-logo">
               <span class="cred-logo-no">04</span>
+              <svg class="cred-logo-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 26 7v8c0 6.5-4.4 11.5-10 14-5.6-2.5-10-7.5-10-14V7z"/><path d="m11 16 3.5 3.5L21 13"/><path d="M2 12h4M26 12h4"/></svg>
               <span class="cred-logo-name">FAA Part 107</span>
               <span class="cred-logo-sub">Remote Pilot</span>
               <img src="assets/images/cred-logo-part107.png" alt="FAA Part 107 logo" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()">
