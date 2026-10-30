@@ -372,6 +372,40 @@
       .ig-band-inner { grid-template-columns: 1fr; padding: 2.5rem 1.25rem; }
     }
 
+    /* ── PLATFORMS & TOOLS ── */
+    .tools { margin-top: 1.75rem; }
+    .tools-label { font-size: 11px; letter-spacing: 0.16em; color: var(--text-muted); text-transform: uppercase; margin: 0 0 1rem; }
+    .tools-group + .tools-group { margin-top: 1.1rem; }
+    .tools-head {
+      display: flex; align-items: center; gap: 10px;
+      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--text-secondary); margin-bottom: 0.55rem;
+    }
+    .tools-head::after { content: ""; flex: 1; height: 1px; background: var(--border-mid); order: 1; }
+    .tools-count { order: 2; color: var(--text-muted); }
+    .tools-grid {
+      list-style: none; margin: 0; padding: 0;
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;
+    }
+    .tool {
+      display: flex; flex-direction: column; gap: 5px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.8rem 0.85rem 0.85rem;
+      min-height: 92px;
+    }
+    .tool-name {
+      display: flex; align-items: center; gap: 7px;
+      font-family: var(--font-display); font-size: 13px; font-weight: 600;
+      color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .tool-name i { flex: none; width: 7px; height: 7px; border-radius: 1px; }
+    .tool-desc { font-size: 12px; line-height: 1.45; color: var(--text-muted); }
+    html[data-theme="light"] .tool-desc { color: var(--text-secondary); }
+    @media (max-width: 1000px) { .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
     /* ── DRONE HOSPITAL DAILY BAND ── */
     .daily-band {
       background: #EEF1F4;
@@ -1072,7 +1106,6 @@
       section, .about-inner { padding: 4rem 1.25rem; }
       footer { flex-direction: column; gap: 1rem; text-align: center; }
       .about-bio-grid { grid-template-columns: 1fr !important; }
-      .platforms-grid { grid-template-columns: repeat(2, 1fr) !important; }
       .location-tabs { gap: 6px; }
       .loc-tab { font-size: 12px; padding: 6px 12px; }
     }
@@ -1357,41 +1390,49 @@
           <p style="font-size:14px;color:var(--text-secondary);line-height:1.8;margin-bottom:1rem">He has built autonomous and manually-piloted aircraft from scratch, from agile FPV platforms to multi-rotor hexacopters, and handled the full engineering stack: airframe design, flight controller configuration, sensor integration, firmware troubleshooting, and cross-system compatibility. When something isn't performing, Paul doesn't guess. He diagnoses.</p>
           <p style="font-size:14px;color:var(--text-secondary);line-height:1.8">PQ Robotics brings that same rigor to every job, whether it's a DJI diagnostic, a custom build spec, or a cinematic shoot. <strong style="color:var(--text-primary)">This is precision work. Not toy repair.</strong></p>
 
-          <div style="margin-top:1.75rem">
-            <p style="font-size:11px;letter-spacing:0.16em;color:var(--text-muted);text-transform:uppercase;margin-bottom:0.75rem">Platforms & Tools</p>
-            <div class="platforms-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px">
-              <div style="background:var(--bg-panel);border:1px solid var(--border);border-radius:var(--radius-md);padding:0.75rem 0.9rem">
-                <div style="font-size:11px;letter-spacing:0.1em;color:#76b900;font-weight:500;margin-bottom:3px">NVIDIA</div>
-                <div style="font-size:12px;color:var(--text-muted)">Edge compute & GPU acceleration</div>
-              </div>
-              <div style="background:var(--bg-panel);border:1px solid var(--border);border-radius:var(--radius-md);padding:0.75rem 0.9rem">
-                <div style="font-size:11px;letter-spacing:0.1em;color:#0A9EDC;font-weight:500;margin-bottom:3px">ROS 2</div>
-                <div style="font-size:12px;color:var(--text-muted)">Autonomous systems middleware</div>
-              </div>
-              <div style="background:var(--bg-panel);border:1px solid var(--border);border-radius:var(--radius-md);padding:0.75rem 0.9rem">
-                <div style="font-size:11px;letter-spacing:0.1em;color:#3572A5;font-weight:500;margin-bottom:3px">Python</div>
-                <div style="font-size:12px;color:var(--text-muted)">Autonomy scripting & sensor logic</div>
-              </div>
-              <div style="background:var(--bg-panel);border:1px solid var(--border);border-radius:var(--radius-md);padding:0.75rem 0.9rem">
-                <div style="font-size:11px;letter-spacing:0.1em;color:#f5821f;font-weight:500;margin-bottom:3px">Gazebo</div>
-                <div style="font-size:12px;color:var(--text-muted)">Simulation & pre-flight testing</div>
-              </div>
-              <div style="background:var(--bg-panel);border:1px solid var(--border);border-radius:var(--radius-md);padding:0.75rem 0.9rem">
-                <div style="font-size:11px;letter-spacing:0.1em;color:#1ba3e8;font-weight:500;margin-bottom:3px">QGroundControl</div>
-                <div style="font-size:12px;color:var(--text-muted)">Mission planning & vehicle management</div>
-              </div>
-              <div style="background:var(--bg-panel);border:1px solid var(--border);border-radius:var(--radius-md);padding:0.75rem 0.9rem">
-                <div style="font-size:11px;letter-spacing:0.1em;color:#f5a623;font-weight:500;margin-bottom:3px">Betaflight</div>
-                <div style="font-size:12px;color:var(--text-muted)">FPV firmware tuning & configuration</div>
-              </div>
-              <div style="background:var(--bg-panel);border:1px solid var(--border);border-radius:var(--radius-md);padding:0.75rem 0.9rem">
-                <div style="font-size:11px;letter-spacing:0.1em;color:var(--text-secondary);font-weight:500;margin-bottom:3px">PX4</div>
-                <div style="font-size:12px;color:var(--text-muted)">Autopilot stack for custom builds</div>
-              </div>
-              <div style="background:var(--bg-panel);border:1px solid var(--border);border-radius:var(--radius-md);padding:0.75rem 0.9rem">
-                <div style="font-size:11px;letter-spacing:0.1em;color:var(--text-secondary);font-weight:500;margin-bottom:3px">DJI</div>
-                <div style="font-size:12px;color:var(--text-muted)">Commercial platform repair & diagnostics</div>
-              </div>
+          <div class="tools">
+            <p class="tools-label">Platforms &amp; Tools</p>
+            <div class="tools-group">
+              <div class="tools-head"><span>Autonomy &amp; Compute</span><span class="tools-count">04</span></div>
+              <ul class="tools-grid">
+                <li class="tool">
+                  <span class="tool-name"><i style="background:#0A9EDC"></i>ROS 2</span>
+                  <span class="tool-desc">Autonomous systems middleware</span>
+                </li>
+                <li class="tool">
+                  <span class="tool-name"><i style="background:#76b900"></i>NVIDIA</span>
+                  <span class="tool-desc">Edge compute & GPU acceleration</span>
+                </li>
+                <li class="tool">
+                  <span class="tool-name"><i style="background:#3572A5"></i>Python</span>
+                  <span class="tool-desc">Autonomy scripting & sensor logic</span>
+                </li>
+                <li class="tool">
+                  <span class="tool-name"><i style="background:#f5821f"></i>Gazebo</span>
+                  <span class="tool-desc">Simulation & pre-flight testing</span>
+                </li>
+              </ul>
+            </div>
+            <div class="tools-group">
+              <div class="tools-head"><span>Flight Systems</span><span class="tools-count">04</span></div>
+              <ul class="tools-grid">
+                <li class="tool">
+                  <span class="tool-name"><i style="background:var(--text-secondary)"></i>PX4</span>
+                  <span class="tool-desc">Autopilot stack for custom builds</span>
+                </li>
+                <li class="tool">
+                  <span class="tool-name"><i style="background:#1ba3e8"></i>QGroundControl</span>
+                  <span class="tool-desc">Mission planning & vehicle management</span>
+                </li>
+                <li class="tool">
+                  <span class="tool-name"><i style="background:#f5a623"></i>Betaflight</span>
+                  <span class="tool-desc">FPV firmware tuning & configuration</span>
+                </li>
+                <li class="tool">
+                  <span class="tool-name"><i style="background:var(--text-secondary)"></i>DJI</span>
+                  <span class="tool-desc">Commercial platform repair & diagnostics</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
