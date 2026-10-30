@@ -1,12 +1,15 @@
-/* PQ Robotics — Drone Hospital status popup.
-   Drop this on any page with a "Call (404) 408-9063" link. It intercepts the tap,
-   shows the current hospital status, then offers Call and Text.
+/* PQ Robotics: Drone Hospital call handling.
+   Drop this on any page with a "Call (404) 408-9063" link.
+   When the shop is open, a call tap dials straight through.
+   When it's closed (after hours, weekends, or the app is set to Closed / Out with a client),
+   the tap opens a short note asking people to text instead.
    Include with:  <script defer src="/log/hospital-status.js"></script>          */
 (function () {
   "use strict";
   var PHONE = "+14044089063";
   var STATUS_URL = "/log/status.json";
-  var TEXT_BODY = "Hi PQ Robotics — I've got a drone that needs a look. ";
+  var TEXT_BODY = "Hi PQ Robotics, I've got a drone that needs a look. ";
+  var TZ = "America/New_York";   // the shop's clock, whatever time zone the visitor is in
 
   // Must match the app's schedule (2026-10-24): Paul on site Mon–Fri 9 AM–6 PM,
   // weekends closed. staff = the old front-desk hours, no longer on the schedule.
@@ -38,29 +41,40 @@
     return null;
   }
 
+  function atlanta() {
+    var p = {};
+    new Intl.DateTimeFormat("en-US", { timeZone: TZ, weekday: "short", hour: "numeric", minute: "numeric", year: "numeric", month: "numeric", day: "numeric", hourCycle: "h23" })
+      .formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; });
+    return { dow: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(p.weekday),
+             m: parseInt(p.hour, 10) * 60 + parseInt(p.minute, 10), date: p.month + "/" + p.day + "/" + p.year };
+  }
+  function atlantaDate(ms) {
+    return new Intl.DateTimeFormat("en-US", { timeZone: TZ, year: "numeric", month: "numeric", day: "numeric" }).format(new Date(ms));
+  }
+
   function state(mode) {
-    var now = new Date(), dow = now.getDay(), m = now.getHours() * 60 + now.getMinutes(), w = SCHEDULE[dow];
+    var now = atlanta(), dow = now.dow, m = now.m, w = SCHEDULE[dow];
     var staffNow = w.staff && m >= w.staff[0] && m < w.staff[1];
     var techNow = w.tech && m >= w.tech[0] && m < w.tech[1];
     var next = nextOpen(dow, m);
     var nextLine = next ? "Next open " + next.when + " at " + clock(next.at) + "." : "";
 
     if (mode === "closed")
-      return { c: COLORS.closed, status: "Closed", body: "Nobody's in the shop right now. Send a text with your name and what's wrong and we'll get back to you. " + nextLine };
+      return { c: COLORS.closed, status: "Closed right now", body: "Please reach out by text with your name and what's wrong, and we'll get back to you once we open back up. " + nextLine };
     if (mode === "client")
       return staffNow || techNow
         ? { c: COLORS.staff, status: "Out with a client", body: "The tech is out with a client right now. You can drop your drone off at the inbox upstairs in Suite 200 \u2014 add your name, number and what's wrong \u2014 and we'll call you about the repair. Or send a text and we'll ring you back." }
         : { c: COLORS.lunch, status: "Out with a client", body: "We'll miss the call right now. Send a text with your name and what's wrong and we'll ring you straight back." };
     if (mode === "open")
-      return { c: COLORS.open, status: "Open", body: "Someone's here now. Walk in, no appointment needed." };
+      return { open: true, c: COLORS.open, status: "Open", body: "Someone's here now. Walk in, no appointment needed." };
 
     if (techNow)
-      return { c: COLORS.open, status: "Open — tech on site", body: "We're in until " + clock(w.tech[1]) + ", so you can get it looked at and quoted today. Walk in, no appointment needed." };
+      return { open: true, c: COLORS.open, status: "Open, tech on site", body: "We're in until " + clock(w.tech[1]) + ", so you can get it looked at and quoted today. Walk in, no appointment needed." };
     if (staffNow)
-      return { c: COLORS.staff, status: "Front desk open", body: "Our front desk in Suite 200 can take your drone in now and write up the job. The tech is in at " + clock(w.tech[0]) + " and will call you with a diagnosis." };
+      return { open: true, c: COLORS.staff, status: "Front desk open", body: "Our front desk in Suite 200 can take your drone in now and write up the job. The tech is in at " + clock(w.tech[0]) + " and will call you with a diagnosis." };
     if (w.staff && w.tech && m >= w.staff[1] && m < w.tech[0])
       return { c: COLORS.lunch, status: "Out to lunch", body: "Back at " + clock(w.tech[0]) + ". The safe mailbox upstairs in Suite 200 is open if you'd rather leave it now — add your name, number and what's wrong." };
-    return { c: COLORS.closed, status: "Closed", body: "Send a text with your name and what's wrong and we'll get back to you when we're in. " + nextLine };
+    return { c: COLORS.closed, status: "Closed right now", body: "Please reach out by text with your name and what's wrong, and we'll get back to you once we open back up. " + nextLine };
   }
 
   // The app publishes its override here. If it can't be read, fall back to the schedule.
@@ -74,7 +88,7 @@
         try {
           var d = JSON.parse(x.responseText);
           // An override only counts on the day it was set
-          if (d.mode && d.mode !== "auto" && d.setAt && new Date(d.setAt).toDateString() === new Date().toDateString()) mode = d.mode;
+          if (d.mode && d.mode !== "auto" && d.setAt && atlantaDate(d.setAt) === atlanta().date) mode = d.mode;
           else mode = "auto";
         } catch (e) { /* leave it on auto */ }
       };
@@ -100,8 +114,10 @@
     document.head.appendChild(s);
   }
 
-  function open() {
-    var st = state(mode);
+  function open(st) {
+    // close any other popup first (e.g. the Education popup on the home page) so this one sits on top
+    var other = document.querySelectorAll("dialog[open]");
+    for (var i = 0; i < other.length; i++) other[i].close();
     var wrap = document.createElement("div");
     wrap.className = "pqs-wrap";
     wrap.setAttribute("role", "dialog");
@@ -112,8 +128,7 @@
         '<div class="pqs-status"><span class="pqs-dot" style="background:' + st.c + '"></span><span></span></div>' +
         '<div class="pqs-body"></div>' +
         '<div class="pqs-btns">' +
-          '<a class="pqs-btn pqs-call" href="tel:' + PHONE + '">Call</a>' +
-          '<a class="pqs-btn pqs-text" href="sms:' + PHONE + '?&body=' + encodeURIComponent(TEXT_BODY) + '">Text</a>' +
+          '<a class="pqs-btn pqs-call" href="sms:' + PHONE + '?&body=' + encodeURIComponent(TEXT_BODY) + '">Text (404) 408-9063</a>' +
         '</div>' +
         '<button class="pqs-close" type="button">Never mind</button>' +
       '</div>';
@@ -133,9 +148,11 @@
     loadMode();
     document.addEventListener("click", function (e) {
       var a = e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
-      if (!a || a.classList.contains("pqs-btn")) return;   // let the popup's own Call through
+      if (!a) return;
+      var st = state(mode);
+      if (st.open) return;          // open: let the call go straight through
       e.preventDefault();
-      open();
+      open(st);
     }, true);
   }
 
