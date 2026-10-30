@@ -179,6 +179,8 @@
     .hero-route .route { fill: none; stroke: #e53935; stroke-width: 2; stroke-opacity: .7; stroke-dasharray: 7 9; animation: route-march 1.6s linear infinite; }
     .hero-route .route-done { fill: none; stroke: #ffffff; stroke-opacity: .12; stroke-width: 6; stroke-linecap: round; }
     .hero-route .wp circle { fill: #0a1324; stroke: #ffffff; stroke-opacity: .75; stroke-width: 1.6; }
+    .hero-route .helipad circle { stroke: #e53935; stroke-opacity: .95; stroke-width: 2; }
+    .hero-route .helipad circle + circle { stroke: #ffffff; stroke-opacity: .35; stroke-width: 1; fill: none; }
     .hero-route .wp text, .hero-route .lbl { fill: #ffffff; fill-opacity: .55; font: 600 11px ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; letter-spacing: .12em; }
     .hero-route .search rect { fill: rgba(229,57,53,.05); stroke: #ffffff; stroke-opacity: .35; stroke-dasharray: 4 6; }
     .hero-route .search path { fill: none; stroke: #ffffff; stroke-opacity: .16; stroke-width: 1.2; }
@@ -1273,7 +1275,7 @@
       <g class="search"><rect x="1230" y="222" width="260" height="236"/>
         <path d="M1250 265H1470M1250 315H1470M1250 365H1470M1250 415H1470"/>
         <text class="lbl" x="1232" y="212">SEARCH AREA 04</text></g>
-      <g class="wp"><rect x="156" y="746" width="28" height="28" fill="#0a1324" stroke="#e53935" stroke-width="1.6"/><text x="163" y="765" style="fill:#e53935;fill-opacity:.9">H</text><text x="196" y="765">HOME</text></g>
+      <g class="wp helipad"><circle cx="170" cy="760" r="20" fill="#0a1324" stroke="#e53935" stroke-width="2"/><circle cx="170" cy="760" r="14.5" fill="none" stroke="#e53935" stroke-opacity=".45" stroke-width="1"/><text x="170" y="760" text-anchor="middle" dominant-baseline="central" style="fill:#e53935;fill-opacity:.95;font-size:14px;font-weight:700;letter-spacing:0">H</text><text x="200" y="764">HOME</text></g>
       <g class="wp"><circle cx="300" cy="540" r="7"/><text x="316" y="544">WP 01</text></g>
       <g class="wp"><circle cx="190" cy="270" r="7"/><text x="206" y="274">WP 02</text></g>
       <g class="wp"><circle cx="560" cy="140" r="7"/><text x="576" y="144">WP 03</text></g>
@@ -1303,21 +1305,22 @@
   <!-- STATS -->
   <div class="stats-bar">
     <div class="stat">
-      <span class="stat-num">4+</span>
-      <span class="stat-label">Years Experience</span>
+      <span class="stat-num">Autonomy</span>
+      <span class="stat-label">Public Safety &amp; EMS</span>
     </div>
     <div class="stat">
-      <span class="stat-num">DJI & BF</span>
-      <span class="stat-label">Platform Specialist</span>
+      <span class="stat-num">6+</span>
+      <span class="stat-label">Years Building Drones</span>
     </div>
     <div class="stat">
-      <span class="stat-num">4K</span>
-      <span class="stat-label">Max Resolution</span>
+      <span class="stat-num">100s</span>
+      <span class="stat-label">DJI Aircraft Repaired</span>
     </div>
     <div class="stat">
       <span class="stat-num">Part 107</span>
       <span class="stat-label">FAA Certified</span>
     </div>
+  </div>
   </div>
 
 
