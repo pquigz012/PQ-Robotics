@@ -1649,13 +1649,51 @@
         <h2>Ready to get started?</h2>
         <p>Send us a message and we'll get back to you within 24 hours.</p>
       </div>
-      <form class="contact-form" action="https://formspree.io/f/mwvjqkqo" method="POST">
+      <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="faf18176-5c83-47cf-8b34-26d7a3df52e6">
+        <input type="hidden" name="subject" value="New website message from pq-robotics.com">
+        <input type="hidden" name="from_name" value="PQ Robotics Website">
+        <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off">
         <input type="text" name="name" placeholder="Your name" required>
         <input type="email" name="email" placeholder="Email address" required>
         <input type="text" name="service" placeholder="Service: Drone Hospital or Footage?">
         <textarea name="message" rows="4" placeholder="Tell us about your project or what needs repair"></textarea>
         <button type="submit" class="btn-primary" style="text-align:center;cursor:pointer">Send Message</button>
+        <p class="contact-status" role="status" aria-live="polite" style="margin:0;font-size:14px;min-height:1em"></p>
       </form>
+      <script>
+        (function () {
+          var form = document.getElementById('contact-form');
+          if (!form || !window.fetch) return;
+          var status = form.querySelector('.contact-status');
+          var btn = form.querySelector('button[type="submit"]');
+          form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+            status.textContent = '';
+            fetch(form.action, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) })
+              .then(function (r) { return r.json(); })
+              .then(function (data) {
+                if (data.success) {
+                  form.reset();
+                  status.style.color = '#48bb78';
+                  status.textContent = 'Thanks! Your message was sent. We will get back to you within 24 hours.';
+                } else {
+                  throw new Error(data.message || 'Send failed');
+                }
+              })
+              .catch(function () {
+                status.style.color = '#e53e3e';
+                status.textContent = 'Sorry, that did not go through. Please call (404) 408-9063 or try again.';
+              })
+              .finally(function () {
+                btn.disabled = false;
+                btn.textContent = 'Send Message';
+              });
+          });
+        })();
+      </script>
     </div>
   </div>
 
