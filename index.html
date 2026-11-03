@@ -1656,7 +1656,7 @@
         <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off">
         <input type="text" name="name" placeholder="Your name" required>
         <input type="email" name="email" placeholder="Email address" required>
-        <input type="text" name="service" placeholder="Service: Drone Hospital or Footage?">
+        <input type="text" name="service" placeholder="Service: Drone Hospital | Education | Other Services">
         <textarea name="message" rows="4" placeholder="Tell us about your project or what needs repair"></textarea>
         <button type="submit" class="btn-primary" style="text-align:center;cursor:pointer">Send Message</button>
         <p class="contact-status" role="status" aria-live="polite" style="margin:0;font-size:14px;min-height:1em"></p>
@@ -1678,7 +1678,7 @@
                 if (data.success) {
                   form.reset();
                   status.style.color = '#48bb78';
-                  status.textContent = 'Thanks! Your message was sent. We will get back to you within 24 hours.';
+                  status.innerHTML = 'Thanks! Your message was sent. We will get back to you within 24 hours.<br>If you need a quicker response, reach out via phone: <a href="tel:+14044089063" style="color:inherit;font-weight:600">404-408-9063</a>';
                 } else {
                   throw new Error(data.message || 'Send failed');
                 }
