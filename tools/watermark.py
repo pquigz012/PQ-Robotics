@@ -9,6 +9,7 @@ Usage:
   python3 tools/watermark.py PHOTO [PHOTO ...]          # stamps in place
   python3 tools/watermark.py --safe-16x9 PHOTO ...      # photos shown in 16:9 thumbnails
   python3 tools/watermark.py --out stamped/ PHOTO ...   # write copies instead
+  python3 tools/watermark.py --strength 1 PHOTO ...     # full-strength badge (default is the dim 0.45)
 
 Run it once per photo; it doesn't detect an existing badge.
 Needs Pillow:  pip install pillow
@@ -20,10 +21,12 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 BADGE = os.path.join(HERE, "..", "assets", "images", "watermark-badge.png")
 SIZE = 0.20   # badge diameter as a share of the visible short side
 PAD = 0.03    # gap from the edges, same basis
+STRENGTH = 0.45  # how strongly the badge shows: 1 = full badge, 0.45 = the site's dim level
 
 
-def stamp(img, safe_16x9=False, size=SIZE, pad=PAD):
+def stamp(img, safe_16x9=False, size=SIZE, pad=PAD, strength=STRENGTH):
     img = ImageOps.exif_transpose(img).convert("RGBA")
+    clean = img.copy()
     W, H = img.size
     vis_h, crop_y = H, 0
     if safe_16x9 and H > W * 9 / 16:          # thumbnails crop the top and bottom of taller photos
@@ -46,7 +49,7 @@ def stamp(img, safe_16x9=False, size=SIZE, pad=PAD):
 
     # glass, ring text and logo
     img.alpha_composite(Image.open(BADGE).convert("RGBA").resize((d, d), Image.LANCZOS), (x, y))
-    return img
+    return Image.blend(clean, img, strength) if strength < 1 else img
 
 
 def save(img, path, like):
@@ -64,10 +67,11 @@ if __name__ == "__main__":
     ap.add_argument("photos", nargs="+")
     ap.add_argument("--safe-16x9", action="store_true", help="keep the badge inside a centered 16:9 crop")
     ap.add_argument("--out", help="folder for stamped copies (default: overwrite)")
+    ap.add_argument("--strength", type=float, default=STRENGTH, help="badge strength, 0 to 1 (default %(default)s)")
     a = ap.parse_args()
     for src in a.photos:
         im = Image.open(src)
         dst = os.path.join(a.out, os.path.basename(src)) if a.out else src
         if a.out: os.makedirs(a.out, exist_ok=True)
-        save(stamp(im, a.safe_16x9), dst, im)
+        save(stamp(im, a.safe_16x9, strength=a.strength), dst, im)
         print("stamped", dst)
