@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drone Lessons &amp; Flight Classes in Atlanta | PQ Robotics Education</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="description" content="Drone lessons in Atlanta, GA. Private flight lessons, a week-long beginner drone course, guided custom drone builds, and drone classes and DIY kits for schools and Scout troops. Sandy Springs. Call (404) 408-9063.">
+  <link rel="canonical" href="https://pq-robotics.com/drone-classes-atlanta.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pq-robotics.com/drone-classes-atlanta.html">
+  <meta property="og:title" content="Drone Lessons &amp; Flight Classes in Atlanta | PQ Robotics Education">
+  <meta property="og:description" content="Learn to fly from the engineers who build and repair drones. Private lessons, a week-long flight course, guided builds, and classes and kits for schools and groups.">
+  <meta property="og:image" content="https://pq-robotics.com/assets/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://pq-robotics.com/assets/images/og-image.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Same palette and type as the home page */
+    :root {
+      --bg-deep:    #0a1324;
+      --bg-dark:    #0c172b;
+      --bg-panel:   #0f1b31;
+      --bg-card:    #13213a;
+      --border:     rgba(255,255,255,0.07);
+      --border-mid: rgba(255,255,255,0.12);
+      --accent:     #d63c35;
+      --accent-dim: rgba(214,60,53,0.14);
+      --red:        #e53935;
+      --text-primary:   #e8eaf0;
+      --text-secondary: #8a9ab5;
+      --text-muted:     #4a5a70;
+      --font-display: 'Exo 2', sans-serif;
+      --font-body:    'Inter', sans-serif;
+      --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    img { max-width: 100%; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    /* ── NAV (matches home) ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(7,9,15,0.92);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem; height: 60px;
+    }
+    .nav-logo { font-family: var(--font-display); font-size: 13px; font-weight: 600; letter-spacing: 0.22em; color: var(--text-primary); text-decoration: none; }
+    .nav-logo span { color: var(--red); }
+    .nav-links { display: flex; align-items: center; list-style: none; }
+    .nav-links a {
+      color: var(--text-secondary); text-decoration: none;
+      font-size: 14px; font-weight: 500; letter-spacing: 0.03em;
+      padding: 0 1.1rem; height: 60px; display: flex; align-items: center;
+      border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text-primary); border-bottom-color: var(--border-mid); }
+    .nav-links a.here { color: var(--text-primary); border-bottom-color: rgba(214,60,53,0.8); }
+    .nav-x { color: #e53e3e; margin-right: 5px; font-size: 15px; }
+    .nav-dhd-icon { width: 15px; height: 15px; color: #e53e3e; margin-right: 6px; flex: none; }
+    .nav-cta {
+      background: var(--accent); color: #fff; text-decoration: none;
+      border-radius: var(--radius-sm); padding: 0 1.1rem; height: 34px;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+      display: inline-flex; align-items: center; gap: 7px; white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-cta svg { width: 14px; height: 14px; }
+
+    /* ── HERO: training-pattern map, same build as the home page mission map ── */
+    #top {
+      position: relative; min-height: 86vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 5rem 2rem 4rem; overflow: hidden;
+    }
+    .hero-map {
+      position: absolute; inset: 0; pointer-events: none;
+      background: url("assets/images/hero-map.svg") center / cover no-repeat;
+      mask-image: radial-gradient(ellipse 95% 90% at 50% 45%, #000 45%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 95% 90% at 50% 45%, #000 45%, transparent 100%);
+    }
+    .hero-route { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .hero-route .route { fill: none; stroke: var(--red); stroke-width: 2; stroke-opacity: .7; stroke-dasharray: 7 9; animation: route-march 1.6s linear infinite; }
+    .hero-route .route-done { fill: none; stroke: #fff; stroke-opacity: .10; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+    .hero-route .gate { fill: none; stroke: #fff; stroke-opacity: .30; stroke-dasharray: 4 6; }
+    .hero-route .wp circle { fill: #0a1324; stroke: #fff; stroke-opacity: .75; stroke-width: 1.6; }
+    .hero-route .lbl { fill: #fff; fill-opacity: .55; font: 600 11px var(--mono); letter-spacing: .12em; }
+    .hero-route .ping { fill: none; stroke: var(--red); stroke-width: 1.5; animation: ping 2.4s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+    @keyframes route-march { to { stroke-dashoffset: -32; } }
+    @keyframes ping { 0% { transform: scale(.4); opacity: .9; } 100% { transform: scale(2.4); opacity: 0; } }
+    .hero-scrim {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 48% 44% at 50% 50%, rgba(10,19,36,.93) 0%, rgba(10,19,36,.76) 45%, rgba(10,19,36,0) 100%);
+    }
+    #top > :not(.hero-map):not(.hero-route):not(.hero-scrim) { position: relative; z-index: 1; }
+
+    .hero-tag { font-family: var(--font-display); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 1.25rem; }
+    .hero-tag b { color: var(--red); font-weight: 600; }
+    h1 {
+      font-family: var(--font-display); font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 600; line-height: 1.1; letter-spacing: -0.02em;
+      max-width: 920px; margin-bottom: 1.5rem;
+    }
+    h1 em { font-style: normal; color: var(--accent); }
+    .hero-sub { font-size: 1rem; color: var(--text-secondary); max-width: 540px; margin: 0 auto 2.5rem; line-height: 1.75; }
+    .hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    .btn-primary, .btn-ghost {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      border-radius: var(--radius-sm); padding: 12px 28px;
+      font-family: var(--font-body); font-size: 13px; font-weight: 500; letter-spacing: 0.06em;
+      text-decoration: none; cursor: pointer; transition: opacity .2s, color .2s, border-color .2s;
+    }
+    .btn-primary { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-ghost { background: transparent; color: var(--text-secondary); border: 1px solid var(--border-mid); }
+    .btn-ghost:hover { color: var(--text-primary); border-color: rgba(255,255,255,0.25); }
+    .btn-primary svg, .btn-ghost svg { width: 17px; height: 17px; flex: none; }
+
+    /* ── STATS (matches home) ── */
+    .stats-bar { display: flex; justify-content: center; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg-dark); }
+    .stat { padding: 1.5rem 3rem; text-align: center; border-right: 1px solid var(--border); }
+    .stat:first-child { border-left: 1px solid var(--border); }
+    .stat-num { font-family: var(--font-display); font-size: 1.75rem; font-weight: 600; display: block; }
+    .stat-label { font-size: 11px; letter-spacing: 0.14em; color: var(--text-muted); text-transform: uppercase; display: block; margin-top: 2px; }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 2.5rem; max-width: 1100px; margin: 0 auto; }
+    .band { background: var(--bg-panel); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .band-dark { background: var(--bg-dark); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .section-eyebrow { font-family: var(--font-display); font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+    h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem; }
+    h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.25; }
+    .section-sub { font-size: 0.95rem; color: var(--text-secondary); max-width: 600px; line-height: 1.75; margin-bottom: 3rem; }
+    .section-sub strong { color: var(--text-primary); font-weight: 500; }
+
+    /* Wordmark like "Drone Hospital" on the home page */
+    .edu-mark {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: var(--font-display); font-weight: 600; font-size: 22px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: #e53e3e;
+      border-bottom: 2px solid rgba(229,62,62,0.55); padding-bottom: 10px; margin-bottom: 1.6rem;
+    }
+    .edu-mark svg { width: 30px; height: 30px; flex: none; }
+
+    /* ── PROGRAMS ── */
+    .programs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+    .program {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      overflow: hidden; display: flex; flex-direction: column; transition: border-color .2s;
+    }
+    .program:hover { border-color: var(--border-mid); }
+    .program-img { aspect-ratio: 4 / 3; background: var(--bg-panel); border-bottom: 1px solid var(--border); overflow: hidden; }
+    .program-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .program-body { padding: 1.4rem 1.5rem 1.5rem; display: flex; flex-direction: column; flex: 1; }
+    .program-no { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; color: var(--text-muted); text-transform: uppercase; display: flex; justify-content: space-between; margin-bottom: 0.7rem; }
+    .program-no b { color: var(--red); font-weight: 600; }
+    .program h3 { font-size: 1.2rem; margin-bottom: 0.55rem; }
+    .program p { font-size: 13.5px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem; }
+    .ticks { list-style: none; display: grid; gap: 7px; margin-bottom: 1.4rem; }
+    .ticks li { font-size: 13px; color: var(--text-primary); display: flex; gap: 10px; align-items: baseline; line-height: 1.5; }
+    .ticks li::before { content: "✚"; color: var(--red); font-size: 10px; flex: none; transform: translateY(-1px); }
+    .program .btn-ghost { margin-top: auto; padding: 10px 18px; }
+
+    /* ── FLIGHT WEEK: spec-sheet cards from the home page credentials ── */
+    .week-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2rem; align-items: end; margin-bottom: 2.6rem; }
+    .week-head .section-sub { margin-bottom: 0; }
+    .week-badge {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.28); padding: 10px 14px; white-space: nowrap;
+      display: inline-flex; align-items: center; gap: 9px;
+    }
+    .week-badge svg { width: 14px; height: 14px; color: var(--red); }
+    .week { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.25rem; }
+    .day {
+      --navy: #0d1627; --line: rgba(255,255,255,0.22);
+      position: relative; background: var(--navy); border: 1px solid var(--line);
+      padding: 1.1rem 1.1rem 1rem; display: flex; flex-direction: column; color: #fff;
+    }
+    .day::before, .day::after, .day-crop::before, .day-crop::after {
+      content: ""; position: absolute; width: 10px; height: 10px; border: 0 solid rgba(255,255,255,0.7);
+    }
+    .day::before { top: -5px; left: -5px; border-top-width: 1px; border-left-width: 1px; }
+    .day::after { top: -5px; right: -5px; border-top-width: 1px; border-right-width: 1px; }
+    .day-crop::before { bottom: -5px; left: -5px; border-bottom-width: 1px; border-left-width: 1px; }
+    .day-crop::after { bottom: -5px; right: -5px; border-bottom-width: 1px; border-right-width: 1px; }
+    .day-meta { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+    .day-meta b { color: var(--red); font-weight: 600; }
+    .day h3 {
+      font-size: 1.02rem; letter-spacing: 0.05em; text-transform: uppercase; line-height: 1.15;
+      margin: 1.2rem 0 0.9rem; padding-bottom: 0.9rem; border-bottom: 1px solid #fff;
+      min-height: calc(2.3em + 0.9rem + 1px); display: flex; align-items: flex-end;
+    }
+    .day-tease { font-size: 12.5px; color: rgba(255,255,255,0.82); line-height: 1.6; margin-bottom: 1rem; }
+    /* Locked detail lines: decorative bars only, no hidden text */
+    .redact { display: grid; gap: 7px; margin-bottom: 1rem; position: relative; }
+    .redact i { display: block; height: 9px; background: rgba(255,255,255,0.11); }
+    .redact i:nth-child(1) { width: 92%; } .redact i:nth-child(2) { width: 74%; }
+    .redact i:nth-child(3) { width: 86%; } .redact i:nth-child(4) { width: 58%; }
+    .redact-lock {
+      position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+      width: 26px; height: 26px; border: 1px solid rgba(255,255,255,.5); background: var(--navy);
+      display: flex; align-items: center; justify-content: center; color: #fff;
+    }
+    .redact-lock svg { width: 13px; height: 13px; }
+    .airtime { margin-top: auto; border-top: 1px solid var(--line); padding-top: 0.75rem; }
+    .airtime-lbl { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.55); display: flex; justify-content: space-between; margin-bottom: 6px; }
+    .pips { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; }
+    .pips i { height: 6px; background: rgba(255,255,255,0.12); }
+    .pips i.on { background: var(--red); }
+
+    .swipe-hint { display: none; font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.6rem; }
+    .week-foot {
+      margin-top: 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+      border: 1px solid var(--border-mid); border-radius: var(--radius-md); background: var(--bg-card);
+      padding: 1.2rem 1.4rem;
+    }
+    .week-foot-text { display: flex; align-items: center; gap: 1rem; font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+    .week-foot-text strong { color: var(--text-primary); font-weight: 500; }
+    .lockbox { width: 42px; height: 42px; flex: none; border: 1px solid rgba(255,255,255,.4); display: flex; align-items: center; justify-content: center; color: #fff; }
+    .lockbox svg { width: 20px; height: 20px; }
+
+    /* ── SCHOOLS & GROUPS ── */
+    .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3rem; align-items: center; }
+    .split-img { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); background: var(--bg-card); }
+    .split-img img { width: 100%; height: auto; display: block; aspect-ratio: 4 / 3; object-fit: cover; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 1.4rem 0 1.8rem; }
+    .chips li { font-size: 12.5px; padding: 6px 13px; border-radius: 999px; border: 1px solid var(--border-mid); background: var(--bg-panel); color: var(--text-secondary); font-family: var(--font-display); font-weight: 500; letter-spacing: 0.02em; }
+    .kit {
+      display: flex; gap: 1rem; align-items: flex-start;
+      background: var(--bg-card); border: 1px solid var(--border-mid); border-radius: var(--radius-md); padding: 1.15rem 1.3rem;
+    }
+    .kit-icon { width: 38px; height: 38px; border-radius: var(--radius-sm); background: var(--accent-dim); display: flex; align-items: center; justify-content: center; flex: none; }
+    .kit-icon svg { width: 19px; height: 19px; stroke: var(--accent); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .kit h3 { font-size: 15px; margin-bottom: 0.25rem; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .soon { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); border: 1px solid rgba(229,57,53,.5); padding: 2px 7px; }
+    .kit p { font-size: 13px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 0.6rem; }
+    .kit a { font-size: 13px; color: var(--text-primary); text-decoration: none; border-bottom: 1px solid var(--red); }
+
+    /* ── HOW IT WORKS ── */
+    .steps { list-style: none; counter-reset: s; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
+    .steps li { counter-increment: s; border-top: 2px solid var(--border-mid); padding-top: 1.1rem; }
+    .steps li::before { content: counter(s, decimal-leading-zero); display: block; font-family: var(--mono); font-size: 1.4rem; font-weight: 700; color: var(--red); margin-bottom: 0.5rem; }
+    .steps h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+    .steps p { font-size: 13.5px; color: var(--text-secondary); line-height: 1.7; }
+
+    /* ── INSTRUCTORS ── */
+    .teach { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+    .people { display: flex; flex-direction: column; gap: 1rem; }
+    .person { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; display: grid; grid-template-columns: 92px 1fr; align-items: center; }
+    .person img { width: 92px; height: 92px; object-fit: cover; object-position: 50% 25%; display: block; }
+    .person div { padding: 0.8rem 1rem; }
+    .person b { display: block; font-family: var(--font-display); font-size: 14px; font-weight: 500; }
+    .person span { font-size: 12px; color: var(--text-muted); }
+    .teach p { font-size: 14.5px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; }
+    .teach p strong { color: var(--text-primary); font-weight: 500; }
+    .creds { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--border-mid); border: 1px solid var(--border-mid); margin-top: 1.6rem; }
+    .creds div { background: var(--bg-dark); padding: 0.95rem 1rem; }
+    .creds b { display: block; font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; }
+    .creds span { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
+    .hospital-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 0.4rem; font-size: 14px; color: var(--text-primary); text-decoration: none; border-bottom: 1px solid rgba(229,62,62,.55); padding-bottom: 3px; }
+    .hospital-link .x { color: #e53e3e; }
+
+    /* ── FAQ ── */
+    .faq { max-width: 820px; }
+    details { border-bottom: 1px solid var(--border-mid); padding: 1.1rem 0; }
+    details:first-of-type { border-top: 1px solid var(--border-mid); }
+    summary { font-family: var(--font-display); font-weight: 500; font-size: 1.04rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--red); font-family: var(--mono); font-weight: 700; }
+    details[open] summary::after { content: "\2212"; }
+    details p { margin-top: 0.7rem; font-size: 14.5px; color: var(--text-secondary); line-height: 1.75; max-width: 70ch; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bg-deep); border-top: 1px solid var(--border); }
+    .contact-inner { max-width: 1100px; margin: 0 auto; padding: 5rem 2.5rem; display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 3rem; align-items: start; }
+    .contact-text p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1.4rem; max-width: 46ch; }
+    address { font-style: normal; font-size: 14.5px; line-height: 1.9; color: var(--text-secondary); }
+    address strong { color: var(--text-primary); font-weight: 500; }
+    address a { color: var(--text-primary); text-decoration: none; }
+    .contact-phone { display: block; font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; color: var(--text-primary); text-decoration: none; margin: 0.4rem 0 1rem; }
+    .areas { font-size: 13px; color: var(--text-muted); margin-top: 1.2rem; line-height: 1.7; max-width: 56ch; }
+    .contact-form { display: flex; flex-direction: column; gap: 0.75rem; }
+    .contact-form input, .contact-form textarea, .contact-form select {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm);
+      color: var(--text-primary); font-family: var(--font-body); font-size: 14px; padding: 10px 14px;
+      outline: none; transition: border-color 0.2s; resize: none; width: 100%;
+    }
+    .contact-form select { appearance: none; -webkit-appearance: none; cursor: pointer;
+      background-image: linear-gradient(45deg, transparent 50%, var(--text-secondary) 50%), linear-gradient(135deg, var(--text-secondary) 50%, transparent 50%);
+      background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%; background-size: 5px 5px; background-repeat: no-repeat; }
+    .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { border-color: var(--accent); }
+    .contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--text-muted); }
+    .contact-form label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: -0.35rem; }
+    .contact-form button { width: 100%; padding: 13px; }
+    .contact-status { font-size: 14px; min-height: 1em; }
+
+    /* ── FOOTER (matches home) ── */
+    footer { background: var(--bg-deep); border-top: 1px solid var(--border); padding: 1.75rem 2.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; }
+    .footer-logo { font-family: var(--font-display); font-size: 12px; font-weight: 600; letter-spacing: 0.2em; color: var(--text-muted); }
+    .footer-logo span { color: var(--red); }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links li, .footer-copy { white-space: nowrap; }
+    .footer-links a { font-size: 12px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; display: inline-flex; align-items: center; }
+    .footer-links a:hover { color: var(--text-secondary); }
+    .footer-copy { font-size: 12px; color: var(--text-muted); }
+    .footer-copy a { color: inherit; text-decoration: none; }
+    .footer-copy a:hover { color: var(--text-secondary); text-decoration: underline; }
+    .site-nap { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 8px 26px; font-size: 13px; color: var(--text-secondary); padding-top: 1rem; border-top: 1px solid var(--border); }
+    .site-nap b { color: var(--text-primary); }
+    .site-nap a { color: inherit; text-decoration: none; }
+    .site-nap a:hover { color: var(--accent); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1000px) {
+      .week { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 2rem; }
+      .nav-links a { padding: 0 0.7rem; }
+    }
+    @media (max-width: 860px) {
+      .nav-links { display: none; }
+      .programs { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+      .split, .teach, .contact-inner { grid-template-columns: 1fr; }
+      .week-head { grid-template-columns: 1fr; }
+      .creds { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .people { display: grid; grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      #top { min-height: 0; padding: 4.5rem 1.25rem 3.5rem; }
+      h1 { font-size: 2.2rem; }
+      .hero-route { width: 340%; left: -40%; opacity: .45; }
+      .hero-route .lbl { display: none; }
+      .hero-scrim { background: radial-gradient(ellipse 90% 48% at 50% 52%, rgba(10,19,36,.95) 0%, rgba(10,19,36,.75) 55%, rgba(10,19,36,.1) 100%); }
+      .hero-cta { flex-direction: column; align-items: stretch; width: 100%; max-width: 360px; margin: 0 auto; }
+      .stats-bar { flex-wrap: wrap; }
+      .stat { flex: 1 1 40%; padding: 1.1rem 1rem; border-bottom: 1px solid var(--border); }
+      .stat:first-child { border-left: 0; }
+      .stat-num { font-size: 1.35rem; }
+      section { padding: 4rem 1.25rem; }
+      .section-sub { margin-bottom: 2rem; }
+      /* the week becomes a swipeable row on phones */
+      .week { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 1rem;
+        margin: 0 -1.25rem; padding: 8px 1.25rem 10px; scrollbar-width: none; }
+      .week::-webkit-scrollbar { display: none; }
+      .day { flex: 0 0 76%; scroll-snap-align: center; }
+      .day h3 { min-height: calc(2.3em + 0.9rem + 1px); }
+      .swipe-hint { display: block; }
+      .week-foot { flex-direction: column; align-items: stretch; }
+      .week-foot .btn-primary { width: 100%; }
+      .steps { grid-template-columns: 1fr; }
+      .people { grid-template-columns: 1fr; }
+      .contact-inner { padding: 4rem 1.25rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 1.75rem 1.25rem; }
+      .footer-links { justify-content: center; gap: 0.5rem 1.25rem; }
+      .site-nap { flex-direction: column; gap: 4px; }
+      .edu-mark { font-size: 17px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-route .route, .hero-route .ping { animation: none; }
+      .hero-route .drone { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">PQ <span>ROBOTICS</span></a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/drone-repair-atlanta.html"><span class="nav-x">✚</span>Drone Hospital</a></li>
+      <li><a class="here" href="/drone-classes-atlanta.html" aria-current="page">Education</a></li>
+      <li><a href="/drone-news.html" title="Drone Hospital Daily" aria-label="DHD, Drone Hospital Daily"><svg class="nav-dhd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18h-5"/><path d="M18 14h-8"/><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><rect width="8" height="4" x="10" y="6" rx="1"/></svg>DHD</a></li>
+      <li><a href="/footage.html">Footage</a></li>
+      <li><a href="/#about">About Us</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact" data-program="lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Book a lesson</a>
+  </nav>
+
+  <main>
+
+  <!-- HERO -->
+  <div id="top">
+    <div class="hero-map" aria-hidden="true"></div>
+    <svg class="hero-route" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <!-- a beginner training sortie: hover check, box pattern, figure eight, orbit, land -->
+      <path class="route-done" d="M220 760 L220 590 C220 520 560 520 720 480 L420 480 L420 240 L720 240 L720 480 C820 480 900 400 980 330 C980 400 1080 400 1130 330 C1180 260 1280 260 1280 330 C1280 400 1180 400 1130 330 C1080 260 980 260 980 330 C980 450 1200 560 1290 620 A70 70 0 1 1 1430 620 A70 70 0 1 1 1290 620 C1150 760 500 800 220 760"/>
+      <path id="sortie" class="route" d="M220 760 L220 590 C220 520 560 520 720 480 L420 480 L420 240 L720 240 L720 480 C820 480 900 400 980 330 C980 400 1080 400 1130 330 C1180 260 1280 260 1280 330 C1280 400 1180 400 1130 330 C1080 260 980 260 980 330 C980 450 1200 560 1290 620 A70 70 0 1 1 1430 620 A70 70 0 1 1 1290 620 C1150 760 500 800 220 760"/>
+      <rect class="gate" x="400" y="220" width="340" height="280"/>
+      <text class="lbl" x="402" y="208">BOX PATTERN</text>
+      <text class="lbl" x="1068" y="232">FIGURE 8</text>
+      <text class="lbl" x="1318" y="520">ORBIT</text>
+      <g class="wp"><circle cx="220" cy="590" r="7"/><text class="lbl" x="236" y="594">HOVER CHECK</text></g>
+      <g class="wp"><circle cx="420" cy="240" r="6"/></g>
+      <g class="wp"><circle cx="720" cy="240" r="6"/></g>
+      <g class="wp"><circle cx="1130" cy="330" r="6"/></g>
+      <g><circle cx="220" cy="760" r="20" fill="#0a1324" stroke="#e53935" stroke-width="2"/><circle cx="220" cy="760" r="14.5" fill="none" stroke="#e53935" stroke-opacity=".45" stroke-width="1"/><text x="220" y="760" text-anchor="middle" dominant-baseline="central" style="fill:#e53935;font:700 14px ui-monospace,Menlo,monospace">H</text><text class="lbl" x="250" y="764">TAKEOFF / LAND</text></g>
+      <circle class="ping" cx="1360" cy="620" r="14"/>
+      <text class="lbl" x="1080" y="840">TRAINING SORTIE 01 · 33.92° N 84.38° W</text>
+      <g class="drone">
+        <g transform="translate(-14 -14)">
+          <circle cx="5" cy="5" r="4.5" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="23" cy="5" r="4.5" fill="none" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="5" cy="23" r="4.5" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="23" cy="23" r="4.5" fill="none" stroke="#fff" stroke-width="1.5"/>
+          <path d="M8 8L20 20M20 8L8 20" stroke="#fff" stroke-width="2"/><rect x="10" y="10" width="8" height="8" rx="2" fill="#e53935"/>
+        </g>
+        <animateMotion dur="44s" repeatCount="indefinite" rotate="auto"><mpath href="#sortie"/></animateMotion>
+      </g>
+    </svg>
+    <div class="hero-scrim" aria-hidden="true"></div>
+
+    <div class="hero-tag"><b>PQ Robotics Education</b> · Sandy Springs · Atlanta, GA</div>
+    <h1><em>Drone Lessons</em><br>&amp; Flight Classes in Atlanta</h1>
+    <p class="hero-sub">Learn to fly from the engineers who build and repair drones every day. Private flight lessons, a week-long beginner course, guided custom builds, and drone programs for schools and youth groups.</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="#contact" data-program="lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>Book a lesson</a>
+      <a class="btn-ghost" href="tel:+14044089063"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(404) 408-9063</a>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat"><span class="stat-num">1-on-1</span><span class="stat-label">Flight Lessons</span></div>
+    <div class="stat"><span class="stat-num">1 Week</span><span class="stat-label">Flight Course</span></div>
+    <div class="stat"><span class="stat-num">Classroom</span><span class="stat-label">Courses &amp; DIY Kits</span></div>
+    <div class="stat"><span class="stat-num">Part 107</span><span class="stat-label">FAA Certified</span></div>
+  </div>
+
+  <!-- PROGRAMS -->
+  <section id="programs">
+    <div class="edu-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>PQ Robotics Education</div>
+    <h2>Drone training in Atlanta, three ways</h2>
+    <p class="section-sub">Whether you just unboxed your first drone, want to build one from scratch, or need a drone program for a classroom full of students, <strong>we teach it hands-on, with real aircraft and a lot of time in the air.</strong></p>
+
+    <div class="programs">
+      <article class="program" id="lessons">
+        <div class="program-img"><img loading="lazy" decoding="async" src="assets/images/education/lesson-field.jpg" width="1347" height="1010" alt="Pilot in FPV goggles flying a drone over a training field with race gates"></div>
+        <div class="program-body">
+          <div class="program-no"><span><b>01</b> · Pilots</span><span>Private &amp; small group</span></div>
+          <h3>Drone flying lessons &amp; coaching</h3>
+          <p>One-on-one or small-group flight lessons for new and returning pilots. Start from your first takeoff, or fix the habits that keep putting your drone in the trees.</p>
+          <ul class="ticks">
+            <li>First flights, hovering and smooth control</li>
+            <li>Orientation, landings and emergency recovery</li>
+            <li>Camera moves for clean, cinematic footage</li>
+            <li>Where you can legally fly around Atlanta</li>
+            <li>DJI, FPV and beginner trainers</li>
+          </ul>
+          <a class="btn-ghost" href="#contact" data-program="lessons">Ask about flying lessons &rarr;</a>
+        </div>
+      </article>
+
+      <article class="program" id="builds">
+        <div class="program-img"><img loading="lazy" decoding="async" src="assets/images/education/guided-build.jpg" width="1200" height="900" alt="Custom drone built by PQ Robotics, showing flight controller, ESC and wiring"></div>
+        <div class="program-body">
+          <div class="program-no"><span><b>02</b> · Builders</span><span>Any airframe</span></div>
+          <h3>Guided custom drone builds</h3>
+          <p>Build your own drone with an engineer at your side. You choose the mission, from FPV freestyle to cinewhoop, long range, camera or autonomous, and we guide you from parts to first flight.</p>
+          <ul class="ticks">
+            <li>Parts list matched to your goal and budget</li>
+            <li>Soldering, wiring and frame assembly</li>
+            <li>Betaflight or PX4 setup and configuration</li>
+            <li>Maiden flight and tuning, together</li>
+            <li>You keep the drone and the know-how</li>
+          </ul>
+          <a class="btn-ghost" href="#contact" data-program="build">Plan a guided build &rarr;</a>
+        </div>
+      </article>
+
+      <article class="program" id="schools-card">
+        <div class="program-img"><img loading="lazy" decoding="async" src="assets/images/education/class-quad.jpg" width="952" height="714" alt="Quadcopter built on an F450 frame with a Pixhawk flight controller, the kind of drone students assemble"></div>
+        <div class="program-body">
+          <div class="program-no"><span><b>03</b> · Groups</span><span>Schools &amp; organizations</span></div>
+          <h3>Drone courses &amp; DIY kits for schools</h3>
+          <p>Drone classes and build kits for schools, STEM programs, Scout troops, camps and other organizations. We bring the lesson plan, the parts and the flying.</p>
+          <ul class="ticks">
+            <li>On-site classes, workshops and lectures</li>
+            <li>DIY drone kits with step-by-step build guides</li>
+            <li>Flight day to finish every program</li>
+            <li>Built around your group's age and size</li>
+          </ul>
+          <a class="btn-ghost" href="#schools">Programs for groups &rarr;</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FLIGHT WEEK: the course, teased -->
+  <div class="band" id="flight-week">
+    <section>
+      <div class="week-head">
+        <div>
+          <div class="section-eyebrow">Signature course</div>
+          <h2>Flight Week: a one-week beginner drone course</h2>
+          <p class="section-sub">Five days that take a brand-new pilot to a confident one. Every day pairs a short ground lesson with a lot of stick time, and the air time grows as the week goes on. <strong>Here is the shape of the week. The full syllabus is for enrolled students.</strong></p>
+        </div>
+        <div class="week-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><rect x="4" y="11" width="16" height="10"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Syllabus · Enrolled only</div>
+      </div>
+
+      <div class="week">
+        <article class="day"><span class="day-crop" aria-hidden="true"></span>
+          <div class="day-meta"><span>Flight Week</span><b>Day 01</b></div>
+          <h3>Ground School &amp; First Hover</h3>
+          <p class="day-tease">How a drone flies, safety and the rules, then your first controlled takeoff.</p>
+          <div class="redact" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="redact-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><rect x="4" y="11" width="16" height="10"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></div>
+          <div class="airtime"><div class="airtime-lbl"><span>Air time</span></div><div class="pips" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div>
+        </article>
+        <article class="day"><span class="day-crop" aria-hidden="true"></span>
+          <div class="day-meta"><span>Flight Week</span><b>Day 02</b></div>
+          <h3>Orientation &amp; Control</h3>
+          <p class="day-tease">Flying confidently in every direction, including toward yourself.</p>
+          <div class="redact" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="redact-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><rect x="4" y="11" width="16" height="10"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></div>
+          <div class="airtime"><div class="airtime-lbl"><span>Air time</span></div><div class="pips" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
+        </article>
+        <article class="day"><span class="day-crop" aria-hidden="true"></span>
+          <div class="day-meta"><span>Flight Week</span><b>Day 03</b></div>
+          <h3>Precision Patterns</h3>
+          <p class="day-tease">The drills that separate pilots from passengers.</p>
+          <div class="redact" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="redact-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><rect x="4" y="11" width="16" height="10"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></div>
+          <div class="airtime"><div class="airtime-lbl"><span>Air time</span></div><div class="pips" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
+        </article>
+        <article class="day"><span class="day-crop" aria-hidden="true"></span>
+          <div class="day-meta"><span>Flight Week</span><b>Day 04</b></div>
+          <h3>Camera &amp; Mission Flying</h3>
+          <p class="day-tease">Putting the skills to work: smooth shots and planned flights.</p>
+          <div class="redact" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="redact-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><rect x="4" y="11" width="16" height="10"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></div>
+          <div class="airtime"><div class="airtime-lbl"><span>Air time</span></div><div class="pips" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
+        </article>
+        <article class="day"><span class="day-crop" aria-hidden="true"></span>
+          <div class="day-meta"><span>Flight Week</span><b>Day 05</b></div>
+          <h3>Check Ride</h3>
+          <p class="day-tease">A final flight that puts the whole week together.</p>
+          <div class="redact" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="redact-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><rect x="4" y="11" width="16" height="10"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></div>
+          <div class="airtime"><div class="airtime-lbl"><span>Air time</span></div><div class="pips" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+        </article>
+      </div>
+      <div class="swipe-hint" aria-hidden="true">Swipe for Day 02 to Day 05 &rarr;</div>
+
+      <div class="week-foot">
+        <div class="week-foot-text">
+          <span class="lockbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" aria-hidden="true"><rect x="4" y="11" width="16" height="10"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><path d="M12 15v2"/></svg></span>
+          <span><strong>The full day-by-day syllabus, drills and flight checklists</strong> are shared when you enroll. Ask us about the next Flight Week or a private week for your group.</span>
+        </div>
+        <a class="btn-primary" href="#contact" data-program="flight-week">Ask about Flight Week</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- SCHOOLS & ORGANIZATIONS -->
+  <section id="schools">
+    <div class="split">
+      <div class="split-img"><img loading="lazy" decoding="async" src="assets/images/education/student-builds.jpg" width="967" height="725" alt="Six student-built quadcopters, from 3D-printed frames to finished drones with flight controllers"></div>
+      <div>
+        <div class="section-eyebrow">For schools &amp; organizations</div>
+        <h2>Drone classes for schools, Scouts and STEM groups</h2>
+        <p class="section-sub" style="margin-bottom:0">A drone is the best robotics lesson there is: physics, electronics, code and a real flight at the end. We run one-day workshops, multi-week courses and build programs across metro Atlanta, at your site or ours.</p>
+        <ul class="chips" aria-label="Groups we teach">
+          <li>Middle &amp; high schools</li><li>STEM &amp; robotics clubs</li><li>Scout troops</li><li>Summer camps</li><li>Homeschool groups</li><li>Libraries &amp; makerspaces</li><li>Company team days</li>
+        </ul>
+        <div class="kit">
+          <div class="kit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></div>
+          <div>
+            <h3>PQ DIY Drone Kit <span class="soon">Coming soon</span></h3>
+            <p>Every part a student needs to build a working drone, with a step-by-step build guide written by our engineers. Order a set for your class or troop.</p>
+            <a href="#contact" data-program="kits">Join the kit waitlist &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <div class="band-dark">
+    <section>
+      <div class="section-eyebrow">How it works</div>
+      <h2>From first call to first flight</h2>
+      <p class="section-sub">Every student and group is different, so every program is set up around you.</p>
+      <ol class="steps">
+        <li><h3>Tell us your goal</h3><p>Call, text or send the form. A first flight, a custom build, or a class of thirty: tell us who is learning and what you want them to walk away with.</p></li>
+        <li><h3>We build the plan</h3><p>We match you to the right format, set a schedule and send a clear quote before anything is booked.</p></li>
+        <li><h3>Fly</h3><p>Lessons start at our Sandy Springs shop or on-site at your school or organization. Expect to spend most of it in the air.</p></li>
+        <li><h3>Keep going</h3><p>Ready for more? Move on to advanced flying, FPV or a guided build of your own drone.</p></li>
+      </ol>
+    </section>
+  </div>
+
+  <!-- INSTRUCTORS -->
+  <section id="instructors">
+    <div class="section-eyebrow">Your instructors</div>
+    <h2>Taught by engineers who build and repair drones</h2>
+    <div class="teach" style="margin-top:2rem">
+      <div class="people">
+        <div class="person"><img loading="lazy" decoding="async" src="assets/images/founder.jpg" alt="Paul Quigley, PQ Robotics founder"><div><b>Paul Quigley</b><span>Founder &amp; Lead Engineer</span></div></div>
+        <div class="person"><img loading="lazy" decoding="async" src="assets/images/team-robbie.jpg" alt="Robbie Maimone, PQ Robotics DJI technician"><div><b>Robbie Maimone</b><span>DJI Technician &amp; Marketing</span></div></div>
+      </div>
+      <div>
+        <p>PQ Robotics is an Atlanta engineering company that designs autonomous drones and runs <strong>Drone Hospital</strong>, our repair shop. That means your instructor knows how a drone works from the inside out: why it drifts, why it flips on takeoff, and how to keep it in one piece.</p>
+        <p>Our team holds a B.S. in Intelligent Systems Engineering from Indiana University, has been building drones from scratch for more than six years, and has diagnosed hundreds of DJI aircraft on the bench. Every lesson is led by an <strong>FAA Part 107 certified</strong> pilot.</p>
+        <a class="hospital-link" href="/drone-repair-atlanta.html"><span class="x">✚</span>Crashed during practice? Drone Hospital is in the same shop &rarr;</a>
+        <div class="creds">
+          <div><b>6+ yrs</b><span>Building drones</span></div>
+          <div><b>100s</b><span>DJI aircraft repaired</span></div>
+          <div><b>B.S. ISE</b><span>Indiana University</span></div>
+          <div><b>Part 107</b><span>FAA certified</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <div class="band" id="faq">
+    <section>
+      <div class="section-eyebrow">Common questions</div>
+      <h2>Before your first lesson</h2>
+      <div class="faq" style="margin-top:2rem">
+        <details><summary>Do you offer drone lessons in Atlanta?</summary><p>Yes. PQ Robotics Education teaches private and small-group drone flying lessons, a week-long beginner course, guided custom builds, and drone classes for schools and organizations across metro Atlanta. Lessons start at our Sandy Springs shop or on-site at your location.</p></details>
+        <details><summary>I just bought my first drone. Can you teach me to fly it?</summary><p>Yes, and it is the best time to start. A lesson before your first real flight covers setup, safe takeoffs and landings, and what to do when something goes wrong, which is how most new drones get damaged.</p></details>
+        <details><summary>What is in the week-long drone course?</summary><p>Flight Week covers drone basics in five days, with a short ground lesson each day and most of the time spent flying. It starts at first hover and ends with a final check ride. The full syllabus is shared with enrolled students.</p></details>
+        <details><summary>Can you help me build my own drone?</summary><p>Yes. In a guided build you choose the type of drone, such as FPV freestyle, cinewhoop, long range, camera or autonomous, and we walk you through parts selection, soldering, assembly, firmware setup and the first flight. You keep the drone.</p></details>
+        <details><summary>Can you teach a drone class at our school or Scout troop?</summary><p>Yes. We run drone workshops, multi-week courses and build programs for schools, STEM clubs, Scout troops, camps and other organizations, on-site or at our shop. Programs are built around your group's age, size and schedule.</p></details>
+        <details><summary>Do you sell DIY drone kits for classrooms?</summary><p>The PQ DIY Drone Kit is coming soon. It includes the parts to build a working drone and a step-by-step build guide. Schools and organizations can join the waitlist through the form on this page.</p></details>
+        <details><summary>Do I need an FAA license to fly a drone?</summary><p>Recreational pilots need to pass the free FAA TRUST test and register any drone over 250 grams. Flying for any business purpose requires an FAA Part 107 remote pilot certificate. We cover which rules apply to you during your lesson.</p></details>
+        <details><summary>How much do drone lessons cost?</summary><p>Pricing depends on the format, the number of students and the length of the program. Call (404) 408-9063 or send the form and we will send a clear quote before anything is booked.</p></details>
+      </div>
+    </section>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact">
+    <div class="contact-inner">
+      <div class="contact-text">
+        <div class="section-eyebrow">Book a lesson</div>
+        <h2>Ready to fly?</h2>
+        <p>Tell us what you want to learn and we will get back to you within 24 hours with a plan and a quote.</p>
+        <a class="contact-phone" href="tel:+14044089063">(404) 408-9063</a>
+        <address>
+          <strong>PQ Robotics Education</strong><br>
+          6059 Boylston Dr NE<br>
+          Atlanta, GA 30328<br>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=6059+Boylston+Dr+NE+Atlanta+GA+30328" target="_blank" rel="noopener">Get directions &rarr;</a>
+        </address>
+        <p class="areas">Lessons and programs across Sandy Springs, Buckhead, Brookhaven, Chamblee, Dunwoody, Doraville, Norcross, Decatur, Marietta, Smyrna, Mableton, Austell, Roswell and the wider Atlanta metro.</p>
+      </div>
+
+      <form class="contact-form" id="edu-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="faf18176-5c83-47cf-8b34-26d7a3df52e6">
+        <input type="hidden" name="subject" value="New Education inquiry from pq-robotics.com">
+        <input type="hidden" name="from_name" value="PQ Robotics Education page">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+        <label for="f-program">I'm interested in</label>
+        <select id="f-program" name="program">
+          <option value="Flying lessons">Flying lessons or coaching</option>
+          <option value="Flight Week course">Flight Week (one-week course)</option>
+          <option value="Guided custom build">A guided custom build</option>
+          <option value="School or group program">A class for a school or group</option>
+          <option value="DIY kit waitlist">DIY drone kit waitlist</option>
+          <option value="Something else">Something else</option>
+        </select>
+        <input type="text" name="name" placeholder="Your name" autocomplete="name" required>
+        <input type="email" name="email" placeholder="Email address" autocomplete="email" required>
+        <input type="tel" name="phone" placeholder="Phone (optional)" autocomplete="tel">
+        <textarea name="message" rows="4" placeholder="Who is learning, experience level, and the drone you fly (if any)"></textarea>
+        <button type="submit" class="btn-primary">Send inquiry</button>
+        <p class="contact-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">PQ <span>ROBOTICS</span></div>
+    <ul class="footer-links">
+      <li><a href="/drone-repair-atlanta.html"><span class="nav-x">✚</span>Drone Hospital</a></li>
+      <li><a href="/drone-classes-atlanta.html">Education</a></li>
+      <li><a href="/drone-news.html" title="Drone Hospital Daily" aria-label="DHD, Drone Hospital Daily"><svg class="nav-dhd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18h-5"/><path d="M18 14h-8"/><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><rect width="8" height="4" x="10" y="6" rx="1"/></svg>DHD</a></li>
+      <li><a href="/footage.html">Footage</a></li>
+      <li><a href="/#about">About Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 PQ Technologies LLC &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a></div>
+    <div class="site-nap">
+      <span><b>PQ Robotics</b> · Education</span>
+      <span>6059 Boylston Dr NE, Atlanta, GA 30328</span>
+      <span><a href="tel:+14044089063">(404) 408-9063</a></span>
+    </div>
+  </footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://pq-robotics.com/drone-classes-atlanta.html#service",
+      "name": "Drone lessons and flight classes in Atlanta",
+      "serviceType": "Drone flight training",
+      "brand": { "@type": "Brand", "name": "PQ Robotics Education" },
+      "description": "Private drone flying lessons, a week-long beginner drone course, guided custom drone builds, and drone classes and DIY kits for schools and organizations in Atlanta, Georgia. Taught by FAA Part 107 certified engineers.",
+      "url": "https://pq-robotics.com/drone-classes-atlanta.html",
+      "image": "https://pq-robotics.com/assets/images/og-image.png",
+      "provider": {
+        "@type": "LocalBusiness",
+        "@id": "https://pq-robotics.com/#business",
+        "name": "Drone Hospital",
+        "alternateName": "PQ Robotics",
+        "url": "https://pq-robotics.com/",
+        "telephone": "+1-404-408-9063",
+        "image": "https://pq-robotics.com/assets/images/og-image.png",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "6059 Boylston Dr NE",
+          "addressLocality": "Atlanta",
+          "addressRegion": "GA",
+          "postalCode": "30328",
+          "addressCountry": "US"
+        }
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Atlanta" },
+        { "@type": "City", "name": "Sandy Springs" },
+        { "@type": "City", "name": "Brookhaven" },
+        { "@type": "City", "name": "Chamblee" },
+        { "@type": "City", "name": "Dunwoody" },
+        { "@type": "City", "name": "Doraville" },
+        { "@type": "City", "name": "Norcross" },
+        { "@type": "City", "name": "Decatur" },
+        { "@type": "City", "name": "Marietta" },
+        { "@type": "City", "name": "Smyrna" },
+        { "@type": "City", "name": "Mableton" },
+        { "@type": "City", "name": "Austell" },
+        { "@type": "City", "name": "Roswell" }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Drone education programs",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Private drone flying lessons" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Flight Week one-week beginner drone course" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Guided custom drone builds" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Drone classes for schools, Scout troops and STEM groups" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "DIY drone kits for classrooms" } }
+        ]
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://pq-robotics.com/drone-classes-atlanta.html",
+      "url": "https://pq-robotics.com/drone-classes-atlanta.html",
+      "name": "Drone Lessons & Flight Classes in Atlanta | PQ Robotics Education",
+      "about": { "@id": "https://pq-robotics.com/drone-classes-atlanta.html#service" },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pq-robotics.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Drone Lessons Atlanta", "item": "https://pq-robotics.com/drone-classes-atlanta.html" }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://pq-robotics.com/drone-classes-atlanta.html#faq",
+      "mainEntity": [
+        {"@type": "Question", "name": "Do you offer drone lessons in Atlanta?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. PQ Robotics Education teaches private and small-group drone flying lessons, a week-long beginner course, guided custom builds, and drone classes for schools and organizations across metro Atlanta. Lessons start at our Sandy Springs shop or on-site at your location."}},
+        {"@type": "Question", "name": "I just bought my first drone. Can you teach me to fly it?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, and it is the best time to start. A lesson before your first real flight covers setup, safe takeoffs and landings, and what to do when something goes wrong, which is how most new drones get damaged."}},
+        {"@type": "Question", "name": "What is in the week-long drone course?", "acceptedAnswer": {"@type": "Answer", "text": "Flight Week covers drone basics in five days, with a short ground lesson each day and most of the time spent flying. It starts at first hover and ends with a final check ride. The full syllabus is shared with enrolled students."}},
+        {"@type": "Question", "name": "Can you help me build my own drone?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. In a guided build you choose the type of drone, such as FPV freestyle, cinewhoop, long range, camera or autonomous, and we walk you through parts selection, soldering, assembly, firmware setup and the first flight. You keep the drone."}},
+        {"@type": "Question", "name": "Can you teach a drone class at our school or Scout troop?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We run drone workshops, multi-week courses and build programs for schools, STEM clubs, Scout troops, camps and other organizations, on-site or at our shop. Programs are built around your group's age, size and schedule."}},
+        {"@type": "Question", "name": "Do you sell DIY drone kits for classrooms?", "acceptedAnswer": {"@type": "Answer", "text": "The PQ DIY Drone Kit is coming soon. It includes the parts to build a working drone and a step-by-step build guide. Schools and organizations can join the waitlist through the form on this page."}},
+        {"@type": "Question", "name": "Do I need an FAA license to fly a drone?", "acceptedAnswer": {"@type": "Answer", "text": "Recreational pilots need to pass the free FAA TRUST test and register any drone over 250 grams. Flying for any business purpose requires an FAA Part 107 remote pilot certificate. We cover which rules apply to you during your lesson."}},
+        {"@type": "Question", "name": "How much do drone lessons cost?", "acceptedAnswer": {"@type": "Answer", "text": "Pricing depends on the format, the number of students and the length of the program. Call (404) 408-9063 or send the form and we will send a clear quote before anything is booked."}}
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+(function () {
+  // Program buttons pre-select the matching option in the form
+  var map = { lessons: "Flying lessons", "flight-week": "Flight Week course", build: "Guided custom build", groups: "School or group program", kits: "DIY kit waitlist" };
+  var sel = document.getElementById("f-program");
+  document.querySelectorAll("[data-program]").forEach(function (a) {
+    a.addEventListener("click", function () { var v = map[a.getAttribute("data-program")]; if (sel && v) sel.value = v; });
+  });
+
+  var form = document.getElementById("edu-form");
+  if (!form || !window.fetch) return;
+  var status = form.querySelector(".contact-status");
+  var btn = form.querySelector('button[type="submit"]');
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    btn.disabled = true; btn.textContent = "Sending...";
+    status.textContent = "";
+    fetch(form.action, { method: "POST", headers: { Accept: "application/json" }, body: new FormData(form) })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (!data.success) throw new Error(data.message || "Send failed");
+        form.reset();
+        status.style.color = "#48bb78";
+        status.innerHTML = 'Thanks! We got your message and will get back to you within 24 hours. For a quicker answer, call <a href="tel:+14044089063" style="color:inherit;font-weight:600">(404) 408-9063</a>.';
+      })
+      .catch(function () {
+        status.style.color = "#e53e3e";
+        status.textContent = "Sorry, that did not go through. Please call (404) 408-9063 or try again.";
+      })
+      .finally(function () { btn.disabled = false; btn.textContent = "Send inquiry"; });
+  });
+})();
+</script>
+</body>
+</html>
