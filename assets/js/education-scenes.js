@@ -1,7 +1,8 @@
-/* PQ Robotics Education hero: two small scenes either side of the headline.
-   Left: a robot teacher at the chalkboard with a classroom of students and their drones.
-   Right: flight training, where a student flies hover, box, figure 8 and landing with a
-   robot instructor on a trainer cable.
+/* PQ Robotics Education hero: two matching panels either side of the headline.
+   Left, Classroom: a robot teacher works through three lessons on the chalkboard while
+   a grid of students with desk drones follows along.
+   Right, Flight Training: the lesson board ticks off hover, box, figure 8 and landing while
+   a student flies with a robot instructor on a trainer cable.
    Everything is drawn into the hero SVG; nothing here changes page text. */
 (() => {
   const svg = document.querySelector('#top .hero-route');
@@ -192,12 +193,14 @@
   const ALL = { frame: 1, motorL: 1, motorR: 1, esc: 1, fc: 1, batt: 1, propL: 1, propR: 1, led: 1 };
 
   /* ======================================================================
-     CLASSROOM (lower left)
+     CLASSROOM (left panel)
      ====================================================================== */
+  // the board, its lessons and the teacher are drawn at 0.8 scale inside #c-board
+  const BOARD = { x: 30, y: 220, s: 0.8, ox: 130, oy: 508 };
+  const boardToWorldX = x => BOARD.x + (x - BOARD.ox) * BOARD.s;
   const C = (() => {
-    const tLayer = $('c-teacher'), sLayer = $('c-students');
-    const R = makeRobot(tLayer, tLayer, 170, 640, -1, 1.25);
-    const pointer = mk('line', { class: 'pointer' }, tLayer);
+    const R = makeRobot($('c-teacher'), $('c-teacher'), 300, 640, -1, 1.25);
+    const pointer = mk('line', { class: 'pointer' }, $('c-teacher'));
     const phases = [$('c-A'), $('c-B'), $('c-C')];
     const labelsA = [$('c-a1'), $('c-a2'), $('c-a3'), $('c-a4')];
     const labelsC = [$('c-f1'), $('c-f2'), $('c-f3'), $('c-f4')];
@@ -205,13 +208,15 @@
     const PTS_A = [{ x: 291, y: 542 }, { x: 285, y: 578 }, { x: 251, y: 566 }, { x: 249, y: 557 }];
     const PTS_C = [{ x: 255, y: 536 }, { x: 255, y: 586 }, { x: 306, y: 562 }, { x: 204, y: 562 }];
     const TITLES = ['HOW A DRONE FLIES', 'BOX PATTERN', 'FOUR FORCES'];
-    // students, rear view, three rows of three
-    const ROWS = [{ y: 664, s: 0.8, xs: [178, 255, 332] }, { y: 718, s: 0.9, xs: [170, 255, 340] }, { y: 776, s: 1, xs: [162, 255, 348] }];
+    // students: an even grid, five rows of three, everyone facing the board
+    const COLS = [64, 130, 196], ROWS = [368, 453, 538, 623, 708], SC = 1.1;
+    const HAIRS = ['M-7.4 -13Q-8.5 -24 0 -23.5Q8.5 -24 7.4 -13', 'M-7.4 -13Q-8.5 -24 0 -23.5Q8.5 -24 7.4 -13M0 -8.5v5',
+      'M-7.4 -14Q-7 -24 0 -23.5Q7 -24 7.4 -14M-4 -23l8 0', 'M-7.4 -13Q-8.5 -24 0 -23.5Q8.5 -24 7.4 -13M0 -25.5a2.5 2.5 0 1 0 0.1 0'];
     const kids = [];
     let n = 0;
-    for (const row of ROWS) {
-      for (const x of row.xs) {
-        const g = mk('g', { transform: `translate(${x} ${row.y}) scale(${row.s})` }, sLayer);
+    for (const y of ROWS) {
+      for (const x of COLS) {
+        const g = mk('g', { transform: `translate(${x} ${y}) scale(${SC})` }, $('c-students'));
         mk('rect', { class: 'kf', x: -25, y: -7, width: 50, height: 5, rx: 1 }, g);
         const dg = mk('g', {}, g);
         const G = makeGlyph(dg);
@@ -221,12 +226,9 @@
         mk('path', { class: 'kf', d: 'M-12 15V4Q-12 -6 0 -6Q12 -6 12 4V15Z' }, g);
         const head = mk('g', {}, g);
         mk('circle', { class: 'kf', cx: 0, cy: -15, r: 7.5 }, head);
-        const style = n % 4;
-        const hair = ['M-7.4 -13Q-8.5 -24 0 -23.5Q8.5 -24 7.4 -13', 'M-7.4 -13Q-8.5 -24 0 -23.5Q8.5 -24 7.4 -13M0 -8.5v5',
-          'M-7.4 -14Q-7 -24 0 -23.5Q7 -24 7.4 -14M-4 -23l8 0', 'M-7.4 -13Q-8.5 -24 0 -23.5Q8.5 -24 7.4 -13M0 -25.5a2.5 2.5 0 1 0 0.1 0'][style];
-        mk('path', { class: 'hair', d: hair }, head);
+        mk('path', { class: 'hair', d: HAIRS[(n * 7) % 4] }, head);
         mk('rect', { class: 'kf', x: -10, y: 4, width: 20, height: 12, rx: 2 }, g);
-        kids.push({ x, y: row.y, s: row.s, head, G, dg, handArm, handDot, i: n });
+        kids.push({ x, y, head, G, dg, handArm, handDot, i: n });
         n++;
       }
     }
@@ -239,16 +241,13 @@
       phases.forEach((p, i) => op(p, i === ph ? clamp(pt / 0.5, 0, 1) * clamp((8 - pt) / 0.35, 0, 1) : 0));
       text(title, TITLES[ph]);
       op(title, clamp(pt / 0.4, 0, 1) * clamp((8 - pt) / 0.35, 0, 1));
-      // where the pointer goes
       let target = null, turn = false;
       if (ph === 0) {
         const k = Math.floor((pt - 1.4) / 1.6);
         labelsA.forEach((l, i) => { op(l, pt > 1.4 + i * 1.6 ? 1 : 0); setC(l, 'cl' + (i === k ? ' on' : '')); });
         if (k >= 0 && k < 4) target = PTS_A[k];
       } else if (ph === 1) {
-        // chalk drone goes round the box
-        const u = seg(pt, 1, 7);
-        const per = 80 * 2 + 54 * 2, d = u * per;
+        const u = seg(pt, 1, 7), d = u * 268;
         let x, y;
         if (d < 54) { x = 215; y = 586 - d; } else if (d < 134) { x = 215 + (d - 54); y = 532; }
         else if (d < 188) { x = 295; y = 532 + (d - 134); } else { x = 295 - (d - 188); y = 586; }
@@ -260,11 +259,14 @@
         if (k >= 0 && k < 4) target = PTS_C[k];
         if (pt > 5.6 && pt < 7.4) turn = true;
       }
-      // teacher rolls along the front of the board
+      const step = Math.min(1, (dt || 0.016) * 2.2);
       const want = target ? clamp(target.x - 34, 150, 345) : 300;
-      R.place(R.rx + (want - R.rx) * Math.min(1, (dt || 0.016) * 2.2));
+      R.place(R.rx + (want - R.rx) * step);
       R.look = turn;
-      if (target) pointT = { x: lerp(pointT.x, target.x, Math.min(1, (dt || 0.016) * 8)), y: lerp(pointT.y, target.y, Math.min(1, (dt || 0.016) * 8)) };
+      if (target) {
+        const f = Math.min(1, (dt || 0.016) * 8);
+        pointT = { x: lerp(pointT.x, target.x, f), y: lerp(pointT.y, target.y, f) };
+      }
       const sh = robotShoulder(R);
       let tip = target ? pointT : { x: sh.x + 16, y: sh.y + 14 };
       if (turn) tip = { x: sh.x + 10, y: sh.y - 26 };
@@ -273,12 +275,13 @@
       robotArm(R, sh.x + dx / d * reach, sh.y + dy / d * reach, 0.4);
       line(pointer, R.wrist.x, R.wrist.y, R.wrist.x + dx / d * L, R.wrist.y + dy / d * L);
       robotIdle(R, t);
-      // students: heads follow the teacher, desk drones hop together in the box lesson,
+      // students look toward the teacher; desk drones hop together in the box lesson;
       // one student raises a hand during the forces lesson
-      const asker = Math.floor(rnd(c, 9) * 9);
+      const teacherX = boardToWorldX(R.rx);
+      const asker = Math.floor(rnd(c, 9) * kids.length);
       const hop = ph === 1 ? seg(pt, 2.5, 3.1) * (1 - seg(pt, 5.2, 5.8)) : 0;
       for (const k of kids) {
-        const look = clamp((R.rx - k.x) / 60, -2, 2) + Math.sin(t * 0.7 + k.i) * 0.4;
+        const look = clamp((teacherX - k.x) / 50, -2, 2) + Math.sin(t * 0.7 + k.i) * 0.4;
         tf(k.head, `translate(${look.toFixed(2)} ${(Math.sin(t * 1.1 + k.i * 1.7) * 0.4).toFixed(2)})`);
         const up = hop * (8 + Math.sin(t * 5 + k.i) * 1.2);
         tf(k.dg, `translate(0 ${(-up).toFixed(2)})`);
@@ -290,58 +293,59 @@
   })();
 
   /* ======================================================================
-     FLIGHT TRAINING (right)
+     FLIGHT TRAINING (right panel)
      ====================================================================== */
   const F = (() => {
     const fBack = $('f-back'), fFront = $('f-front');
-    const FS = makePerson(fBack, fFront, 1243, 800, 1, 1, 0);
-    const FR = makeRobot(fBack, fFront, 1297, 800, -1, 1.25);
+    const GROUND = 706;
+    const FS = makePerson(fBack, fFront, 1392, GROUND, 1, 1, 0);
+    const FR = makeRobot(fBack, fFront, 1444, GROUND, -1, 1.25);
     const fTx = mk('g', {}, fFront);
     mk('rect', { class: 'kf', x: -5, y: -3, width: 10, height: 6, rx: 1.5 }, fTx);
     mk('path', { class: 'k', d: 'M-3 -3l-1 -6M3 -3l1 -6' }, fTx);
     const rTx = mk('g', {}, fFront);
     mk('rect', { class: 'kf', x: -5, y: -3, width: 10, height: 6, rx: 1.5 }, rTx);
     mk('path', { class: 'k', d: 'M3 -3l1 -6' }, rTx);
-    const cable = $('f-cable');
-    const fTitle = $('f-title');
+    const cable = $('f-cable'), fTitle = $('f-title'), prog = $('f-prog');
+    // lesson board: two columns of checks
     const FITEMS = ['HOVER', 'BOX', 'FIGURE 8', 'LANDING'];
     const fChecks = FITEMS.map((w, i) => {
-      const box = mk('rect', { class: 'chk', x: 1224, y: 648 + i * 13, width: 4.5, height: 4.5, rx: 1 }, $('f-list'));
-      const tx = mk('text', { class: 'mono6', x: 1233, y: 652.2 + i * 13 }, $('f-list'));
+      const x = i % 2 ? 1472 : 1380, y = i < 2 ? 246 : 263;
+      const box = mk('rect', { class: 'chk', x, y: y - 5, width: 5.5, height: 5.5, rx: 1 }, $('f-list'));
+      const tx = mk('text', { class: 'chalk', x: x + 10, y }, $('f-list'));
       tx.textContent = w;
       return { box, tx };
     });
     const G = makeGlyph($('e-drones'));
-    const PAD = { x: 1359, y: 798 }, H = { x: PAD.x, y: 720 }, S = 0.7;
+    const PAD = { x: 1520, y: GROUND - 2 }, H = { x: 1520, y: 630 }, FIG = { x: 1465, y: 420 }, S = 0.7;
     const FL = 22;
     const CHK = [5.5, 10.5, 15.5, 17.5];
 
-    // where the drone is at time t of a lesson
     function pose(t) {
       let x = PAD.x, y = PAD.y;
-      if (t < 1) { /* parked */ }
+      if (t < 1) { /* parked on the pad */ }
       else if (t < 2.5) y = lerp(PAD.y, H.y, ease(seg(t, 1, 2.5)));
       else if (t < 5.5) y = H.y;
       else if (t < 10.5) {
         const u = seg(t, 5.5, 10.5) * 4, k = Math.floor(Math.min(u, 3.999)), f = ease(u - k);
-        const P = [[1359, 720], [1359, 600], [1509, 600], [1509, 720], [1359, 720]];
+        const P = [[1520, 630], [1520, 500], [1415, 500], [1415, 630], [1520, 630]];
         x = lerp(P[k][0], P[k + 1][0], f); y = lerp(P[k][1], P[k + 1][1], f);
-      } else if (t < 15.5) {
-        const a = 2 * Math.PI * seg(t, 10.5, 15.5);
-        x = 1434 - 75 * Math.cos(a); y = 720 - 45 * Math.sin(2 * a);
-      } else if (t < 17.5) y = lerp(H.y, PAD.y, ease(seg(t, 15.5, 17.5)));
+      } else if (t < 11.2) y = lerp(H.y, FIG.y, ease(seg(t, 10.5, 11.2)));
+      else if (t < 15.5) {
+        const a = 2 * Math.PI * seg(t, 11.2, 15.5);
+        x = FIG.x + 55 * Math.cos(a); y = FIG.y - 45 * Math.sin(2 * a);
+      } else if (t < 17.5) y = lerp(FIG.y, PAD.y, ease(seg(t, 15.5, 17.5)));
       const flying = t > 1.05 && t < 17.45;
-      // a new pilot wobbles at first and steadies as the lesson goes on
       const wob = flying ? 3.2 * (1 - seg(t, 1, 15.5)) : 0;
       return { x: x + Math.sin(t * 7.3) * wob, y: y + Math.sin(t * 5.1) * wob * 0.6, flying };
     }
 
+    const plans = [$('f-ghover'), $('f-gbox'), $('f-gfig')];
     let prevT = -1;
-    return (abs, dt) => {
+    return (abs) => {
       const t = ((abs % FL) + FL) % FL, lesson = Math.floor(abs / FL);
-      const P = pose(t);
+      const P = pose(t), Q = pose(Math.min(t + 0.06, FL - 0.01));
       glyphSet(G, ALL, P.flying || (t > 0.5 && t < 1.05), abs);
-      const Q = pose(Math.min(t + 0.06, FL - 0.01));
       const rot = P.flying ? clamp((Q.x - P.x) / 0.06 * 0.12, -22, 22) : 0;
       tf(G.g, `translate(${P.x.toFixed(1)} ${P.y.toFixed(1)}) scale(${S}) rotate(${rot.toFixed(1)})`);
 
@@ -356,35 +360,41 @@
         personArm(FS, 'near', sh.x + 13 + steer, sh.y + 10);
         personArm(FS, 'far', sh.x + 11 - steer, sh.y + 11);
       }
+      tf(FS.head, `translate(0 0) rotate(${P.flying ? -8 : 0} 1 -51)`);
       tf(fTx, `translate(${((FS.handW.x + FS.farHand.x) / 2).toFixed(1)} ${(Math.min(FS.handW.y, FS.farHand.y) + 1).toFixed(1)})`);
       show(fTx, !ok);
       const rsh = robotShoulder(FR);
       const point = P.flying && t > 5.5 && t < 15.5 && Math.sin(abs * 0.9) > 0.3;
       if (ok) robotArm(FR, rsh.x + 6, rsh.y - 30 + Math.sin(abs * 8) * 1.5, 0.5);
-      else if (point) robotArm(FR, rsh.x + 22, rsh.y - 22, 0.5);
+      else if (point) robotArm(FR, rsh.x + 20, rsh.y - 24, 0.5);
       else robotArm(FR, rsh.x + 12, rsh.y + 6, 0.5);
       tf(rTx, `translate(${(FR.wrist.x + 3).toFixed(1)} ${(FR.wrist.y + 1).toFixed(1)})`);
       show(rTx, !ok && !point);
       const a = { x: (FS.handW.x + FS.farHand.x) / 2, y: Math.min(FS.handW.y, FS.farHand.y) + 4 };
       const b = { x: FR.wrist.x + 3, y: FR.wrist.y + 4 };
-      cable.setAttribute('d', `M${a.x.toFixed(1)} ${a.y.toFixed(1)} Q${((a.x + b.x) / 2).toFixed(1)} ${(Math.max(a.y, b.y) + 16).toFixed(1)} ${b.x.toFixed(1)} ${b.y.toFixed(1)}`);
+      cable.setAttribute('d', `M${a.x.toFixed(1)} ${a.y.toFixed(1)} Q${((a.x + b.x) / 2).toFixed(1)} ${(Math.max(a.y, b.y) + 14).toFixed(1)} ${b.x.toFixed(1)} ${b.y.toFixed(1)}`);
       robotIdle(FR, abs);
+      let done = 0;
       fChecks.forEach((c, i) => {
         const on = t >= CHK[i] && t < 20.5;
+        if (on) done++;
         setC(c.box, on ? 'chk on' : 'chk');
-        setC(c.tx, on ? 'mono6 done' : 'mono6');
       });
-      text(fTitle, `LESSON ${String((lesson % 9) + 1).padStart(2, '0')}`);
+      prog.setAttribute('width', (180 * (t < 20.5 ? seg(t, 1, 17.5) : 0)).toFixed(1));
+      text(fTitle, `LESSON ${String((lesson % 9) + 1).padStart(2, '0')} · ${done}/4`);
+      // the planned path for the current maneuver, drawn faintly in the cage
+      const cur = t < 5.5 ? 0 : t < 10.5 ? 1 : t < 15.5 ? 2 : -1;
+      plans.forEach((pl, i) => op(pl, i === cur && t > 0.6 ? 1 : 0));
       if (prevT >= 0 && prevT < 17.5 && t >= 17.5) ring(PAD.x, PAD.y - 4, 18);
       prevT = t;
     };
   })();
 
   /* ---------- main loop ---------- */
-  let simT = reduce ? 15.2 : 0;
+  let simT = reduce ? 4.5 : 0;
   function update(dt) {
     C(((simT + 2) % 24 + 24) % 24, simT + 2, dt);
-    F(simT + 4, dt);
+    F(simT + 4);
     stepFx(dt);
   }
   if (reduce) { update(0.5); update(0); return; }

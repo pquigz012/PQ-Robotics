@@ -130,6 +130,9 @@
     .edu .cl.on .chalk { fill: #ff5a4f; fill-opacity: 1; }
     .edu .cl.on .chalkline { stroke: #ff5a4f; stroke-opacity: .9; }
     .edu .frame { fill: none; stroke: var(--ink); stroke-opacity: .3; stroke-width: 1.2; stroke-linecap: square; }
+    .edu .h-prog { fill: #4ade80; }
+    .edu .plan { fill: none; stroke: #e53935; stroke-opacity: .45; stroke-width: 1.1; stroke-dasharray: 4 4; transition: opacity .4s; }
+    .edu .mono6.alt { fill-opacity: .35; }
     .edu .net { fill: rgba(229,57,53,.03); stroke: var(--ink); stroke-opacity: .28; stroke-dasharray: 3 5; }
     .edu .h-cable { fill: none; stroke: #e53935; stroke-opacity: .7; stroke-width: 1; }
     .edu .hr-arm { stroke: var(--ink); stroke-opacity: .85; stroke-width: 2.2; stroke-linecap: round; }
@@ -453,7 +456,7 @@
   <div id="top">
     <div class="hero-map" aria-hidden="true"></div>
     <svg class="hero-route" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <!-- Education campus: two small scenes either side of the headline (classroom on the left,
+      <!-- Education campus: two matching panels either side of the headline (classroom on the left,
            flight training on the right). Animated by /assets/js/education-scenes.js;
            the sortie drone below is only the no-script fallback. -->
       <path id="sortie" class="route-fallback" d="M220 760 L220 590 C220 520 560 520 720 480 L420 480 L420 240 L720 240 L720 480 C820 480 900 400 980 330 C980 400 1080 400 1130 330 C1180 260 1280 260 1280 330 C1280 400 1180 400 1130 330 C1080 260 980 260 980 330 C980 450 1200 560 1290 620 A70 70 0 1 1 1430 620 A70 70 0 1 1 1290 620 C1150 760 500 800 220 760"/>
@@ -466,10 +469,12 @@
         <animateMotion dur="44s" repeatCount="indefinite" rotate="auto"><mpath href="#sortie"/></animateMotion>
       </g>
       <g id="edu" class="edu">
-        <path class="frame" d="M40 498V486H52M384 486H396V498M396 800V812H384M52 812H40V800M1204 498V486H1216M1548 486H1560V498M1560 800V812H1548M1216 812H1204V800"/>
-        <!-- CLASSROOM, left -->
-        <g id="s-class" transform="translate(-37 0)">
-          <text class="lbl" x="255" y="502" text-anchor="middle">CLASSROOM · SCHOOLS &amp; GROUPS</text>
+        <path class="frame" d="M22 202V190H34M226 190H238V202M238 726V738H226M34 738H22V726M1362 202V190H1374M1566 190H1578V202M1578 726V738H1566M1374 738H1362V726"/>
+
+        <!-- CLASSROOM, left panel -->
+        <g id="s-class">
+          <text class="lbl" x="130" y="208" text-anchor="middle">CLASSROOM</text>
+          <g id="c-board" transform="translate(30 220) scale(0.8) translate(-130 -508)">
           <rect class="board" x="130" y="508" width="250" height="92" rx="3"/>
           <path class="k" d="M134 604H376"/>
           <text class="chalk" id="c-title" x="138" y="519">HOW A DRONE FLIES</text>
@@ -506,20 +511,28 @@
             <g id="c-f4" class="cl"><path class="chalkline" d="M231 562H192M196 558l-5 4l5 4"/><text class="chalk" x="160" y="565">DRAG</text></g>
           </g>
           <g id="c-teacher"></g>
+          </g>
           <g id="c-students"></g>
         </g>
 
-        <!-- FLIGHT TRAINING, right -->
+        <!-- FLIGHT TRAINING, right panel -->
         <g id="s-field">
-          <text class="lbl" x="1382" y="502" text-anchor="middle">FLIGHT TRAINING</text>
-          <rect class="net" x="1323" y="520" width="222" height="280"/>
-          <path class="k" d="M1216 800H1548"/>
-          <rect class="kf" x="1341" y="797" width="36" height="3" rx="1"/>
-          <path class="k" d="M1329 800l4 -10l4 10M1527 800l4 -10l4 10"/>
-          <path class="k" d="M1238 704V800M1286 704V800"/>
-          <rect class="kf" x="1216" y="626" width="92" height="78" rx="2"/>
-          <text class="mono6" id="f-title" x="1224" y="639">LESSON 01</text>
+          <text class="lbl" x="1470" y="208" text-anchor="middle">FLIGHT TRAINING</text>
+          <rect class="board" x="1370" y="220" width="200" height="74" rx="3"/>
+          <path class="k" d="M1373 297H1567"/>
+          <text class="chalk" id="f-title" x="1380" y="233">LESSON 01</text>
+          <rect class="k faint" x="1380" y="280" width="180" height="3" rx="1"/>
+          <rect class="h-prog" id="f-prog" x="1380" y="280" width="0" height="3" rx="1"/>
           <g id="f-list"></g>
+          <rect class="net" x="1370" y="308" width="200" height="398"/>
+          <path class="k faint" d="M1570 706h-6M1570 666h-3M1570 626h-3M1570 586h-6M1570 546h-3M1570 506h-3M1570 466h-6M1570 426h-3M1570 386h-3M1570 346h-6"/>
+          <text class="mono6 alt" x="1561" y="584" text-anchor="end">10M</text><text class="mono6 alt" x="1561" y="464" text-anchor="end">20M</text><text class="mono6 alt" x="1561" y="344" text-anchor="end">30M</text>
+          <circle class="plan" id="f-ghover" cx="1520" cy="630" r="9"/>
+          <path class="plan" id="f-gbox" d="M1520 630V500H1415V630Z"/>
+          <path class="plan" id="f-gfig" d="M1520.0 420.0 L1519.7 411.2 L1518.9 402.8 L1517.6 395.0 L1515.8 388.2 L1513.5 382.6 L1510.7 378.4 L1507.5 375.9 L1503.9 375.0 L1499.9 375.9 L1495.6 378.4 L1490.9 382.6 L1486.0 388.2 L1481.0 395.0 L1475.7 402.8 L1470.4 411.2 L1465.0 420.0 L1459.6 428.8 L1454.3 437.2 L1449.0 445.0 L1444.0 451.8 L1439.1 457.4 L1434.4 461.6 L1430.1 464.1 L1426.1 465.0 L1422.5 464.1 L1419.3 461.6 L1416.5 457.4 L1414.2 451.8 L1412.4 445.0 L1411.1 437.2 L1410.3 428.8 L1410.0 420.0 L1410.3 411.2 L1411.1 402.8 L1412.4 395.0 L1414.2 388.2 L1416.5 382.6 L1419.3 378.4 L1422.5 375.9 L1426.1 375.0 L1430.1 375.9 L1434.4 378.4 L1439.1 382.6 L1444.0 388.2 L1449.0 395.0 L1454.3 402.8 L1459.6 411.2 L1465.0 420.0 L1470.4 428.8 L1475.7 437.2 L1481.0 445.0 L1486.0 451.8 L1490.9 457.4 L1495.6 461.6 L1499.9 464.1 L1503.9 465.0 L1507.5 464.1 L1510.7 461.6 L1513.5 457.4 L1515.8 451.8 L1517.6 445.0 L1518.9 437.2 L1519.7 428.8 L1520.0 420.0Z"/>
+          <path class="k" d="M1370 706H1570"/>
+          <rect class="kf" x="1502" y="703" width="36" height="3" rx="1"/>
+          <path class="k" d="M1550 706l4 -10l4 10"/>
           <g id="f-back"></g>
           <path class="h-cable" id="f-cable" d="M0 0"/>
           <g id="f-front"></g>
@@ -527,7 +540,6 @@
 
         <g id="e-drones"></g>
         <g id="e-fx"></g>
-        <text class="lbl" x="800" y="826" text-anchor="middle">EDUCATION CAMPUS · 33.92° N 84.38° W</text>
       </g>
     </svg>
     <div class="hero-scrim" aria-hidden="true"></div>
