@@ -2,11 +2,12 @@
    Each drone loops through one life cycle:
    take off at HOME, fly the mission, fail after WP 05 and limp along the last leg,
    drop onto the belt, then:
-     Bay 01 Diagnosis: a robot inspects it with a magnifier and tags each fault,
-     Bay 02 Parts: a robot at the parts computer looks the drone over, types up the
-       parts list and orders it, and the parts box drops in through the tube,
+     Bay 01 Diagnosis: the robot's head glows red and sweeps a scan beam over it, faults get tagged,
+     Bay 02 Parts: the clerk at the parts computer looks the drone over while the parts list
+       fills the screen and goes out as an order, then the parts box drops in through the tube,
      Bay 03 Repair: two robots swap the cracked prop and weld the bent arm, status goes green,
-   then a test flight in the cage, land at HOME, repeat.
+   then a test flight in the cage (the marshal presses a button and the flag runs up the pole),
+   land at HOME, repeat.
    Several drones run the same cycle at staggered times. */
 (() => {
   const svg = document.querySelector('#home .hero-route');
@@ -274,7 +275,7 @@
     const j1 = mk('line', { class: 'hr-jaw' }, front);
     const j2 = mk('line', { class: 'hr-jaw' }, front);
     mk('circle', { class: 'kf', cx: -9, cy: -18, r: 2 }, front);
-    return { rx, ry, m, phase, head, visor, tip, upper, fore, j1, j2, wrist: { x: rx, y: ry }, dir: { x: -1, y: 0 } };
+    return { rx, ry, m, phase, front, head, visor, tip, upper, fore, j1, j2, wrist: { x: rx, y: ry }, dir: { x: -1, y: 0 } };
   }
 
   // two-link arm, shoulder at (-9,-18) in robot space, elbow kept up
@@ -310,7 +311,7 @@
   };
 
   const FLOOR = 818;
-  const RD = makeRobot(X.diag + 32, FLOOR, 1, 0.3);      // diagnosis, magnifier
+  const RD = makeRobot(X.diag + 32, FLOOR, 1, 0.3);      // diagnosis, scanner head
   const RP = makeRobot(972, FLOOR, -1, 1.2);             // parts clerk at the computer
   const RR = makeRobot(X.repair + 36, FLOOR, 1, 1.9);    // repair: props
   const RW = makeRobot(X.repair - 32, FLOOR, -1, 3.1);   // repair: welder
@@ -325,8 +326,9 @@
   const el = {
     l1: $('h-l1'), l2: $('h-l2'), l3: $('h-l3'), test: $('h-test'), count: $('h-count'),
     mh: $('h-mh'), m: [$('h-m1'), $('h-m2'), $('h-m3')],
-    lens: $('h-lens'), lh: $('h-lh'), lglow: $('h-lglow'), glow: $('h-glow'), torch: $('h-torch'),
-    held: $('h-held'), pole: $('h-pole'), flag: $('h-flag'),
+    beam: $('h-beam'), scan: $('h-scan'), scanglow: $('h-scanglow'), eyeglow: $('h-eyeglow'), btn: $('h-btn'),
+    glow: $('h-glow'), torch: $('h-torch'),
+    held: $('h-held'), flag: $('h-flag'),
   };
   const label = (e, t, cls) => { text(e, t); setC(e, 'lbl' + (cls ? ' ' + cls : '')); };
 
@@ -401,56 +403,42 @@
   const PROPS = ['PROP 5045', 'PROP 5143', 'PROP 3018', 'PROP 7035'];
   const ARMS = ['ARM 5IN', 'ARM 3IN', 'ARM 7IN'];
 
-  // Bay 01: magnifier passes over the cracked prop, the bent arm, then the flight controller
+  // Bay 01: no arms, the robot's head lights up red and sweeps a scan beam over the drone
+  const EYE = { x: RD.rx - 4.5 * 1.25, y: FLOOR - 30.75 * 1.25 };
+  RD.front.setAttribute('visibility', 'hidden');
   function diagnosis(st, t) {
-    const sh = { x: RD.rx - 11.25, y: FLOOR - 22.5 };
-    const aim = (p) => { // stop the wrist short so the lens lands on the point
-      const dx = p.x - sh.x, dy = p.y - sh.y, d = Math.hypot(dx, dy) || 1;
-      return { x: p.x - dx / d * 7, y: p.y - dy / d * 7 - 2 };
-    };
-    if (!st) {
-      const r = rest(RD, t);
-      armTo(RD, r.x, r.y, 0.5);
-      label(el.l1, 'BAY 01 · DIAGNOSIS');
-    } else {
-      const p = (st.tau - S.diag.t0) / S.diag.dur, P = st.P, rs = rest(RD, t);
-      const a = aim(toWorld(P, ROTOR[st.ri][0], ROTOR[st.ri][1]));
-      const b = aim(toWorld(P, ROTOR[st.ai][0] * 0.4, ROTOR[st.ai][1] * 0.4));
-      const c = aim({ x: P.x, y: P.y });
-      const k = keyPath(p, [[0, rs.x, rs.y], [0.14, a.x, a.y], [0.3, a.x, a.y], [0.38, b.x, b.y], [0.5, b.x, b.y],
-        [0.58, c.x, c.y], [0.72, c.x, c.y], [0.88, rs.x, rs.y]]);
-      armTo(RD, k.x, k.y, 0.5);
-      if (p < 0.72) label(el.l1, 'BAY 01 · INSPECTING');
-      else label(el.l1, 'BAY 01 · 3 FAULTS', 'alert');
-    }
-    const lx = RD.wrist.x + RD.dir.x * 7, ly = RD.wrist.y + RD.dir.y * 7;
-    show(el.lens, true); show(el.lh, true);
-    el.lens.setAttribute('cx', lx.toFixed(1)); el.lens.setAttribute('cy', ly.toFixed(1));
-    line(el.lh, RD.wrist.x, RD.wrist.y, RD.wrist.x + RD.dir.x * 3, RD.wrist.y + RD.dir.y * 3);
-    const inspecting = st && (st.tau - S.diag.t0) / S.diag.dur > 0.12 && (st.tau - S.diag.t0) / S.diag.dur < 0.74;
-    el.lglow.setAttribute('r', inspecting ? (4.5 + Math.sin(t * 9)).toFixed(2) : 0);
-    el.lglow.setAttribute('cx', lx.toFixed(1)); el.lglow.setAttribute('cy', (ly + 2).toFixed(1));
+    const p = st ? (st.tau - S.diag.t0) / S.diag.dur : -1;
+    const scanning = p > 0.08 && p < 0.76;
+    setC(RD.visor, scanning ? 'hr-visor scan' : 'hr-visor');
+    show(el.beam, scanning); show(el.scan, scanning);
+    el.eyeglow.setAttribute('r', scanning ? (3.5 + Math.sin(t * 12) * 0.8).toFixed(2) : 0);
+    if (scanning) {
+      const y = st.P.y - 6 + 12 * (0.5 - 0.5 * Math.cos(((p - 0.08) / 0.68) * Math.PI * 4));
+      const x0 = st.P.x - 12, x1 = st.P.x + 12;
+      el.beam.setAttribute('points', `${EYE.x.toFixed(1)},${EYE.y.toFixed(1)} ${x0},${y.toFixed(1)} ${x1},${y.toFixed(1)}`);
+      el.scan.setAttribute('d', `M${x0} ${y.toFixed(1)}H${x1}`);
+      el.scanglow.setAttribute('cx', st.P.x); el.scanglow.setAttribute('cy', st.P.y);
+      el.scanglow.setAttribute('r', 13);
+      el.scanglow.setAttribute('opacity', (0.12 + 0.08 * Math.sin(t * 10)).toFixed(2));
+    } else el.scanglow.setAttribute('r', 0);
+    if (!st) label(el.l1, 'BAY 01 · DIAGNOSIS');
+    else if (p < 0.72) label(el.l1, 'BAY 01 · SCANNING');
+    else label(el.l1, 'BAY 01 · 3 FAULTS', 'alert');
   }
 
-  // Bay 02: look the drone over, type up the parts, order, parts box drops in
+  // Bay 02: no arms, the clerk looks the drone over and the parts list fills the screen
+  RP.front.setAttribute('visibility', 'hidden');
   function parts(st, t) {
-    const kb = { x: 1002, y: FLOOR - 23 };
     if (!st) {
       RP.look = false;
-      const r = rest(RP, t);
-      armTo(RP, r.x, r.y, 1.2);
       text(el.mh, 'PARTS' + (Math.sin(t * 4) > 0 ? ' _' : '')); setC(el.mh, 'h-mon-t');
       el.m.forEach(e => text(e, ''));
       label(el.l2, 'BAY 02 · PARTS');
       return;
     }
     const p = (st.tau - S.parts.t0) / S.parts.dur;
-    RP.look = p > 0.04 && p < 0.32;
-    const typing = p > 0.34 && p < 0.66;
-    const rs = rest(RP, t);
-    const tap = typing ? Math.abs(Math.sin(t * 22)) * -2.5 : 0;
-    const k = keyPath(p, [[0, rs.x, rs.y], [0.32, rs.x, rs.y], [0.38, kb.x, kb.y], [0.64, kb.x, kb.y], [0.72, rs.x, rs.y]]);
-    armTo(RP, k.x + (typing ? Math.sin(t * 7) * 3 : 0), k.y + tap, 0.8);
+    // looks at the drone, back to the screen for each line, one more glance, then the order goes in
+    RP.look = (p > 0.04 && p < 0.34) || (p > 0.44 && p < 0.48) || (p > 0.54 && p < 0.58) || p > 0.86;
     const lines = [PROPS[st.ri], ARMS[st.ai % ARMS.length], 'FC FW 4.5'];
     el.m.forEach((e, j) => text(e, st.tau >= LIST[j] ? '+ ' + lines[j] : ''));
     if (st.tau >= ORDERED) { text(el.mh, 'ORDERED'); setC(el.mh, 'h-mon-t pass'); }
@@ -506,22 +494,34 @@
     else label(el.l3, 'BAY 03 · REPAIRING');
   }
 
+  // Test flight: the marshal presses the button and the flag runs up the pole
+  const BTN = { x: 317, y: FLOOR - 21 };
+  const POLE = { x: 262, bottom: FLOOR - 10, top: 734 };
+  const PASS_LEN = 3.2;
   function flagRobot(states, t) {
-    let mode = 'idle';
+    let q = -1, watching = false;
     for (const s of states) {
-      if (s.tau >= S.home.t0 && s.tau < S.home.t0 + 2.4) { mode = 'pass'; break; }
-      if (s.tau >= S.lift.t0 && s.tau < S.home.t0) mode = 'watch';
+      if (s.tau >= S.home.t0 && s.tau < S.home.t0 + PASS_LEN) q = s.tau - S.home.t0;
+      if (s.tau >= S.lift.t0 && s.tau < S.home.t0) watching = true;
     }
-    let tg = rest(RF, t);
-    if (mode === 'watch') tg = { x: RF.rx + 18, y: FLOOR - 32 };
-    if (mode === 'pass') tg = { x: RF.rx + 11, y: FLOOR - 45 + Math.sin(t * 11) * 1.5 };
-    armTo(RF, tg.x, tg.y, 0.5);
-    const wx = RF.wrist.x, wy = RF.wrist.y, top = wy - 13, wave = mode === 'pass' ? Math.sin(t * 14) * 2 : 0;
-    show(el.pole, true); show(el.flag, true);
-    line(el.pole, wx, wy + 2, wx, top);
-    el.flag.setAttribute('points', `${wx.toFixed(1)},${top.toFixed(1)} ${(wx + 10).toFixed(1)},${(top + 2.5 + wave).toFixed(1)} ${wx.toFixed(1)},${(top + 5).toFixed(1)}`);
-    setC(el.flag, mode === 'pass' ? 'h-flag pass' : 'h-flag');
-    if (mode === 'pass') label(el.test, 'TEST FLIGHT · PASS', 'pass');
+    const rs = rest(RF, t);
+    let tg = rs, pressed = false;
+    if (q >= 0 && q < 0.6) {
+      const press = q > 0.2 && q < 0.42;
+      tg = { x: BTN.x, y: BTN.y - 4 + (press ? 2.5 : -2) };
+      pressed = press;
+    } else if (watching) tg = { x: BTN.x, y: BTN.y - 9 + Math.sin(t * 3) };
+    armTo(RF, tg.x, tg.y, 1);
+    setC(el.btn, pressed ? 'h-btn down' : 'h-btn');
+    el.btn.setAttribute('cy', pressed ? BTN.y + 0.8 : BTN.y);
+    // flag height: 0 at the bottom, 1 at the top
+    let h = 0;
+    if (q >= 0) h = q < 0.35 ? 0 : q < 1.15 ? ease((q - 0.35) / 0.8) : q < PASS_LEN - 0.7 ? 1 : 1 - ease((q - (PASS_LEN - 0.7)) / 0.7);
+    const top = lerp(POLE.bottom - 6, POLE.top, h);
+    const wave = h > 0.9 ? Math.sin(t * 14) * 2 : 0;
+    el.flag.setAttribute('points', `${POLE.x},${top.toFixed(1)} ${POLE.x + 12},${(top + 3 + wave).toFixed(1)} ${POLE.x},${(top + 6).toFixed(1)}`);
+    setC(el.flag, h > 0.02 ? 'h-flag pass' : 'h-flag');
+    if (q >= 0.35) label(el.test, 'TEST FLIGHT · PASS', 'pass');
     else label(el.test, 'TEST FLIGHT');
   }
 
