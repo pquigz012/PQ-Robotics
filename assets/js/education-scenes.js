@@ -408,8 +408,8 @@
      ====================================================================== */
   const B = (() => {
     const back = $('b-back'), front = $('b-front');
-    const R = makeRobot(back, front, 1400, 410, -1, 1.4);
-    const S = makePerson(back, front, 1484, 424, -1, 1, 2);
+    const R = makeRobot(back, front, 1409, 410, -1, 1.4);
+    const S = makePerson(back, front, 1493, 424, -1, 1, 2);
     const held = mk('g', {}, front);
     const hFrame = mk('rect', { class: 'kf', x: -10, y: -2, width: 20, height: 3, rx: 1 }, held);
     const hBox = mk('rect', { class: 'kf', x: -3, y: -3, width: 6, height: 6, rx: 1 }, held);
@@ -428,15 +428,15 @@
     const list = $('b-list');
     const ITEMS = ['FRAME', 'MOTORS', 'ESC + FC', 'PROPS', 'TEST'];
     const checks = ITEMS.map((w, i) => {
-      const box = mk('rect', { class: 'chk', x: 1320, y: 282 + i * 10, width: 4.5, height: 4.5, rx: 1 }, list);
-      const tx = mk('text', { class: 'mono6', x: 1329, y: 286.2 + i * 10 }, list);
+      const box = mk('rect', { class: 'chk', x: 1358, y: 282 + i * 10, width: 4.5, height: 4.5, rx: 1 }, list);
+      const tx = mk('text', { class: 'mono6', x: 1367, y: 286.2 + i * 10 }, list);
       tx.textContent = w;
       return { box, tx };
     });
     // flight training
     const fBack = $('f-back'), fFront = $('f-front');
-    const FS = makePerson(fBack, fFront, 1182, 800, 1, 1, 0);
-    const FR = makeRobot(fBack, fFront, 1238, 800, -1, 1.25);
+    const FS = makePerson(fBack, fFront, 1243, 800, 1, 1, 0);
+    const FR = makeRobot(fBack, fFront, 1297, 800, -1, 1.25);
     const fTx = mk('g', {}, fFront);
     mk('rect', { class: 'kf', x: -5, y: -3, width: 10, height: 6, rx: 1.5 }, fTx);
     mk('path', { class: 'k', d: 'M-3 -3l-1 -6M3 -3l1 -6' }, fTx);
@@ -447,8 +447,8 @@
     const fTitle = $('f-title');
     const FITEMS = ['HOVER', 'BOX', 'FIGURE 8', 'LANDING'];
     const fChecks = FITEMS.map((w, i) => {
-      const box = mk('rect', { class: 'chk', x: 1282, y: 623 + i * 11, width: 4.5, height: 4.5, rx: 1 }, $('f-list'));
-      const tx = mk('text', { class: 'mono6', x: 1291, y: 627.2 + i * 11 }, $('f-list'));
+      const box = mk('rect', { class: 'chk', x: 1224, y: 648 + i * 13, width: 4.5, height: 4.5, rx: 1 }, $('f-list'));
+      const tx = mk('text', { class: 'mono6', x: 1233, y: 652.2 + i * 13 }, $('f-list'));
       tx.textContent = w;
       return { box, tx };
     });
@@ -457,20 +457,20 @@
     const drones = [makeGlyph(dLayer), makeGlyph(dLayer)];
 
     const CB = 26, LIFE = 46.5;
-    const BIN = { x: 1389, y: 389 }, TRAY = { x: 1509, y: 392 }, IRON = { x: 1376, y: 388 };
-    const DC = { x: 1440, y: 400 }; // drone origin on the bench
+    const BIN = { x: 1398, y: 389 }, TRAY = { x: 1518, y: 392 }, IRON = { x: 1385, y: 388 };
+    const DC = { x: 1449, y: 400 }; // drone origin on the bench
     const STEPS = [
-      { who: 'R', part: 'frame', src: BIN, dst: { x: 1440, y: 397 }, t0: 0.6, t1: 3.0 },
-      { who: 'R', part: 'motorL', src: BIN, dst: { x: 1422, y: 391 }, t0: 3.2, t1: 5.4 },
-      { who: 'S', part: 'motorR', src: TRAY, dst: { x: 1458, y: 391 }, t0: 3.4, t1: 5.6 },
-      { who: 'R', part: 'esc', src: IRON, dst: { x: 1438, y: 393 }, t0: 5.8, t1: 9.4, tool: true },
-      { who: 'R', part: 'fc', src: BIN, dst: { x: 1440, y: 392 }, t0: 9.6, t1: 11.6 },
-      { who: 'R', part: 'batt', src: BIN, dst: { x: 1440, y: 386 }, t0: 11.8, t1: 13.8 },
-      { who: 'R', part: 'propL', src: BIN, dst: { x: 1422, y: 388 }, t0: 14.0, t1: 16.0 },
-      { who: 'S', part: 'propR', src: TRAY, dst: { x: 1458, y: 388 }, t0: 14.2, t1: 16.4 },
+      { who: 'R', part: 'frame', src: BIN, dst: { x: 1449, y: 397 }, t0: 0.6, t1: 3.0 },
+      { who: 'R', part: 'motorL', src: BIN, dst: { x: 1431, y: 391 }, t0: 3.2, t1: 5.4 },
+      { who: 'S', part: 'motorR', src: TRAY, dst: { x: 1467, y: 391 }, t0: 3.4, t1: 5.6 },
+      { who: 'R', part: 'esc', src: IRON, dst: { x: 1447, y: 393 }, t0: 5.8, t1: 9.4, tool: true },
+      { who: 'R', part: 'fc', src: BIN, dst: { x: 1449, y: 392 }, t0: 9.6, t1: 11.6 },
+      { who: 'R', part: 'batt', src: BIN, dst: { x: 1449, y: 386 }, t0: 11.8, t1: 13.8 },
+      { who: 'R', part: 'propL', src: BIN, dst: { x: 1431, y: 388 }, t0: 14.0, t1: 16.0 },
+      { who: 'S', part: 'propR', src: TRAY, dst: { x: 1467, y: 388 }, t0: 14.2, t1: 16.4 },
     ];
     const CHECK_AT = [3.0, 5.6, 11.6, 16.4, 20];
-    const PAD = { x: 1330, y: 798 };
+    const PAD = { x: 1359, y: 798 };
     const FLY = 0.7;
 
     // where a drone is at time t of its life
@@ -482,24 +482,24 @@
       }
       if (t < 24.5) { // fly down to the training pad
         const u = ease(seg(t, 21, 24.5)), v = 1 - u;
-        const p0 = { x: DC.x, y: DC.y - 34 }, c1 = { x: 1585, y: 470 }, p1 = { x: PAD.x, y: PAD.y };
+        const p0 = { x: DC.x, y: DC.y - 34 }, c1 = { x: 1556, y: 470 }, p1 = { x: PAD.x, y: PAD.y };
         return { x: v * v * p0.x + 2 * v * u * c1.x + u * u * p1.x, y: v * v * p0.y + 2 * v * u * c1.y + u * u * p1.y, s: lerp(1, FLY, u), where: 'air' };
       }
       // the lesson
       const wob = 3.2 * (1 - seg(t, 25.5, 40));
       const jx = Math.sin(t * 7.3) * wob, jy = Math.sin(t * 5.1) * wob * 0.6;
-      const H = { x: PAD.x, y: 740 };
+      const H = { x: PAD.x, y: 720 };
       let x, y;
       if (t < 25.5) { x = PAD.x; y = PAD.y; }
       else if (t < 27) { const u = ease(seg(t, 25.5, 27)); x = PAD.x; y = lerp(PAD.y, H.y, u); }
       else if (t < 30) { x = H.x; y = H.y; }
       else if (t < 35) {
         const u = seg(t, 30, 35) * 4, k = Math.floor(Math.min(u, 3.999)), f = ease(u - k);
-        const P = [[1330, 740], [1330, 640], [1500, 640], [1500, 740], [1330, 740]];
+        const P = [[1359, 720], [1359, 600], [1509, 600], [1509, 720], [1359, 720]];
         x = lerp(P[k][0], P[k + 1][0], f); y = lerp(P[k][1], P[k + 1][1], f);
       } else if (t < 40) {
         const a = 2 * Math.PI * seg(t, 35, 40);
-        x = 1415 - 85 * Math.cos(a); y = 740 - 35 * Math.sin(2 * a);
+        x = 1434 - 75 * Math.cos(a); y = 720 - 45 * Math.sin(2 * a);
       } else if (t < 42) { const u = ease(seg(t, 40, 42)); x = PAD.x; y = lerp(H.y, PAD.y, u); }
       else if (t < 44) { x = PAD.x; y = PAD.y; }
       else { const u = ease(seg(t, 44, 46.5)); x = lerp(PAD.x, 1660, u); y = lerp(PAD.y, 560, Math.sqrt(u)); }
@@ -537,7 +537,7 @@
 
       /* bench: robot and student */
       const bt = bench ? bench.t : 99;
-      const rs = { x: 1418, y: 396 + Math.sin(abs * 1.4) }, ss = { x: 1472, y: 398 };
+      const rs = { x: 1427, y: 396 + Math.sin(abs * 1.4) }, ss = { x: 1481, y: 398 };
       let rT = rs, rOpen = 1.6, rHeld = null, sT = ss, sHeldPart = null, tool = false;
       for (const st of STEPS) {
         if (bt < st.t0 || bt > st.t1) continue;
@@ -563,12 +563,12 @@
       // test: student holds the radio, robot gives a thumbs-up, everyone watches it fly off
       const testing = bt > 16.6 && bt < 21;
       if (testing) {
-        sT = { x: 1470, y: 392 };
-        if (bt > 19.2) rT = { x: 1416, y: 366 + Math.sin(abs * 8) * 1.5 };
+        sT = { x: 1479, y: 392 };
+        if (bt > 19.2) rT = { x: 1425, y: 366 + Math.sin(abs * 8) * 1.5 };
       }
       robotArm(R, rT.x, rT.y, rOpen);
       personArm(S, 'near', sT.x, sT.y);
-      personArm(S, 'far', testing ? 1468 : ss.x + 4, testing ? 394 : ss.y + 2);
+      personArm(S, 'far', testing ? 1477 : ss.x + 4, testing ? 394 : ss.y + 2);
       S.head && tf(S.head, `translate(0 ${(Math.sin(abs * 1.2) * 0.4).toFixed(2)})`);
       // held parts
       const RH = { frame: hFrame, motorL: hBox, fc: hFc, batt: hBatt, propL: hProp };
