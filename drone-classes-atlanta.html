@@ -152,6 +152,13 @@
     .stat-num { font-family: var(--font-display); font-size: 1.75rem; font-weight: 600; display: block; }
     .stat-label { font-size: 11px; letter-spacing: 0.14em; color: var(--text-muted); text-transform: uppercase; display: block; margin-top: 2px; }
 
+    /* ── GIFT STRIP ── */
+    .gift-strip { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; text-align: center; padding: 1rem 1.25rem; background: var(--bg-panel); border-bottom: 1px solid var(--border); text-decoration: none; font-size: 14px; color: var(--text-secondary); transition: background .2s; }
+    .gift-strip:hover { background: var(--bg-card); }
+    .gift-strip strong { color: var(--text-primary); font-weight: 500; }
+    .gift-strip-tag { font-family: var(--mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--red); border: 1px solid rgba(229,57,53,.55); padding: 3px 9px; }
+    .gift-strip-go { color: var(--text-primary); border-bottom: 1px solid var(--red); }
+
     /* ── SECTIONS ── */
     section { padding: 6rem 2.5rem; max-width: 1100px; margin: 0 auto; }
     .band { background: var(--bg-panel); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -297,6 +304,7 @@
     summary::-webkit-details-marker { display: none; }
     summary::after { content: "+"; color: var(--red); font-family: var(--mono); font-weight: 700; }
     details[open] summary::after { content: "\2212"; }
+    details a { color: var(--text-primary); }
     details p { margin-top: 0.7rem; font-size: 14.5px; color: var(--text-secondary); line-height: 1.75; max-width: 70ch; }
 
     /* ── CONTACT ── */
@@ -454,6 +462,9 @@
     <div class="stat"><span class="stat-num">Classroom</span><span class="stat-label">Courses &amp; DIY Kits</span></div>
     <div class="stat"><span class="stat-num">Part 107</span><span class="stat-label">FAA Certified</span></div>
   </div>
+
+  <!-- GIFT STRIP -->
+  <a class="gift-strip" href="/drone-gift-certificates.html"><span class="gift-strip-tag">Gift certificates</span><span>Giving a drone this year? <strong>Give a First-Flight Lesson with it.</strong></span><span class="gift-strip-go">See gifts &rarr;</span></a>
 
   <!-- PROGRAMS -->
   <section id="programs">
@@ -648,8 +659,8 @@
         <details><summary>Can you help me build my own drone?</summary><p>Yes. In a guided build you choose the type of drone, such as FPV freestyle, cinewhoop, long range, camera or autonomous, and we walk you through parts selection, soldering, assembly, firmware setup and the first flight. You keep the drone.</p></details>
         <details><summary>Can you teach a drone class at our school or Scout troop?</summary><p>Yes. We run drone workshops, multi-week courses and build programs for schools, STEM clubs, Scout troops, camps and other organizations, on-site or at our shop. Programs are built around your group's age, size and schedule.</p></details>
         <details><summary>Do you sell DIY drone kits for classrooms?</summary><p>The PQ DIY Drone Kit is coming soon. It includes the parts to build a working drone and a step-by-step build guide. Schools and organizations can join the waitlist through the form on this page.</p></details>
-        <details><summary>Do I need an FAA license to fly a drone?</summary><p>Recreational pilots need to pass the free FAA TRUST test and register any drone over 250 grams. Flying for any business purpose requires an FAA Part 107 remote pilot certificate. We cover which rules apply to you during your lesson.</p></details>
-        <details><summary>How much do drone lessons cost?</summary><p>Pricing depends on the format, the number of students and the length of the program. Call (404) 408-9063 or send the form and we will send a clear quote before anything is booked.</p></details>
+        <details><summary>Do I need an FAA license to fly a drone?</summary><p>Recreational pilots need to pass the free FAA TRUST test and register any drone over 250 grams. Flying for any business purpose requires an FAA Part 107 remote pilot certificate. We cover which rules apply to you during your lesson. We also teach <a href="/part-107-drone-license-georgia.html">Part 107 prep classes</a> in person in Sandy Springs and live online for all of Georgia.</p></details>
+        <details><summary>How much do drone lessons cost?</summary><p>A 90-minute First-Flight Lesson is $175, private coaching is $110 an hour, Flight Week is $595 per person, guided builds start at $349 plus parts, and school workshops start at $550. Book by February 28, 2027 for Founding Pilot prices, from $149 for a First-Flight Lesson. Lessons also make great gifts: see our <a href="/drone-gift-certificates.html">drone lesson gift certificates</a>.</p></details>
       </div>
     </section>
   </div>
@@ -703,6 +714,8 @@
     <ul class="footer-links">
       <li><a href="/drone-repair-atlanta.html"><span class="nav-x">✚</span>Drone Hospital</a></li>
       <li><a href="/drone-classes-atlanta.html">Education</a></li>
+      <li><a href="/part-107-drone-license-georgia.html">Part 107 Classes</a></li>
+      <li><a href="/drone-gift-certificates.html">Gift Certificates</a></li>
       <li><a href="/drone-news.html" title="Drone Hospital Daily" aria-label="DHD, Drone Hospital Daily"><svg class="nav-dhd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18h-5"/><path d="M18 14h-8"/><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><rect width="8" height="4" x="10" y="6" rx="1"/></svg>DHD</a></li>
       <li><a href="/footage.html">Footage</a></li>
       <li><a href="/#about">About Us</a></li>
@@ -769,7 +782,8 @@
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Flight Week one-week beginner drone course" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Guided custom drone builds" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Drone classes for schools, Scout troops and STEM groups" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "DIY drone kits for classrooms" } }
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "DIY drone kits for classrooms" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "FAA Part 107 drone license prep classes" }, "url": "https://pq-robotics.com/part-107-drone-license-georgia.html" }
         ]
       }
     },
@@ -797,8 +811,8 @@
         {"@type": "Question", "name": "Can you help me build my own drone?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. In a guided build you choose the type of drone, such as FPV freestyle, cinewhoop, long range, camera or autonomous, and we walk you through parts selection, soldering, assembly, firmware setup and the first flight. You keep the drone."}},
         {"@type": "Question", "name": "Can you teach a drone class at our school or Scout troop?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We run drone workshops, multi-week courses and build programs for schools, STEM clubs, Scout troops, camps and other organizations, on-site or at our shop. Programs are built around your group's age, size and schedule."}},
         {"@type": "Question", "name": "Do you sell DIY drone kits for classrooms?", "acceptedAnswer": {"@type": "Answer", "text": "The PQ DIY Drone Kit is coming soon. It includes the parts to build a working drone and a step-by-step build guide. Schools and organizations can join the waitlist through the form on this page."}},
-        {"@type": "Question", "name": "Do I need an FAA license to fly a drone?", "acceptedAnswer": {"@type": "Answer", "text": "Recreational pilots need to pass the free FAA TRUST test and register any drone over 250 grams. Flying for any business purpose requires an FAA Part 107 remote pilot certificate. We cover which rules apply to you during your lesson."}},
-        {"@type": "Question", "name": "How much do drone lessons cost?", "acceptedAnswer": {"@type": "Answer", "text": "Pricing depends on the format, the number of students and the length of the program. Call (404) 408-9063 or send the form and we will send a clear quote before anything is booked."}}
+        {"@type": "Question", "name": "Do I need an FAA license to fly a drone?", "acceptedAnswer": {"@type": "Answer", "text": "Recreational pilots need to pass the free FAA TRUST test and register any drone over 250 grams. Flying for any business purpose requires an FAA Part 107 remote pilot certificate. We cover which rules apply to you during your lesson. We also teach Part 107 prep classes in person in Sandy Springs and live online for all of Georgia."}},
+        {"@type": "Question", "name": "How much do drone lessons cost?", "acceptedAnswer": {"@type": "Answer", "text": "A 90-minute First-Flight Lesson is $175, private coaching is $110 an hour, Flight Week is $595 per person, guided builds start at $349 plus parts, and school workshops start at $550. Book by February 28, 2027 for Founding Pilot prices, from $149 for a First-Flight Lesson."}}
       ]
     }
   ]

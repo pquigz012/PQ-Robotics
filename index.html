@@ -1301,6 +1301,14 @@
       background: currentColor;
       flex-shrink: 0;
     }
+    /* Gift and Part 107 strip under the stats bar */
+    .promo-strip { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); background: var(--bg-panel); }
+    .promo-strip a { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; padding: 0.95rem 1.25rem; text-decoration: none; color: var(--text-primary); font-size: 14px; transition: background .2s; text-align: center; }
+    .promo-strip a + a { border-left: 1px solid var(--border); }
+    .promo-strip a:hover { background: var(--bg-card); }
+    .promo-tag { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); padding: 3px 9px; }
+    .promo-go { color: var(--accent); }
+    @media (max-width: 760px) { .promo-strip { grid-template-columns: 1fr; } .promo-strip a + a { border-left: 0; border-top: 1px solid var(--border); } }
   </style>
 </head>
 <body>
@@ -1422,6 +1430,12 @@
   </div>
   </div>
 
+
+  <!-- GIFT & CLASSES STRIP -->
+  <div class="promo-strip">
+    <a href="/drone-gift-certificates.html"><span class="promo-tag">Gift certificates</span>Give a first drone lesson this year <span class="promo-go">&rarr;</span></a>
+    <a href="/part-107-drone-license-georgia.html"><span class="promo-tag">Part 107</span>Get your FAA drone license, in Atlanta or online <span class="promo-go">&rarr;</span></a>
+  </div>
 
   <!-- R&D DEPARTMENT: restricted -->
   <dialog class="edu-dialog rd-dialog" id="rd-dialog" aria-labelledby="rd-title">
@@ -1775,6 +1789,8 @@
     <ul class="footer-links">
       <li><a href="/drone-repair-atlanta.html"><span style="color:#e53e3e;margin-right:5px;font-size:15px">✚</span>Drone Hospital</a></li>
       <li><a href="/drone-classes-atlanta.html">Education</a></li>
+      <li><a href="/part-107-drone-license-georgia.html">Part 107 Classes</a></li>
+      <li><a href="/drone-gift-certificates.html">Gift Certificates</a></li>
       <li><a href="/drone-news.html" title="Drone Hospital Daily" aria-label="DHD, Drone Hospital Daily"><svg class="nav-dhd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18h-5"/><path d="M18 14h-8"/><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><rect width="8" height="4" x="10" y="6" rx="1"/></svg>DHD</a></li>
       <li><a href="footage.html">Footage</a></li>
       <li><a href="#about">About Us</a></li>

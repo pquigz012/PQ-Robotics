@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drone Lesson Gift Certificates in Atlanta | PQ Robotics Education</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="description" content="Give a drone lesson. Gift certificates for a first-flight lesson, Flight Week, guided drone builds and FAA Part 107 prep in Atlanta. Emailed as a printable certificate, valid 5 years. Call (404) 408-9063.">
+  <link rel="canonical" href="https://pq-robotics.com/drone-gift-certificates.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pq-robotics.com/drone-gift-certificates.html">
+  <meta property="og:title" content="Drone Lesson Gift Certificates in Atlanta | PQ Robotics Education">
+  <meta property="og:description" content="Give a first flight. Drone lessons, Flight Week, guided builds and Part 107 prep, taught by the engineers who build and repair drones. Printable certificate, valid 5 years.">
+  <meta property="og:image" content="https://pq-robotics.com/assets/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://pq-robotics.com/assets/images/og-image.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Same palette and type as the home and Education pages */
+    :root {
+      --bg-deep:    #0a1324;
+      --bg-dark:    #0c172b;
+      --bg-panel:   #0f1b31;
+      --bg-card:    #13213a;
+      --border:     rgba(255,255,255,0.07);
+      --border-mid: rgba(255,255,255,0.12);
+      --accent:     #d63c35;
+      --accent-dim: rgba(214,60,53,0.14);
+      --red:        #e53935;
+      --green:      #48bb78;
+      --text-primary:   #e8eaf0;
+      --text-secondary: #8a9ab5;
+      --text-muted:     #4a5a70;
+      --font-display: 'Exo 2', sans-serif;
+      --font-body:    'Inter', sans-serif;
+      --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg-deep); color: var(--text-primary);
+      font-family: var(--font-body); font-size: 16px; line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    img { max-width: 100%; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    /* ── NAV (matches home) ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(7,9,15,0.92);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem; height: 60px;
+    }
+    .nav-logo { font-family: var(--font-display); font-size: 13px; font-weight: 600; letter-spacing: 0.22em; color: var(--text-primary); text-decoration: none; }
+    .nav-logo span { color: var(--red); }
+    .nav-links { display: flex; align-items: center; list-style: none; }
+    .nav-links a {
+      color: var(--text-secondary); text-decoration: none;
+      font-size: 14px; font-weight: 500; letter-spacing: 0.03em;
+      padding: 0 1.1rem; height: 60px; display: flex; align-items: center;
+      border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text-primary); border-bottom-color: var(--border-mid); }
+    .nav-links a.here { color: var(--text-primary); border-bottom-color: rgba(214,60,53,0.8); }
+    .nav-x { color: #e53e3e; margin-right: 5px; font-size: 15px; }
+    .nav-dhd-icon { width: 15px; height: 15px; color: #e53e3e; margin-right: 6px; flex: none; }
+    .nav-cta {
+      background: var(--accent); color: #fff; text-decoration: none;
+      border-radius: var(--radius-sm); padding: 0 1.1rem; height: 34px;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+      display: inline-flex; align-items: center; gap: 7px; white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-cta svg { width: 14px; height: 14px; }
+
+    /* ── HERO: text on the left, a certificate on the right ── */
+    #top { position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
+    .hero-map {
+      position: absolute; inset: 0; pointer-events: none; opacity: .55;
+      background: url("assets/images/hero-map.svg") center / cover no-repeat;
+      mask-image: radial-gradient(ellipse 80% 90% at 70% 50%, #000 30%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 90% at 70% 50%, #000 30%, transparent 100%);
+    }
+    .hero-inner {
+      position: relative; z-index: 1; max-width: 1100px; margin: 0 auto;
+      padding: 5.5rem 2.5rem 5rem;
+      display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 3.5rem; align-items: center;
+    }
+    .hero-tag { font-family: var(--font-display); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 1.25rem; }
+    .hero-tag b { color: var(--red); font-weight: 600; }
+    h1 {
+      font-family: var(--font-display); font-size: clamp(2.3rem, 5vw, 3.6rem);
+      font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.4rem;
+    }
+    h1 em { font-style: normal; color: var(--accent); }
+    .hero-sub { font-size: 1rem; color: var(--text-secondary); max-width: 500px; margin-bottom: 2.2rem; line-height: 1.75; }
+    .hero-sub strong { color: var(--text-primary); font-weight: 500; }
+    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .btn-primary, .btn-ghost {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      border-radius: var(--radius-sm); padding: 12px 28px;
+      font-family: var(--font-body); font-size: 13px; font-weight: 500; letter-spacing: 0.06em;
+      text-decoration: none; cursor: pointer; transition: opacity .2s, color .2s, border-color .2s;
+    }
+    .btn-primary { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-ghost { background: transparent; color: var(--text-secondary); border: 1px solid var(--border-mid); }
+    .btn-ghost:hover { color: var(--text-primary); border-color: rgba(255,255,255,0.25); }
+    .btn-primary svg, .btn-ghost svg { width: 17px; height: 17px; flex: none; }
+
+    /* The certificate itself, drawn like the printed one */
+    .cert {
+      --navy: #0d1a33;
+      position: relative; background: #f6f3ec; color: var(--navy);
+      border-radius: 4px; padding: 1.6rem 1.8rem 1.4rem;
+      box-shadow: 0 30px 60px -20px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.06);
+      transform: rotate(-2.2deg);
+    }
+    .cert::before { content: ""; position: absolute; inset: 9px; border: 1px solid rgba(13,26,51,.35); pointer-events: none; }
+    .cert-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-bottom: 1rem; border-bottom: 2px solid var(--navy); }
+    .cert-brand { display: flex; align-items: center; gap: 10px; }
+    .cert-brand img { width: 38px; height: 38px; border-radius: 7px; display: block; }
+    .cert-brand b { font-family: var(--font-display); font-size: 11px; letter-spacing: .22em; font-weight: 600; line-height: 1.3; display: block; }
+    .cert-brand b span { color: var(--red); }
+    .cert-brand small { font-family: var(--mono); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: rgba(13,26,51,.6); }
+    .cert-kind { font-family: var(--mono); font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; border: 1px solid var(--navy); padding: 4px 8px; white-space: nowrap; }
+    .cert-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.5rem, 3.2vw, 2.05rem); letter-spacing: -0.01em; line-height: 1.1; margin: 1.2rem 0 0.25rem; }
+    .cert-gift { font-family: var(--font-display); font-size: 1.05rem; color: var(--red); font-weight: 600; margin-bottom: 1.2rem; }
+    .cert-lines { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem 1.4rem; margin-bottom: 1.2rem; }
+    .cert-lines div { border-bottom: 1px solid rgba(13,26,51,.35); padding-bottom: 4px; }
+    .cert-lines span { display: block; font-family: var(--mono); font-size: 8.5px; letter-spacing: .16em; text-transform: uppercase; color: rgba(13,26,51,.55); }
+    .cert-lines b { font-family: var(--font-display); font-size: 15px; font-weight: 600; }
+    .cert-foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; font-family: var(--mono); font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: rgba(13,26,51,.7); }
+    .cert-code { font-size: 12px; font-weight: 700; color: var(--navy); letter-spacing: .14em; }
+    .cert-x { position: absolute; right: 1.6rem; bottom: 3.3rem; font-size: 54px; line-height: 1; color: rgba(229,57,53,.13); font-weight: 700; pointer-events: none; }
+
+    /* ── FOUNDING STRIP ── */
+    .strip { background: var(--bg-dark); border-bottom: 1px solid var(--border); }
+    .strip-inner { max-width: 1100px; margin: 0 auto; padding: 1.1rem 2.5rem; display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; text-align: center; font-size: 14px; color: var(--text-secondary); }
+    .strip-inner strong { color: var(--text-primary); font-weight: 500; }
+    .strip-badge { font-family: var(--mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--red); border: 1px solid rgba(229,57,53,.55); padding: 3px 9px; }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 2.5rem; max-width: 1100px; margin: 0 auto; }
+    .band { background: var(--bg-panel); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .section-eyebrow { font-family: var(--font-display); font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+    h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem; }
+    h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.25; }
+    .section-sub { font-size: 0.95rem; color: var(--text-secondary); max-width: 620px; line-height: 1.75; margin-bottom: 3rem; }
+    .section-sub strong { color: var(--text-primary); font-weight: 500; }
+
+    /* ── GIFT CARDS: spec-sheet style from Flight Week ── */
+    .gifts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
+    .gift {
+      --navy: #0d1627; --line: rgba(255,255,255,0.22);
+      position: relative; background: var(--navy); border: 1px solid var(--line);
+      padding: 1.15rem 1.15rem 1.1rem; display: flex; flex-direction: column;
+    }
+    .gift::before, .gift::after, .gift-crop::before, .gift-crop::after {
+      content: ""; position: absolute; width: 10px; height: 10px; border: 0 solid rgba(255,255,255,0.7);
+    }
+    .gift::before { top: -5px; left: -5px; border-top-width: 1px; border-left-width: 1px; }
+    .gift::after { top: -5px; right: -5px; border-top-width: 1px; border-right-width: 1px; }
+    .gift-crop::before { bottom: -5px; left: -5px; border-bottom-width: 1px; border-left-width: 1px; }
+    .gift-crop::after { bottom: -5px; right: -5px; border-bottom-width: 1px; border-right-width: 1px; }
+    .gift.pick { border-color: var(--red); box-shadow: inset 0 0 0 1px rgba(229,57,53,.45); }
+    .gift-meta { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+    .gift-meta b { color: var(--red); font-weight: 600; }
+    .gift h3 {
+      font-size: 1.02rem; letter-spacing: 0.05em; text-transform: uppercase; line-height: 1.15;
+      margin: 1.1rem 0 0.8rem; padding-bottom: 0.8rem; border-bottom: 1px solid #fff;
+      min-height: calc(2.3em + 0.8rem + 1px); display: flex; align-items: flex-end;
+    }
+    .gift p { font-size: 12.5px; color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 1rem; }
+    .price { margin-top: auto; display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 0.8rem; margin-bottom: 0.9rem; }
+    .price b { font-family: var(--font-display); font-size: 1.7rem; font-weight: 600; line-height: 1; }
+    .price s { font-size: 13px; color: rgba(255,255,255,.45); }
+    .price small { flex-basis: 100%; font-family: var(--mono); font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--red); }
+    .gift .btn-ghost { padding: 9px 14px; font-size: 12.5px; color: var(--text-primary); }
+    .gift .btn-ghost:hover { border-color: var(--red); }
+    .gifts-note { margin-top: 1.6rem; font-size: 13px; color: var(--text-muted); max-width: 80ch; }
+
+    /* ── HOW IT WORKS ── */
+    .steps { list-style: none; counter-reset: s; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+    .steps li { counter-increment: s; border-top: 2px solid var(--border-mid); padding-top: 1.1rem; }
+    .steps li::before { content: counter(s, decimal-leading-zero); display: block; font-family: var(--mono); font-size: 1.4rem; font-weight: 700; color: var(--red); margin-bottom: 0.5rem; }
+    .steps h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+    .steps p { font-size: 13.5px; color: var(--text-secondary); line-height: 1.7; }
+
+    /* ── ORDER ── */
+    .order { display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 3rem; align-items: start; }
+    .pay { display: grid; gap: 1rem; }
+    .pay-card { background: var(--bg-card); border: 1px solid var(--border-mid); border-radius: var(--radius-md); padding: 1.2rem 1.35rem; }
+    .pay-card h3 { font-size: 1.05rem; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 10px; }
+    .pay-card h3 i { font-style: normal; font-family: var(--mono); font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--green); border: 1px solid rgba(72,187,120,.5); padding: 2px 7px; }
+    .pay-card p { font-size: 13.5px; color: var(--text-secondary); line-height: 1.7; }
+    .pay-card p strong { color: var(--text-primary); font-weight: 500; }
+    .copy-row { display: flex; align-items: center; gap: 8px; margin: 0.6rem 0 0.5rem; flex-wrap: wrap; }
+    .copy-row code { font-family: var(--mono); font-size: 14px; color: var(--text-primary); background: var(--bg-panel); border: 1px solid var(--border-mid); border-radius: var(--radius-sm); padding: 8px 12px; }
+    .copy-btn { background: transparent; border: 1px solid var(--border-mid); color: var(--text-secondary); border-radius: var(--radius-sm); padding: 8px 12px; font-size: 12px; cursor: pointer; font-family: var(--font-body); }
+    .copy-btn:hover { color: var(--text-primary); border-color: rgba(255,255,255,.25); }
+    .safety { font-size: 12.5px; color: var(--text-muted); line-height: 1.7; }
+
+    .contact-form { display: flex; flex-direction: column; gap: 0.75rem; background: var(--bg-panel); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; }
+    .contact-form h3 { font-size: 1.15rem; margin-bottom: 0.2rem; }
+    .contact-form input, .contact-form textarea, .contact-form select {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm);
+      color: var(--text-primary); font-family: var(--font-body); font-size: 14px; padding: 10px 14px;
+      outline: none; transition: border-color 0.2s; resize: none; width: 100%;
+    }
+    .contact-form select { appearance: none; -webkit-appearance: none; cursor: pointer;
+      background-image: linear-gradient(45deg, transparent 50%, var(--text-secondary) 50%), linear-gradient(135deg, var(--text-secondary) 50%, transparent 50%);
+      background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%; background-size: 5px 5px; background-repeat: no-repeat; }
+    .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { border-color: var(--accent); }
+    .contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--text-muted); }
+    .contact-form label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: -0.35rem; }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .radio-row { display: flex; gap: 0.75rem; }
+    .radio-row label { flex: 1; margin: 0; display: flex; align-items: center; gap: 8px; border: 1px solid var(--border-mid); border-radius: var(--radius-sm); padding: 10px 12px; font-size: 13.5px; letter-spacing: 0; text-transform: none; color: var(--text-primary); cursor: pointer; background: var(--bg-card); }
+    .radio-row input { width: auto; accent-color: var(--accent); }
+    .total { display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid var(--border-mid); padding-top: 0.75rem; font-size: 13px; color: var(--text-secondary); }
+    .total b { font-family: var(--font-display); font-size: 1.5rem; color: var(--text-primary); font-weight: 600; }
+    .contact-form button { width: 100%; padding: 13px; }
+    .contact-status { font-size: 14px; min-height: 1em; line-height: 1.65; }
+    .contact-status code { font-family: var(--mono); color: var(--text-primary); }
+
+    /* ── FAQ ── */
+    .faq { max-width: 820px; }
+    details { border-bottom: 1px solid var(--border-mid); padding: 1.1rem 0; }
+    details:first-of-type { border-top: 1px solid var(--border-mid); }
+    summary { font-family: var(--font-display); font-weight: 500; font-size: 1.04rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--red); font-family: var(--mono); font-weight: 700; }
+    details[open] summary::after { content: "\2212"; }
+    details p { margin-top: 0.7rem; font-size: 14.5px; color: var(--text-secondary); line-height: 1.75; max-width: 70ch; }
+    details a { color: var(--text-primary); }
+
+    /* ── FOOTER (matches home) ── */
+    footer { background: var(--bg-deep); border-top: 1px solid var(--border); padding: 1.75rem 2.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; }
+    .footer-logo { font-family: var(--font-display); font-size: 12px; font-weight: 600; letter-spacing: 0.2em; color: var(--text-muted); }
+    .footer-logo span { color: var(--red); }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links li, .footer-copy { white-space: nowrap; }
+    .footer-links a { font-size: 12px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; display: inline-flex; align-items: center; }
+    .footer-links a:hover { color: var(--text-secondary); }
+    .footer-copy { font-size: 12px; color: var(--text-muted); }
+    .footer-copy a { color: inherit; text-decoration: none; }
+    .footer-copy a:hover { color: var(--text-secondary); text-decoration: underline; }
+    .site-nap { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 8px 26px; font-size: 13px; color: var(--text-secondary); padding-top: 1rem; border-top: 1px solid var(--border); }
+    .site-nap b { color: var(--text-primary); }
+    .site-nap a { color: inherit; text-decoration: none; }
+    .site-nap a:hover { color: var(--accent); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1000px) {
+      .gifts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .nav-links a { padding: 0 0.7rem; }
+    }
+    @media (max-width: 860px) {
+      .nav-links { display: none; }
+      .hero-inner, .order { grid-template-columns: 1fr; }
+      .hero-inner { gap: 3rem; }
+      .cert { max-width: 460px; margin: 0 auto; }
+      .steps { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .hero-inner { padding: 3.5rem 1.25rem 3.5rem; }
+      h1 { font-size: 2.15rem; }
+      .hero-cta { flex-direction: column; align-items: stretch; }
+      .cert { padding: 1.3rem 1.3rem 1.2rem; transform: rotate(-1.4deg); }
+      .cert-brand small { display: none; }
+      .cert-kind { font-size: 8.5px; padding: 3px 6px; }
+      .strip-inner { padding: 1rem 1.25rem; }
+      section { padding: 4rem 1.25rem; }
+      .section-sub { margin-bottom: 2rem; }
+      .gifts { grid-template-columns: 1fr; }
+      .two { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 1.75rem 1.25rem; }
+      .footer-links { justify-content: center; gap: 0.5rem 1.25rem; }
+      .site-nap { flex-direction: column; gap: 4px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">PQ <span>ROBOTICS</span></a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/drone-repair-atlanta.html"><span class="nav-x">✚</span>Drone Hospital</a></li>
+      <li><a class="here" href="/drone-classes-atlanta.html">Education</a></li>
+      <li><a href="/drone-news.html" title="Drone Hospital Daily" aria-label="DHD, Drone Hospital Daily"><svg class="nav-dhd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18h-5"/><path d="M18 14h-8"/><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><rect width="8" height="4" x="10" y="6" rx="1"/></svg>DHD</a></li>
+      <li><a href="/footage.html">Footage</a></li>
+      <li><a href="/#about">About Us</a></li>
+    </ul>
+    <a class="nav-cta" href="#order"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></svg>Order a gift</a>
+  </nav>
+
+  <main>
+
+  <!-- HERO -->
+  <div id="top">
+    <div class="hero-map" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag"><b>PQ Robotics Education</b> · Gift certificates</div>
+        <h1><em>Drone Lesson</em><br>Gift Certificates in Atlanta</h1>
+        <p class="hero-sub">Give a first flight. Lessons, Flight Week, guided builds and FAA Part 107 prep, taught by the engineers who build and repair drones. <strong>Emailed as a printable certificate and good for 5 years.</strong></p>
+        <div class="hero-cta">
+          <a class="btn-primary" href="#gifts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></svg>Choose a gift</a>
+          <a class="btn-ghost" href="tel:+14044089063"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(404) 408-9063</a>
+        </div>
+      </div>
+
+      <div class="cert" aria-label="Example gift certificate">
+        <div class="cert-top">
+          <div class="cert-brand"><img src="assets/images/pq-robotics-logo-512.png" width="38" height="38" alt=""><div><b>PQ <span>ROBOTICS</span></b><small>Education · Atlanta</small></div></div>
+          <span class="cert-kind">Gift certificate</span>
+        </div>
+        <div class="cert-title">You're cleared for takeoff.</div>
+        <div class="cert-gift">First-Flight Lesson</div>
+        <div class="cert-lines">
+          <div><span>For</span><b>Alex</b></div>
+          <div><span>From</span><b>Mom &amp; Dad</b></div>
+        </div>
+        <div class="cert-foot"><span>Book: (404) 408-9063</span><span class="cert-code">PQ-2612-7K3D</span></div>
+        <div class="cert-x" aria-hidden="true">✚</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="strip">
+    <div class="strip-inner"><span class="strip-badge">Founding Pilot pricing</span><span>Order by <strong>February 28, 2027</strong> and the lower price is locked in on the certificate.</span></div>
+  </div>
+
+  <!-- GIFTS -->
+  <section id="gifts">
+    <div class="section-eyebrow">Pick a gift</div>
+    <h2>Gifts for every kind of pilot</h2>
+    <p class="section-sub">Brand new to drones, ready to build one, or going for an FAA license. Every gift is taught in person at our Sandy Springs shop, except online Part 107, which is live on Zoom. <strong>No drone needed. Students can fly ours.</strong></p>
+
+    <div class="gifts">
+      <article class="gift" data-gift="first-flight"><span class="gift-crop" aria-hidden="true"></span>
+        <div class="gift-meta"><span>Most popular</span><b>01</b></div>
+        <h3>First-Flight Lesson</h3>
+        <p>90 minutes, private. Setup, safe takeoffs and landings, and what to do when something goes wrong. Perfect for a new drone under the tree. Add a second person for $50.</p>
+        <div class="price"><b>$149</b><s>$175</s><small>Founding price</small></div>
+        <a class="btn-ghost" href="#order" data-pick="first-flight">Gift this &rarr;</a>
+      </article>
+
+      <article class="gift" data-gift="coaching-3"><span class="gift-crop" aria-hidden="true"></span>
+        <div class="gift-meta"><span>Any level</span><b>02</b></div>
+        <h3>Coaching 3-Pack</h3>
+        <p>Three one-hour private sessions to use any time. Smoother camera moves, FPV basics, or fixing the habits that keep putting a drone in the trees.</p>
+        <div class="price"><b>$285</b><s>$299</s><small>Founding price</small></div>
+        <a class="btn-ghost" href="#order" data-pick="coaching-3">Gift this &rarr;</a>
+      </article>
+
+      <article class="gift" data-gift="flight-week"><span class="gift-crop" aria-hidden="true"></span>
+        <div class="gift-meta"><span>Signature course</span><b>03</b></div>
+        <h3>Flight Week</h3>
+        <p>Our five-day beginner course in a small group of up to six. A short ground lesson each day, then a lot of stick time, ending with a check ride.</p>
+        <div class="price"><b>$495</b><s>$595</s><small>Founding price</small></div>
+        <a class="btn-ghost" href="#order" data-pick="flight-week">Gift this &rarr;</a>
+      </article>
+
+      <article class="gift" data-gift="build"><span class="gift-crop" aria-hidden="true"></span>
+        <div class="gift-meta"><span>For builders</span><b>04</b></div>
+        <h3>Guided Drone Build</h3>
+        <p>About six hours one-on-one with an engineer, from parts to first flight. They pick the drone and keep it. Parts are quoted separately with them, at cost.</p>
+        <div class="price"><b>$299</b><s>$349</s><small>Founding price · parts extra</small></div>
+        <a class="btn-ghost" href="#order" data-pick="build">Gift this &rarr;</a>
+      </article>
+
+      <article class="gift" data-gift="p107-in-person"><span class="gift-crop" aria-hidden="true"></span>
+        <div class="gift-meta"><span>FAA license</span><b>05</b></div>
+        <h3>Part 107 Prep, In Person</h3>
+        <p>One Saturday at the shop in a class of up to eight. Study guide, practice tests, 30 days of questions by text, and they sit in again free if they don't pass.</p>
+        <div class="price"><b>$399</b><s>$449</s><small>Founding price · exam fee extra</small></div>
+        <a class="btn-ghost" href="#order" data-pick="p107-in-person">Gift this &rarr;</a>
+      </article>
+
+      <article class="gift" data-gift="p107-online"><span class="gift-crop" aria-hidden="true"></span>
+        <div class="gift-meta"><span>Anywhere in Georgia</span><b>06</b></div>
+        <h3>Part 107 Prep, Live Online</h3>
+        <p>Two evening sessions live on Zoom with the same materials and support as the in-person class. Great for pilots outside metro Atlanta.</p>
+        <div class="price"><b>$199</b><s>$249</s><small>Founding price · exam fee extra</small></div>
+        <a class="btn-ghost" href="#order" data-pick="p107-online">Gift this &rarr;</a>
+      </article>
+
+      <article class="gift" data-gift="bundle"><span class="gift-crop" aria-hidden="true"></span>
+        <div class="gift-meta"><span>Best value</span><b>07</b></div>
+        <h3>License + First Flight</h3>
+        <p>In-person Part 107 prep plus a 90-minute First-Flight Lesson. The rules and the hands-on skill, together.</p>
+        <div class="price"><b>$499</b><s>$549</s><small>Founding price · exam fee extra</small></div>
+        <a class="btn-ghost" href="#order" data-pick="bundle">Gift this &rarr;</a>
+      </article>
+
+      <article class="gift" data-gift="amount"><span class="gift-crop" aria-hidden="true"></span>
+        <div class="gift-meta"><span>Their choice</span><b>08</b></div>
+        <h3>Any Amount</h3>
+        <p>Not sure what they'd like? Choose an amount from $50 and they can put it toward any lesson, course, build or Drone Hospital repair.</p>
+        <div class="price"><b>$50+</b><small>You choose</small></div>
+        <a class="btn-ghost" href="#order" data-pick="amount">Gift this &rarr;</a>
+      </article>
+    </div>
+    <p class="gifts-note">The FAA Part 107 exam fee is paid by the student to the testing center and is not included. Gift certificates can be used toward any service of equal value.</p>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <div class="band">
+    <section>
+      <div class="section-eyebrow">How it works</div>
+      <h2>Three steps, no checkout fees</h2>
+      <p class="section-sub">We keep it simple and personal. Pay by Zelle or check, and the certificate lands in your inbox ready to print or forward.</p>
+      <ol class="steps">
+        <li><h3>Order below</h3><p>Pick the gift, tell us who it's for and add a short message for the certificate.</p></li>
+        <li><h3>Pay by Zelle or check</h3><p>Zelle to <strong style="color:var(--text-primary);font-weight:500">pquigley@pq-robotics.com</strong>, or a check payable to PQ Robotics, dropped off or mailed to the shop.</p></li>
+        <li><h3>We email the certificate</h3><p>A printable certificate with a unique code arrives within 24 hours of payment, or on the date you choose. They call or text to book.</p></li>
+      </ol>
+    </section>
+  </div>
+
+  <!-- ORDER -->
+  <section id="order">
+    <div class="order">
+      <div>
+        <div class="section-eyebrow">Order a gift certificate</div>
+        <h2>Send the gift of flight</h2>
+        <p class="section-sub" style="margin-bottom:2rem">Fill out the form and then send payment. Questions first? Call or text <a href="tel:+14044089063" style="color:var(--text-primary)">(404) 408-9063</a>.</p>
+
+        <div class="pay">
+          <div class="pay-card">
+            <h3>Zelle <i>Fastest</i></h3>
+            <p>Send from your bank's app to:</p>
+            <div class="copy-row"><code id="zelle-email">pquigley@pq-robotics.com</code><button type="button" class="copy-btn" data-copy="zelle-email">Copy</button></div>
+            <p>In the memo, write <strong>"Gift"</strong> and the recipient's first name.</p>
+          </div>
+          <div class="pay-card">
+            <h3>Check</h3>
+            <p>Payable to <strong>PQ Robotics</strong>. Drop it off or mail it to <strong>6059 Boylston Dr NE, Atlanta, GA 30328</strong>. Mailed checks: we send the certificate when it arrives.</p>
+          </div>
+          <p class="safety">Zelle goes straight from your bank to ours and can't be reversed, so check the email address before you send. We will never ask you to pay anyone else or by gift card.</p>
+        </div>
+      </div>
+
+      <form class="contact-form" id="gift-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="faf18176-5c83-47cf-8b34-26d7a3df52e6">
+        <input type="hidden" name="subject" value="New GIFT CERTIFICATE order from pq-robotics.com">
+        <input type="hidden" name="from_name" value="PQ Robotics Gift Certificates page">
+        <input type="hidden" name="total" id="f-total-hidden" value="">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+        <h3>Your order</h3>
+        <label for="f-gift">Gift</label>
+        <select id="f-gift" name="gift" required>
+          <option value="first-flight" data-price="149">First-Flight Lesson · $149</option>
+          <option value="coaching-3" data-price="285">Coaching 3-Pack · $285</option>
+          <option value="flight-week" data-price="495">Flight Week · $495</option>
+          <option value="build" data-price="299">Guided Drone Build (parts extra) · $299</option>
+          <option value="p107-in-person" data-price="399">Part 107 Prep, In Person · $399</option>
+          <option value="p107-online" data-price="199">Part 107 Prep, Live Online · $199</option>
+          <option value="bundle" data-price="499">License + First Flight · $499</option>
+          <option value="amount" data-price="">Any amount</option>
+        </select>
+        <div id="amount-wrap" hidden>
+          <input type="number" id="f-amount" name="amount" min="50" step="5" placeholder="Amount in dollars (50 or more)">
+        </div>
+        <label for="f-to">Who it's for</label>
+        <div class="two">
+          <input type="text" id="f-to" name="recipient_name" placeholder="Their name" required>
+          <input type="text" name="from_on_certificate" placeholder="From (as printed)">
+        </div>
+        <textarea name="message_on_certificate" rows="2" maxlength="140" placeholder="Short message for the certificate (optional)"></textarea>
+        <label for="f-name">Your details</label>
+        <div class="two">
+          <input type="text" id="f-name" name="name" placeholder="Your name" autocomplete="name" required>
+          <input type="tel" name="phone" placeholder="Phone (optional)" autocomplete="tel">
+        </div>
+        <input type="email" name="email" placeholder="Email for the certificate" autocomplete="email" required>
+        <label for="f-date">Send the certificate on (optional)</label>
+        <input type="date" id="f-date" name="send_on">
+        <label>Paying by</label>
+        <div class="radio-row">
+          <label><input type="radio" name="payment" value="Zelle" checked> Zelle</label>
+          <label><input type="radio" name="payment" value="Check"> Check</label>
+        </div>
+        <div class="total"><span>Total</span><b id="f-total">$149</b></div>
+        <button type="submit" class="btn-primary">Place order</button>
+        <p class="contact-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <div class="band" id="faq">
+    <section>
+      <div class="section-eyebrow">Common questions</div>
+      <h2>About gift certificates</h2>
+      <div class="faq" style="margin-top:2rem">
+        <details><summary>How does the person I'm gifting book their lesson?</summary><p>They call or text (404) 408-9063 with the code on their certificate, and we set a time that works. Lessons start at our Sandy Springs shop or on-site at their location.</p></details>
+        <details><summary>How long is a gift certificate good for?</summary><p>Five years from the date it is issued. The price shown on the certificate is locked in, even if our prices change.</p></details>
+        <details><summary>Do they need their own drone?</summary><p>No. Students can fly our training drones. If they got a drone as a gift, bring it along and we will set it up and teach on it.</p></details>
+        <details><summary>Is there an age limit?</summary><p>Tell us the student's age when you order and we will suggest the right gift.</p></details>
+        <details><summary>Can they switch to a different lesson or course?</summary><p>Yes. A certificate can be used toward any PQ Robotics Education service or Drone Hospital repair of equal value. If they choose something that costs more, they pay the difference when they book.</p></details>
+        <details><summary>When will I get the certificate?</summary><p>Within 24 hours of receiving payment, by email, as a printable PDF. If you picked a send date, we hold it until then. Mailed checks are processed when they arrive.</p></details>
+        <details><summary>Does the Part 107 gift include the FAA exam?</summary><p>No. The FAA knowledge exam is paid to the testing center when the student schedules it. Our prep covers everything on the test, and in-person students can sit in on another class free if they don't pass.</p></details>
+        <details><summary>Can I pay with a credit card?</summary><p>Not online yet. Right now we take Zelle and checks. Call <a href="tel:+14044089063">(404) 408-9063</a> if you need another option.</p></details>
+      </div>
+    </section>
+  </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">PQ <span>ROBOTICS</span></div>
+    <ul class="footer-links">
+      <li><a href="/drone-repair-atlanta.html"><span class="nav-x">✚</span>Drone Hospital</a></li>
+      <li><a href="/drone-classes-atlanta.html">Education</a></li>
+      <li><a href="/part-107-drone-license-georgia.html">Part 107 Classes</a></li>
+      <li><a href="/drone-gift-certificates.html">Gift Certificates</a></li>
+      <li><a href="/drone-news.html" title="Drone Hospital Daily" aria-label="DHD, Drone Hospital Daily"><svg class="nav-dhd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18h-5"/><path d="M18 14h-8"/><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><rect width="8" height="4" x="10" y="6" rx="1"/></svg>DHD</a></li>
+      <li><a href="/footage.html">Footage</a></li>
+      <li><a href="/#about">About Us</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 PQ Technologies LLC &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a></div>
+    <div class="site-nap">
+      <span><b>PQ Robotics</b> · Education</span>
+      <span>6059 Boylston Dr NE, Atlanta, GA 30328</span>
+      <span><a href="tel:+14044089063">(404) 408-9063</a></span>
+    </div>
+  </footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://pq-robotics.com/drone-gift-certificates.html#service",
+      "name": "Drone lesson gift certificates in Atlanta",
+      "serviceType": "Drone flight training gift certificate",
+      "brand": { "@type": "Brand", "name": "PQ Robotics Education" },
+      "description": "Gift certificates for drone flying lessons, the Flight Week beginner course, guided custom drone builds and FAA Part 107 test prep in Atlanta, Georgia. Emailed as a printable certificate and valid for five years.",
+      "url": "https://pq-robotics.com/drone-gift-certificates.html",
+      "image": "https://pq-robotics.com/assets/images/og-image.png",
+      "provider": { "@id": "https://pq-robotics.com/#business" },
+      "areaServed": [
+        { "@type": "City", "name": "Atlanta" },
+        { "@type": "City", "name": "Sandy Springs" },
+        { "@type": "State", "name": "Georgia" }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Drone education gift certificates",
+        "itemListElement": [
+          { "@type": "Offer", "price": "149", "priceCurrency": "USD", "priceValidUntil": "2027-02-28", "itemOffered": { "@type": "Service", "name": "First-Flight Lesson gift certificate (90 minutes, private)" } },
+          { "@type": "Offer", "price": "285", "priceCurrency": "USD", "priceValidUntil": "2027-02-28", "itemOffered": { "@type": "Service", "name": "Drone coaching 3-pack gift certificate" } },
+          { "@type": "Offer", "price": "495", "priceCurrency": "USD", "priceValidUntil": "2027-02-28", "itemOffered": { "@type": "Service", "name": "Flight Week beginner drone course gift certificate" } },
+          { "@type": "Offer", "price": "299", "priceCurrency": "USD", "priceValidUntil": "2027-02-28", "itemOffered": { "@type": "Service", "name": "Guided custom drone build gift certificate" } },
+          { "@type": "Offer", "price": "399", "priceCurrency": "USD", "priceValidUntil": "2027-02-28", "itemOffered": { "@type": "Service", "name": "FAA Part 107 test prep, in person, gift certificate" } },
+          { "@type": "Offer", "price": "199", "priceCurrency": "USD", "priceValidUntil": "2027-02-28", "itemOffered": { "@type": "Service", "name": "FAA Part 107 test prep, live online, gift certificate" } },
+          { "@type": "Offer", "price": "499", "priceCurrency": "USD", "priceValidUntil": "2027-02-28", "itemOffered": { "@type": "Service", "name": "Part 107 prep and First-Flight Lesson bundle gift certificate" } }
+        ]
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://pq-robotics.com/drone-gift-certificates.html",
+      "url": "https://pq-robotics.com/drone-gift-certificates.html",
+      "name": "Drone Lesson Gift Certificates in Atlanta | PQ Robotics Education",
+      "about": { "@id": "https://pq-robotics.com/drone-gift-certificates.html#service" },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pq-robotics.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Drone Lessons Atlanta", "item": "https://pq-robotics.com/drone-classes-atlanta.html" },
+          { "@type": "ListItem", "position": 3, "name": "Gift Certificates", "item": "https://pq-robotics.com/drone-gift-certificates.html" }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://pq-robotics.com/drone-gift-certificates.html#faq",
+      "mainEntity": [
+        {"@type": "Question", "name": "How does the person I'm gifting book their lesson?", "acceptedAnswer": {"@type": "Answer", "text": "They call or text (404) 408-9063 with the code on their certificate, and we set a time that works. Lessons start at our Sandy Springs shop or on-site at their location."}},
+        {"@type": "Question", "name": "How long is a gift certificate good for?", "acceptedAnswer": {"@type": "Answer", "text": "Five years from the date it is issued. The price shown on the certificate is locked in, even if our prices change."}},
+        {"@type": "Question", "name": "Do they need their own drone?", "acceptedAnswer": {"@type": "Answer", "text": "No. Students can fly our training drones. If they got a drone as a gift, bring it along and we will set it up and teach on it."}},
+        {"@type": "Question", "name": "Is there an age limit?", "acceptedAnswer": {"@type": "Answer", "text": "Tell us the student's age when you order and we will suggest the right gift."}},
+        {"@type": "Question", "name": "Can they switch to a different lesson or course?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. A certificate can be used toward any PQ Robotics Education service or Drone Hospital repair of equal value. If they choose something that costs more, they pay the difference when they book."}},
+        {"@type": "Question", "name": "When will I get the certificate?", "acceptedAnswer": {"@type": "Answer", "text": "Within 24 hours of receiving payment, by email, as a printable PDF. If you picked a send date, we hold it until then. Mailed checks are processed when they arrive."}},
+        {"@type": "Question", "name": "Does the Part 107 gift include the FAA exam?", "acceptedAnswer": {"@type": "Answer", "text": "No. The FAA knowledge exam is paid to the testing center when the student schedules it. Our prep covers everything on the test, and in-person students can sit in on another class free if they don't pass."}},
+        {"@type": "Question", "name": "Can I pay with a credit card?", "acceptedAnswer": {"@type": "Answer", "text": "Not online yet. Right now we take Zelle and checks. Call (404) 408-9063 if you need another option."}}
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+(function () {
+  var sel = document.getElementById("f-gift");
+  var amountWrap = document.getElementById("amount-wrap");
+  var amount = document.getElementById("f-amount");
+  var totalEl = document.getElementById("f-total");
+  var totalHidden = document.getElementById("f-total-hidden");
+  var cards = document.querySelectorAll(".gift");
+  var touched = false;
+
+  function total() {
+    var opt = sel.options[sel.selectedIndex];
+    var p = opt.getAttribute("data-price");
+    if (!p) { var a = parseInt(amount.value, 10); p = a >= 50 ? String(a) : ""; }
+    return p;
+  }
+  function refresh() {
+    var isAmount = sel.value === "amount";
+    amountWrap.hidden = !isAmount;
+    amount.required = isAmount;
+    var t = total();
+    totalEl.textContent = t ? "$" + t : "$50+";
+    totalHidden.value = t ? "$" + t : "";
+    if (touched) cards.forEach(function (c) { c.classList.toggle("pick", c.getAttribute("data-gift") === sel.value); });
+  }
+  sel.addEventListener("change", function () { touched = true; refresh(); });
+  amount.addEventListener("input", refresh);
+
+  // "Gift this" buttons pick the matching gift in the form
+  document.querySelectorAll("[data-pick]").forEach(function (a) {
+    a.addEventListener("click", function () { touched = true; sel.value = a.getAttribute("data-pick"); refresh(); });
+  });
+  var q = new URLSearchParams(location.search).get("gift");
+  if (q && sel.querySelector('option[value="' + q + '"]')) sel.value = q;
+  refresh();
+
+  // Copy the Zelle address
+  document.querySelectorAll("[data-copy]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var text = document.getElementById(b.getAttribute("data-copy")).textContent;
+      var done = function () { b.textContent = "Copied"; setTimeout(function () { b.textContent = "Copy"; }, 1600); };
+      if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, function () {}); else done();
+    });
+  });
+
+  var form = document.getElementById("gift-form");
+  if (!form || !window.fetch) return;
+  var status = form.querySelector(".contact-status");
+  var btn = form.querySelector('button[type="submit"]');
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var t = total();
+    if (!t) { status.style.color = "#e53e3e"; status.textContent = "Please enter an amount of $50 or more."; return; }
+    var who = (document.getElementById("f-to").value || "").trim().split(" ")[0];
+    var pay = form.querySelector('input[name="payment"]:checked').value;
+    btn.disabled = true; btn.textContent = "Sending...";
+    status.textContent = "";
+    fetch(form.action, { method: "POST", headers: { Accept: "application/json" }, body: new FormData(form) })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (!data.success) throw new Error(data.message || "Send failed");
+        form.reset(); refresh();
+        status.style.color = "#48bb78";
+        var how = pay === "Zelle"
+          ? 'Send <b>$' + t + '</b> by Zelle to <code>pquigley@pq-robotics.com</code> with the memo <code>Gift ' + who.replace(/[<>&"]/g, "") + '</code>.'
+          : 'Make a check for <b>$' + t + '</b> payable to PQ Robotics and drop it off or mail it to 6059 Boylston Dr NE, Atlanta, GA 30328.';
+        status.innerHTML = 'Order received, thank you! Next step: ' + how + ' Your certificate arrives by email within 24 hours of payment.';
+      })
+      .catch(function () {
+        status.style.color = "#e53e3e";
+        status.textContent = "Sorry, that did not go through. Please call (404) 408-9063 or try again.";
+      })
+      .finally(function () { btn.disabled = false; btn.textContent = "Place order"; });
+  });
+})();
+</script>
+</body>
+</html>
