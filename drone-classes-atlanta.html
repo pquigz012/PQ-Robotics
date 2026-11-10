@@ -121,8 +121,6 @@
     .edu .mono6 { fill: var(--ink); fill-opacity: .7; font: 700 5.5px var(--mono); letter-spacing: .08em; }
     .edu .mono6.pass { fill: #4ade80; fill-opacity: .95; }
     .edu .mono6.done { fill-opacity: .4; }
-    .edu .h-bar { fill: #e53935; } .edu .h-bar.pass { fill: #4ade80; }
-    .edu .hl { fill: #e53935; fill-opacity: .35; }
     .edu .board { fill: #0d1a2c; stroke: var(--ink); stroke-opacity: .55; stroke-width: 1.4; }
     .edu .chalk { fill: var(--ink); fill-opacity: .7; font: 700 6.5px var(--mono); letter-spacing: .1em; transition: fill .2s, fill-opacity .2s; }
     .edu .chalkline, .edu .chalkline * { fill: none; stroke: var(--ink); stroke-opacity: .6; stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; }
@@ -131,10 +129,8 @@
     .edu .phase, .edu .cl { transition: opacity .35s; }
     .edu .cl.on .chalk { fill: #ff5a4f; fill-opacity: 1; }
     .edu .cl.on .chalkline { stroke: #ff5a4f; stroke-opacity: .9; }
-    .edu .holes { fill: none; stroke: var(--ink); stroke-opacity: .25; stroke-width: 1.4; stroke-linecap: round; stroke-dasharray: 0 8; }
     .edu .frame { fill: none; stroke: var(--ink); stroke-opacity: .3; stroke-width: 1.2; stroke-linecap: square; }
     .edu .net { fill: rgba(229,57,53,.03); stroke: var(--ink); stroke-opacity: .28; stroke-dasharray: 3 5; }
-    .edu .h-iron { stroke: var(--ink); stroke-opacity: .8; stroke-width: 2; stroke-linecap: round; }
     .edu .h-cable { fill: none; stroke: #e53935; stroke-opacity: .7; stroke-width: 1; }
     .edu .hr-arm { stroke: var(--ink); stroke-opacity: .85; stroke-width: 2.2; stroke-linecap: round; }
     .edu .hr-jaw { stroke: var(--ink); stroke-opacity: .85; stroke-width: 1.3; stroke-linecap: round; }
@@ -149,9 +145,6 @@
     .edu .gl-esc { stroke: #ffb347; stroke-width: 1.2; }
     .edu .chk { fill: none; stroke: var(--ink); stroke-opacity: .6; stroke-width: .9; }
     .edu .chk.on { fill: #4ade80; stroke: #4ade80; stroke-opacity: 1; }
-    .edu .card { fill: #4ade80; fill-opacity: .9; }
-    .edu .fx-smoke { fill: var(--ink); }
-    .edu .fx-spark { fill: #ffb347; }
     .edu .fx-ring { fill: none; stroke: #4ade80; stroke-width: 1.2; }
     @keyframes route-march { to { stroke-dashoffset: -32; } }
     @keyframes ping { 0% { transform: scale(.4); opacity: .9; } 100% { transform: scale(2.4); opacity: 0; } }
@@ -460,8 +453,8 @@
   <div id="top">
     <div class="hero-map" aria-hidden="true"></div>
     <svg class="hero-route" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <!-- Education campus: four small scenes around the headline (Part 107 test prep, classroom,
-           build lab, flight training). Animated by /assets/js/education-scenes.js;
+      <!-- Education campus: two small scenes either side of the headline (classroom on the left,
+           flight training on the right). Animated by /assets/js/education-scenes.js;
            the sortie drone below is only the no-script fallback. -->
       <path id="sortie" class="route-fallback" d="M220 760 L220 590 C220 520 560 520 720 480 L420 480 L420 240 L720 240 L720 480 C820 480 900 400 980 330 C980 400 1080 400 1130 330 C1180 260 1280 260 1280 330 C1280 400 1180 400 1130 330 C1080 260 980 260 980 330 C980 450 1200 560 1290 620 A70 70 0 1 1 1430 620 A70 70 0 1 1 1290 620 C1150 760 500 800 220 760"/>
       <g class="drone">
@@ -473,33 +466,8 @@
         <animateMotion dur="44s" repeatCount="indefinite" rotate="auto"><mpath href="#sortie"/></animateMotion>
       </g>
       <g id="edu" class="edu">
-        <path class="frame" d="M40 248V236H52M244 236H256V248M256 462V474H244M52 474H40V462M1344 248V236H1356M1548 236H1560V248M1560 462V474H1548M1356 474H1344V462M40 498V486H52M384 486H396V498M396 800V812H384M52 812H40V800M1204 498V486H1216M1548 486H1560V498M1560 800V812H1548M1216 812H1204V800"/>
-        <!-- PART 107 TEST PREP, upper left -->
-        <g id="s-test">
-          <text class="lbl" x="148" y="252" text-anchor="middle">PART 107 · TEST PREP</text>
-          <circle class="kf" cx="214" cy="300" r="11"/>
-          <circle class="k faint" cx="214" cy="300" r="8.5"/>
-          <line class="k" id="t-hr" x1="214" y1="300" x2="214" y2="295"/>
-          <line class="k" id="t-min" x1="214" y1="300" x2="214" y2="292"/>
-          <rect class="kf" x="106" y="318" width="68" height="14" rx="2"/>
-          <text class="mono6" x="112" y="327.5">EXAM IN PROGRESS</text>
-          <path class="k" d="M44 432H82M46 432V462M78 432V462M46 432V404"/>
-          <g id="t-student"></g>
-          <path class="k" d="M70 412H210M76 412V462M204 412V462"/>
-          <path class="k" d="M145 394V412M135 412H155"/>
-          <rect class="kf" x="118" y="352" width="54" height="42" rx="2"/>
-          <text class="mono6" id="t-s1" x="122" y="361">FAA PART 107</text>
-          <text class="mono6" id="t-s2" x="122" y="370">Q 01/60</text>
-          <text class="mono6" id="t-s3" x="122" y="379">A  B  C</text>
-          <rect class="k faint" x="122" y="385" width="46" height="3" rx="1"/>
-          <rect class="h-bar" id="t-bar" x="122" y="385" width="0" height="3" rx="1"/>
-          <rect class="kf" x="94" y="408" width="30" height="4" rx="1"/>
-          <rect class="kf" x="178" y="398" width="24" height="14" rx="2"/>
-          <path class="k" d="M182 401H198"/>
-          <g id="t-robot"></g>
-        </g>
-
-        <!-- CLASSROOM, lower left -->
+        <path class="frame" d="M40 498V486H52M384 486H396V498M396 800V812H384M52 812H40V800M1204 498V486H1216M1548 486H1560V498M1560 800V812H1548M1216 812H1204V800"/>
+        <!-- CLASSROOM, left -->
         <g id="s-class" transform="translate(-37 0)">
           <text class="lbl" x="255" y="502" text-anchor="middle">CLASSROOM · SCHOOLS &amp; GROUPS</text>
           <rect class="board" x="130" y="508" width="250" height="92" rx="3"/>
@@ -541,32 +509,7 @@
           <g id="c-students"></g>
         </g>
 
-        <!-- BUILD LAB, upper right -->
-        <g id="s-build">
-          <text class="lbl" x="1452" y="252" text-anchor="middle">BUILD LAB · CUSTOM BUILDS</text>
-          <rect class="kf" x="1350" y="262" width="204" height="72" rx="2"/>
-          <path class="holes" d="M1422 272H1546M1422 284H1546M1422 296H1546M1422 308H1546M1422 320H1546"/>
-          <text class="mono6" x="1358" y="276">5IN FPV BUILD</text>
-          <g id="b-list"></g>
-          <path class="k" d="M1430 276v26M1426 278a4 4 0 1 0 8 0M1426 300a4 4 0 1 1 8 0"/>
-          <path class="k" d="M1452 276v12M1449 288h6v14h-6z"/>
-          <path class="k" d="M1474 277l6 22M1486 277l-6 22M1478 292l4 0"/>
-          <circle class="kf" cx="1512" cy="291" r="10"/><circle class="k" cx="1512" cy="291" r="4"/>
-          <path class="k" d="M1536 276v28M1532 276h8"/>
-          <g id="b-back"></g>
-          <path class="k" d="M1350 400H1554"/>
-          <rect class="kf" x="1350" y="400" width="204" height="12" rx="1"/>
-          <path class="k" d="M1358 412V462M1546 412V462"/>
-          <path class="k" d="M1383 400v-6m2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/>
-          <line class="h-iron" id="b-iron-rest" x1="1379" y1="386" x2="1391" y2="398"/>
-          <rect class="kf" x="1391" y="390" width="14" height="10" rx="1"/>
-          <rect class="kf" x="1511" y="393" width="14" height="7" rx="1"/>
-          <path class="k faint" d="M1514 393v-3h3v3M1519 393v-3h3v3"/>
-          <g id="b-drone"></g>
-          <g id="b-front"></g>
-        </g>
-
-        <!-- FLIGHT TRAINING, lower right -->
+        <!-- FLIGHT TRAINING, right -->
         <g id="s-field">
           <text class="lbl" x="1382" y="502" text-anchor="middle">FLIGHT TRAINING</text>
           <rect class="net" x="1323" y="520" width="222" height="280"/>
