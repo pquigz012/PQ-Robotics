@@ -219,6 +219,7 @@
     .copy-row { display: flex; align-items: center; gap: 8px; margin: 0.6rem 0 0.5rem; flex-wrap: wrap; }
     .copy-row code { font-family: var(--mono); font-size: 14px; color: var(--text-primary); background: var(--bg-panel); border: 1px solid var(--border-mid); border-radius: var(--radius-sm); padding: 8px 12px; }
     .copy-btn { background: transparent; border: 1px solid var(--border-mid); color: var(--text-secondary); border-radius: var(--radius-sm); padding: 8px 12px; font-size: 12px; cursor: pointer; font-family: var(--font-body); }
+    a.copy-btn { text-decoration: none; display: inline-block; line-height: 1.4; }
     .copy-btn:hover { color: var(--text-primary); border-color: rgba(255,255,255,.25); }
     .safety { font-size: 12.5px; color: var(--text-muted); line-height: 1.7; }
 
@@ -436,10 +437,10 @@
     <section>
       <div class="section-eyebrow">How it works</div>
       <h2>Three steps, no checkout fees</h2>
-      <p class="section-sub">We keep it simple and personal. Pay by Zelle or check, and the certificate lands in your inbox ready to print or forward.</p>
+      <p class="section-sub">We keep it simple and personal. Pay by Zelle, Venmo or check, and the certificate lands in your inbox ready to print or forward.</p>
       <ol class="steps">
         <li><h3>Order below</h3><p>Pick the gift, tell us who it's for and add a short message for the certificate.</p></li>
-        <li><h3>Pay by Zelle or check</h3><p>Zelle to <strong style="color:var(--text-primary);font-weight:500">pquigley@pq-robotics.com</strong>, or a check payable to PQ Robotics, dropped off or mailed to the shop.</p></li>
+        <li><h3>Pay by Zelle, Venmo or check</h3><p>Zelle to <strong style="color:var(--text-primary);font-weight:500">pquigley@pq-robotics.com</strong>, Venmo to <strong style="color:var(--text-primary);font-weight:500">@thedronehospital</strong>, or a check payable to PQ Robotics, dropped off or mailed to the shop.</p></li>
         <li><h3>We email the certificate</h3><p>A printable certificate with a unique code arrives within 24 hours of payment, or on the date you choose. They call or text to book.</p></li>
       </ol>
     </section>
@@ -461,10 +462,16 @@
             <p>In the memo, write <strong>"Gift"</strong> and the recipient's first name.</p>
           </div>
           <div class="pay-card">
+            <h3>Venmo</h3>
+            <p>Send from the Venmo app to:</p>
+            <div class="copy-row"><code id="venmo-user">@thedronehospital</code><button type="button" class="copy-btn" data-copy="venmo-user">Copy</button><a class="copy-btn" href="https://venmo.com/u/thedronehospital" target="_blank" rel="noopener">Open in Venmo</a></div>
+            <p>In the note, write <strong>"Gift"</strong> and the recipient's first name.</p>
+          </div>
+          <div class="pay-card">
             <h3>Check</h3>
             <p>Payable to <strong>PQ Robotics</strong>. Drop it off or mail it to <strong>6059 Boylston Dr NE, Atlanta, GA 30328</strong>. Mailed checks: we send the certificate when it arrives.</p>
           </div>
-          <p class="safety">Zelle goes straight from your bank to ours and can't be reversed, so check the email address before you send. We will never ask you to pay anyone else or by gift card.</p>
+          <p class="safety">Zelle and Venmo payments are hard to reverse, so check the email address or the Venmo name <strong>@thedronehospital</strong> before you send. We will never ask you to pay anyone else or by gift card.</p>
         </div>
       </div>
 
@@ -506,6 +513,7 @@
         <label>Paying by</label>
         <div class="radio-row">
           <label><input type="radio" name="payment" value="Zelle" checked> Zelle</label>
+          <label><input type="radio" name="payment" value="Venmo"> Venmo</label>
           <label><input type="radio" name="payment" value="Check"> Check</label>
         </div>
         <div class="total"><span>Total</span><b id="f-total">$149</b></div>
@@ -528,7 +536,7 @@
         <details><summary>Can they switch to a different lesson or course?</summary><p>Yes. A certificate can be used toward any PQ Robotics Education service or Drone Hospital repair of equal value. If they choose something that costs more, they pay the difference when they book.</p></details>
         <details><summary>When will I get the certificate?</summary><p>Within 24 hours of receiving payment, by email, as a printable PDF. If you picked a send date, we hold it until then. Mailed checks are processed when they arrive.</p></details>
         <details><summary>Does the Part 107 gift include the FAA exam?</summary><p>No. The FAA knowledge exam is paid to the testing center when the student schedules it. Our prep covers everything on the test, and in-person students can sit in on another class free if they don't pass.</p></details>
-        <details><summary>Can I pay with a credit card?</summary><p>Not online yet. Right now we take Zelle and checks. Call <a href="tel:+14044089063">(404) 408-9063</a> if you need another option.</p></details>
+        <details><summary>Can I pay with a credit card?</summary><p>Not online yet. Right now we take Zelle, Venmo and checks. Call <a href="tel:+14044089063">(404) 408-9063</a> if you need another option.</p></details>
       </div>
     </section>
   </div>
@@ -614,7 +622,7 @@
         {"@type": "Question", "name": "Can they switch to a different lesson or course?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. A certificate can be used toward any PQ Robotics Education service or Drone Hospital repair of equal value. If they choose something that costs more, they pay the difference when they book."}},
         {"@type": "Question", "name": "When will I get the certificate?", "acceptedAnswer": {"@type": "Answer", "text": "Within 24 hours of receiving payment, by email, as a printable PDF. If you picked a send date, we hold it until then. Mailed checks are processed when they arrive."}},
         {"@type": "Question", "name": "Does the Part 107 gift include the FAA exam?", "acceptedAnswer": {"@type": "Answer", "text": "No. The FAA knowledge exam is paid to the testing center when the student schedules it. Our prep covers everything on the test, and in-person students can sit in on another class free if they don't pass."}},
-        {"@type": "Question", "name": "Can I pay with a credit card?", "acceptedAnswer": {"@type": "Answer", "text": "Not online yet. Right now we take Zelle and checks. Call (404) 408-9063 if you need another option."}}
+        {"@type": "Question", "name": "Can I pay with a credit card?", "acceptedAnswer": {"@type": "Answer", "text": "Not online yet. Right now we take Zelle, Venmo and checks. Call (404) 408-9063 if you need another option."}}
       ]
     }
   ]
@@ -657,7 +665,7 @@
   if (q && sel.querySelector('option[value="' + q + '"]')) sel.value = q;
   refresh();
 
-  // Copy the Zelle address
+  // Copy the Zelle address or Venmo name
   document.querySelectorAll("[data-copy]").forEach(function (b) {
     b.addEventListener("click", function () {
       var text = document.getElementById(b.getAttribute("data-copy")).textContent;
@@ -684,8 +692,11 @@
         if (!data.success) throw new Error(data.message || "Send failed");
         form.reset(); refresh();
         status.style.color = "#48bb78";
+        var memo = 'Gift ' + who.replace(/[<>&"]/g, "");
         var how = pay === "Zelle"
-          ? 'Send <b>$' + t + '</b> by Zelle to <code>pquigley@pq-robotics.com</code> with the memo <code>Gift ' + who.replace(/[<>&"]/g, "") + '</code>.'
+          ? 'Send <b>$' + t + '</b> by Zelle to <code>pquigley@pq-robotics.com</code> with the memo <code>' + memo + '</code>.'
+          : pay === "Venmo"
+          ? 'Send <b>$' + t + '</b> on Venmo to <a href="https://venmo.com/u/thedronehospital" target="_blank" rel="noopener" style="color:inherit;font-weight:600">@thedronehospital</a> with the note <code>' + memo + '</code>.'
           : 'Make a check for <b>$' + t + '</b> payable to PQ Robotics and drop it off or mail it to 6059 Boylston Dr NE, Atlanta, GA 30328.';
         status.innerHTML = 'Order received, thank you! Next step: ' + how + ' Your certificate arrives by email within 24 hours of payment.';
       })
