@@ -221,7 +221,7 @@
     .hero-route .hosp .lbl-s { font-size: 9px; }
     .hero-route .hosp .lbl.alert { fill: #e53935; fill-opacity: .95; }
     .hero-route .hosp .lbl.pass, .hero-route .hosp .h-mon-t.pass { fill: #4ade80; fill-opacity: .95; }
-    .hosp .h-mon-t { fill: var(--ink); fill-opacity: .75; font: 700 6.5px ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; letter-spacing: .08em; }
+    .hosp .h-mon-t { fill: var(--ink); fill-opacity: .75; font: 700 5.5px ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; letter-spacing: .08em; }
     .hosp .hd-arm { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     .hosp .hd-rotor { fill: none; stroke: var(--ink); stroke-width: 1.5; }
     .hosp .hd-rotor.broken, .hosp .h-held.broken, .hosp .hp-prop { stroke: #e53935; stroke-dasharray: 4 2.5 1.5 3; }
@@ -236,13 +236,15 @@
     .hosp .hr-visor { fill: var(--ink); fill-opacity: .22; transition: fill .15s; }
     .hosp .hr-visor.down { fill: #e53935; fill-opacity: .9; }
     .hosp .h-held { fill: none; stroke: var(--ink); stroke-width: 1.3; }
-    .hosp .h-beam { fill: #e53935; fill-opacity: .14; }
-    .hosp .h-scan { fill: none; stroke: #e53935; stroke-width: 1.2; }
+    .hosp .h-lens { fill: var(--ink); fill-opacity: .08; stroke: var(--ink); stroke-opacity: .9; stroke-width: 1.4; }
+    .hosp .h-lens-h { stroke: var(--ink); stroke-opacity: .9; stroke-width: 2; stroke-linecap: round; }
+    .hosp .h-lglow { fill: #e53935; fill-opacity: .18; }
     .hosp .h-glow { fill: #ffb347; }
     .hosp .h-torch { stroke: var(--ink); stroke-opacity: .9; stroke-width: 2; stroke-linecap: round; }
-    .hosp .h-cable { fill: none; stroke: #e53935; stroke-opacity: .8; stroke-width: 1.1; }
-    .hosp .h-bar { fill: #e53935; }
-    .hosp .h-bar.pass { fill: #4ade80; }
+    .hosp .hd-tag { fill: none; stroke: #e53935; stroke-width: 1.1; stroke-dasharray: 2 2; animation: tag-pulse 1s ease-in-out infinite; }
+    @keyframes tag-pulse { 50% { stroke-opacity: .25; } }
+    .hosp .hb-box { fill: var(--bg); stroke: var(--ink); stroke-opacity: .85; stroke-width: 1.1; }
+    .hosp .hb-flap { fill: none; stroke: var(--ink); stroke-opacity: .85; stroke-width: 1.1; stroke-linecap: round; }
     .hosp .h-pole { stroke: var(--ink); stroke-opacity: .8; stroke-width: 1.2; }
     .hosp .h-flag { fill: #e53935; }
     .hosp .h-flag.pass { fill: #4ade80; }
@@ -251,8 +253,9 @@
     .hosp .hp-spark.hot { fill: #fff3c4; }
     .hosp .hp-ring { fill: none; stroke: var(--ink); stroke-width: 1.2; }
     .hosp .hp-ring.pass { stroke: #4ade80; }
+    .hosp .hp-ring.alert { stroke: #e53935; }
     .hosp .hp-prop { fill: none; stroke-width: 1.3; }
-    @media (prefers-reduced-motion: reduce) { .hosp .tread { animation: none; } }
+    @media (prefers-reduced-motion: reduce) { .hosp .tread, .hosp .hd-tag { animation: none; } }
 
     .hero-tag {
       font-size: 11px;
@@ -1346,25 +1349,19 @@
           <path class="k faint" d="M258 818H446"/>
           <path class="k" d="M322 742V728H336M408 728H422V742M422 794V808H408M336 808H322V794"/>
           <text class="lbl" id="h-test" x="372" y="720" text-anchor="middle">TEST FLIGHT</text>
-          <text class="lbl" id="h-er" x="1110" y="746" text-anchor="middle">ER · TRIAGE</text>
-          <text class="lbl" x="955" y="746" text-anchor="middle">BAY 01 · PROPS</text>
-          <text class="lbl" x="800" y="746" text-anchor="middle">BAY 02 · ARMS</text>
-          <text class="lbl" x="645" y="746" text-anchor="middle">BAY 03 · FIRMWARE</text>
+          <text class="lbl" id="h-l1" x="1120" y="746" text-anchor="middle">BAY 01 · DIAGNOSIS</text>
+          <text class="lbl" id="h-l2" x="965" y="746" text-anchor="middle">BAY 02 · PARTS</text>
+          <text class="lbl" id="h-l3" x="752" y="746" text-anchor="middle">BAY 03 · REPAIR</text>
           <text class="lbl lbl-s" x="470" y="780">DRONE HOSPITAL · LINE 01</text>
           <text class="lbl lbl-s" x="470" y="794">BACK IN THE AIR <tspan id="h-count">00</tspan></text>
-          <path class="k" d="M1076 818V780"/>
-          <rect class="kf" x="1068" y="764" width="16" height="16" rx="2"/>
-          <path class="red" d="M1074 767h4v3h3v4h-3v3h-4v-3h-3v-4h3z"/>
-          <rect class="kf" x="1079" y="783" width="9" height="6" rx="1.5"/>
-          <path class="k faint" d="M966 752V760"/>
-          <rect class="kf" x="959" y="760" width="14" height="9" rx="1.5"/>
-          <path class="k" d="M963 764.5h6"/>
-          <rect class="kf" x="1005" y="796" width="17" height="22" rx="1.5"/>
-          <path class="k faint" d="M713 752V761"/>
-          <rect class="kf" x="697" y="761" width="32" height="17" rx="2"/>
-          <text class="h-mon-t" id="h-mon" x="701" y="769.5">FW</text>
-          <rect class="k faint" x="701" y="772.5" width="24" height="3" rx="1"/>
-          <rect class="h-bar" id="h-bar" x="701" y="772.5" width="0" height="3" rx="1"/>
+          <path class="k" d="M984 800H1036M988 800V818M1032 800V818M1024 790V800"/>
+          <rect class="kf" x="986" y="756" width="48" height="34" rx="2"/>
+          <text class="h-mon-t" id="h-mh" x="990" y="764">PARTS</text>
+          <text class="h-mon-t" id="h-m1" x="990" y="772.5"></text>
+          <text class="h-mon-t" id="h-m2" x="990" y="779.5"></text>
+          <text class="h-mon-t" id="h-m3" x="990" y="786.5"></text>
+          <rect class="kf" x="992" y="796" width="20" height="4" rx="1"/>
+          <rect class="kf" x="798" y="796" width="17" height="22" rx="1.5"/>
           <g id="h-robots"></g>
         </g>
         <rect class="belt" x="446" y="810" width="720" height="12" rx="6"/>
@@ -1374,12 +1371,13 @@
         <g id="h-drones"></g>
         <g id="h-front">
           <path class="k" d="M1088 782l9 26M1132 782l-9 26"/>
-          <polygon class="h-beam" id="h-beam" points="0,0" visibility="hidden"/>
-          <path class="h-scan" id="h-scan" d="M0 -20" visibility="hidden"/>
+          <path class="k" d="M939 752V792M953 752V792M935 752H957"/>
+          <circle class="h-lglow" id="h-lglow" r="0"/>
+          <line class="h-lens-h" id="h-lh" visibility="hidden"/>
+          <circle class="h-lens" id="h-lens" r="4" visibility="hidden"/>
           <circle class="h-glow" id="h-glow" r="0"/>
-          <path class="h-cable" id="h-cable" d="M0 -20" visibility="hidden"/>
           <line class="h-torch" id="h-torch" visibility="hidden"/>
-          <circle class="h-held" id="h-held" r="3.6" visibility="hidden"/>
+          <circle class="h-held" id="h-held" r="4" visibility="hidden"/>
           <line class="h-pole" id="h-pole" visibility="hidden"/>
           <polygon class="h-flag" id="h-flag" points="0,0" visibility="hidden"/>
         </g>

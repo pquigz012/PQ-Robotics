@@ -1,8 +1,12 @@
 /* Drone Hospital repair line for the home page hero.
    Each drone loops through one life cycle:
    take off at HOME, fly the mission, fail after WP 05 and limp along the last leg,
-   drop onto the belt, get scanned at the ER, new prop at bay 01, arm welded at bay 02,
-   firmware flashed at bay 03, test flight in the cage, land at HOME, repeat.
+   drop onto the belt, then:
+     Bay 01 Diagnosis: a robot inspects it with a magnifier and tags each fault,
+     Bay 02 Parts: a robot at the parts computer looks the drone over, types up the
+       parts list and orders it, and the parts box drops in through the tube,
+     Bay 03 Repair: two robots swap the cracked prop and weld the bent arm, status goes green,
+   then a test flight in the cage, land at HOME, repeat.
    Several drones run the same cycle at staggered times. */
 (() => {
   const svg = document.querySelector('#home .hero-route');
@@ -76,7 +80,8 @@
   const SPEED = 56;                     // belt speed, matches the tread animation
   const HOME = { x: 170, y: 760 };
   const CAGE = { x: 372, y: 766 };
-  const X = { intake: 1110, b1: 955, b2: 800, b3: 645, end: 452 };
+  const X = { diag: 1110, parts: 930, repair: 740, end: 452 };
+  const BOX_DX = 16;                    // parts box rides just right of its drone
 
   const seg = [];
   let T = 0;
@@ -88,14 +93,12 @@
   S.sputter = add('sputter', 0.6);
   S.fall = add('fall', 0.9);
   S.bounce = add('bounce', 0.35);
-  S.triage = add('dwell', 2.2, { x: X.intake });
-  add('move', (X.intake - X.b1) / SPEED, { a: X.intake, b: X.b1 });
-  S.bay1 = add('dwell', 3.4, { x: X.b1 });
-  add('move', (X.b1 - X.b2) / SPEED, { a: X.b1, b: X.b2 });
-  S.bay2 = add('dwell', 3.2, { x: X.b2 });
-  add('move', (X.b2 - X.b3) / SPEED, { a: X.b2, b: X.b3 });
-  S.bay3 = add('dwell', 3.2, { x: X.b3 });
-  add('move', (X.b3 - X.end) / SPEED, { a: X.b3, b: X.end });
+  S.diag = add('dwell', 3.4, { x: X.diag });
+  add('move', (X.diag - X.parts) / SPEED, { a: X.diag, b: X.parts });
+  S.parts = add('dwell', 4.2, { x: X.parts });
+  add('move', (X.parts - X.repair) / SPEED, { a: X.parts, b: X.repair });
+  S.repair = add('dwell', 5.0, { x: X.repair });
+  add('move', (X.repair - X.end) / SPEED, { a: X.repair, b: X.end });
   S.lift = add('lift', 1);
   S.test = add('test', 2.8);
   S.home = add('home', 1.8);
@@ -104,10 +107,19 @@
   const tIn = (s, p) => s.t0 + s.dur * p;
 
   const DMG = S.limp.t0;
-  const PROP_OFF = tIn(S.bay1, 0.17);
-  const PROP_ON = tIn(S.bay1, 0.74);
-  const ARM_FIX = tIn(S.bay2, 0.8);
-  const FW_FIX = tIn(S.bay3, 0.8);
+  // diagnosis finds the faults one at a time
+  const TAG = [tIn(S.diag, 0.3), tIn(S.diag, 0.5), tIn(S.diag, 0.7)];
+  // parts computer
+  const LIST = [tIn(S.parts, 0.4), tIn(S.parts, 0.5), tIn(S.parts, 0.6)];
+  const ORDERED = tIn(S.parts, 0.68);
+  const BOX_DROP = tIn(S.parts, 0.74), BOX_LAND = tIn(S.parts, 0.86);
+  // repair bay
+  const BOX_OPEN = tIn(S.repair, 0.24);
+  const PROP_OFF = tIn(S.repair, 0.12);
+  const PROP_ON = tIn(S.repair, 0.6);
+  const ARM_FIX = tIn(S.repair, 0.66);
+  const BOX_GONE = tIn(S.repair, 0.76);
+  const FW_FIX = tIn(S.repair, 0.84);
   const H0 = heading(0), HL = heading(L);
   const FALL_ROT = HL + 620;
   const REST_ROT = Math.round(FALL_ROT / 90) * 90;
@@ -137,11 +149,11 @@
       }
       case 'fall': {
         const p = at(L);
-        x = lerp(p.x, X.intake, u); y = p.y + (BY - p.y) * u * u - 16 * u * (1 - u);
+        x = lerp(p.x, X.diag, u); y = p.y + (BY - p.y) * u * u - 16 * u * (1 - u);
         rot = HL + 620 * u * u; sc = 0.95 - 0.05 * u; flat = 1 - 0.5 * u * u; break;
       }
       case 'bounce':
-        x = X.intake; y = BY - 5 * Math.sin(Math.PI * u); rot = lerp(FALL_ROT, REST_ROT, easeOut(u)); break;
+        x = X.diag; y = BY - 5 * Math.sin(Math.PI * u); rot = lerp(FALL_ROT, REST_ROT, easeOut(u)); break;
       case 'dwell':
         x = s.x; y = BY; break;
       case 'move':
@@ -173,6 +185,7 @@
       prop: !dm ? 'ok' : tau < PROP_OFF ? 'broken' : tau < PROP_ON ? 'gone' : 'ok',
       bent: dm && tau < ARM_FIX,
       led: !dm ? 'off' : tau < FW_FIX ? 'fault' : 'ok',
+      tags: [tau >= TAG[0] && tau < PROP_ON, tau >= TAG[1] && tau < ARM_FIX, tau >= TAG[2] && tau < FW_FIX],
     };
   }
 
@@ -181,7 +194,7 @@
     return { x: P.x + (lx * c - ly * s) * P.sc, y: P.y + (lx * s + ly * c) * P.sc * P.flat };
   };
 
-  /* ---------- drones ---------- */
+  /* ---------- drones and their parts boxes ---------- */
   const ROTOR = [[-9, -9], [9, -9], [9, 9], [-9, 9]];
   const straightPts = j => `0,0 ${ROTOR[j][0] * 0.67},${ROTOR[j][1] * 0.67}`;
   const bentPts = j => {
@@ -191,15 +204,30 @@
   const NDR = 3;
   const drones = [];
   for (let i = 0; i < NDR; i++) {
+    const box = mk('g', { visibility: 'hidden' }, layer.drones);
+    mk('rect', { class: 'hb-box', x: -5.5, y: -4.5, width: 11, height: 9, rx: 1 }, box);
+    mk('path', { class: 'red', d: 'M-0.8 -3h1.6v1.7h1.7v1.6h-1.7v1.7h-1.6v-1.7h-1.7v-1.6h1.7z' }, box);
+    const flaps = mk('path', { class: 'hb-flap', d: 'M-5.5 -4.5l-3 -4M5.5 -4.5l3 -4', visibility: 'hidden' }, box);
     const g = mk('g', { class: 'hd' }, layer.drones);
     const arms = ROTOR.map((_, j) => mk('polyline', { class: 'hd-arm', points: straightPts(j) }, g));
     const rotors = ROTOR.map(([a, b]) => mk('circle', { class: 'hd-rotor', cx: a, cy: b, r: 4.5 }, g));
     mk('rect', { class: 'hd-body', x: -4, y: -4, width: 8, height: 8, rx: 2 }, g);
     const led = mk('circle', { class: 'hd-led', r: 1.6 }, g);
-    drones.push({ g, arms, rotors, led, prev: null });
+    const tags = [mk('circle', { class: 'hd-tag', r: 7 }, g), mk('circle', { class: 'hd-tag', r: 4.5 }, g), mk('circle', { class: 'hd-tag', cx: 0, cy: 0, r: 6.5 }, g)];
+    drones.push({ g, arms, rotors, led, tags, box, flaps, prev: null });
   }
 
-  function renderDrone(D, P, dg, ri, ai, t) {
+  function boxPose(tau, P) {
+    if (tau < BOX_DROP || tau >= BOX_GONE) return null;
+    if (tau < BOX_LAND) {
+      const u = (tau - BOX_DROP) / (BOX_LAND - BOX_DROP);
+      return { x: X.parts + BOX_DX, y: lerp(754, BY + 3, u * u), s: 1 };
+    }
+    const shrink = tau > tIn(S.repair, 0.66) ? 1 - (tau - tIn(S.repair, 0.66)) / (BOX_GONE - tIn(S.repair, 0.66)) : 1;
+    return { x: P.x + BOX_DX, y: BY + 3 + 4.5 * (1 - shrink), s: shrink };
+  }
+
+  function renderDrone(D, P, dg, ri, ai, t, tau) {
     D.g.setAttribute('transform',
       `translate(${P.x.toFixed(1)} ${P.y.toFixed(1)}) scale(${P.sc.toFixed(3)} ${(P.sc * P.flat).toFixed(3)}) rotate(${P.rot.toFixed(1)})`);
     D.rotors.forEach((r, j) => {
@@ -211,6 +239,15 @@
       if (a._b !== b) { a._b = b; a.setAttribute('points', b ? bentPts(j) : straightPts(j)); setC(a, b ? 'hd-arm bent' : 'hd-arm'); }
     });
     setC(D.led, dg.led === 'fault' ? (Math.sin(t * 14) > 0 ? 'hd-led fault' : 'hd-led') : dg.led === 'ok' ? 'hd-led ok' : 'hd-led');
+    D.tags[0].setAttribute('cx', ROTOR[ri][0]); D.tags[0].setAttribute('cy', ROTOR[ri][1]);
+    D.tags[1].setAttribute('cx', ROTOR[ai][0] * 0.4); D.tags[1].setAttribute('cy', ROTOR[ai][1] * 0.4);
+    D.tags.forEach((tg, k) => show(tg, dg.tags[k]));
+    const B = boxPose(tau, P);
+    show(D.box, !!B);
+    if (B) {
+      D.box.setAttribute('transform', `translate(${B.x.toFixed(1)} ${B.y.toFixed(1)}) scale(${B.s.toFixed(3)})`);
+      show(D.flaps, tau >= BOX_OPEN);
+    }
   }
 
   /* ---------- worker robots ---------- */
@@ -273,21 +310,25 @@
   };
 
   const FLOOR = 818;
-  const R1 = makeRobot(X.b1 + 32, FLOOR, 1, 0.3);
-  const R2 = makeRobot(X.b2 + 32, FLOOR, 1, 1.9);
-  const R3 = makeRobot(X.b3 + 32, FLOOR, 1, 3.1);
-  const RF = makeRobot(296, FLOOR, -1, 4.4);
+  const RD = makeRobot(X.diag + 32, FLOOR, 1, 0.3);      // diagnosis, magnifier
+  const RP = makeRobot(972, FLOOR, -1, 1.2);             // parts clerk at the computer
+  const RR = makeRobot(X.repair + 36, FLOOR, 1, 1.9);    // repair: props
+  const RW = makeRobot(X.repair - 32, FLOOR, -1, 3.1);   // repair: welder
+  const RF = makeRobot(296, FLOOR, -1, 4.4);             // test flight marshal
   const rest = (R, t) => ({ x: R.rx - R.m * 20, y: FLOOR - 27 + Math.sin(t * 1.4 + R.phase) * 1.2 });
   const idleTouches = (R, t) => {
-    R.head.setAttribute('transform', `translate(0 ${(Math.sin(t * 1.4 + R.phase) * 0.5).toFixed(2)})`);
+    const look = R.look ? ' scale(-1 1)' : '';
+    R.head.setAttribute('transform', `translate(0 ${(Math.sin(t * 1.4 + R.phase) * 0.5).toFixed(2)})${look}`);
     R.tip.setAttribute('opacity', Math.sin(t * 2.6 + R.phase * 2) > 0.55 ? 1 : 0.35);
   };
 
   const el = {
-    er: $('h-er'), test: $('h-test'), count: $('h-count'), mon: $('h-mon'), bar: $('h-bar'),
-    beam: $('h-beam'), scan: $('h-scan'), glow: $('h-glow'), cable: $('h-cable'), torch: $('h-torch'),
+    l1: $('h-l1'), l2: $('h-l2'), l3: $('h-l3'), test: $('h-test'), count: $('h-count'),
+    mh: $('h-mh'), m: [$('h-m1'), $('h-m2'), $('h-m3')],
+    lens: $('h-lens'), lh: $('h-lh'), lglow: $('h-lglow'), glow: $('h-glow'), torch: $('h-torch'),
     held: $('h-held'), pole: $('h-pole'), flag: $('h-flag'),
   };
+  const label = (e, t, cls) => { text(e, t); setC(e, 'lbl' + (cls ? ' ' + cls : '')); };
 
   /* ---------- particles ---------- */
   const pool = [];
@@ -337,104 +378,132 @@
   let count = 0;
   const EVENTS = [
     [0, () => ring(HOME.x, HOME.y, 30)],
-    [DMG, (P) => {
-      sparks(P.x, P.y, 16, 70);
-      spawn({ cls: 'hp-prop', x: P.x, y: P.y, vx: (Math.random() < 0.5 ? -1 : 1) * (30 + Math.random() * 30), vy: -40, g: 150, life: 1.1, r0: 3, r1: 3, o0: 0.9 });
+    [DMG, (s) => {
+      sparks(s.P.x, s.P.y, 16, 70);
+      spawn({ cls: 'hp-prop', x: s.P.x, y: s.P.y, vx: (Math.random() < 0.5 ? -1 : 1) * (30 + Math.random() * 30), vy: -40, g: 150, life: 1.1, r0: 3, r1: 3, o0: 0.9 });
     }],
-    [S.bounce.t0, (P) => { ring(P.x, P.y + 2, 24); smoke(P.x, P.y, 6, 0.35); sparks(P.x, P.y, 8, 50); }],
-    [tIn(S.bay1, 0.37), () => spawn({ cls: 'hp-prop', arc: { x0: R1.wrist.x, y0: R1.wrist.y, x1: X.b1 + 58, y1: FLOOR - 16, h: 18 }, life: 0.55, r0: 3.6, r1: 3, o0: 1 })],
-    [PROP_ON, () => ring(R1.wrist.x, R1.wrist.y, 9)],
-    [FW_FIX, (P) => ring(P.x, P.y, 16, 'pass')],
-    [S.lift.t0, (P) => ring(P.x, P.y + 4, 16)],
+    [S.bounce.t0, (s) => { ring(s.P.x, s.P.y + 2, 24); smoke(s.P.x, s.P.y, 6, 0.35); sparks(s.P.x, s.P.y, 8, 50); }],
+    [TAG[0], (s) => { const w = toWorld(s.P, ROTOR[s.ri][0], ROTOR[s.ri][1]); ring(w.x, w.y, 10, 'alert'); }],
+    [TAG[1], (s) => { const w = toWorld(s.P, ROTOR[s.ai][0] * 0.4, ROTOR[s.ai][1] * 0.4); ring(w.x, w.y, 10, 'alert'); }],
+    [TAG[2], (s) => ring(s.P.x, s.P.y, 10, 'alert')],
+    [BOX_LAND, (s) => ring(X.parts + BOX_DX, BY + 6, 12)],
+    [tIn(S.repair, 0.3), () => spawn({ cls: 'hp-prop', arc: { x0: RR.wrist.x, y0: RR.wrist.y, x1: 806, y1: FLOOR - 16, h: 16 }, life: 0.5, r0: 3.6, r1: 3, o0: 1 })],
+    [PROP_ON, () => ring(RR.wrist.x, RR.wrist.y, 9)],
+    [BOX_GONE, (s) => smoke(s.P.x + BOX_DX, BY, 3, 0.2)],
+    [FW_FIX, (s) => ring(s.P.x, s.P.y, 18, 'pass')],
+    [S.lift.t0, (s) => ring(s.P.x, s.P.y + 4, 16)],
     [S.home.t0, () => { count++; text(el.count, String(count).padStart(2, '0')); }],
     [S.park.t0, () => ring(HOME.x, HOME.y, 30)],
   ];
   const crossed = (prev, cur, t) => (prev <= cur ? prev < t && t <= cur : t > prev || t <= cur);
 
   /* ---------- station scenes ---------- */
-  function triage(st, t) {
+  const PROPS = ['PROP 5045', 'PROP 5143', 'PROP 3018', 'PROP 7035'];
+  const ARMS = ['ARM 5IN', 'ARM 3IN', 'ARM 7IN'];
+
+  // Bay 01: magnifier passes over the cracked prop, the bent arm, then the flight controller
+  function diagnosis(st, t) {
+    const sh = { x: RD.rx - 11.25, y: FLOOR - 22.5 };
+    const aim = (p) => { // stop the wrist short so the lens lands on the point
+      const dx = p.x - sh.x, dy = p.y - sh.y, d = Math.hypot(dx, dy) || 1;
+      return { x: p.x - dx / d * 7, y: p.y - dy / d * 7 - 2 };
+    };
     if (!st) {
-      text(el.er, 'ER · TRIAGE'); setC(el.er, 'lbl');
-      show(el.beam, false); show(el.scan, false);
-      return;
+      const r = rest(RD, t);
+      armTo(RD, r.x, r.y, 0.5);
+      label(el.l1, 'BAY 01 · DIAGNOSIS');
+    } else {
+      const p = (st.tau - S.diag.t0) / S.diag.dur, P = st.P, rs = rest(RD, t);
+      const a = aim(toWorld(P, ROTOR[st.ri][0], ROTOR[st.ri][1]));
+      const b = aim(toWorld(P, ROTOR[st.ai][0] * 0.4, ROTOR[st.ai][1] * 0.4));
+      const c = aim({ x: P.x, y: P.y });
+      const k = keyPath(p, [[0, rs.x, rs.y], [0.14, a.x, a.y], [0.3, a.x, a.y], [0.38, b.x, b.y], [0.5, b.x, b.y],
+        [0.58, c.x, c.y], [0.72, c.x, c.y], [0.88, rs.x, rs.y]]);
+      armTo(RD, k.x, k.y, 0.5);
+      if (p < 0.72) label(el.l1, 'BAY 01 · INSPECTING');
+      else label(el.l1, 'BAY 01 · 3 FAULTS', 'alert');
     }
-    const p = (st.tau - S.triage.t0) / S.triage.dur;
-    const scanning = p > 0.08 && p < 0.86;
-    show(el.beam, scanning); show(el.scan, scanning);
-    if (scanning) {
-      const y = st.P.y - 6 + 12 * (0.5 - 0.5 * Math.cos(p * Math.PI * 4));
-      el.beam.setAttribute('points', `1088,786 ${st.P.x - 11},${y.toFixed(1)} ${st.P.x + 11},${y.toFixed(1)}`);
-      el.scan.setAttribute('d', `M${st.P.x - 11} ${y.toFixed(1)}H${st.P.x + 11}`);
-    }
-    if (p < 0.7) { text(el.er, 'ER · SCANNING'); setC(el.er, 'lbl'); }
-    else { text(el.er, 'ER · 3 FAULTS'); setC(el.er, 'lbl alert'); }
+    const lx = RD.wrist.x + RD.dir.x * 7, ly = RD.wrist.y + RD.dir.y * 7;
+    show(el.lens, true); show(el.lh, true);
+    el.lens.setAttribute('cx', lx.toFixed(1)); el.lens.setAttribute('cy', ly.toFixed(1));
+    line(el.lh, RD.wrist.x, RD.wrist.y, RD.wrist.x + RD.dir.x * 3, RD.wrist.y + RD.dir.y * 3);
+    const inspecting = st && (st.tau - S.diag.t0) / S.diag.dur > 0.12 && (st.tau - S.diag.t0) / S.diag.dur < 0.74;
+    el.lglow.setAttribute('r', inspecting ? (4.5 + Math.sin(t * 9)).toFixed(2) : 0);
+    el.lglow.setAttribute('cx', lx.toFixed(1)); el.lglow.setAttribute('cy', (ly + 2).toFixed(1));
   }
 
-  function bay1(st, t) {
-    if (!st) { armTo(R1, rest(R1, t).x, rest(R1, t).y); show(el.held, false); return; }
-    const p = (st.tau - S.bay1.t0) / S.bay1.dur;
-    const rw = toWorld(st.P, ROTOR[st.ri][0], ROTOR[st.ri][1]);
-    const rs = rest(R1, t), up = { x: X.b1 + 32, y: FLOOR - 43 }, disp = { x: X.b1 + 11, y: FLOOR - 46 };
-    const k = keyPath(p, [[0, rs.x, rs.y], [0.14, rw.x, rw.y - 1], [0.2, rw.x, rw.y - 1], [0.34, up.x, up.y], [0.4, up.x, up.y],
-      [0.52, disp.x, disp.y], [0.6, disp.x, disp.y], [0.72, rw.x, rw.y - 1], [0.8, rw.x, rw.y - 1], [0.95, rs.x, rs.y]]);
-    const holdOld = p > 0.17 && p < 0.37, holdNew = p > 0.57 && p < 0.74;
-    armTo(R1, k.x, k.y, holdOld || holdNew ? 0.6 : 1.8);
+  // Bay 02: look the drone over, type up the parts, order, parts box drops in
+  function parts(st, t) {
+    const kb = { x: 1002, y: FLOOR - 23 };
+    if (!st) {
+      RP.look = false;
+      const r = rest(RP, t);
+      armTo(RP, r.x, r.y, 1.2);
+      text(el.mh, 'PARTS' + (Math.sin(t * 4) > 0 ? ' _' : '')); setC(el.mh, 'h-mon-t');
+      el.m.forEach(e => text(e, ''));
+      label(el.l2, 'BAY 02 · PARTS');
+      return;
+    }
+    const p = (st.tau - S.parts.t0) / S.parts.dur;
+    RP.look = p > 0.04 && p < 0.32;
+    const typing = p > 0.34 && p < 0.66;
+    const rs = rest(RP, t);
+    const tap = typing ? Math.abs(Math.sin(t * 22)) * -2.5 : 0;
+    const k = keyPath(p, [[0, rs.x, rs.y], [0.32, rs.x, rs.y], [0.38, kb.x, kb.y], [0.64, kb.x, kb.y], [0.72, rs.x, rs.y]]);
+    armTo(RP, k.x + (typing ? Math.sin(t * 7) * 3 : 0), k.y + tap, 0.8);
+    const lines = [PROPS[st.ri], ARMS[st.ai % ARMS.length], 'FC FW 4.5'];
+    el.m.forEach((e, j) => text(e, st.tau >= LIST[j] ? '+ ' + lines[j] : ''));
+    if (st.tau >= ORDERED) { text(el.mh, 'ORDERED'); setC(el.mh, 'h-mon-t pass'); }
+    else { text(el.mh, p < 0.34 ? 'CHECKING' : 'PARTS' + (Math.sin(t * 8) > 0 ? ' _' : '')); setC(el.mh, 'h-mon-t'); }
+    if (p < 0.34) label(el.l2, 'BAY 02 · CHECKING');
+    else if (st.tau < ORDERED) label(el.l2, 'BAY 02 · ORDERING');
+    else if (st.tau < BOX_LAND) label(el.l2, 'BAY 02 · ORDERED');
+    else label(el.l2, 'BAY 02 · PARTS IN', 'pass');
+  }
+
+  // Bay 03: prop robot swaps the prop from the parts box, welder fixes the arm
+  function repair(st, t, dt) {
+    if (!st) {
+      const r = rest(RR, t), w = rest(RW, t);
+      armTo(RR, r.x, r.y); armTo(RW, w.x, w.y, 0.4);
+      setC(RW.visor, 'hr-visor');
+      line(el.torch, RW.wrist.x, RW.wrist.y, RW.wrist.x + RW.dir.x * 6, RW.wrist.y + RW.dir.y * 6);
+      show(el.torch, true); show(el.held, false);
+      el.glow.setAttribute('r', 0);
+      label(el.l3, 'BAY 03 · REPAIR');
+      return;
+    }
+    const p = (st.tau - S.repair.t0) / S.repair.dur, P = st.P;
+    // props
+    const rw = toWorld(P, ROTOR[st.ri][0], ROTOR[st.ri][1]);
+    const rs = rest(RR, t), up = { x: RR.rx + 4, y: FLOOR - 44 }, bx = { x: P.x + BOX_DX, y: BY - 3 };
+    const k = keyPath(p, [[0, rs.x, rs.y], [0.1, rw.x, rw.y - 1], [0.14, rw.x, rw.y - 1], [0.26, up.x, up.y], [0.31, up.x, up.y],
+      [0.4, bx.x, bx.y], [0.46, bx.x, bx.y], [0.56, rw.x, rw.y - 1], [0.62, rw.x, rw.y - 1], [0.74, rs.x, rs.y]]);
+    const holdOld = p > 0.12 && p < 0.3, holdNew = p > 0.44 && p < 0.6;
+    armTo(RR, k.x, k.y, holdOld || holdNew ? 0.6 : 1.8);
     show(el.held, holdOld || holdNew);
     if (holdOld || holdNew) {
       setC(el.held, holdOld ? 'h-held broken' : 'h-held');
-      el.held.setAttribute('cx', (R1.wrist.x + R1.dir.x * 5).toFixed(1));
-      el.held.setAttribute('cy', (R1.wrist.y + R1.dir.y * 5).toFixed(1));
+      el.held.setAttribute('cx', (RR.wrist.x + RR.dir.x * 5).toFixed(1));
+      el.held.setAttribute('cy', (RR.wrist.y + RR.dir.y * 5).toFixed(1));
     }
-  }
-
-  function bay2(st, t, dt) {
-    if (!st) {
-      armTo(R2, rest(R2, t).x, rest(R2, t).y, 0.4); setC(R2.visor, 'hr-visor');
-      line(el.torch, R2.wrist.x, R2.wrist.y, R2.wrist.x + R2.dir.x * 6, R2.wrist.y + R2.dir.y * 6);
-      el.glow.setAttribute('r', 0);
-      return;
-    }
-    const p = (st.tau - S.bay2.t0) / S.bay2.dur;
-    const [a, b] = ROTOR[st.ai];
-    const wp = toWorld(st.P, a * 0.4, b * 0.4);
-    const rs = rest(R2, t), tg = { x: wp.x + 8, y: wp.y - 7 };
-    const welding = p > 0.18 && p < 0.8;
-    const jit = welding ? Math.sin(t * 40) * 0.8 : 0;
-    const k = keyPath(p, [[0, rs.x, rs.y], [0.15, tg.x, tg.y], [0.82, tg.x, tg.y], [0.97, rs.x, rs.y]]);
-    armTo(R2, k.x + jit, k.y, 0.4);
-    const near = p > 0.12 && p < 0.86;
-    if (near) line(el.torch, R2.wrist.x, R2.wrist.y, wp.x + 1.5, wp.y - 1.5);
-    else line(el.torch, R2.wrist.x, R2.wrist.y, R2.wrist.x + R2.dir.x * 6, R2.wrist.y + R2.dir.y * 6);
-    setC(R2.visor, p > 0.1 && p < 0.86 ? 'hr-visor down' : 'hr-visor');
+    // welder
+    const wp = toWorld(P, ROTOR[st.ai][0] * 0.4, ROTOR[st.ai][1] * 0.4);
+    const ws = rest(RW, t), tg = { x: wp.x - 8, y: wp.y - 7 };
+    const welding = p > 0.16 && p < 0.64;
+    const kw = keyPath(p, [[0, ws.x, ws.y], [0.12, tg.x, tg.y], [0.66, tg.x, tg.y], [0.78, ws.x, ws.y]]);
+    armTo(RW, kw.x + (welding ? Math.sin(t * 40) * 0.8 : 0), kw.y, 0.4);
+    if (p > 0.1 && p < 0.7) line(el.torch, RW.wrist.x, RW.wrist.y, wp.x - 1.5, wp.y - 1.5);
+    else line(el.torch, RW.wrist.x, RW.wrist.y, RW.wrist.x + RW.dir.x * 6, RW.wrist.y + RW.dir.y * 6);
+    setC(RW.visor, p > 0.08 && p < 0.7 ? 'hr-visor down' : 'hr-visor');
     if (welding) {
       el.glow.setAttribute('cx', wp.x.toFixed(1)); el.glow.setAttribute('cy', wp.y.toFixed(1));
       el.glow.setAttribute('r', (2.5 + Math.random() * 2).toFixed(2));
       el.glow.setAttribute('opacity', (0.35 + Math.random() * 0.4).toFixed(2));
       if (dt && chance(38, dt)) sparks(wp.x, wp.y, 2, 55);
     } else el.glow.setAttribute('r', 0);
-  }
-
-  function bay3(st, t) {
-    if (!st) {
-      armTo(R3, rest(R3, t).x, rest(R3, t).y, 0.5);
-      show(el.cable, false); text(el.mon, 'FW'); setC(el.mon, 'h-mon-t');
-      el.bar.setAttribute('width', 0);
-      return;
-    }
-    const p = (st.tau - S.bay3.t0) / S.bay3.dur;
-    const port = toWorld(st.P, 0, 0), rs = rest(R3, t), tg = { x: port.x + 7, y: port.y - 3 };
-    const k = keyPath(p, [[0, rs.x, rs.y], [0.12, tg.x, tg.y], [0.86, tg.x, tg.y], [0.98, rs.x, rs.y]]);
-    armTo(R3, k.x, k.y, 0.5);
-    const cx = R3.rx - 5, cy = FLOOR - 13, wx = R3.wrist.x, wy = R3.wrist.y;
-    show(el.cable, p > 0.02 && p < 0.97);
-    const plug = p > 0.12 && p < 0.86 ? ` L${port.x.toFixed(1)} ${port.y.toFixed(1)}` : '';
-    el.cable.setAttribute('d', `M${cx} ${cy} Q${((cx + wx) / 2).toFixed(1)} ${(Math.max(cy, wy) + 7).toFixed(1)} ${wx.toFixed(1)} ${wy.toFixed(1)}${plug}`);
-    const prog = clamp((p - 0.16) / (0.8 - 0.16), 0, 1);
-    el.bar.setAttribute('width', (24 * prog).toFixed(1));
-    const done = p >= 0.8;
-    setC(el.bar, done ? 'h-bar pass' : 'h-bar');
-    text(el.mon, done ? 'OK' : p > 0.16 ? Math.round(prog * 100) + '%' : 'FW');
-    setC(el.mon, done ? 'h-mon-t pass' : 'h-mon-t');
+    if (st.tau >= FW_FIX) label(el.l3, 'BAY 03 · REPAIRED', 'pass');
+    else label(el.l3, 'BAY 03 · REPAIRING');
   }
 
   function flagRobot(states, t) {
@@ -443,8 +512,7 @@
       if (s.tau >= S.home.t0 && s.tau < S.home.t0 + 2.4) { mode = 'pass'; break; }
       if (s.tau >= S.lift.t0 && s.tau < S.home.t0) mode = 'watch';
     }
-    const rs = rest(RF, t);
-    let tg = rs;
+    let tg = rest(RF, t);
     if (mode === 'watch') tg = { x: RF.rx + 18, y: FLOOR - 32 };
     if (mode === 'pass') tg = { x: RF.rx + 11, y: FLOOR - 45 + Math.sin(t * 11) * 1.5 };
     armTo(RF, tg.x, tg.y, 0.5);
@@ -453,13 +521,13 @@
     line(el.pole, wx, wy + 2, wx, top);
     el.flag.setAttribute('points', `${wx.toFixed(1)},${top.toFixed(1)} ${(wx + 10).toFixed(1)},${(top + 2.5 + wave).toFixed(1)} ${wx.toFixed(1)},${(top + 5).toFixed(1)}`);
     setC(el.flag, mode === 'pass' ? 'h-flag pass' : 'h-flag');
-    if (mode === 'pass') { text(el.test, 'TEST FLIGHT · PASS'); setC(el.test, 'lbl pass'); }
-    else { text(el.test, 'TEST FLIGHT'); setC(el.test, 'lbl'); }
+    if (mode === 'pass') label(el.test, 'TEST FLIGHT · PASS', 'pass');
+    else label(el.test, 'TEST FLIGHT');
   }
 
   /* ---------- main loop ---------- */
   const OFF = S.route.t0 + 21; // first drone is 9 s from trouble when the page opens
-  let simT = reduce ? tIn(S.bay1, 0.65) - OFF : 0;
+  let simT = reduce ? tIn(S.repair, 0.5) - OFF : 0;
 
   function update(dt) {
     const states = drones.map((D, i) => {
@@ -470,20 +538,19 @@
       const ai = (ri + 1 + Math.floor(rnd(i + 11, cyc) * 3)) % 4;
       return { D, i, tau, P: pose(tau), dg: damage(tau), ri, ai };
     });
-    for (const s of states) renderDrone(s.D, s.P, s.dg, s.ri, s.ai, simT);
+    for (const s of states) renderDrone(s.D, s.P, s.dg, s.ri, s.ai, simT, s.tau);
 
     const inDwell = g => states.find(s => s.tau >= g.t0 && s.tau < g.t0 + g.dur);
-    triage(inDwell(S.triage), simT);
-    bay1(inDwell(S.bay1), simT);
-    bay2(inDwell(S.bay2), simT, dt);
-    bay3(inDwell(S.bay3), simT);
+    diagnosis(inDwell(S.diag), simT);
+    parts(inDwell(S.parts), simT);
+    repair(inDwell(S.repair), simT, dt);
     flagRobot(states, simT);
-    for (const R of [R1, R2, R3, RF]) idleTouches(R, simT);
+    for (const R of [RD, RP, RR, RW, RF]) idleTouches(R, simT);
 
     if (dt > 0) {
       for (const s of states) {
         const { D, P, tau, dg } = s;
-        if (D.prev != null) for (const [tt, fn] of EVENTS) if (crossed(D.prev, tau, tt)) fn(P, s);
+        if (D.prev != null) for (const [tt, fn] of EVENTS) if (crossed(D.prev, tau, tt)) fn(s);
         D.prev = tau;
         const n = P.s.name;
         if (n === 'limp' && chance(10, dt)) smoke(P.x, P.y, 1);
