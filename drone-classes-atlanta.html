@@ -331,6 +331,32 @@
     .hospital-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 0.4rem; font-size: 14px; color: var(--text-primary); text-decoration: none; border-bottom: 1px solid rgba(229,62,62,.55); padding-bottom: 3px; }
     .hospital-link .x { color: #e53e3e; }
 
+    /* ── REVIEWS: laid out like Google review cards. Quoted word for word; no review markup on purpose. ── */
+    .reviews { columns: 2; column-gap: 1rem; }
+    .greview { break-inside: avoid; display: block; margin: 0 0 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.15rem 1.25rem 1.2rem; font-family: Roboto, Arial, var(--font-body); }
+    .gr-head { display: grid; grid-template-columns: 40px 1fr; gap: 12px; align-items: center; }
+    .gr-head img { width: 40px; height: 40px; display: block; }
+    .gr-name { font-size: 15px; font-weight: 500; color: #e8eaed; line-height: 1.3; }
+    .gr-meta { font-size: 12.5px; color: #9aa0a6; line-height: 1.4; }
+    .gr-rate { display: flex; align-items: center; gap: 10px; margin: 0.7rem 0 0.45rem; }
+    .gr-stars { color: #fbbc04; font-size: 15px; letter-spacing: 1px; line-height: 1; }
+    .gr-date { font-size: 13px; color: #9aa0a6; }
+    .greview blockquote p + p { margin-top: 0.75em; }
+    .greview blockquote strong { color: #fff; font-weight: 600; }
+    .greview blockquote { margin: 0; font-size: 14.5px; line-height: 1.6; color: #dadce0; }
+    .gr-photo { margin-top: 0.8rem; border-radius: 10px; overflow: hidden; }
+    .gr-photo img { display: block; width: 100%; height: auto; }
+    .gr-reply { margin-top: 0.95rem; padding-left: 1rem; border-left: 2px solid var(--border-mid); }
+    .gr-reply-head { display: grid; grid-template-columns: 30px 1fr; gap: 10px; align-items: center; margin-bottom: 0.35rem; }
+    .gr-reply-head img { width: 30px; height: 30px; border-radius: 50%; display: block; }
+    .gr-reply-head b { display: block; font-size: 13.5px; font-weight: 500; color: #e8eaed; line-height: 1.25; }
+    .gr-reply-head span { display: block; font-size: 12px; line-height: 1.3; color: #9aa0a6; }
+    .gr-reply p { font-size: 13.5px; line-height: 1.55; color: #bdc1c6; }
+    .gr-source { display: flex; align-items: center; gap: 6px; margin-top: 0.9rem; padding-top: 0.75rem; border-top: 1px solid var(--border); font-size: 12px; color: #9aa0a6; }
+    .reviews-foot { display: flex; flex-wrap: wrap; gap: 0.6rem 1.6rem; margin-top: 0.6rem; font-size: 14px; }
+    .reviews-foot a { color: var(--text-primary); text-decoration: none; border-bottom: 1px solid rgba(229,62,62,.55); padding-bottom: 2px; }
+    .reviews-foot a:hover { color: #fff; }
+
     /* ── FAQ ── */
     .faq { max-width: 820px; }
     details { border-bottom: 1px solid var(--border-mid); padding: 1.1rem 0; }
@@ -392,6 +418,7 @@
       .nav-links { display: none; }
       .programs { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
       .split, .teach, .contact-inner { grid-template-columns: 1fr; }
+      .reviews { columns: 1; }
       .week-head { grid-template-columns: 1fr; }
       .creds { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .people { display: grid; grid-template-columns: 1fr 1fr; }
@@ -744,6 +771,47 @@
       </div>
     </div>
   </section>
+
+  <!-- REVIEWS: quoted word for word from Google. Visible only; no review/rating markup. -->
+  <div class="band-dark" id="reviews">
+    <section>
+      <div class="section-eyebrow">Google reviews</div>
+      <h2>What our customers say</h2>
+      <p class="section-sub">Pilots and builders who came to us for a lesson, buying advice, a custom build or a repair, in their own words.</p>
+      <div class="reviews">
+        <figure class="greview">
+          <div class="gr-head"><img src="assets/images/reviews/sydney.png" width="40" height="40" alt="" loading="lazy" decoding="async"><div><div class="gr-name">Sydney Ibarra</div><div class="gr-meta">3 reviews</div></div></div>
+          <div class="gr-rate"><span class="gr-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><span class="gr-date">Oct 2026</span></div>
+          <blockquote><p>One stop shop for drone repair! I'm leaving for a trip tomorrow and really needed my drone fixed before then. I called, explained the issue, and Paul mentioned he could most likely have it repaired same day, and he did just that! He offers lessons on flying drones as well, so I got a <strong>quick crash course that was extremely helpful</strong>. He knows an insane amount about drones and is super kind. Highly recommend!</p></blockquote>
+          <div class="gr-reply"><div class="gr-reply-head"><img src="/favicon-96x96.png" width="30" height="30" alt="" loading="lazy" decoding="async"><div><b>Drone Hospital</b><span>Owner · Oct 2026</span></div></div><p>Thanks Sydney, Good luck doing your shoot!</p></div>
+          <figcaption class="gr-source">Review posted on Google</figcaption>
+        </figure>
+        <figure class="greview">
+          <div class="gr-head"><img src="assets/images/reviews/kai.png" width="40" height="40" alt="" loading="lazy" decoding="async"><div><div class="gr-name">KAI_MAN</div><div class="gr-meta">1 review</div></div></div>
+          <div class="gr-rate"><span class="gr-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><span class="gr-date">Aug 2026</span></div>
+          <blockquote><p>Paul knew his stuff. Talked me through everything over the phone, asked what I actually wanted to use it for before recommending anything, and I ended up with the new DJI Mini Pro. Perfect for what I need.</p><p>He laid out the pros and cons of a few options, told me which features I honestly wouldn’t use, and covered stuff I didn’t know to ask about like registration, where you can legally fly, and the mistakes that get beginners’ drones crashed.</p><p><strong>No pressure, no upsell. Ask for Paul.</strong></p></blockquote>
+          <figcaption class="gr-source">Review posted on Google</figcaption>
+        </figure>
+        <figure class="greview">
+          <div class="gr-head"><img src="assets/images/reviews/ogwells.png" width="40" height="40" alt="" loading="lazy" decoding="async"><div><div class="gr-name">O.G. Wells</div><div class="gr-meta">1 review</div></div></div>
+          <div class="gr-rate"><span class="gr-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><span class="gr-date">Aug 2026</span></div>
+          <blockquote><p>Excellent experience. They helped us build a <strong>custom quad from the ground up</strong>, worked through the unique requirements of the platform, and got us flying quickly. Knowledgeable, responsive, and great to work with on a non-standard build. Highly recommend.</p></blockquote>
+          <div class="gr-reply"><div class="gr-reply-head"><img src="/favicon-96x96.png" width="30" height="30" alt="" loading="lazy" decoding="async"><div><b>Drone Hospital</b><span>Owner · Aug 2026</span></div></div><p>Thank you for the review. I'm glad the custom build quad-copter performed as well as it did!</p></div>
+          <figcaption class="gr-source">Review posted on Google</figcaption>
+        </figure>
+        <figure class="greview">
+          <div class="gr-head"><img src="assets/images/reviews/miles.png" width="40" height="40" alt="" loading="lazy" decoding="async"><div><div class="gr-name">Miles Welch</div><div class="gr-meta">Local Guide · 19 reviews · 4 photos</div></div></div>
+          <div class="gr-rate"><span class="gr-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><span class="gr-date">Nov 2026</span></div>
+          <blockquote><p>Paul performed a very much needed service and got our office drone back up and running smoothly. Work was fantastic, he <strong>completed it in a day</strong>, and came in well within budget. I will absolutely be utilizing his services in the future. If you or your company need drone repairs, this is the person to see!</p></blockquote>
+          <figcaption class="gr-source">Review posted on Google</figcaption>
+        </figure>
+      </div>
+      <div class="reviews-foot">
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Drone+Hospital+6059+Boylston+Dr+NE+Atlanta+GA+30328" target="_blank" rel="noopener">Read more reviews on Google &rarr;</a>
+        <a href="https://g.page/r/CZclEzNK8hfgEBM/review" target="_blank" rel="noopener">Took a lesson with us? Leave a review &rarr;</a>
+      </div>
+    </section>
+  </div>
 
   <!-- FAQ -->
   <div class="band" id="faq">
