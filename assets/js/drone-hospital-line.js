@@ -85,6 +85,7 @@
   const CAGE = { x: 372, y: 766 };
   const X = { diag: 1110, parts: 930, repair: 740, end: 452 };
   const BOX_DX = 16;                    // parts box rides just right of its drone
+  const HOVER_FLAT = 0.4;               // how flat the drone looks in the test flight (side view)
 
   const seg = [];
   let T = 0;
@@ -131,7 +132,7 @@
     let s = seg[seg.length - 1];
     for (const g of seg) { if (tau < g.t0 + g.dur) { s = g; break; } }
     const u = clamp((tau - s.t0) / s.dur, 0, 1);
-    let x, y, rot = REST_ROT, sc = 0.9, flat = 0.5;
+    let x, y, rot = REST_ROT, sc = 0.9, flat = 0.5, tilt = 0;
     switch (s.name) {
       case 'takeoff':
         x = HOME.x; y = HOME.y; sc = 0.72 + 0.28 * ease(u); flat = 1; rot = H0 * ease(u); break;
@@ -164,21 +165,24 @@
       case 'lift': {
         const e = ease(u);
         x = lerp(X.end, CAGE.x, e); y = lerp(BY, CAGE.y, easeOut(u));
-        flat = 0.5 + 0.5 * e; sc = 0.9; rot = REST_ROT + 10 * Math.sin(Math.PI * u); break;
+        flat = lerp(0.5, HOVER_FLAT, e); sc = lerp(0.9, 1, e); tilt = -8 * Math.sin(Math.PI * u); break;
       }
       case 'test':
+        // seen side-on, level like a real hover; it banks into each turn of the figure-8
         x = CAGE.x + 22 * Math.sin(2 * Math.PI * u); y = CAGE.y - 9 * Math.sin(4 * Math.PI * u);
-        rot = REST_ROT + 14 * Math.sin(2 * Math.PI * u); sc = 0.9; flat = 1; break;
+        tilt = 13 * Math.cos(2 * Math.PI * u) * Math.min(1, u * 8, (1 - u) * 8); sc = 1; flat = HOVER_FLAT; break;
       case 'home': {
         const v = 1 - u, cx = 275, cy = 680;
         x = v * v * CAGE.x + 2 * v * u * cx + u * u * HOME.x; // arc up and over to the pad
         y = v * v * CAGE.y + 2 * v * u * cy + u * u * HOME.y;
-        sc = lerp(0.9, 0.72, u * u) + 0.08 * Math.sin(Math.PI * u); flat = 1; break;
+        // turns from the side view back to the map's top view as it heads for the pad
+        sc = lerp(1, 0.72, u * u) + 0.08 * Math.sin(Math.PI * u); flat = lerp(HOVER_FLAT, 1, ease(clamp(u * 1.6, 0, 1)));
+        tilt = -12 * Math.sin(Math.PI * clamp(u * 2, 0, 1)); break;
       }
       default: // park
         x = HOME.x; y = HOME.y; sc = 0.72; flat = 1; rot = 0;
     }
-    return { s, u, x, y, rot, sc, flat };
+    return { s, u, x, y, rot, sc, flat, tilt };
   }
 
   function damage(tau) {
@@ -232,7 +236,7 @@
 
   function renderDrone(D, P, dg, ri, ai, t, tau) {
     D.g.setAttribute('transform',
-      `translate(${P.x.toFixed(1)} ${P.y.toFixed(1)}) scale(${P.sc.toFixed(3)} ${(P.sc * P.flat).toFixed(3)}) rotate(${P.rot.toFixed(1)})`);
+      `translate(${P.x.toFixed(1)} ${P.y.toFixed(1)}) rotate(${P.tilt.toFixed(1)}) scale(${P.sc.toFixed(3)} ${(P.sc * P.flat).toFixed(3)}) rotate(${P.rot.toFixed(1)})`);
     D.rotors.forEach((r, j) => {
       const st = j === ri ? dg.prop : 'ok';
       setC(r, st === 'broken' ? 'hd-rotor broken' : st === 'gone' ? 'hd-rotor gone' : 'hd-rotor');
@@ -653,6 +657,48 @@
     if (box.w && box.h && !camOn) frameWide();
   }
 
+  /* ---------- rotor wash during the test flight ----------
+     WIND 1: streaks blown straight down from the rotors
+     WIND 2: rings spreading across the floor under the drone, with dust
+     WIND 3: curling gusts rolling out to both sides */
+  const WIND = 2;
+  const windG = mk('g', { class: 'h-wind' }, layer.fx);
+  const wStreak = [], wRing = [], wCurl = [];
+  for (let i = 0; i < 7; i++) wStreak.push(mk('line', { visibility: 'hidden' }, windG));
+  for (let i = 0; i < 3; i++) wRing.push(mk('ellipse', { visibility: 'hidden' }, windG));
+  for (let i = 0; i < 4; i++) wCurl.push(mk('path', { d: 'M0 0C7 0 13 1.5 13 5.5C13 8.6 9 8.8 9 6', visibility: 'hidden' }, windG));
+  const frac = v => v - Math.floor(v);
+  function wind(states, t, dt) {
+    let st = null;
+    for (const s of states) if (s.tau >= S.lift.t0 + 0.4 && s.tau < S.home.t0 + 0.7) st = s;
+    const k = st ? clamp(Math.min((st.tau - S.lift.t0 - 0.4) / 0.5, (S.home.t0 + 0.7 - st.tau) / 0.6), 0, 1) : 0;
+    wStreak.forEach((e, i) => {
+      const on = WIND === 1 && k > 0; show(e, on); if (!on) return;
+      const p = frac(t * 1.9 + i * 0.37), x = st.P.x + (i - 3) * 4.6 + Math.sin(i * 7.1) * 1.5 + (i - 3) * 2.2 * p;
+      const y = st.P.y + 7 + p * 34, len = 4 + 5 * (1 - p);
+      line(e, x, y, x + (i - 3) * 0.25, y + len);
+      e.setAttribute('opacity', (k * 0.75 * Math.sin(Math.PI * p)).toFixed(2));
+    });
+    wRing.forEach((e, i) => {
+      const on = WIND === 2 && k > 0; show(e, on); if (!on) return;
+      const p = frac(t * 0.9 + i / 3), rx = 5 + 30 * p;
+      e.setAttribute('cx', st.P.x.toFixed(1)); e.setAttribute('cy', FLOOR - 1.5);
+      e.setAttribute('rx', rx.toFixed(1)); e.setAttribute('ry', (rx * 0.16).toFixed(1));
+      e.setAttribute('opacity', (k * 0.7 * (1 - p)).toFixed(2));
+    });
+    if (WIND === 2 && k > 0 && dt && chance(9, dt)) {
+      const dir = Math.random() < 0.5 ? -1 : 1;
+      spawn({ cls: 'hp-smoke', x: st.P.x + dir * (4 + Math.random() * 6), y: FLOOR - 2, vx: dir * (26 + Math.random() * 20), vy: -5 - Math.random() * 6,
+        life: 0.8 + Math.random() * 0.4, r0: 1, r1: 3.5, o0: 0.3 });
+    }
+    wCurl.forEach((e, i) => {
+      const on = WIND === 3 && k > 0; show(e, on); if (!on) return;
+      const dir = i % 2 ? 1 : -1, p = frac(t * 0.8 + i * 0.25), d = 8 + 26 * p;
+      e.setAttribute('transform', `translate(${(st.P.x + dir * d).toFixed(1)} ${(st.P.y + 10 + 9 * p + (i > 1 ? 7 : 0)).toFixed(1)}) scale(${(dir * (0.7 + 0.6 * p)).toFixed(2)} ${(0.7 + 0.6 * p).toFixed(2)})`);
+      e.setAttribute('opacity', (k * 0.85 * Math.sin(Math.PI * p)).toFixed(2));
+    });
+  }
+
   /* ---------- main loop ---------- */
   // wide screens: the first drone is 9 s from trouble when the page opens
   // phones: the page opens on a drone that has just reached Bay 01 and is about to be scanned
@@ -675,6 +721,7 @@
     parts(inDwell(S.parts), simT);
     repair(inDwell(S.repair), simT, dt);
     flagRobot(states, simT);
+    wind(states, simT, dt);
     for (const R of [RD, RP, RR, RW, RF]) idleTouches(R, simT);
 
     if (dt > 0) {
