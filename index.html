@@ -239,6 +239,8 @@
     .hosp .hr .k.lug { stroke-width: 1.2; stroke-dasharray: .9 1.5; }
     .hosp .hr .hr-arm { stroke-width: 2.4; stroke-opacity: .88; }
     .hosp .ink { fill: var(--ink); fill-opacity: .7; }
+    .hosp .rail { fill: none; stroke: var(--ink); stroke-opacity: .45; stroke-width: 1; stroke-linecap: round; }
+    .hosp .h-legs .kf { stroke-opacity: .55; stroke-width: 1.1; }
     .hosp .hr-visor { fill: var(--ink); fill-opacity: .22; transition: fill .15s; }
     .hosp .hr-visor.down { fill: #e53935; fill-opacity: .9; }
     .hosp .h-held { fill: none; stroke: var(--ink); stroke-width: 1.3; }
@@ -1398,7 +1400,7 @@
            Animated by /assets/js/drone-hospital-line.js (the plain drone above is the no-script fallback). -->
       <g id="hosp" class="hosp">
         <g class="h-back">
-          <path class="k faint" d="M258 818H446"/>
+          <path class="k faint" d="M250 838.6H1186"/>
           <path class="k" d="M322 742V728H336M408 728H422V742M422 794V808H408M336 808H322V794"/>
           <text class="lbl" id="h-test" x="372" y="720" text-anchor="middle">TEST FLIGHT</text>
           <text class="lbl" id="h-l1" x="1120" y="746" text-anchor="middle">BAY 01 · DIAGNOSIS</text>
@@ -1406,26 +1408,27 @@
           <text class="lbl" id="h-l3" x="752" y="746" text-anchor="middle">BAY 03 · REPAIR</text>
           <text class="lbl lbl-s" x="470" y="780">DRONE HOSPITAL · LINE 01</text>
           <text class="lbl lbl-s" x="470" y="794">BACK IN THE AIR <tspan id="h-count">00</tspan></text>
-          <path class="k" d="M984 800H1036M988 800V818M1032 800V818M1024 790V800"/>
+          <path class="k" d="M984 800H1036M988 800V838M1032 800V838M1024 790V800"/>
           <rect class="kf" x="986" y="756" width="48" height="34" rx="2"/>
           <text class="h-mon-t" id="h-mh" x="990" y="764">PARTS</text>
           <text class="h-mon-t" id="h-m1" x="990" y="772.5"></text>
           <text class="h-mon-t" id="h-m2" x="990" y="779.5"></text>
           <text class="h-mon-t" id="h-m3" x="990" y="786.5"></text>
           <rect class="kf" x="992" y="796" width="20" height="4" rx="1"/>
-          <rect class="kf" x="798" y="796" width="17" height="22" rx="1.5"/>
-          <path class="k" d="M262 818V732"/>
+          <path class="k" d="M262 838V732"/>
           <circle class="kf" cx="262" cy="731" r="1.8"/>
-          <polygon class="h-flag" id="h-flag" points="262,802 274,805 262,808"/>
-          <rect class="kf" x="311" y="800" width="12" height="18" rx="1.5"/>
-          <circle class="h-btn" id="h-btn" cx="317" cy="797" r="3"/>
+          <polygon class="h-flag" id="h-flag" points="262,822 274,825 262,828"/>
+          <rect class="kf" x="311" y="820" width="12" height="18" rx="1.5"/>
+          <circle class="h-btn" id="h-btn" cx="317" cy="817" r="3"/>
           <g id="h-robots"></g>
         </g>
         <rect class="belt" x="446" y="810" width="720" height="12" rx="6"/>
         <path class="tread" d="M452 816H1160"/>
         <circle class="k" cx="452" cy="816" r="3"/><circle class="k" cx="1160" cy="816" r="3"/>
-        <path class="k faint" d="M560 822l-6 16M560 822l6 16M820 822l-6 16M820 822l6 16M1080 822l-6 16M1080 822l6 16"/>
+        <g class="h-legs"><path class="rail" d="M480.5 834L492 822.5M1135.5 834L1124 822.5"/><path class="kf" d="M471 822H485L480.5 827.5H475.5Z"/><rect class="kf" x="475.5" y="826" width="5" height="10.5"/><circle class="ink" cx="478" cy="829.5" r=".7"/><circle class="ink" cx="478" cy="833" r=".7"/><rect class="kf" x="472" y="836" width="12" height="2.6" rx="1"/><path class="kf" d="M603 822H617L612.5 827.5H607.5Z"/><rect class="kf" x="607.5" y="826" width="5" height="10.5"/><circle class="ink" cx="610" cy="829.5" r=".7"/><circle class="ink" cx="610" cy="833" r=".7"/><rect class="kf" x="604" y="836" width="12" height="2.6" rx="1"/><path class="kf" d="M735 822H749L744.5 827.5H739.5Z"/><rect class="kf" x="739.5" y="826" width="5" height="10.5"/><circle class="ink" cx="742" cy="829.5" r=".7"/><circle class="ink" cx="742" cy="833" r=".7"/><rect class="kf" x="736" y="836" width="12" height="2.6" rx="1"/><path class="kf" d="M867 822H881L876.5 827.5H871.5Z"/><rect class="kf" x="871.5" y="826" width="5" height="10.5"/><circle class="ink" cx="874" cy="829.5" r=".7"/><circle class="ink" cx="874" cy="833" r=".7"/><rect class="kf" x="868" y="836" width="12" height="2.6" rx="1"/><path class="kf" d="M999 822H1013L1008.5 827.5H1003.5Z"/><rect class="kf" x="1003.5" y="826" width="5" height="10.5"/><circle class="ink" cx="1006" cy="829.5" r=".7"/><circle class="ink" cx="1006" cy="833" r=".7"/><rect class="kf" x="1000" y="836" width="12" height="2.6" rx="1"/><path class="kf" d="M1131 822H1145L1140.5 827.5H1135.5Z"/><rect class="kf" x="1135.5" y="826" width="5" height="10.5"/><circle class="ink" cx="1138" cy="829.5" r=".7"/><circle class="ink" cx="1138" cy="833" r=".7"/><rect class="kf" x="1132" y="836" width="12" height="2.6" rx="1"/></g>
         <g id="h-drones"></g>
+        <rect class="kf" x="798" y="814" width="17" height="24" rx="1.5"/>
+        <path class="rail" d="M798 819H815"/>
         <g id="h-front">
           <path class="k" d="M1088 782l9 26M1132 782l-9 26"/>
           <path class="k" d="M939 752V792M953 752V792M935 752H957"/>
@@ -1505,7 +1508,7 @@
     <div class="daily-inner">
       <div class="daily-mast">
         <div class="daily-kicker">Today&rsquo;s paper</div>
-        <a class="daily-name" href="/drone-news.html"><span>Drone Hospital</span><svg viewBox="-140 -140 280 280" aria-hidden="true"><rect x="-50" y="-132" width="100" height="264" rx="16" fill="#C62828"/><rect x="-132" y="-50" width="264" height="100" rx="16" fill="#C62828"/><rect x="-20" y="-20" width="40" height="40" rx="8" fill="#0A1628"/></svg><span>Daily</span></a>
+        <a class="daily-name" href="/drone-news.html"><span>Drone Hospital</span><svg viewBox="-140 -140 280 280" aria-hidden="true"><rect x="-50" y="-132" width="100" height="264" rx="16" fill="#C62828"/><rect x="-132" y="-50" width="264" height="100" rx="16" fill="#C62828"/><rect x="-12.5" y="-33" width="25" height="66" rx="4" fill="#fff"/><rect x="-33" y="-12.5" width="66" height="25" rx="4" fill="#fff"/></svg><span>Daily</span></a>
         <div class="daily-date" id="daily-date">Atlanta&rsquo;s daily checkup on the drone world</div>
         <a class="daily-btn" href="/drone-news.html">Read today&rsquo;s paper <span aria-hidden="true">&rarr;</span></a>
       </div>

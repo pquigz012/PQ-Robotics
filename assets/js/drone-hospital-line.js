@@ -346,7 +346,7 @@
     return { x: z[1], y: z[2] };
   };
 
-  const FLOOR = 818;
+  const FLOOR = 838;   // shop floor; the belt runs at waist height on its stands
   const RD = makeRobot(X.diag + 32, FLOOR, 1, 0.3);      // diagnosis, scanner head
   const RP = makeRobot(972, FLOOR, -1, 1.2);             // parts clerk at the computer
   const RR = makeRobot(X.repair + 36, FLOOR, 1, 1.9);    // repair: props
@@ -425,7 +425,7 @@
     [TAG[1], (s) => { const w = toWorld(s.P, ROTOR[s.ai][0] * 0.4, ROTOR[s.ai][1] * 0.4); ring(w.x, w.y, 10, 'alert'); }],
     [TAG[2], (s) => ring(s.P.x, s.P.y, 10, 'alert')],
     [BOX_LAND, (s) => ring(X.parts + BOX_DX, BY + 6, 12)],
-    [tIn(S.repair, 0.3), () => spawn({ cls: 'hp-prop', arc: { x0: RR.wrist.x, y0: RR.wrist.y, x1: 806, y1: FLOOR - 16, h: 16 }, life: 0.5, r0: 3.6, r1: 3, o0: 1 })],
+    [tIn(S.repair, 0.3), () => spawn({ cls: 'hp-prop', arc: { x0: RR.wrist.x, y0: RR.wrist.y, x1: 806, y1: FLOOR - 22, h: 16 }, life: 0.5, r0: 3.6, r1: 3, o0: 1 })],
     [PROP_ON, () => ring(RR.wrist.x, RR.wrist.y, 9)],
     [BOX_GONE, (s) => smoke(s.P.x + BOX_DX, BY, 3, 0.2)],
     [FW_FIX, (s) => ring(s.P.x, s.P.y, 18, 'pass')],
