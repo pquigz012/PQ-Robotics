@@ -564,8 +564,8 @@
     });
     home.appendChild(hud);
   }
-  // which bay the followed drone is in: -1 on the way in, 0..3 the stages, 4 passed
-  const stageOf = tau => (tau < S.takeoff.dur ? 4 : tau < S.diag.t0 ? -1 : tau < S.parts.t0 - 1.6 ? 0 : tau < S.repair.t0 - 1.7 ? 1
+  // which bay the followed drone is in: -2 still flying, -1 on the way in, 0..3 the stages, 4 passed
+  const stageOf = tau => (tau < DMG ? -2 : tau < S.diag.t0 ? -1 : tau < S.parts.t0 - 1.6 ? 0 : tau < S.repair.t0 - 1.7 ? 1
     : tau < S.lift.t0 ? 2 : tau < S.home.t0 + 0.35 ? 3 : 4);
   function setStage(st) {
     if (!hud || hud._st === st) return;
@@ -574,13 +574,20 @@
     hud.fill.style.width = (clamp(st, 0, 3) / 3 * 100) + '%';
     hud.className = 'hero-hud' + (st === 4 ? ' pass' : st === -1 ? ' alert' : '');
   }
-  // drone 0 stars from its crash to its landing; while it is out flying, show whoever is furthest down the line
-  const STAR_FROM = DMG - 1.2;
+  // The camera stays with one drone from the last stretch of its mission through the crash, every bay,
+  // the test flight and the landing. Then it jumps to the drone that is still out flying (two behind),
+  // so each story starts at the beginning instead of halfway down the line.
+  let star = -1, starPrev = 0;
   function pickStar(states) {
-    if (states[0].tau >= STAR_FROM) return states[0];
-    let best = null;
-    for (const s of states) if (s.tau >= STAR_FROM && (!best || s.tau > best.tau)) best = s;
-    return best || states[0];
+    if (star < 0 || states[star].tau < starPrev) {
+      let best = null;
+      // on page load, open on the drone that is being scanned in Bay 01
+      if (star < 0) best = states.find(s => s.tau >= S.bounce.t0 && s.tau < S.parts.t0) || null;
+      if (!best) for (const s of states) if (s.i !== star && s.tau < DMG && (!best || s.tau > best.tau)) best = s;
+      star = reduce ? 0 : best ? best.i : 0;
+    }
+    starPrev = states[star].tau;
+    return states[star];
   }
   function follow(states, dt) {
     if (!box.w || !box.h) return;
@@ -610,7 +617,9 @@
   }
 
   /* ---------- main loop ---------- */
-  const OFF = S.route.t0 + 21; // first drone is 9 s from trouble when the page opens
+  // wide screens: the first drone is 9 s from trouble when the page opens
+  // phones: the page opens on a drone that has just reached Bay 01 and is about to be scanned
+  const OFF = camMQ && camMQ.matches ? S.diag.t0 : S.route.t0 + 21;
   let simT = reduce ? tIn(S.repair, 0.5) - OFF : 0;
 
   function update(dt) {
