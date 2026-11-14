@@ -47,6 +47,8 @@
   if (fallback) fallback.remove();
 
   const layer = { robots: $('h-robots'), drones: $('h-drones'), front: $('h-front'), fx: $('h-fx') };
+  // the robots stand in front of the belt so their tracks show; drones still pass in front of them
+  hosp.insertBefore(layer.robots, layer.drones);
 
   /* ---------- mission route, sampled once ---------- */
   const L = route.getTotalLength();
@@ -253,29 +255,60 @@
 
   /* ---------- worker robots ---------- */
   const RK = 1.25; // robot size
+  // Tracked medic robot. Local space: floor at y=0, facing -x, shoulder at (-9,-18).
+  // ROBOT picks the chest: plain (B1) or wider with a square plate and status lights (B2).
+  const ROBOT = { bw: 18, plate: false, leds: false, seam: true };
+  const cross = (x, y, s) => `M${x - s / 2} ${y - 1.5 * s}h${s}v${s}h${s}v${s}h${-s}v${s}h${-s}v${-s}h${-s}v${-s}h${s}z`;
+  function drawRobot(g) {
+    const o = ROBOT, bw = o.bw, bh = 16, top = -10 - bh, x0 = -bw / 2, cy = -10 - bh / 2 - 0.3, tw = bw > 18 ? 25 : 24;
+    // tank track
+    mk('rect', { class: 'k thin lug', x: -tw / 2 - 0.9, y: -8.9, width: tw + 1.8, height: 9.8, rx: 4.9 }, g);
+    mk('rect', { class: 'kf', x: -tw / 2, y: -8, width: tw, height: 8, rx: 4 }, g);
+    mk('path', { class: 'k thin', d: 'M-8 -4H8' }, g);
+    for (const cx of [-tw / 2 + 4, 0, tw / 2 - 4]) { mk('circle', { class: 'k thin', cx, cy: -4, r: 2.3 }, g); mk('circle', { class: 'ink', cx, cy: -4, r: 0.75 }, g); }
+    // battery pack and its cable
+    mk('rect', { class: 'kf', x: -x0, y: top + 2, width: 4, height: 11, rx: 1.2 }, g);
+    mk('path', { class: 'k thin', d: `M${-x0 + 1} ${top + 5}h2M${-x0 + 1} ${top + 7.5}h2M${-x0 + 1} ${top + 10}h2` }, g);
+    mk('rect', { class: 'kf', x: -x0 + 1.2, y: top + 0.6, width: 1.6, height: 1.4, rx: 0.4 }, g);
+    mk('path', { class: 'k thin', d: `M${-x0 + 2} ${top + 0.6}Q${-x0 + 2} ${top - 2.2} ${-x0 - 3} ${top - 0.2}` }, g);
+    // turntable and chest
+    mk('rect', { class: 'kf', x: -5.5, y: -10.8, width: 11, height: 2.6, rx: 1 }, g);
+    mk('path', { class: 'k thin', d: 'M-3 -10.8v2.6M0 -10.8v2.6M3 -10.8v2.6' }, g);
+    mk('rect', { class: 'kf', x: x0, y: top, width: bw, height: bh, rx: 3.5 }, g);
+    if (o.plate) mk('rect', { class: 'k thin', x: -4.9, y: cy - 4.9, width: 9.8, height: 9.8, rx: 1.4 }, g);
+    mk('path', { class: 'red', d: cross(0, cy, 2.3) }, g);
+    mk('path', { class: 'k thin', d: `M${x0 + 1.6} -12.6h3M${x0 + 1.6} -11.4h3M${-x0 - 4.6} -12.6h3M${-x0 - 4.6} -11.4h3` }, g);
+    for (const bx of [x0 + 1.9, -x0 - 1.9]) mk('circle', { class: 'ink', cx: bx, cy: top + 1.9, r: 0.55 }, g);
+    if (o.leds) { mk('circle', { class: 'k thin', cx: -x0 - 2.4, cy: top + 5, r: 0.8 }, g); mk('circle', { class: 'ink', cx: -x0 - 2.4, cy: top + 7.4, r: 0.8 }, g); }
+    if (o.seam) mk('path', { class: 'k thin', d: `M${x0} ${top + 3}H${-x0}` }, g);
+    // head on a ribbed neck
+    const head = mk('g', {}, g);
+    mk('rect', { class: 'kf', x: -2.4, y: top - 3.2, width: 4.8, height: 3.4, rx: 0.8 }, head);
+    mk('path', { class: 'k thin', d: `M-2.4 ${top - 1.5}h4.8` }, head);
+    mk('circle', { class: 'kf', cx: 8.6, cy: -34.2, r: 1.8 }, head);
+    mk('circle', { class: 'ink', cx: 8.9, cy: -34.2, r: 0.55 }, head);
+    mk('rect', { class: 'kf', x: -8.5, y: -39.2, width: 17, height: 10, rx: 3 }, head);
+    const visor = mk('rect', { class: 'hr-visor', x: -7.3, y: -36.8, width: 10.5, height: 4.8, rx: 2.2 }, head);
+    mk('circle', { class: 'red', cx: -4.4, cy: -34.4, r: 1.15 }, head);
+    mk('path', { class: 'k thin', d: 'M-1.6 -35.8h3.4M4.6 -36.7v4.6M6.2 -36.7v4.6M-6 -30.6h4' }, head);
+    mk('rect', { class: 'kf', x: 2.9, y: -40.2, width: 2.6, height: 1.2, rx: 0.4 }, head);
+    mk('path', { class: 'k', d: 'M4.2 -40.2L6 -44.4' }, head);
+    const tip = mk('circle', { class: 'red', cx: 6.2, cy: -45.2, r: 1.4 }, head);
+    return { head, visor, tip };
+  }
+  const EYE_L = { x: -4.4, y: -34.4 };   // the eye, in robot space
   function makeRobot(rx, ry, m, phase) {
     const tf = `translate(${rx} ${ry}) scale(${m * RK} ${RK})`;
-    const back = mk('g', { transform: tf }, layer.robots);
-    const bob = mk('g', {}, back);
-    mk('rect', { class: 'kf', x: -11, y: -6, width: 22, height: 6, rx: 3 }, bob);
-    mk('circle', { class: 'k', cx: -6, cy: -3, r: 1.6 }, bob);
-    mk('circle', { class: 'k', cx: 6, cy: -3, r: 1.6 }, bob);
-    mk('rect', { class: 'kf', x: -9, y: -23, width: 18, height: 16, rx: 3 }, bob);
-    mk('path', { class: 'red', d: 'M-1 -18h2v2h2v2h-2v2h-2v-2h-2v-2h2z' }, bob);
-    const head = mk('g', {}, bob);
-    mk('path', { class: 'k', d: 'M0 -23V-26' }, head);
-    mk('rect', { class: 'kf', x: -8, y: -35, width: 16, height: 9, rx: 2.5 }, head);
-    const visor = mk('rect', { class: 'hr-visor', x: -7, y: -33, width: 9, height: 4.5, rx: 1.5 }, head);
-    mk('circle', { class: 'red', cx: -4.5, cy: -30.75, r: 1.1 }, head);
-    mk('path', { class: 'k', d: 'M3 -35L5 -40' }, head);
-    const tip = mk('circle', { class: 'red', cx: 5, cy: -41, r: 1.5 }, head);
-    const front = mk('g', { transform: tf }, layer.front);
+    const back = mk('g', { class: 'hr', transform: tf }, layer.robots);
+    const { head, visor, tip } = drawRobot(back);
+    const front = mk('g', { class: 'hr', transform: tf }, layer.front);
     const upper = mk('line', { class: 'hr-arm' }, front);
     const fore = mk('line', { class: 'hr-arm' }, front);
-    const j1 = mk('line', { class: 'hr-jaw' }, front);
-    const j2 = mk('line', { class: 'hr-jaw' }, front);
-    mk('circle', { class: 'kf', cx: -9, cy: -18, r: 2 }, front);
-    return { rx, ry, m, phase, front, head, visor, tip, upper, fore, j1, j2, wrist: { x: rx, y: ry }, dir: { x: -1, y: 0 } };
+    const j1 = mk('polyline', { class: 'hr-jaw' }, front);
+    const j2 = mk('polyline', { class: 'hr-jaw' }, front);
+    mk('circle', { class: 'kf', cx: -9, cy: -18, r: 2.5 }, front);
+    const elbow = mk('circle', { class: 'kf', r: 1.5 }, front);
+    return { rx, ry, m, phase, front, head, visor, tip, upper, fore, j1, j2, elbow, wrist: { x: rx, y: ry }, dir: { x: -1, y: 0 } };
   }
 
   // two-link arm, shoulder at (-9,-18) in robot space, elbow kept up
@@ -292,8 +325,11 @@
     line(R.upper, sx, sy, e.x, e.y);
     line(R.fore, e.x, e.y, w.x, w.y);
     const ux = (w.x - e.x) / B, uy = (w.y - e.y) / B, px = -uy, py = ux, o = open == null ? 1.6 : open;
-    line(R.j1, w.x, w.y, w.x + ux * 3.5 + px * o, w.y + uy * 3.5 + py * o);
-    line(R.j2, w.x, w.y, w.x + ux * 3.5 - px * o, w.y + uy * 3.5 - py * o);
+    // pinchers: two hooked fingers hinged at the wrist
+    const P = (t, n) => `${(w.x + ux * t + px * n).toFixed(1)},${(w.y + uy * t + py * n).toFixed(1)}`;
+    R.j1.setAttribute('points', `${P(0, 0)} ${P(2.6, 1.2 + o)} ${P(5.4, 0.9 + o * 0.6)} ${P(6.4, 0.1 + o * 0.3)}`);
+    R.j2.setAttribute('points', `${P(0, 0)} ${P(2.6, -1.2 - o)} ${P(5.4, -0.9 - o * 0.6)} ${P(6.4, -0.1 - o * 0.3)}`);
+    R.elbow.setAttribute('cx', e.x.toFixed(1)); R.elbow.setAttribute('cy', e.y.toFixed(1));
     R.wrist = { x: R.rx + w.x * R.m * RK, y: R.ry + w.y * RK };
     R.dir = { x: ux * R.m, y: uy };
   }
@@ -315,7 +351,7 @@
   const RP = makeRobot(972, FLOOR, -1, 1.2);             // parts clerk at the computer
   const RR = makeRobot(X.repair + 36, FLOOR, 1, 1.9);    // repair: props
   const RW = makeRobot(X.repair - 32, FLOOR, -1, 3.1);   // repair: welder
-  const RF = makeRobot(296, FLOOR, -1, 4.4);             // test flight marshal
+  const RF = makeRobot(294, FLOOR, -1, 4.4);             // test flight marshal
   const rest = (R, t) => ({ x: R.rx - R.m * 20, y: FLOOR - 27 + Math.sin(t * 1.4 + R.phase) * 1.2 });
   const idleTouches = (R, t) => {
     const look = R.look ? ' scale(-1 1)' : '';
@@ -404,7 +440,8 @@
   const ARMS = ['ARM 5IN', 'ARM 3IN', 'ARM 7IN'];
 
   // Bay 01: no arms, the robot's head lights up red and sweeps a scan beam over the drone
-  const EYE = { x: RD.rx - 4.5 * 1.25, y: FLOOR - 30.75 * 1.25 };
+  const EYE = { x: RD.rx + EYE_L.x * RK * RD.m, y: FLOOR + EYE_L.y * RK };
+  el.eyeglow.setAttribute('cx', EYE.x); el.eyeglow.setAttribute('cy', EYE.y);
   RD.front.setAttribute('visibility', 'hidden');
   function diagnosis(st, t) {
     const p = st ? (st.tau - S.diag.t0) / S.diag.dur : -1;
