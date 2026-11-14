@@ -525,6 +525,90 @@
     else label(el.test, 'TEST FLIGHT');
   }
 
+  /* ---------- framing ----------
+     Wide screens: the view box is refitted to the hero so the repair line is never cropped.
+       Very wide windows trim the top of the map a little, then add margin at the sides;
+       narrow windows keep the full width and leave room above.
+     Phones and upright tablets: a follow camera. The line sits in a band at the bottom of the
+       hero and the view tracks one drone from its crash through every bay to the test flight. */
+  const home = document.getElementById('home');
+  const camMQ = window.matchMedia ? window.matchMedia('(max-width: 768px), (orientation: portrait) and (max-width: 1100px)') : null;
+  const FIT = { cx: 810, span: 1380, top: 100, bottom: 872 };   // what must stay in view
+  const CAM_H = 140;                                            // camera view height, in map units
+  const STEPS = ['DIAGNOSIS', 'PARTS', 'REPAIR', 'TEST FLIGHT'];
+  let camOn = false, cam = null, hud = null, box = { w: 0, h: 0 };
+  const setVB = (x, y, w, h) => {
+    const v = `${x.toFixed(1)} ${y.toFixed(1)} ${w.toFixed(1)} ${h.toFixed(1)}`;
+    if (svg._vb !== v) { svg.setAttribute('viewBox', v); svg._vb = v; }
+  };
+  function frameWide() {
+    const R = box.w / box.h;
+    let h = clamp(1600 / R, FIT.bottom - FIT.top, FIT.bottom), w = h * R;
+    if (w < FIT.span) { w = FIT.span; h = w / R; }
+    setVB(FIT.cx - w / 2, FIT.bottom - h, w, h);
+  }
+  function buildHud() {
+    hud = document.createElement('div');
+    hud.className = 'hero-hud';
+    hud.setAttribute('aria-hidden', 'true');
+    const rail = document.createElement('span');
+    rail.className = 'hud-rail';
+    hud.fill = rail.appendChild(document.createElement('i'));
+    hud.appendChild(rail);
+    hud.steps = STEPS.map(n => {
+      const e = document.createElement('span');
+      e.className = 'hud-step';
+      e.appendChild(document.createElement('b'));
+      e.appendChild(document.createTextNode(n));
+      return hud.appendChild(e);
+    });
+    home.appendChild(hud);
+  }
+  // which bay the followed drone is in: -1 on the way in, 0..3 the stages, 4 passed
+  const stageOf = tau => (tau < S.takeoff.dur ? 4 : tau < S.diag.t0 ? -1 : tau < S.parts.t0 - 1.6 ? 0 : tau < S.repair.t0 - 1.7 ? 1
+    : tau < S.lift.t0 ? 2 : tau < S.home.t0 + 0.35 ? 3 : 4);
+  function setStage(st) {
+    if (!hud || hud._st === st) return;
+    hud._st = st;
+    hud.steps.forEach((e, i) => { e.className = 'hud-step' + (st === 4 || i < st ? ' done' : i === st ? ' on' : st === -1 && i === 0 ? ' next' : ''); });
+    hud.fill.style.width = (clamp(st, 0, 3) / 3 * 100) + '%';
+    hud.className = 'hero-hud' + (st === 4 ? ' pass' : st === -1 ? ' alert' : '');
+  }
+  // drone 0 stars from its crash to its landing; while it is out flying, show whoever is furthest down the line
+  const STAR_FROM = DMG - 1.2;
+  function pickStar(states) {
+    if (states[0].tau >= STAR_FROM) return states[0];
+    let best = null;
+    for (const s of states) if (s.tau >= STAR_FROM && (!best || s.tau > best.tau)) best = s;
+    return best || states[0];
+  }
+  function follow(states, dt) {
+    if (!box.w || !box.h) return;
+    const s = pickStar(states);
+    const vw = CAM_H * box.w / box.h;
+    const tx = clamp(s.P.x - vw / 2, 100, Math.max(100, 1520 - vw));
+    const ty = Math.min(s.P.y - CAM_H * 0.58, 850 - CAM_H);
+    if (!cam || !dt) cam = { x: tx, y: ty };
+    else {
+      const k = 1 - Math.exp(-dt * 3.2), lim = 1300 * dt;
+      cam.x += clamp((tx - cam.x) * k, -lim, lim);
+      cam.y += clamp((ty - cam.y) * k, -lim, lim);
+    }
+    setVB(cam.x, cam.y, vw, CAM_H);
+    setStage(stageOf(s.tau));
+  }
+  function layout() {
+    const on = !!(camMQ && camMQ.matches);
+    if (on !== camOn) {
+      camOn = on; cam = null;
+      if (on && !hud) buildHud();
+      home.classList.toggle('cam', on);
+    }
+    const r = svg.getBoundingClientRect();
+    box = { w: r.width, h: r.height };
+    if (box.w && box.h && !camOn) frameWide();
+  }
+
   /* ---------- main loop ---------- */
   const OFF = S.route.t0 + 21; // first drone is 9 s from trouble when the page opens
   let simT = reduce ? tIn(S.repair, 0.5) - OFF : 0;
@@ -559,11 +643,18 @@
       }
     }
     stepFx(dt);
+    if (camOn) follow(states, dt);
   }
+
+  let raf = 0;
+  layout();
+  const relayout = () => { layout(); if (reduce || !raf) update(0); };
+  if ('ResizeObserver' in window) new ResizeObserver(relayout).observe(home);
+  else window.addEventListener('resize', relayout);
 
   if (reduce) { update(0); return; }
 
-  let raf = 0, last = 0, onScreen = true;
+  let last = 0, onScreen = true;
   const frame = now => {
     const dt = last ? Math.min(0.1, (now - last) / 1000) : 0;
     last = now;

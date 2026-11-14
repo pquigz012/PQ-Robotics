@@ -192,7 +192,7 @@
       position: absolute; inset: 0; pointer-events: none;
       background: radial-gradient(ellipse 46% 42% at 50% 50%, rgba(10,19,36,.92) 0%, rgba(10,19,36,.75) 45%, rgba(10,19,36,0) 100%);
     }
-    #home > :not(.hero-map):not(.hero-route):not(.hero-scrim) { position: relative; z-index: 1; }
+    #home > :not(.hero-map):not(.hero-route):not(.hero-scrim):not(.hero-hud) { position: relative; z-index: 1; }
     @media (prefers-reduced-motion: reduce) {
       .hero-route .route, .hero-route .ping { animation: none; }
       .hero-route .drone { display: none; }
@@ -259,6 +259,41 @@
     .hosp .hp-ring.alert { stroke: #e53935; }
     .hosp .hp-prop { fill: none; stroke-width: 1.3; }
     @media (prefers-reduced-motion: reduce) { .hosp .tread, .hosp .hd-tag { animation: none; } }
+
+    /* Phones and upright tablets: the repair line gets its own band at the bottom of the hero and a
+       camera follows one drone through it (the script adds .cam to #home and builds .hero-hud). */
+    .hero-hud { display: none; }
+    #home.cam { --cam-h: clamp(150px, 40vw, 300px); padding-top: 1.75rem; padding-bottom: calc(var(--cam-h) + 3.6rem); }
+    #home.cam .hero-tag { margin-bottom: 1rem; }
+    #home.cam h1 { margin-bottom: 1.1rem; }
+    #home.cam .hero-sub { margin-bottom: 1.6rem; }
+    #home.cam .hero-route {
+      inset: auto 0 0 0; width: 100%; height: var(--cam-h); opacity: 1; z-index: 1;
+      mask-image: linear-gradient(transparent, #000 16%); -webkit-mask-image: linear-gradient(transparent, #000 16%);
+    }
+    #home.cam .hero-route .wp text, #home.cam .hero-route .lbl { display: inline; }
+    #home.cam .hero-scrim { background: radial-gradient(ellipse 95% 44% at 50% 36%, rgba(10,19,36,.95) 0%, rgba(10,19,36,.75) 55%, rgba(10,19,36,0) 100%); }
+    html[data-theme="light"] #home.cam .hero-scrim { background: radial-gradient(ellipse 95% 44% at 50% 36%, rgba(244,246,250,.95), rgba(244,246,250,0) 100%); }
+    #home.cam .hero-hud {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      position: absolute; z-index: 2; left: 0; right: 0; bottom: calc(var(--cam-h) + 2px);
+      max-width: 520px; margin: 0 auto; padding: 0 10px; pointer-events: none;
+      font: 600 9px ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; letter-spacing: .1em;
+      color: var(--text-secondary);
+    }
+    .hud-rail { position: absolute; left: 12.5%; right: 12.5%; top: 5px; height: 2px; background: var(--border-mid); }
+    .hud-rail i { display: block; height: 100%; width: 0; background: #e53935; transition: width .5s ease; }
+    .hud-step { position: relative; display: flex; flex-direction: column; align-items: center; gap: 7px; white-space: nowrap; transition: color .3s; }
+    .hud-step b { width: 12px; height: 12px; border-radius: 50%; box-sizing: border-box; background: var(--bg-deep); border: 2px solid var(--text-muted); transition: background .3s, border-color .3s, box-shadow .3s; }
+    .hud-step.on { color: var(--text-primary); }
+    .hud-step.on b { border-color: #e53935; background: #e53935; box-shadow: 0 0 0 4px rgba(229,57,53,.22); }
+    .hud-step.done b { border-color: #e53935; background: #e53935; }
+    .hero-hud.pass .hud-step { color: #22a559; }
+    .hero-hud.pass .hud-step b { border-color: #4ade80; background: #4ade80; }
+    .hero-hud.pass .hud-rail i { background: #4ade80; }
+    .hud-step.next b { border-color: #e53935; animation: hud-blink .5s steps(2) infinite; }
+    @keyframes hud-blink { 50% { background: #e53935; } }
+    @media (prefers-reduced-motion: reduce) { .hud-step.next b { animation: none; } }
 
     .hero-tag {
       font-size: 11px;
@@ -1330,7 +1365,7 @@
   <!-- HERO -->
   <div id="home">
     <div class="hero-map" aria-hidden="true"></div>
-    <svg class="hero-route" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <svg class="hero-route" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
       <path class="route-done" d="M170 760 C230 650 250 600 300 540 C350 470 200 380 190 270 C185 190 380 150 560 140 C760 128 920 150 1080 160 C1180 166 1230 200 1250 240"/>
       <path id="flight" class="route" d="M170 760 C230 650 250 600 300 540 C350 470 200 380 190 270 C185 190 380 150 560 140 C760 128 920 150 1080 160 C1180 166 1230 200 1250 240 L1470 240 L1470 290 L1250 290 L1250 340 L1470 340 L1470 390 L1250 390 L1250 440 L1470 440 C1470 520 1460 580 1420 640 C1360 712 1250 756 1120 768"/>
       <g class="search"><rect x="1230" y="222" width="260" height="236"/>
