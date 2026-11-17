@@ -862,17 +862,20 @@
     .bp-frame::before { top: -3px; border-top-width: 4px; clip-path: polygon(0 0, 22px 0, 22px 100%, 0 100%, 0 0, 100% 0, 100% 100%, calc(100% - 22px) 100%, calc(100% - 22px) 0, 100% 0); }
     .bp-frame::after { bottom: -3px; border-bottom-width: 4px; clip-path: polygon(0 0, 22px 0, 22px 100%, 0 100%, 0 0, 100% 0, 100% 100%, calc(100% - 22px) 100%, calc(100% - 22px) 0, 100% 0); }
     .bp-frame video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: cover; background: #0c172b; }
-    .bp-block { display: flex; flex-wrap: wrap; margin-top: 1rem; border: 1px solid var(--bp-line); background: rgba(8,18,38,0.92); }
-    .bp-cell { flex: 1 1 170px; padding: 18px 20px; border-right: 1px solid var(--bp-line); border-bottom: 1px solid var(--bp-line); margin-bottom: -1px; }
+    .bp-block { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 1rem; border: 1px solid var(--bp-line); border-right: 0; border-bottom: 0; background: rgba(8,18,38,0.92); }
+    .bp-cell { padding: 18px 20px 20px; border-right: 1px solid var(--bp-line); border-bottom: 1px solid var(--bp-line); }
     .bp-cell span { display: block; font-family: var(--font-display); font-weight: 600; font-size: 13px; letter-spacing: 0.2em; color: #ff6a60; }
-    .bp-cell strong { display: block; margin-top: 8px; font-family: var(--font-display); font-weight: 600; font-size: 18px; line-height: 1.25; color: #ffffff; }
-    .bp-cta { flex: 1 1 200px; display: flex; align-items: center; justify-content: center; padding: 18px 20px; background: #d63c35; color: #ffffff; font-family: var(--font-display); font-weight: 600; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
+    .bp-cell h3 { margin: 8px 0 6px; font-family: var(--font-display); font-weight: 600; font-size: 17px; line-height: 1.25; letter-spacing: 0; color: #ffffff; }
+    .bp-cell p { margin: 0; font-size: 13.5px; line-height: 1.5; color: #a9bbdc; }
+    .bp-foot { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: stretch; border-right: 1px solid var(--bp-line); border-bottom: 1px solid var(--bp-line); }
+    .bp-foot p { flex: 999 1 320px; margin: 0; padding: 18px 20px; font-size: 15px; line-height: 1.5; color: #dbe7ff; align-self: center; }
+    .bp-cta { flex: 1 1 240px; display: flex; align-items: center; justify-content: center; padding: 18px 20px; background: #d63c35; color: #ffffff; font-family: var(--font-display); font-weight: 600; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
     .bp-cta:hover { background: #e24a43; }
     .dh-head { flex-wrap: wrap; gap: 1.5rem 2rem; }
     .dh-stats { flex: 1 1 240px; max-width: 340px; margin: 0 0 0 auto; border-top: 1px solid var(--border-mid); }
     .dh-stats > div { display: flex; align-items: baseline; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border-mid); }
-    .dh-stats dt { display: flex; flex: 1; align-items: baseline; gap: 12px; white-space: nowrap; font-family: var(--font-display); font-weight: 500; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-secondary); }
-    .dh-stats dt::after { content: ""; flex: 1; border-bottom: 2px dotted var(--border-mid); }
+    .dh-stats dt { display: flex; flex: 1; align-items: baseline; gap: 12px; white-space: nowrap; font-family: var(--font-display); font-weight: 500; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary); }
+    .dh-stats dt::after { content: ""; flex: 1; min-width: 10px; border-bottom: 2px dotted var(--border-mid); }
     .dh-stats dd { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: 24px; line-height: 1.1; letter-spacing: -0.02em; color: var(--text-primary); }
     @media (max-width: 1000px) {
       .bp-pin { --k: 0.65; }
@@ -880,6 +883,7 @@
       .bp-pin u { width: 10px; height: 10px; }
       .bp-reel figcaption { font-size: 10px; }
       .bp-intro { max-width: 58%; }
+      .bp-block { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 760px) {
       .bp { padding: 3rem 0 3.5rem; }
@@ -892,6 +896,9 @@
       .bp-pin b { font-size: 9px; padding: 3px 5px; letter-spacing: 0.03em; }
       .bp-pin u { width: 7px; height: 7px; box-shadow: none; }
       .bp-photo .bp-pin:first-of-type { display: none; }
+      .bp-cell { padding: 14px 14px 16px; }
+      .bp-cell h3 { font-size: 15px; }
+      .bp-cell p { font-size: 12.5px; }
       .bp-reel { position: static; transform: none; width: min(260px, 78%); margin: 2rem auto 0; }
       .bp-reel figcaption { font-size: 11px; }
     }
@@ -1623,27 +1630,28 @@
         </a>
       </div>
       <dl class="dh-stats">
-        <div><dt>Units repaired</dt><dd>100s</dd></div>
-        <div><dt>Years on the bench</dt><dd>6+</dd></div>
-        <div><dt>Written report</dt><dd>Every job</dd></div>
+        <div><dt>Drones repaired</dt><dd>100s</dd></div>
+        <div><dt>5-star Google reviews</dt><dd>20+</dd></div>
+        <div><dt>Makes &amp; models serviced</dt><dd>25+</dd></div>
       </dl>
     </div>
     <div class="bp">
       <div class="bp-head">
         <div class="bp-intro">
-          <h2 class="bp-h2">Technical Repair & Development</h2>
-          <p class="section-sub">Diagnostic, repair, and custom build services across DJI and Betaflight platforms, from cinematic rigs to high-performance FPV builds. We work across all major systems: flight controllers, ESCs, motors, and firmware.</p>
+          <h2 class="bp-h2">DJI &amp; FPV Drone Repair in Atlanta</h2>
+          <p class="section-sub">Crashed it, got it wet, or it just won&rsquo;t take off? Our technicians repair DJI Mini, Air, Mavic, Avata, Phantom, Inspire and Matrice drones, Betaflight FPV quads and custom builds. Every repair starts with a full diagnosis and ends with a test flight and a written report.</p>
         </div>
       </div>
       <div class="bp-stage">
         <div class="bp-plane">
           <div class="bp-photo">
             <img loading="lazy" decoding="async" src="assets/images/DJI_Assembly.jpeg" width="2200" height="967" alt="DJI drone components">
-            <div class="bp-pin" style="--x:10%;--y:56%;--h:64px"><b>Top shell</b><i></i><u></u></div>
-            <div class="bp-pin bp-pin-red" style="--x:25%;--y:60%;--h:96px"><b>Mainboard</b><i></i><u></u></div>
-            <div class="bp-pin" style="--x:21%;--y:80%;--h:40px"><b>Gimbal</b><i></i><u></u></div>
-            <div class="bp-pin" style="--x:46.5%;--y:27%;--h:44px"><b>Motors</b><i></i><u></u></div>
-            <div class="bp-pin bp-pin-red" style="--x:63%;--y:72%;--h:110px"><b>ESC + power board</b><i></i><u></u></div>
+            <div class="bp-pin" style="--x:9%;--y:74%;--h:68px"><b>Shell repair</b><i></i><u></u></div>
+            <div class="bp-pin bp-pin-red" style="--x:25%;--y:60%;--h:96px"><b>Mainboard repair</b><i></i><u></u></div>
+            <div class="bp-pin" style="--x:21%;--y:80%;--h:40px"><b>Gimbal replacement</b><i></i><u></u></div>
+            <div class="bp-pin" style="--x:46.5%;--y:27%;--h:44px"><b>Motor replacement</b><i></i><u></u></div>
+            <div class="bp-pin bp-pin-red" style="--x:63%;--y:70%;--h:104px"><b>ESC repair</b><i></i><u></u></div>
+            <div class="bp-pin" style="--x:54%;--y:81%;--h:26px"><b>Arm replacement</b><i></i><u></u></div>
           </div>
           <figure class="bp-reel">
             <figcaption>Service log // M300 RTK</figcaption>
@@ -1656,11 +1664,18 @@
         </div>
       </div>
       <div class="bp-block">
-        <div class="bp-cell"><span>01</span><strong>Diagnostics & repair</strong></div>
-        <div class="bp-cell"><span>02</span><strong>Firmware & flight tuning</strong></div>
-        <div class="bp-cell"><span>03</span><strong>DJI maintenance checkups</strong></div>
-        <div class="bp-cell"><span>04</span><strong>Full written reports</strong></div>
-        <a class="bp-cta" href="/drone-repair-atlanta.html">Start a repair &rarr;</a>
+        <div class="bp-cell"><span>01</span><h3>Crash damage repair</h3><p>Cracked arms, shells and landing gear.</p></div>
+        <div class="bp-cell"><span>02</span><h3>Arm &amp; motor replacement</h3><p>Bent or snapped arms, seized or grinding motors.</p></div>
+        <div class="bp-cell"><span>03</span><h3>Gimbal &amp; camera replacement</h3><p>Gimbal overload errors, shaky video, cracked lenses.</p></div>
+        <div class="bp-cell"><span>04</span><h3>Remote controller repair</h3><p>Won&rsquo;t pair or connect, stick drift, no video feed.</p></div>
+        <div class="bp-cell"><span>05</span><h3>Won&rsquo;t power on or take off</h3><p>Battery, charging, GPS and compass errors.</p></div>
+        <div class="bp-cell"><span>06</span><h3>Water damage recovery</h3><p>Don&rsquo;t power it on. Bring it straight in.</p></div>
+        <div class="bp-cell"><span>07</span><h3>Firmware &amp; flight tuning</h3><p>Failed updates, calibration, Betaflight PID tuning.</p></div>
+        <div class="bp-cell"><span>08</span><h3>DJI maintenance checkups</h3><p>Scheduled service for the Matrice 300 and other enterprise aircraft.</p></div>
+        <div class="bp-foot">
+          <p>Every repair leaves with a full written report: what we found, what we fixed, and what to watch next.</p>
+          <a class="bp-cta" href="/drone-repair-atlanta.html">Start a repair &rarr;</a>
+        </div>
       </div>
     </div>
   </section>
