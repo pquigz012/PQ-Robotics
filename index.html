@@ -1013,6 +1013,16 @@
       z-index: 1;
     }
 
+    /* ── STAMP-EDGE DIVIDER (perforated strip, like the edge of a postage stamp) ── */
+    .stamp-edge { background: var(--bg-dark); padding: 0; line-height: 0; }
+    .stamp-edge span {
+      display: block; height: 26px; background: var(--text-primary);
+      -webkit-mask: radial-gradient(circle at 50% 0, transparent 8px, #000 8.6px) 50% 0 / 26px 51% repeat-x, radial-gradient(circle at 50% 100%, transparent 8px, #000 8.6px) 50% 100% / 26px 51% repeat-x;
+      mask: radial-gradient(circle at 50% 0, transparent 8px, #000 8.6px) 50% 0 / 26px 51% repeat-x, radial-gradient(circle at 50% 100%, transparent 8px, #000 8.6px) 50% 100% / 26px 51% repeat-x;
+    }
+    .ig-band { border-bottom: 0 !important; }
+    .stamp-edge + .about-wrap { border-top: 0; }
+
     /* ── ABOUT ── */
     .about-wrap {
       background: var(--bg-dark);
@@ -1723,6 +1733,9 @@
       </a>
     </div>
   </div>
+
+  <!-- Stamp-edge divider into About -->
+  <div class="stamp-edge" aria-hidden="true"><span></span></div>
 
   <!-- ABOUT -->
   <div class="about-wrap" id="about">
