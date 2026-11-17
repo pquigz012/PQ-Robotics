@@ -382,6 +382,18 @@
     .hero-btn { display: inline-flex; align-items: center; gap: 9px; }
     .hero-btn svg { width: 17px; height: 17px; flex: none; }
 
+    /* Computers only (not the phone / upright tablet camera layout): the headline, paragraph and buttons
+       grow with the screen so large monitors keep the proportions of a 1670 x 990 window. Never smaller than the base sizes. */
+    @media (min-width: 769px) and (orientation: landscape), (min-width: 1101px) {
+      #home:not(.cam) { --u: min(0.958vw, 1.616vh, 34px); }
+      #home:not(.cam) .hero-tag { font-size: max(11px, calc(var(--u) * 0.6875)); margin-bottom: max(1.25rem, calc(var(--u) * 1.25)); }
+      #home:not(.cam) h1 { font-size: max(clamp(2.4rem, 6vw, 4.2rem), calc(var(--u) * 4.2)); max-width: max(720px, calc(var(--u) * 45)); margin-bottom: max(1.5rem, calc(var(--u) * 1.5)); }
+      #home:not(.cam) .hero-sub { font-size: max(1rem, var(--u)); max-width: max(480px, calc(var(--u) * 30)); margin-bottom: max(2.5rem, calc(var(--u) * 2.5)); }
+      #home:not(.cam) .hero-cta { gap: max(12px, calc(var(--u) * 0.75)); }
+      #home:not(.cam) .hero-cta .btn-primary, #home:not(.cam) .hero-cta .btn-ghost { font-size: max(13px, calc(var(--u) * 0.8125)); padding: max(12px, calc(var(--u) * 0.75)) max(28px, calc(var(--u) * 1.75)); }
+      #home:not(.cam) .hero-btn svg { width: max(17px, calc(var(--u) * 1.06)); height: max(17px, calc(var(--u) * 1.06)); }
+    }
+
     /* R&D button + restricted popup */
     .rd-btn { font-family: var(--font-body); font-weight: 500; background: transparent !important; border: 1px solid rgba(255,255,255,0.35) !important; color: #fff !important; }
     .rd-btn:hover { border-color: #fff !important; opacity: 1 !important; }
