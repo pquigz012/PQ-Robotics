@@ -837,6 +837,33 @@
       line-height: 1.65;
     }
 
+    /* ── REPAIR SECTION: stats, photo + reel, cards ── */
+    .rd-wrap { display: flex; flex-direction: column; gap: 1.5rem; }
+    .rd-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
+    .rd-stat { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.1rem 1.25rem; }
+    .rd-stat b { display: block; font-family: var(--font-display); font-size: 30px; font-weight: 700; line-height: 1.1; color: var(--text-primary); }
+    .rd-stat span { display: block; margin-top: 6px; font-size: 14px; color: var(--text-secondary); }
+    .rd-media { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 1.25rem; align-items: stretch; }
+    .rd-photo { position: relative; min-height: 300px; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; background: var(--bg-card); }
+    .rd-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 100% 50%; display: block; }
+    .rd-reel { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+    .rd-reel video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: cover; border: 1px solid var(--border-mid); border-radius: var(--radius-lg); background: var(--bg-card); }
+    .rd-reel figcaption { font-size: 13px; color: var(--text-secondary); text-align: center; }
+    .rd-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+    .rd-cards .service-card { flex-direction: column; gap: 0.75rem; padding: 1.25rem; }
+    @media (max-width: 900px) {
+      .rd-media { grid-template-columns: 1fr; }
+      .rd-photo { min-height: 0; aspect-ratio: 16 / 9; }
+      .rd-reel { width: 100%; max-width: 320px; margin: 0 auto; }
+      .rd-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 520px) {
+      .rd-stat { padding: 0.85rem 0.8rem; }
+      .rd-stat b { font-size: 22px; }
+      .rd-stat span { font-size: 12px; }
+      .rd-cards { grid-template-columns: 1fr; }
+    }
+
     /* ── DRONE HOSPITAL WORDMARK LINK ── */
     .dh-wordmark-link { display:inline-block; text-decoration:none; color:inherit; cursor:pointer; }
     .dh-wordmark-link .section-eyebrow-lg {
@@ -1566,41 +1593,58 @@
     </div>
     <h2>Technical Repair & Development</h2>
     <p class="section-sub">Diagnostic, repair, and custom build services across DJI and Betaflight platforms, from cinematic rigs to high-performance FPV builds. We work across all major systems: flight controllers, ESCs, motors, and firmware.</p>
-    <div style="display:flex;flex-direction:column;gap:1.5rem">
-      <div class="img-block" style="aspect-ratio:unset;padding:0">
-        <img loading="lazy" decoding="async" src="assets/images/DJI_Assembly.jpeg" alt="DJI drone components" style="width:100%;height:auto;display:block;object-fit:contain;border-radius:var(--radius-lg)">
+    <div class="rd-wrap">
+      <div class="rd-stats">
+        <div class="rd-stat"><b>100s</b><span>drones repaired</span></div>
+        <div class="rd-stat"><b>6+ yrs</b><span>of experience</span></div>
+        <div class="rd-stat"><b>100%</b><span>get a full report</span></div>
       </div>
-      <div class="two-col">
-        <div class="img-block" style="aspect-ratio:unset;padding:0">
-          <img loading="lazy" decoding="async" src="assets/images/DJI_Assembly2.jpeg" alt="DJI drone assembly" style="width:100%;height:auto;display:block;object-fit:contain;border-radius:var(--radius-lg)">
+      <div class="rd-media">
+        <div class="rd-photo">
+          <img loading="lazy" decoding="async" src="assets/images/DJI_Assembly.jpeg" alt="DJI drone components">
         </div>
-        <div class="service-cards">
-          <div class="service-card">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-            </div>
-            <div>
-              <h3>Diagnostics & repair</h3>
-              <p>Full systems check, motor testing, ESC calibration, and crash damage assessment across DJI and Betaflight platforms.</p>
-            </div>
+        <figure class="rd-reel">
+          <video controls playsinline preload="none" width="720" height="1280" poster="assets/video/matrice-300-maintenance-poster.jpg" aria-label="Video: DJI Matrice 300 RTK maintenance check">
+            <source src="assets/video/matrice-300-maintenance.mp4" type="video/mp4">
+          </video>
+          <figcaption>Matrice 300 RTK maintenance check</figcaption>
+        </figure>
+      </div>
+      <div class="rd-cards">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
           </div>
-          <div class="service-card">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/></svg>
-            </div>
-            <div>
-              <h3>Firmware & flight tuning</h3>
-              <p>PID tuning, flight controller flashing, sensor calibration, and performance optimization for sport and commercial rigs.</p>
-            </div>
+          <div>
+            <h3>Diagnostics & repair</h3>
+            <p>Full systems check and crash repair.</p>
           </div>
-          <div class="service-card">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-            </div>
-            <div>
-              <h3>Custom builds</h3>
-              <p>Bespoke drone builds tailored to specific payload, range, or endurance requirements for professional applications.</p>
-            </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/></svg>
+          </div>
+          <div>
+            <h3>Firmware & flight tuning</h3>
+            <p>Flashing, calibration, PID tuning.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <div>
+            <h3>DJI maintenance checkups</h3>
+            <p>Scheduled service for the Matrice 300 and more.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg>
+          </div>
+          <div>
+            <h3>Full written reports</h3>
+            <p>Data found, work done, next steps.</p>
           </div>
         </div>
       </div>
