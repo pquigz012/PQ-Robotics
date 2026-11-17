@@ -855,7 +855,7 @@
     .bp-pin u { display: block; width: 14px; height: 14px; border-radius: 50%; background: #ffffff; box-shadow: 0 0 0 5px rgba(255,255,255,0.3); }
     .bp-pin-red b, .bp-pin-red i, .bp-pin-red u { background: var(--bp-red); }
     .bp-pin-red u { box-shadow: 0 0 0 5px rgba(255,90,80,0.35); }
-    .bp-reel { position: absolute; left: 86%; top: 46%; width: 27%; margin: 0; transform: translate(-50%, -100%) rotateX(-42deg); transform-origin: 50% 100%; display: flex; flex-direction: column; gap: 8px; }
+    .bp-reel { position: absolute; left: 84.5%; top: 50%; width: 31%; margin: 0; transform: translate(-50%, -100%) rotateX(-42deg); transform-origin: 50% 100%; display: flex; flex-direction: column; gap: 8px; }
     .bp-reel figcaption { align-self: flex-start; background: var(--bp-ink); color: #ffffff; font-family: var(--font-display); font-weight: 500; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; padding: 6px 8px; line-height: 1.2; white-space: nowrap; }
     .bp-frame { position: relative; padding: 8px; background: var(--bp-ink); border: 1px solid rgba(160,190,255,0.6); box-shadow: 0 30px 40px rgba(0,0,0,0.6); }
     .bp-frame::before, .bp-frame::after { content: ""; position: absolute; left: -3px; right: -3px; height: 22px; border: 0 solid var(--bp-red); border-width: 0 4px; pointer-events: none; }
@@ -1656,7 +1656,7 @@
           <figure class="bp-reel">
             <figcaption>Service log // M300 RTK</figcaption>
             <div class="bp-frame">
-              <video controls playsinline preload="none" width="720" height="1280" poster="assets/video/matrice-300-maintenance-poster.jpg" aria-label="Video: DJI Matrice 300 RTK maintenance check">
+              <video id="bp-reel-video" controls muted loop playsinline preload="none" width="720" height="1280" poster="assets/video/matrice-300-maintenance-poster.jpg" aria-label="Video: DJI Matrice 300 RTK maintenance check">
                 <source src="assets/video/matrice-300-maintenance.mp4" type="video/mp4">
               </video>
             </div>
@@ -1678,6 +1678,22 @@
         </div>
       </div>
     </div>
+    <script>
+      /* Repair reel: plays muted when scrolled into view, pauses when it leaves. Stays paused if the visitor pauses it. */
+      (function () {
+        var v = document.getElementById('bp-reel-video');
+        if (!v || !('IntersectionObserver' in window)) return;
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var auto = false, userPaused = false, visible = false;
+        v.addEventListener('pause', function () { if (!auto && visible && !v.ended) userPaused = true; auto = false; });
+        v.addEventListener('play', function () { userPaused = false; });
+        new IntersectionObserver(function (entries) {
+          visible = entries[0].isIntersecting;
+          if (visible) { if (!userPaused) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } }
+          else if (!v.paused) { auto = true; v.pause(); }
+        }, { threshold: 0.6 }).observe(v);
+      })();
+    </script>
   </section>
 
   <!-- INSTAGRAM -->
