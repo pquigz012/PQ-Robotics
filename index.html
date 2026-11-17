@@ -26,7 +26,7 @@
   <meta name="twitter:image" content="https://pq-robotics.com/assets/images/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&family=Inter:wght@400;500&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -837,31 +837,63 @@
       line-height: 1.65;
     }
 
-    /* ── REPAIR SECTION: stats, photo + reel, cards ── */
-    .rd-wrap { display: flex; flex-direction: column; gap: 1.5rem; }
-    .rd-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
-    .rd-stat { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.1rem 1.25rem; }
-    .rd-stat b { display: block; font-family: var(--font-display); font-size: 30px; font-weight: 700; line-height: 1.1; color: var(--text-primary); }
-    .rd-stat span { display: block; margin-top: 6px; font-size: 14px; color: var(--text-secondary); }
-    .rd-media { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 1.25rem; align-items: stretch; }
-    .rd-photo { position: relative; min-height: 300px; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; background: var(--bg-card); }
-    .rd-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 100% 50%; display: block; }
-    .rd-reel { margin: 0; display: flex; flex-direction: column; gap: 8px; }
-    .rd-reel video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: cover; border: 1px solid var(--border-mid); border-radius: var(--radius-lg); background: var(--bg-card); }
-    .rd-reel figcaption { font-size: 13px; color: var(--text-secondary); text-align: center; }
-    .rd-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
-    .rd-cards .service-card { flex-direction: column; gap: 0.75rem; padding: 1.25rem; }
-    @media (max-width: 900px) {
-      .rd-media { grid-template-columns: 1fr; }
-      .rd-photo { min-height: 0; aspect-ratio: 16 / 9; }
-      .rd-reel { width: 100%; max-width: 320px; margin: 0 auto; }
-      .rd-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    /* ── REPAIR SECTION: blueprint bench (always dark, both themes) ── */
+    body { overflow-x: clip; }
+    .bp { position: relative; margin: 2.5rem 0 -6rem; padding: 4.5rem 0 5rem; display: flex; flex-direction: column; gap: 2.25rem; color: #dbe7ff; --bp-line: rgba(160,190,255,0.5); --bp-red: #ff5a50; --bp-ink: #081226; --bp-mono: 'JetBrains Mono', ui-monospace, monospace; }
+    .bp::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw; margin-left: -50vw; z-index: -1; background-color: #081226; background-image: linear-gradient(rgba(130,175,255,0.14) 1px, transparent 1px), linear-gradient(90deg, rgba(130,175,255,0.14) 1px, transparent 1px), linear-gradient(rgba(130,175,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(130,175,255,0.06) 1px, transparent 1px); background-size: 160px 160px, 160px 160px, 32px 32px, 32px 32px; background-position: center top; }
+    #maintenance { position: relative; z-index: 0; }
+    .bp-head { display: flex; flex-wrap: wrap; gap: 2rem 3.5rem; align-items: flex-end; }
+    .bp-intro { flex: 999 1 480px; min-width: 0; }
+    .bp-tag { font-family: var(--bp-mono); font-size: 13px; letter-spacing: 0.14em; color: #ff6a60; margin-bottom: 1.25rem; }
+    .bp-h2 { font-size: clamp(2.2rem, 5.6vw, 4rem); font-weight: 800; line-height: 0.95; letter-spacing: 0; text-transform: uppercase; color: #ffffff; margin-bottom: 1.25rem; }
+    .bp .section-sub { max-width: 600px; font-size: 1.02rem; line-height: 1.65; color: #a9bbdc; margin-bottom: 0; }
+    .bp-stats { flex: 1 1 300px; min-width: 0; margin: 0; font-family: var(--bp-mono); font-size: 14px; text-transform: uppercase; border-top: 1px solid var(--bp-line); }
+    .bp-stats > div { display: flex; align-items: baseline; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--bp-line); }
+    .bp-stats dt { display: flex; flex: 1; align-items: baseline; gap: 12px; white-space: nowrap; }
+    .bp-stats dt::after { content: ""; flex: 1; border-bottom: 2px dotted var(--bp-line); }
+    .bp-stats dd { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: 26px; line-height: 1.1; color: #ffffff; text-transform: none; }
+    .bp-stage { perspective: 1500px; perspective-origin: 50% 0%; padding-top: 2.5rem; }
+    .bp-plane { position: relative; transform: rotateX(42deg); transform-origin: 50% 100%; transform-style: preserve-3d; }
+    .bp-photo { position: relative; transform-style: preserve-3d; box-shadow: 0 0 0 1px rgba(160,190,255,0.6), 0 0 0 14px rgba(8,18,38,0.9), 0 0 0 15px rgba(160,190,255,0.35), 0 80px 90px rgba(0,0,0,0.65); }
+    .bp-photo img { display: block; width: 100%; height: auto; }
+    .bp-pin { --k: 1; position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -100%) rotateX(-42deg); transform-origin: 50% 100%; display: flex; flex-direction: column; align-items: center; }
+    .bp-pin b { background: #ffffff; color: var(--bp-ink); font-family: var(--bp-mono); font-weight: 700; font-size: 15px; letter-spacing: 0.06em; text-transform: uppercase; padding: 7px 11px; white-space: nowrap; line-height: 1.2; }
+    .bp-pin i { display: block; width: 2px; height: calc(var(--h) * var(--k)); background: #ffffff; }
+    .bp-pin u { display: block; width: 14px; height: 14px; border-radius: 50%; background: #ffffff; box-shadow: 0 0 0 5px rgba(255,255,255,0.3); }
+    .bp-pin-red b, .bp-pin-red i, .bp-pin-red u { background: var(--bp-red); }
+    .bp-pin-red u { box-shadow: 0 0 0 5px rgba(255,90,80,0.35); }
+    .bp-reel { position: absolute; left: 81%; top: 70%; width: 19%; margin: 0; transform: translate(-50%, -100%) rotateX(-42deg); transform-origin: 50% 100%; display: flex; flex-direction: column; gap: 8px; }
+    .bp-reel figcaption { align-self: flex-start; background: var(--bp-ink); color: #ffffff; font-family: var(--bp-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 8px; line-height: 1.2; white-space: nowrap; }
+    .bp-frame { position: relative; padding: 8px; background: var(--bp-ink); border: 1px solid rgba(160,190,255,0.6); box-shadow: 0 30px 40px rgba(0,0,0,0.6); }
+    .bp-frame::before, .bp-frame::after { content: ""; position: absolute; left: -3px; right: -3px; height: 22px; border: 0 solid var(--bp-red); border-width: 0 4px; pointer-events: none; }
+    .bp-frame::before { top: -3px; border-top-width: 4px; clip-path: polygon(0 0, 22px 0, 22px 100%, 0 100%, 0 0, 100% 0, 100% 100%, calc(100% - 22px) 100%, calc(100% - 22px) 0, 100% 0); }
+    .bp-frame::after { bottom: -3px; border-bottom-width: 4px; clip-path: polygon(0 0, 22px 0, 22px 100%, 0 100%, 0 0, 100% 0, 100% 100%, calc(100% - 22px) 100%, calc(100% - 22px) 0, 100% 0); }
+    .bp-frame video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: cover; background: #0c172b; }
+    .bp-block { display: flex; flex-wrap: wrap; margin-top: 1rem; border: 1px solid var(--bp-line); background: rgba(8,18,38,0.92); }
+    .bp-cell { flex: 1 1 170px; padding: 18px 20px; border-right: 1px solid var(--bp-line); border-bottom: 1px solid var(--bp-line); margin-bottom: -1px; }
+    .bp-cell span { display: block; font-family: var(--bp-mono); font-size: 12px; letter-spacing: 0.12em; color: #ff6a60; }
+    .bp-cell strong { display: block; margin-top: 8px; font-family: var(--font-display); font-weight: 700; font-size: 18px; line-height: 1.25; color: #ffffff; }
+    .bp-cta { flex: 1 1 200px; display: flex; align-items: center; justify-content: center; padding: 18px 20px; background: #d63c35; color: #ffffff; font-family: var(--font-display); font-weight: 700; font-size: 16px; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
+    .bp-cta:hover { background: #e24a43; }
+    @media (max-width: 1000px) {
+      .bp-pin { --k: 0.65; }
+      .bp-pin b { font-size: 12px; padding: 5px 8px; }
+      .bp-pin u { width: 10px; height: 10px; }
+      .bp-reel figcaption { font-size: 10px; }
     }
-    @media (max-width: 520px) {
-      .rd-stat { padding: 0.85rem 0.8rem; }
-      .rd-stat b { font-size: 22px; }
-      .rd-stat span { font-size: 12px; }
-      .rd-cards { grid-template-columns: 1fr; }
+    @media (max-width: 760px) {
+      .bp { padding: 3rem 0 3.5rem; }
+      .bp-stage { perspective: none; padding-top: 0; }
+      .bp-plane { transform: none; }
+      .bp-photo { box-shadow: 0 0 0 1px rgba(160,190,255,0.6), 0 0 0 6px rgba(8,18,38,0.9), 0 0 0 7px rgba(160,190,255,0.35); }
+      .bp-pin { --k: 0.3; transform: translate(-50%, -100%); }
+      .bp-pin b { font-size: 9px; padding: 3px 5px; letter-spacing: 0.03em; }
+      .bp-pin u { width: 7px; height: 7px; box-shadow: none; }
+      .bp-photo .bp-pin:first-of-type { display: none; }
+      .bp-reel { position: static; transform: none; width: min(260px, 78%); margin: 2rem auto 0; }
+      .bp-reel figcaption { font-size: 11px; }
+      .bp-stats { font-size: 12px; }
+      .bp-stats dd { font-size: 22px; }
     }
 
     /* ── DRONE HOSPITAL WORDMARK LINK ── */
@@ -1591,62 +1623,45 @@
         </a>
       </div>
     </div>
-    <h2>Technical Repair & Development</h2>
-    <p class="section-sub">Diagnostic, repair, and custom build services across DJI and Betaflight platforms, from cinematic rigs to high-performance FPV builds. We work across all major systems: flight controllers, ESCs, motors, and firmware.</p>
-    <div class="rd-wrap">
-      <div class="rd-stats">
-        <div class="rd-stat"><b>100s</b><span>drones repaired</span></div>
-        <div class="rd-stat"><b>6+ yrs</b><span>of experience</span></div>
-        <div class="rd-stat"><b>100%</b><span>get a full report</span></div>
+    <div class="bp">
+      <div class="bp-head">
+        <div class="bp-intro">
+          <div class="bp-tag">DWG PQ-RB-01 // DRONE HOSPITAL // REPAIR BAY</div>
+          <h2 class="bp-h2">Technical Repair & Development</h2>
+          <p class="section-sub">Diagnostic, repair, and custom build services across DJI and Betaflight platforms, from cinematic rigs to high-performance FPV builds. We work across all major systems: flight controllers, ESCs, motors, and firmware.</p>
+        </div>
+        <dl class="bp-stats">
+          <div><dt>Units repaired</dt><dd>100s</dd></div>
+          <div><dt>Years on the bench</dt><dd>6+</dd></div>
+          <div><dt>Written report</dt><dd>EVERY JOB</dd></div>
+        </dl>
       </div>
-      <div class="rd-media">
-        <div class="rd-photo">
-          <img loading="lazy" decoding="async" src="assets/images/DJI_Assembly.jpeg" alt="DJI drone components">
+      <div class="bp-stage">
+        <div class="bp-plane">
+          <div class="bp-photo">
+            <img loading="lazy" decoding="async" src="assets/images/DJI_Assembly.jpeg" width="2200" height="967" alt="DJI drone components">
+            <div class="bp-pin" style="--x:10%;--y:56%;--h:64px"><b>Top shell</b><i></i><u></u></div>
+            <div class="bp-pin bp-pin-red" style="--x:25%;--y:60%;--h:96px"><b>Mainboard</b><i></i><u></u></div>
+            <div class="bp-pin" style="--x:21%;--y:80%;--h:40px"><b>Gimbal</b><i></i><u></u></div>
+            <div class="bp-pin" style="--x:46.5%;--y:27%;--h:44px"><b>Motors</b><i></i><u></u></div>
+            <div class="bp-pin bp-pin-red" style="--x:63%;--y:72%;--h:110px"><b>ESC + power board</b><i></i><u></u></div>
+          </div>
+          <figure class="bp-reel">
+            <figcaption>Service log // M300 RTK</figcaption>
+            <div class="bp-frame">
+              <video controls playsinline preload="none" width="720" height="1280" poster="assets/video/matrice-300-maintenance-poster.jpg" aria-label="Video: DJI Matrice 300 RTK maintenance check">
+                <source src="assets/video/matrice-300-maintenance.mp4" type="video/mp4">
+              </video>
+            </div>
+          </figure>
         </div>
-        <figure class="rd-reel">
-          <video controls playsinline preload="none" width="720" height="1280" poster="assets/video/matrice-300-maintenance-poster.jpg" aria-label="Video: DJI Matrice 300 RTK maintenance check">
-            <source src="assets/video/matrice-300-maintenance.mp4" type="video/mp4">
-          </video>
-          <figcaption>Matrice 300 RTK maintenance check</figcaption>
-        </figure>
       </div>
-      <div class="rd-cards">
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-          </div>
-          <div>
-            <h3>Diagnostics & repair</h3>
-            <p>Full systems check and crash repair.</p>
-          </div>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/></svg>
-          </div>
-          <div>
-            <h3>Firmware & flight tuning</h3>
-            <p>Flashing, calibration, PID tuning.</p>
-          </div>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
-          </div>
-          <div>
-            <h3>DJI maintenance checkups</h3>
-            <p>Scheduled service for the Matrice 300 and more.</p>
-          </div>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg>
-          </div>
-          <div>
-            <h3>Full written reports</h3>
-            <p>Data found, work done, next steps.</p>
-          </div>
-        </div>
+      <div class="bp-block">
+        <div class="bp-cell"><span>SVC-01</span><strong>Diagnostics & repair</strong></div>
+        <div class="bp-cell"><span>SVC-02</span><strong>Firmware & flight tuning</strong></div>
+        <div class="bp-cell"><span>SVC-03</span><strong>DJI maintenance checkups</strong></div>
+        <div class="bp-cell"><span>SVC-04</span><strong>Full written reports</strong></div>
+        <a class="bp-cta" href="/drone-repair-atlanta.html">Start a repair &rarr;</a>
       </div>
     </div>
   </section>
