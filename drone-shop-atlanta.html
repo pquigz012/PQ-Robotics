@@ -574,7 +574,7 @@
       html[data-hero="1"] .hero-inner { position: static; display: block; max-width: 940px; text-align: center; padding: 3.2rem 2rem 0; margin: 0 auto; flex: 1 0 auto; }
       html[data-hero="1"] .hero-inner > div:first-child { position: relative; z-index: 3; }
       html[data-hero="1"] .hero-inner > div:first-child::before { content: ""; position: absolute; inset: -40px -120px -30px; z-index: -1; pointer-events: none; background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(10,19,36,.9) 0%, rgba(10,19,36,.55) 55%, rgba(10,19,36,0) 100%); }
-      html[data-hero="1"] .scene-wrap { position: absolute; left: 0; right: 0; bottom: 0; height: 72%; z-index: 1; }
+      html[data-hero="1"] .scene-wrap { position: absolute; left: 0; right: 0; bottom: 0; height: min(72%, 36vw); z-index: 1; }
       html[data-hero="1"] #scene { width: 100%; height: 100%; -webkit-mask-image: linear-gradient(180deg, transparent, #000 18%); mask-image: linear-gradient(180deg, transparent, #000 18%); }
       html[data-hero="1"] .hero-tag, html[data-hero="1"] .hero-cta, html[data-hero="1"] .price { justify-content: center; }
       html[data-hero="1"] .hero-sub { margin: 0 auto 1.2rem; max-width: 760px; }
@@ -1496,7 +1496,7 @@ window.A1_PHOTOS = [
  ]
 }
 </script>
-<script src="assets/js/shop-scenes.js" defer></script>
+<script src="assets/js/shop-scenes.js?v=20261119c" defer></script>
 <script>
 (function () {
   // Days to Christmas
@@ -1571,6 +1571,6 @@ window.A1_PHOTOS = [
   });
 })();
 </script>
-<script src="/assets/js/mobile-nav.js" defer></script>
+<script src="/assets/js/mobile-nav.js?v=20261119c" defer></script>
 </body>
 </html>
