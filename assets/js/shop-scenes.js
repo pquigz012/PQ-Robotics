@@ -144,7 +144,8 @@
     return g;
   }
   function part(parent, kind) {           // origin at the bottom centre
-    const g = mk('g', { class: 'part' }, parent);
+    const outer = mk('g', { class: 'part' }, parent);
+    const g = mk('g', { transform: 'scale(.8)' }, outer);
     if (kind === 'a1') carton(g, 28, 22);
     else if (kind === 'gift') gift(g, 24, 16, 'g-red');
     else if (kind === 'gift2') gift(g, 22, 18, 'g-gold');
@@ -161,7 +162,7 @@
       mk('path', { class: 'p-coil', d: 'M-6 -12.5H6M-6 -9H6M-6 -5.5H6' }, g);
       mk('path', { class: 'p-shaft', d: 'M0 -18.6V-22' }, g);
     }
-    return g;
+    return outer;
   }
 
 
@@ -463,7 +464,7 @@
     mk('path', { class: 'roof-snow', d: 'M8 224Q15.5 216 23 224V228H8Z' }, L.house);
     mk('path', { class: 'snowfield', d: 'M0 394Q16 384 34 392Z' }, L.house);
     // roller ramp out of the door
-    const RT = 362;
+    const RT = 372;
     mk('rect', { class: 'kf', x: 168, y: RT, width: 104, height: 6, rx: 2 }, L.roll);
     for (let x = 173; x <= 268; x += 9) mk('circle', { class: 'roller', cx: x, cy: RT + 3, r: 2.2 }, L.roll);
     for (const lx of [214, 264]) { mk('rect', { class: 'kf', x: lx - 2, y: RT + 6, width: 4, height: 392 - RT - 6 }, L.roll); mk('rect', { class: 'kf', x: lx - 6, y: 390, width: 12, height: 3, rx: 1 }, L.roll); }
@@ -484,12 +485,12 @@
     // two elves on tracks, at different depths so they pass each other
     const mkElf = (layer, F, s, kind, off) => {
       const back = mk('g', {}, layer), hold = mk('g', {}, layer), front = mk('g', {}, layer);
-      const R = robot(back, front, 286, F, s, { elf: kind });
+      const R = robot(back, front, 282, F, s, { elf: kind });
       R.hold = hold; R.off = off; R.item = null; R.next = null;
       return R;
     };
-    const EA = mkElf(L.elfA, FA, 2.5, 'g', 0), EB = mkElf(L.elfB, FB, 2.7, 'r', 5);
-    const PX = 286, LX = 382, CYC = 10, END = 264;
+    const EA = mkElf(L.elfA, FA, 1.65, 'g', 0), EB = mkElf(L.elfB, FB, 1.8, 'r', 5);
+    const PX = 282, LX = 392, CYC = 10, END = 264;
     const KINDS = ['a1', 'prop', 'gift', 'batt', 'a1', 'motor', 'gift2', 'prop'];
     let k = 0, sleighNo = 1, loaded = 0, clearAt = 0, puffT = 0;
     const rolling = [], falling = [], resting = [], puffs = [], sparks = [];
@@ -550,7 +551,7 @@
       cycle(EB, (t + EB.off) % CYC, t);
       for (let i = falling.length - 1; i >= 0; i--) {   // parts drop into the sleigh
         const f = falling[i]; f.t = Math.min(1, f.t + dt / 0.55);
-        const x = lerp(f.x0, f.x1, f.t), y = lerp(f.y0, f.y1, f.t * f.t) - 26 * Math.sin(Math.PI * f.t);
+        const x = lerp(f.x0, f.x1, f.t), y = lerp(f.y0, f.y1, f.t * f.t) - 44 * Math.sin(Math.PI * f.t);
         f.g.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${(10 * Math.sin(Math.PI * f.t)).toFixed(1)})`);
         if (f.t >= 1) {
           falling.splice(i, 1); resting.push(f.g); sparkle(L.fx, sparks, f.x1, f.y1 - 14); label();
