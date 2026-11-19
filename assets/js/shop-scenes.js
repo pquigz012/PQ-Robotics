@@ -418,6 +418,8 @@
     const HERO = document.documentElement.getAttribute('data-hero');
     const FRAME = (HERO && window.innerWidth <= 900) ? ['-120 96 880 344', 'xMidYMax meet'] : { '1': ['-160 110 960 330', 'xMidYMax slice'], '2': ['-200 110 1040 330', 'xMidYMax meet'], '3': ['36 104 620 336', 'xMidYMax meet'] }[HERO];
     if (FRAME) { svg.setAttribute('viewBox', FRAME[0]); svg.setAttribute('preserveAspectRatio', FRAME[1]); }
+    // full-screen hero on wide screens: house further left, sleigh further right, longer walk
+    const SP = (HERO === '1' && window.innerWidth > 900) ? 115 : 0;
     // sky: aurora, moon, stars
     const au = mk('g', { class: 'aurora', filter: 'url(#soft)' }, L.sky);
     mk('path', { class: 'au1', d: 'M-520 90C-400 50 -220 110 -20 70C80 30 150 96 250 58S420 20 520 64S640 40 680 52S920 20 1220 70' }, au);
@@ -497,7 +499,8 @@
       return R;
     };
     const EA = mkElf(L.elfA, FA, 1.65, 'g', 0), EB = mkElf(L.elfB, FB, 1.8, 'r', 5);
-    const PX = 282, LX = 392, CYC = 10, END = 264;
+    const PX = 282 - SP, LX = 392 + SP, CYC = 10, END = 264 - SP;
+    if (SP) { for (const n of ['house', 'roll', 'items']) L[n].setAttribute('transform', `translate(${-SP} 0)`); for (const n of ['sback', 'load', 'sleigh', 'drone']) L[n].setAttribute('transform', `translate(${SP} 0)`); }
     const KINDS = ['a1', 'prop', 'gift', 'batt', 'a1', 'motor', 'gift2', 'prop'];
     let k = 0, sleighNo = 1, loaded = 0, clearAt = 0, puffT = 0;
     const rolling = [], falling = [], resting = [], puffs = [], sparks = [];
@@ -533,7 +536,7 @@
         else if (E.item) {
           const p = tipWorld(E, 5.4), sl = SLOTS[loaded % SLOTS.length];
           L.load.appendChild(E.item.g);
-          falling.push({ g: E.item.g, x0: p.x, y0: p.y + 3, x1: sl[0], y1: sl[1], t: 0 });
+          falling.push({ g: E.item.g, x0: p.x - SP, y0: p.y + 3, x1: sl[0], y1: sl[1], t: 0 });
           loaded++; E.item = null;
         }
       } else if (tc < 9.6) {                           // drive back for the next part
@@ -549,11 +552,11 @@
     return function step(dt, t) {
       for (let i = rolling.length - 1; i >= 0; i--) {   // parts roll out of the door to the end of the ramp
         const it = rolling[i]; it.t = Math.min(1, it.t + dt / 2.6);
-        it.x = lerp(172, END, ease(it.t));
+        it.x = lerp(172, END + SP, ease(it.t));
         it.g.setAttribute('transform', `translate(${it.x.toFixed(1)} ${RT})`);
         if (it.t >= 1) rolling.splice(i, 1);
       }
-      if (EA.next && EA.next.t >= 1 && !rolling.includes(EA.next)) EA.next.g.setAttribute('transform', `translate(${END} ${RT})`);
+      if (EA.next && EA.next.t >= 1 && !rolling.includes(EA.next)) EA.next.g.setAttribute('transform', `translate(${END + SP} ${RT})`);
       cycle(EA, (t + EA.off) % CYC, t);
       cycle(EB, (t + EB.off) % CYC, t);
       for (let i = falling.length - 1; i >= 0; i--) {   // parts drop into the sleigh
@@ -561,7 +564,7 @@
         const x = lerp(f.x0, f.x1, f.t), y = lerp(f.y0, f.y1, f.t * f.t) - 44 * Math.sin(Math.PI * f.t);
         f.g.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${(10 * Math.sin(Math.PI * f.t)).toFixed(1)})`);
         if (f.t >= 1) {
-          falling.splice(i, 1); resting.push(f.g); sparkle(L.fx, sparks, f.x1, f.y1 - 14); label();
+          falling.splice(i, 1); resting.push(f.g); sparkle(L.fx, sparks, f.x1 + SP, f.y1 - 14); label();
           if (loaded >= SLOTS.length) clearAt = t + 2.2;
         }
       }
@@ -579,7 +582,7 @@
         p.el.setAttribute('r', (4 + p.t * 3).toFixed(1));
         p.el.style.opacity = (0.3 * (1 - p.t / 4.5)).toFixed(2);
       }
-      const hx = 560 + 6 * Math.sin(t * 0.5), hy = 138 + 6 * Math.sin(t * 1.4);
+      const hx = 560 + 6 * Math.sin(t * 0.5), hy = 138 + (SP ? 36 : 0) + 6 * Math.sin(t * 1.4);
       dr.setAttribute('transform', `translate(${hx.toFixed(1)} ${hy.toFixed(1)}) rotate(${(3 * Math.cos(t * 0.5)).toFixed(2)})`);
       swing.setAttribute('transform', `rotate(${(6 * Math.sin(t * 1.4 + 0.7)).toFixed(2)})`);
       stepSparks(sparks, dt);
