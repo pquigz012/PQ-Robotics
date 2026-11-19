@@ -321,6 +321,36 @@
     html[data-look="3"] .spec b { color: var(--gold); }
 
 
+
+    /* in-the-box photos */
+    .box-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; }
+    .item { padding: 1rem 1rem 1.1rem; }
+    .item-ph { background: #f7f5f1; border-radius: 6px; margin-bottom: .7rem; aspect-ratio: 1; overflow: hidden; }
+    .item-ph img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .item h3 { font-size: .95rem; }
+    .item .qty { font-family: var(--mono); font-size: 11px; color: var(--red); font-weight: 500; margin-left: 4px; }
+    .item p { font-size: 12.5px; }
+    .item-no { margin-bottom: .6rem; }
+    html[data-look="2"] .item-ph { border-radius: 0; }
+    /* details tabs */
+    .details { margin-top: 2.6rem; border: 1px solid var(--line2); border-radius: var(--radius-lg); background: var(--card); overflow: hidden; }
+    html[data-look="2"] .details { border: 1.5px solid var(--ink); border-radius: 0; background: var(--paper); }
+    .tabs { display: flex; flex-wrap: wrap; border-bottom: 1px solid var(--line2); }
+    .tabs button { flex: 1 1 auto; background: none; border: 0; border-bottom: 2px solid transparent; color: var(--sub); font: inherit; font-size: 14px; font-weight: 500; padding: 14px 18px; cursor: pointer; white-space: nowrap; }
+    .tabs button:hover { color: var(--ink); }
+    .tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+    .panel { padding: 1.4rem 1.6rem 1.6rem; }
+    .spec-table { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; }
+    .spec-table div { display: grid; grid-template-columns: 9.5rem 1fr; gap: 1rem; padding: .7rem 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+    .spec-table dt { color: var(--sub); }
+    .policy { list-style: none; display: grid; gap: .9rem; max-width: 760px; }
+    .policy li { font-size: 14.5px; color: var(--sub); padding-left: 1.1rem; border-left: 2px solid var(--red); }
+    .policy b { color: var(--ink); font-weight: 600; }
+    .policy a { color: var(--ink); }
+    @media (max-width: 1040px) { .box-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+    @media (max-width: 900px) { .spec-table { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) { .box-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; } .item { padding: .6rem .6rem .8rem; } .item p { display: none; } .item-no { display: none; } .item h3 { font-size: .82rem; } .spec-table div { grid-template-columns: 7rem 1fr; } .tabs button { padding: 12px 12px; font-size: 13px; } .panel { padding: 1.1rem; } }
+
     /* ── A1 PHOTOS (shown once photo files are listed in A1_PHOTOS) ── */
     .photos-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 14px; }
     .ph-main { position: relative; margin: 0; border-radius: var(--radius-lg); overflow: hidden; background: #0b0f18; aspect-ratio: 4 / 3; }
@@ -331,13 +361,13 @@
     .ph-thumbs button.on { border-color: var(--accent); }
     .ph-thumbs img { width: 100%; height: 100%; object-fit: cover; display: block; }
     html[data-look="2"] .ph-main, html[data-look="2"] .ph-thumbs button { border-radius: 0; box-shadow: 4px 4px 0 var(--ink); }
-    .pin { position: absolute; z-index: 3; right: 1%; top: -3%; width: 25%; max-width: 190px; background: #fbf8f1; padding: 7px 7px 26px; border-radius: 3px; transform: rotate(4deg); box-shadow: 0 18px 40px -12px rgba(0,0,0,.6); text-decoration: none; }
+    .pin { position: absolute; z-index: 3; left: 37%; top: 10%; width: 21%; max-width: 160px; background: #fbf8f1; padding: 7px 7px 26px; border-radius: 3px; transform: rotate(4deg); box-shadow: 0 18px 40px -12px rgba(0,0,0,.6); text-decoration: none; }
     .pin img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
     .pin span { position: absolute; left: 0; right: 0; bottom: 3px; text-align: center; font-family: var(--hand); font-weight: 700; font-size: 18px; color: #b3261e; }
     .pin::before { content: ""; position: absolute; top: -9px; left: 50%; width: 46px; height: 16px; margin-left: -23px; background: rgba(242,193,78,.75); transform: rotate(3deg); }
     .fthumb { width: 96px; height: 72px; border-radius: var(--radius-sm); object-fit: cover; }
     @media (max-width: 900px) { .photos-grid { grid-template-columns: 1fr; } .ph-thumbs { grid-template-columns: repeat(4, 1fr); } }
-    @media (max-width: 640px) { .pin { width: 27%; top: -2%; padding: 5px 5px 20px; } .pin span { font-size: 14px; } }
+    @media (max-width: 640px) { .pin { width: 24%; top: 12%; padding: 4px 4px 17px; } .pin span { font-size: 12px; } }
 
     /* ── SECTIONS ── */
     section { max-width: 1180px; margin: 0 auto; padding: 5rem 2.5rem; }
@@ -349,14 +379,14 @@
     .section-sub { color: var(--sub); max-width: 640px; margin-bottom: 2.6rem; }
 
     /* What's in the box */
-    .box-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
+    .box-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; }
     .item { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 1.3rem 1.2rem 1.2rem; }
     .item-no { font-family: var(--mono); font-size: 10.5px; letter-spacing: .16em; color: var(--muted); margin-bottom: .9rem; }
     .item svg { width: 54px; height: 54px; color: var(--ink); opacity: .9; margin-bottom: .8rem; }
     .item svg .r { color: var(--red); }
     .item h3 { font-family: var(--font-display); font-size: 1.02rem; font-weight: 600; line-height: 1.3; margin-bottom: .4rem; }
     .item p { font-size: 13.5px; color: var(--sub); line-height: 1.6; }
-    html[data-look="1"] .item, html[data-look="4"] .item { border-top: 3px solid var(--red); border-radius: 4px; background-image: repeating-linear-gradient(90deg, transparent 0 46px, rgba(255,255,255,.015) 46px 48px); }
+    html[data-look="1"] .item, html[data-look="4"] .item { border-top: 3px solid var(--red); border-radius: 4px; }
     html[data-look="1"] .item-no::before, html[data-look="4"] .item-no::before { content: "CRATE "; }
     html[data-look="2"] .item { background: var(--paper); border: 1.5px solid var(--ink); border-radius: 0; }
     html[data-look="2"] .item-no { border-bottom: 1px solid var(--line2); margin: -1.3rem -1.2rem 1rem; padding: .45rem 1.2rem; color: var(--ink); }
@@ -454,7 +484,6 @@
     .looks a.on { background: #d63c35; color: #fff; }
 
     @media (max-width: 1040px) {
-      .box-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .nav-links a { padding: 0 .7rem; }
     }
     @media (max-width: 900px) {
@@ -480,7 +509,6 @@
       .specs-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 1.2rem 1.15rem; }
       html[data-look="2"] .specs-inner { padding: 0 1.15rem; }
       section { padding: 3.6rem 1.15rem; }
-      .box-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
       .shelf { grid-template-columns: 1fr 1fr; gap: 10px; }
       .peek { width: 110px; }
       .two { grid-template-columns: 1fr; }
@@ -494,6 +522,9 @@
       html { scroll-behavior: auto; }
       .scene *, .scene { animation: none !important; }
     }
+    /* box grid breakpoints last so they win */
+    @media (max-width: 1040px) { #bundle .box-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+    @media (max-width: 640px) { #bundle .box-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; } }
   </style>
 </head>
 <body>
@@ -522,7 +553,7 @@
       <div>
         <div class="hero-tag"><span><b>✚</b> PQ Robotics Shop · Holiday 2026</span><span class="countdown" id="xmas" hidden></span></div>
         <h1>The Antigravity A1, <em>wrapped and ready.</em></h1>
-        <p class="hero-sub">The 8K 360 camera drone you fly with goggles and a point-to-fly grip. This is the <strong>Essential Bundle</strong>: drone, Vision goggles, Grip motion controller, two flight batteries and a charging hub. Sold here in Atlanta by the shop that repairs drones and teaches pilots.</p>
+        <p class="hero-sub">The 8K 360 camera drone you fly with goggles and a point-to-fly grip. This is the <strong>Essential Bundle</strong>: drone, Vision goggles, Grip motion controller, two batteries, charging hub, carry case, sling bag, landing pad and a 256 GB card. Sold here in Atlanta by the shop that repairs drones and teaches pilots.</p>
         <div class="price" aria-label="Holiday price 1,450 dollars, regularly 1,650 dollars">
           <span class="now">$1,450</span><span class="was">$1,650</span><span class="save">SAVE $200</span>
         </div>
@@ -565,44 +596,75 @@
   <section id="bundle">
     <div class="eyebrow">The Essential Bundle</div>
     <h2>Everything you need to fly on Christmas morning</h2>
-    <p class="section-sub">The A1 films a full sphere around itself, so you fly first and pick the shot later. The lenses sit on the top and bottom, and the stitching hides the drone from its own video.</p>
+    <p class="section-sub">Twelve pieces in the box. The A1 films a full sphere around itself, so you fly first and pick the shot later, and the stitching hides the drone from its own video.</p>
     <div class="box-grid">
-      <article class="item">
-        <div class="item-no">01</div>
-        <svg viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M21 22L10 12M33 22L44 12M21 32L10 42M33 32L44 42"/><circle cx="10" cy="12" r="7" stroke-dasharray="2 2.5"/><circle cx="44" cy="12" r="7" stroke-dasharray="2 2.5"/><circle cx="10" cy="42" r="7" stroke-dasharray="2 2.5"/><circle cx="44" cy="42" r="7" stroke-dasharray="2 2.5"/><rect x="20" y="17" width="14" height="20" rx="6"/><circle class="r" cx="27" cy="27" r="3.4" stroke="currentColor"/></svg>
-        <h3>Antigravity A1 drone</h3>
-        <p>8K 360 video, under 249 g, auto return to home.</p>
-      </article>
-      <article class="item">
-        <div class="item-no">02</div>
-        <svg viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22c0-4 3-6 7-6h28c4 0 7 2 7 6v8c0 4-3 6-7 6h-8l-4-4h-4l-4 4h-8c-4 0-7-2-7-6z"/><circle cx="17" cy="26" r="4"/><circle cx="37" cy="26" r="4"/><path d="M2 24h4M48 24h4"/></svg>
-        <h3>Vision goggles</h3>
-        <p>Look around in 360 while you fly, with 2K live view.</p>
-      </article>
-      <article class="item">
-        <div class="item-no">03</div>
-        <svg viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 8h14c3 0 5 2 5 5v8c0 3-2 5-5 5h-2l-3 20c-.3 2-2 3-4 3h-2c-2 0-3.5-1.5-3-3.5L23 26h-3c-3 0-5-2-5-5v-8c0-3 2-5 5-5z"/><path class="r" d="M26 30c-3 1-4 4-3 6" stroke="currentColor"/><circle cx="27" cy="16" r="3"/></svg>
-        <h3>Grip motion controller</h3>
-        <p>Point it where you want to go and pull the trigger.</p>
-      </article>
-      <article class="item">
-        <div class="item-no">04</div>
-        <svg viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="12" width="16" height="32" rx="3"/><rect x="31" y="12" width="16" height="32" rx="3"/><path d="M12 9h6M36 9h6"/><path class="r" d="M16 22l-3 6h6l-3 6M40 22l-3 6h6l-3 6" stroke="currentColor"/></svg>
-        <h3>Two flight batteries</h3>
-        <p>Up to 24 minutes in the air on each one.</p>
-      </article>
-      <article class="item">
-        <div class="item-no">05</div>
-        <svg viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="22" width="44" height="20" rx="4"/><path d="M13 22V14h8v8M23 22V14h8v8M33 22V14h8v8"/><circle class="r" cx="12" cy="34" r="1.6" fill="currentColor"/><circle cx="18" cy="34" r="1.6"/><circle cx="24" cy="34" r="1.6"/></svg>
-        <h3>Charging hub</h3>
-        <p>Charge the batteries back to back between flights.</p>
-      </article>
+      <article class="item"><div class="item-no">01</div><div class="item-ph"><img src="assets/images/shop/box/drone.jpg" alt="A1 drone" loading="lazy" width="157" height="157"></div><h3>A1 drone <span class="qty">×1</span></h3><p>8K 360, under 249 g</p></article>
+      <article class="item"><div class="item-no">02</div><div class="item-ph"><img src="assets/images/shop/box/goggles.jpg" alt="Vision goggles" loading="lazy" width="157" height="157"></div><h3>Vision goggles <span class="qty">×1</span></h3><p>Look around in 360 as you fly</p></article>
+      <article class="item"><div class="item-no">03</div><div class="item-ph"><img src="assets/images/shop/box/grip.jpg" alt="Grip motion controller" loading="lazy" width="157" height="157"></div><h3>Grip motion controller <span class="qty">×1</span></h3><p>Point it and pull the trigger</p></article>
+      <article class="item"><div class="item-no">04</div><div class="item-ph"><img src="assets/images/shop/box/battery.jpg" alt="Flight batteries" loading="lazy" width="157" height="157"></div><h3>Flight batteries <span class="qty">×2</span></h3><p>Up to 24 min each</p></article>
+      <article class="item"><div class="item-no">05</div><div class="item-ph"><img src="assets/images/shop/box/props.jpg" alt="Spare propellers" loading="lazy" width="157" height="157"></div><h3>Spare propellers <span class="qty">×4</span></h3><p>Two spare pairs</p></article>
+      <article class="item"><div class="item-no">06</div><div class="item-ph"><img src="assets/images/shop/box/case.jpg" alt="Drone carry case" loading="lazy" width="157" height="157"></div><h3>Drone carry case <span class="qty">×1</span></h3><p>Protects the drone in transit</p></article>
+      <article class="item"><div class="item-no">07</div><div class="item-ph"><img src="assets/images/shop/box/bag.jpg" alt="Sling bag" loading="lazy" width="157" height="157"></div><h3>Sling bag <span class="qty">×1</span></h3><p>Carries the whole kit</p></article>
+      <article class="item"><div class="item-no">08</div><div class="item-ph"><img src="assets/images/shop/box/pad.jpg" alt="Landing pad" loading="lazy" width="157" height="157"></div><h3>Landing pad <span class="qty">×1</span></h3><p>Clean takeoffs on grass or dirt</p></article>
+      <article class="item"><div class="item-no">09</div><div class="item-ph"><img src="assets/images/shop/box/vbatt.jpg" alt="Vision battery" loading="lazy" width="157" height="157"></div><h3>Vision battery <span class="qty">×1</span></h3><p>Powers the goggles</p></article>
+      <article class="item"><div class="item-no">10</div><div class="item-ph"><img src="assets/images/shop/box/hub.jpg" alt="Charging hub" loading="lazy" width="157" height="157"></div><h3>Charging hub <span class="qty">×1</span></h3><p>Charges the flight batteries</p></article>
+      <article class="item"><div class="item-no">11</div><div class="item-ph"><img src="assets/images/shop/box/lens.jpg" alt="Replacement lens kit" loading="lazy" width="157" height="157"></div><h3>Replacement lens kit <span class="qty">×1</span></h3><p>Spare lens parts and cleaning tools</p></article>
+      <article class="item"><div class="item-no">12</div><div class="item-ph"><img src="assets/images/shop/box/sd.jpg" alt="Lexar 256 GB microSD" loading="lazy" width="157" height="157"></div><h3>Lexar 256 GB microSD <span class="qty">×1</span></h3><p>U3 A2 V30, ready to record</p></article>
     </div>
 
     <div class="why">
       <div><h3>Repairs down the road</h3><p>We run the <a href="/drone-repair-atlanta.html">Drone Hospital</a>. If a prop snaps or an arm cracks, you already know where to bring it.</p></div>
       <div><h3>Learn to fly it here</h3><p>First-flight lessons and coaching happen at the same shop. Bring your A1 and we teach on it. <a href="/drone-classes-atlanta.html">See lessons</a>.</p></div>
       <div><h3>No card fees, no surprises</h3><p>Reserve first, we confirm stock, then pay by Zelle, Venmo or check. Pick up at 6059 Boylston Dr NE.</p></div>
+    </div>
+
+    <div class="details" id="details">
+      <div class="tabs" role="tablist" aria-label="A1 bundle details">
+        <button role="tab" id="t-spec" aria-controls="p-spec" aria-selected="true">Specifications</button>
+        <button role="tab" id="t-war" aria-controls="p-war" aria-selected="false" tabindex="-1">Warranty &amp; support</button>
+        <button role="tab" id="t-del" aria-controls="p-del" aria-selected="false" tabindex="-1">Pickup &amp; delivery</button>
+        <button role="tab" id="t-ret" aria-controls="p-ret" aria-selected="false" tabindex="-1">Returns</button>
+      </div>
+      <div class="panel" role="tabpanel" id="p-spec" aria-labelledby="t-spec">
+        <dl class="spec-table">
+          <div><dt>Brand</dt><dd>Antigravity</dd></div>
+          <div><dt>Model</dt><dd>A1, Essential Bundle</dd></div>
+          <div><dt>Color</dt><dd>White</dd></div>
+          <div><dt>Takeoff weight</dt><dd>Under 249 g (8.78 oz)</dd></div>
+          <div><dt>Video</dt><dd>8K 360 (7680 × 3840) at 30, 25 or 24 fps, plus 5.2K and 4K modes</dd></div>
+          <div><dt>Photos</dt><dd>55 MP 360 stills (10496 × 5248)</dd></div>
+          <div><dt>Flight time</dt><dd>Up to 24 minutes per battery, 2 batteries included</dd></div>
+          <div><dt>Top speed</dt><dd>8 m/s (17.9 mph) in Sport mode</dd></div>
+          <div><dt>Video link</dt><dd>Up to 10 km</dd></div>
+          <div><dt>Storage</dt><dd>microSD, Lexar 256 GB card included</dd></div>
+          <div><dt>Vision goggles</dt><dd>340 g, about 90° diagonal view, 2560 × 2560 per eye, diopter +2D to −5D, TÜV Rheinland Low Blue Light certified</dd></div>
+          <div><dt>Controls</dt><dd>Grip motion controller with FreeMotion point-to-fly</dd></div>
+          <div><dt>Safety</dt><dd>Auto return to home</dd></div>
+        </dl>
+      </div>
+      <div class="panel" role="tabpanel" id="p-war" aria-labelledby="t-war" hidden>
+        <ul class="policy">
+          <li><b>Manufacturer warranty.</b> Your A1 is covered by Antigravity's manufacturer warranty.</li>
+          <li><b>Drone Hospital help.</b> If something isn't right, bring it to the shop. We diagnose it and help you file the warranty claim with Antigravity.</li>
+          <li><b>Crashes and damage.</b> Things the warranty doesn't cover, we can repair at the <a href="/drone-repair-atlanta.html">Drone Hospital</a>.</li>
+          <li><b>Questions any time.</b> Call or text <a href="tel:+14044089063">(404) 408-9063</a>.</li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="p-del" aria-labelledby="t-del" hidden>
+        <ul class="policy">
+          <li><b>Pickup.</b> At our shop, 6059 Boylston Dr NE, Atlanta, GA 30328, at a time we set together when we confirm your order.</li>
+          <li><b>Atlanta-area delivery.</b> Choose it in the order form and we quote the delivery when we confirm.</li>
+          <li><b>Shipping.</b> We don't ship the A1 outside the Atlanta area yet.</li>
+          <li><b>Payment.</b> Zelle, Venmo or check, after we confirm stock. Nothing is charged when you reserve.</li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="p-ret" aria-labelledby="t-ret" hidden>
+        <ul class="policy">
+          <li><b>14 days, unopened.</b> Return it unopened and complete within 14 days of pickup or delivery for a full refund of the purchase price.</li>
+          <li><b>Opened units.</b> Defects are covered by the manufacturer warranty, and we help you with the claim.</li>
+          <li><b>Start a return.</b> Call or text <a href="tel:+14044089063">(404) 408-9063</a>.</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -615,7 +677,7 @@
       <div class="shelf">
         <article class="feature">
           <div class="fno">No. 01 · IN STOCK</div>
-          <div><h3>Antigravity A1 8K 360 Drone, Essential Bundle</h3><p>Drone, Vision goggles, Grip motion controller, two batteries, charging hub.</p></div>
+          <div><h3>Antigravity A1 8K 360 Drone, Essential Bundle</h3><p>Drone, Vision goggles, Grip motion controller, two batteries, charging hub, case, sling bag, landing pad, 256 GB card.</p></div>
           <div class="fprice"><b>$1,450</b><s>$1,650</s><br><a class="btn-primary" href="#order" data-pick="a1">Reserve</a></div>
         </article>
         <article class="soon"><div class="peek"></div><div class="soon-no">No. 02</div><h3>Coming soon</h3><p>Still being wrapped.</p></article>
@@ -694,6 +756,7 @@
         <details><summary>Can you show me how to fly it?</summary><p>Yes. Book a <a href="/drone-classes-atlanta.html">First-Flight lesson</a> and bring your A1. We set it up with you and teach on your own drone.</p></details>
         <details><summary>What if I crash it?</summary><p>Bring it to the <a href="/drone-repair-atlanta.html">Drone Hospital</a>, our repair shop at the same address. Call (404) 408-9063 and tell us what happened.</p></details>
         <details><summary>I'm buying it as a gift. Anything else I should add?</summary><p>A <a href="/drone-gift-certificates.html">First-Flight lesson gift certificate</a> pairs well with it, so they learn to fly on day one. Mention the gift in the order notes.</p></details>
+        <details><summary>Can I return it?</summary><p>Yes, unopened and complete within 14 days of pickup or delivery, for a full refund of the purchase price. Opened units are covered by Antigravity's warranty for defects, and we help you with the claim.</p></details>
         <details><summary>Can I pay with a credit card?</summary><p>Not online yet. Right now we take Zelle, Venmo and checks. Call <a href="tel:+14044089063">(404) 408-9063</a> if you need another option.</p></details>
       </div>
     </section>
@@ -737,8 +800,11 @@
       "@type": "Product",
       "name": "Antigravity A1 8K 360 Drone Essential Bundle",
       "brand": { "@type": "Brand", "name": "Antigravity" },
-      "description": "8K 360 camera drone under 249 g with Vision goggles, Grip motion controller, two flight batteries and a charging hub. Sold by PQ Robotics in Atlanta.",
-      "image": "https://pq-robotics.com/assets/images/og-image.png",
+      "description": "8K 360 camera drone under 249 g. Essential Bundle with Vision goggles, Grip motion controller, two flight batteries, charging hub, carry case, sling bag, landing pad and a Lexar 256 GB microSD card. Sold by PQ Robotics in Atlanta.",
+      "image": ["https://pq-robotics.com/assets/images/shop/a1-drone.jpg", "https://pq-robotics.com/assets/images/shop/a1-bundle.jpg", "https://pq-robotics.com/assets/images/shop/a1-hero.jpg"],
+      "color": "White",
+      "model": "A1",
+      "weight": { "@type": "QuantitativeValue", "value": 249, "unitCode": "GRM" },
       "offers": {
         "@type": "Offer",
         "url": "https://pq-robotics.com/drone-shop-atlanta.html",
@@ -764,7 +830,15 @@
 /* A1 photos. Put the files in assets/images/shop/ and list them here, first one is the main photo.
    Empty list = the photo section and the hero snapshot stay hidden. */
 window.A1_PHOTOS = [
+  { src: "assets/images/shop/a1-hero.jpg", alt: "Antigravity A1 drone in flight with the Grip motion controller and Vision goggles", caption: "The A1, Grip and Vision goggles" },
+  { src: "assets/images/shop/a1-flying.jpg", alt: "A pilot in Vision goggles flying the A1 with the Grip controller", caption: "Point the Grip and fly" },
+  { src: "assets/images/shop/a1-bundle.jpg", alt: "Everything in the A1 Essential Bundle laid out", caption: "Everything in the bundle" },
+  { src: "assets/images/shop/a1-drone.jpg", alt: "Antigravity A1 drone with arms unfolded, 360 lenses on top and bottom", caption: "Lenses top and bottom for 8K 360" },
+  { src: "assets/images/shop/a1-goggles.jpg", alt: "Antigravity Vision goggles", caption: "Vision goggles" },
+  { src: "assets/images/shop/a1-goggles-view.jpg", alt: "Wearing the Vision goggles with a 360 view around the pilot", caption: "2560 × 2560 per eye" },
+  { src: "assets/images/shop/a1-grip.jpg", alt: "Antigravity Grip motion controller", caption: "Grip motion controller" }
 ];
+window.A1_PIN = "assets/images/shop/a1-drone.jpg";
 (function () {
   var P = window.A1_PHOTOS || [];
   if (!P.length) return;
@@ -781,7 +855,7 @@ window.A1_PHOTOS = [
   show(0); sec.hidden = false;
   // a taped-on snapshot over the hero scene, and a thumbnail on the shelf card
   var pin = document.createElement("a"); pin.className = "pin"; pin.href = "#photos";
-  pin.innerHTML = '<img alt=""><span>the real thing!</span>'; pin.querySelector("img").src = P[0].src;
+  pin.innerHTML = '<img alt=""><span>the real thing!</span>'; pin.querySelector("img").src = window.A1_PIN || P[0].src;
   pin.setAttribute("aria-label", "See photos of the Antigravity A1");
   document.querySelector(".scene-wrap").appendChild(pin);
   var f = document.querySelector(".feature .fno");
@@ -798,6 +872,19 @@ window.A1_PHOTOS = [
   var days = Math.round((xmas - today) / 864e5);
   if (days > 0) { el.textContent = days + (days === 1 ? " day" : " days") + " to Christmas"; el.hidden = false; }
   else if (days === 0) { el.textContent = "Merry Christmas"; el.hidden = false; }
+
+  // Details tabs
+  var tabs = [].slice.call(document.querySelectorAll('.tabs [role="tab"]'));
+  function pick(t) {
+    tabs.forEach(function (b) { var on = b === t; b.setAttribute("aria-selected", on); b.tabIndex = on ? 0 : -1; document.getElementById(b.getAttribute("aria-controls")).hidden = !on; });
+  }
+  tabs.forEach(function (b, i) {
+    b.addEventListener("click", function () { pick(b); });
+    b.addEventListener("keydown", function (e) {
+      var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+      if (d) { var n = tabs[(i + d + tabs.length) % tabs.length]; pick(n); n.focus(); }
+    });
+  });
 
   // Design option picker
   var lk = document.documentElement.getAttribute("data-look");
