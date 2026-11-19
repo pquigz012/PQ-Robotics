@@ -10,8 +10,9 @@
       var h = document.documentElement;
       h.setAttribute('data-look', /^[1-4]$/.test(p || '') ? p : '4');
       if (p) h.classList.add('show-looks');
+      /* Hero layout: full screen (owner's pick, Nov 19). ?hero=2 or 3 still loads the other two for comparison. */
       var hz = new URLSearchParams(location.search).get('hero');
-      if (/^[123]$/.test(hz || '')) { h.setAttribute('data-hero', hz); h.classList.add('show-heroes'); }
+      if (h.getAttribute('data-look') === '4') h.setAttribute('data-hero', /^[123]$/.test(hz || '') ? hz : '1');
     })();
   </script>
   <title>DJI Mini Parts In Stock in Atlanta + Antigravity A1 | PQ Robotics</title>
@@ -987,12 +988,6 @@
     </div>
   </footer>
 
-  <div class="heroes" aria-label="Hero layout options">
-    <span>Hero layout</span>
-    <a href="?hero=1" data-h="1">1 · Full screen</a>
-    <a href="?hero=2" data-h="2">2 · Wide banner</a>
-    <a href="?hero=3" data-h="3">3 · Big split</a>
-  </div>
   <div class="looks" id="looks" aria-label="Design options">
     <span>Design option</span>
     <a href="?look=4" data-l="4">4 · North Pole</a>
