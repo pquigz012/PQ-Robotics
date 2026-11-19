@@ -12,19 +12,19 @@
       if (p) h.classList.add('show-looks');
     })();
   </script>
-  <title>Drone Shop in Atlanta: Antigravity A1 8K 360 Bundle | PQ Robotics</title>
+  <title>DJI Mini Parts In Stock in Atlanta + Antigravity A1 | PQ Robotics</title>
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <meta name="description" content="The PQ Robotics holiday drone shop in Atlanta. Antigravity A1 8K 360 drone Essential Bundle, $1,450 (regularly $1,650). Pick up at the Drone Hospital, where we also repair drones and teach lessons. Call (404) 408-9063.">
+  <meta name="description" content="Emergency DJI parts in stock now in Atlanta: Mini 4 Pro, Mini 5 Pro and Mini 3 Pro arms, RC 2 and RC-N controllers, batteries, arm axis springs and gimbal dampers. Reserve online, pick up at the Drone Hospital. Plus the Antigravity A1 for $1,450. (404) 408-9063.">
   <link rel="canonical" href="https://pq-robotics.com/drone-shop-atlanta.html">
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pq-robotics.com/drone-shop-atlanta.html">
-  <meta property="og:title" content="Holiday Drone Shop: Antigravity A1 Bundle for $1,450 | PQ Robotics">
-  <meta property="og:description" content="The 8K 360 drone you fly with goggles and a point-to-fly grip. Holiday price $1,450, sold and supported by the Atlanta shop that repairs drones and teaches pilots.">
+  <meta property="og:title" content="DJI Mini Parts In Stock in Atlanta | PQ Robotics Drone Shop">
+  <meta property="og:description" content="Crashed your DJI Mini? Arms, controllers, batteries and gimbal parts are on the shelf at our Atlanta shop right now. Reserve online and pick up, or have the Drone Hospital install it.">
   <meta property="og:image" content="https://pq-robotics.com/assets/images/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -522,6 +522,47 @@
       html { scroll-behavior: auto; }
       .scene *, .scene { animation: none !important; }
     }
+
+    /* used gear cards */
+    .prod { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line2); border-radius: var(--radius-md); padding: 1rem 1.1rem 1.1rem; transition: transform .25s; }
+    .prod:hover { transform: translateY(-3px); }
+    .prod-ph { background: #fff; border-radius: 6px; aspect-ratio: 4 / 3; overflow: hidden; margin-bottom: .8rem; display: grid; place-items: center; }
+    .prod-ph img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .prod-ph .peek { width: 60%; margin: 0; }
+    html[data-look="1"] .prod-ph:has(.peek), html[data-look="4"] .prod-ph:has(.peek), html[data-look="3"] .prod-ph:has(.peek) { background: var(--bg); }
+    .prod-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: .3rem; }
+    .cond { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); border: 1px solid currentColor; border-radius: 3px; padding: 1px 6px; }
+    .cond.new { color: #3fd38a; }
+    .prod h3 { font-family: var(--font-display); font-size: 1.02rem; font-weight: 600; line-height: 1.3; margin-bottom: .3rem; }
+    .prod p { font-size: 13px; color: var(--sub); line-height: 1.55; flex: 1; }
+    .prod-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: .9rem; padding-top: .8rem; border-top: 1px solid var(--line); }
+    .prod-price { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; }
+    .prod-price small { font-size: 12px; font-weight: 400; color: var(--sub); }
+    .btn-primary.sm { padding: 8px 16px; font-size: 12px; }
+    html[data-look="2"] .prod { background: var(--paper); border: 1.5px solid var(--ink); border-radius: 0; }
+    html[data-look="3"] .prod { border-radius: 18px; background: rgba(255,255,255,.035); border-color: var(--line); }
+    @media (max-width: 640px) { .prod { padding: .7rem .7rem .8rem; } .prod p { font-size: 12px; } .prod h3 { font-size: .9rem; } .prod-foot { flex-direction: column; align-items: stretch; text-align: center; } }
+
+
+    /* emergency parts */
+    .emergency { display: flex; align-items: center; gap: 14px; padding: 11px max(2.5rem, calc((100% - 1180px) / 2 + 2.5rem)); text-decoration: none; color: var(--ink); font-size: 14px; border-bottom: 1px solid var(--line); background: rgba(229,57,53,.08); }
+    .emergency b { color: var(--red); }
+    .em-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--red); flex: none; box-shadow: 0 0 0 0 rgba(229,57,53,.6); animation: pulse 1.8s infinite; }
+    .em-go { margin-left: auto; white-space: nowrap; font-weight: 600; color: var(--red); }
+    .emergency:hover .em-go { text-decoration: underline; }
+    @keyframes pulse { 70% { box-shadow: 0 0 0 10px rgba(229,57,53,0); } 100% { box-shadow: 0 0 0 0 rgba(229,57,53,0); } }
+    .stock { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: #3fd38a; display: inline-flex; align-items: center; gap: 6px; }
+    .stock::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #3fd38a; }
+    .fits { font-family: var(--mono); font-size: 11px; color: var(--sub); margin: -.1rem 0 .4rem; letter-spacing: .02em; }
+    .fits-filter { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: -1.2rem 0 1.8rem; }
+    .fits-filter span { font-size: 13px; color: var(--sub); margin-right: 4px; }
+    .fits-filter button { background: transparent; color: var(--ink); border: 1px solid var(--line2); border-radius: 99px; padding: 6px 14px; font: inherit; font-size: 13px; cursor: pointer; }
+    .fits-filter button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .prod.dim { display: none; }
+    .section-sub a { color: var(--ink); }
+    @media (max-width: 640px) { .emergency { padding: 12px 1.15rem; font-size: 13px; align-items: flex-start; } .em-dot { margin-top: 5px; } .em-go { display: none; } }
+    @media (prefers-reduced-motion: reduce) { .em-dot { animation: none; } }
+
     /* box grid breakpoints last so they win */
     @media (max-width: 1040px) { #bundle .box-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
     @media (max-width: 640px) { #bundle .box-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; } }
@@ -544,6 +585,13 @@
   </nav>
 
   <main>
+
+  <!-- EMERGENCY PARTS STRIP -->
+  <a class="emergency" href="#shelf">
+    <span class="em-dot" aria-hidden="true"></span>
+    <span><b>Crashed your DJI Mini?</b> Emergency parts in stock now at our Atlanta shop: Mini 4 Pro, Mini 5 Pro and Mini 3 Pro arms, controllers, batteries and more.</span>
+    <span class="em-go">See parts &rarr;</span>
+  </a>
 
   <!-- HERO -->
   <div id="top">
@@ -585,7 +633,7 @@
   <section id="photos" hidden>
     <div class="eyebrow">Meet the A1</div>
     <h2>Here's what's under the wrapping</h2>
-    <p class="section-sub">The real thing, not a drawing. Tap a photo to see it larger.</p>
+    <p class="section-sub">Tap a photo to see it larger.</p>
     <div class="photos-grid">
       <figure class="ph-main"><img id="ph-big" src="" alt=""><figcaption id="ph-cap"></figcaption></figure>
       <div class="ph-thumbs" id="ph-thumbs"></div>
@@ -671,24 +719,88 @@
   <!-- THE SHELF -->
   <div class="band" id="shelf">
     <section>
-      <div class="eyebrow">The shelf</div>
-      <h2>Ten things on the shelf this season</h2>
-      <p class="section-sub">The A1 bundle is first. The crew is still wrapping the rest, so check back soon, or tell us what you're looking for in the order form.</p>
+      <div class="eyebrow">Emergency parts · in stock now</div>
+      <h2>DJI Mini parts available now in Atlanta</h2>
+      <p class="section-sub">Crashed and need to fly this week? Don't wait days for shipping. These DJI parts are on the shelf at our Atlanta shop right now. Reserve online, pick up at 6059 Boylston Dr NE, or have the <a href="/drone-repair-atlanta.html">Drone Hospital</a> install it for you. Everything below is used and working unless marked new.</p>
+      <div class="fits-filter" role="group" aria-label="Show parts for your drone"><span>Parts for:</span><button type="button" data-f="all" class="on">All</button><button type="button" data-f="mini3">Mini 3</button><button type="button" data-f="mini3pro">Mini 3 Pro</button><button type="button" data-f="mini4pro">Mini 4 Pro</button><button type="button" data-f="mini5pro">Mini 5 Pro</button></div>
       <div class="shelf">
         <article class="feature">
-          <div class="fno">No. 01 · IN STOCK</div>
+          <div class="fno">NEW · IN STOCK</div>
           <div><h3>Antigravity A1 8K 360 Drone, Essential Bundle</h3><p>Drone, Vision goggles, Grip motion controller, two batteries, charging hub, case, sling bag, landing pad, 256 GB card.</p></div>
           <div class="fprice"><b>$1,450</b><s>$1,650</s><br><a class="btn-primary" href="#order" data-pick="a1">Reserve</a></div>
         </article>
-        <article class="soon"><div class="peek"></div><div class="soon-no">No. 02</div><h3>Coming soon</h3><p>Still being wrapped.</p></article>
-        <article class="soon"><div class="peek"></div><div class="soon-no">No. 03</div><h3>Coming soon</h3><p>Still being wrapped.</p></article>
-        <article class="soon"><div class="peek"></div><div class="soon-no">No. 04</div><h3>Coming soon</h3><p>Still being wrapped.</p></article>
-        <article class="soon"><div class="peek"></div><div class="soon-no">No. 05</div><h3>Coming soon</h3><p>Still being wrapped.</p></article>
-        <article class="soon"><div class="peek"></div><div class="soon-no">No. 06</div><h3>Coming soon</h3><p>Still being wrapped.</p></article>
-        <article class="soon"><div class="peek"></div><div class="soon-no">No. 07</div><h3>Coming soon</h3><p>Still being wrapped.</p></article>
-        <article class="soon"><div class="peek"></div><div class="soon-no">No. 08</div><h3>Coming soon</h3><p>Still being wrapped.</p></article>
-        <article class="soon"><div class="peek"></div><div class="soon-no">No. 09</div><h3>Coming soon</h3><p>Still being wrapped.</p></article>
-        <article class="soon"><div class="peek"></div><div class="soon-no">No. 10</div><h3>Coming soon</h3><p>Still being wrapped.</p></article>
+        <article class="prod" id="item-rc2" data-fits="mini4pro">
+          <div class="prod-ph"><img src="assets/images/shop/used/rc2.jpg" alt="DJI RC 2 controller, used" loading="lazy" width="520" height="520"></div>
+          <div class="prod-top"><span class="stock">In stock now</span><span class="cond">Used</span></div>
+          <h3>DJI RC 2 controller</h3>
+          <div class="fits">Fits: Mini 4 Pro, Air 3, Air 3S, Neo</div>
+          <p>Controller with a built-in screen, so you don't need your phone to fly.</p>
+          <div class="prod-foot"><b class="prod-price">$399</b><a class="btn-primary sm" href="#order" data-pick="rc2">Reserve</a></div>
+        </article>
+        <article class="prod" id="item-rc-n" data-fits="mini3 mini3pro mini4pro mini5pro">
+          <div class="prod-ph"><img src="assets/images/shop/used/rc-n.jpg" alt="DJI RC-N1 / RC-N2 / RC-N3 controller, used" loading="lazy" width="520" height="520"></div>
+          <div class="prod-top"><span class="stock">In stock now</span><span class="cond">Used</span></div>
+          <h3>DJI RC-N1 / RC-N2 / RC-N3 controller</h3>
+          <div class="fits">Fits: RC-N1: Mini 3, Mini 3 Pro · RC-N2: Mini 4 Pro · RC-N3: Mini 4 Pro, Mini 5 Pro</div>
+          <p>Standard controllers that use your phone as the screen. We have the RC-N1, RC-N2 and RC-N3. Tell us your drone and we match the right one.</p>
+          <div class="prod-foot"><b class="prod-price">$145 <small>each</small></b><a class="btn-primary sm" href="#order" data-pick="rc-n3">Reserve</a></div>
+        </article>
+        <article class="prod" id="item-mini4pro-arms" data-fits="mini4pro">
+          <div class="prod-ph"><img src="assets/images/shop/used/mini4pro-arms.jpg" alt="DJI Mini 4 Pro Arm Replacements, used" loading="lazy" width="520" height="520"></div>
+          <div class="prod-top"><span class="stock">In stock now</span><span class="cond">Used</span></div>
+          <h3>DJI Mini 4 Pro Arm Replacements</h3>
+          <div class="fits">Fits: DJI Mini 4 Pro</div>
+          <p>Replacement arms with motors attached, priced per arm. Front left, front right, rear left or rear right: tell us which one you need.</p>
+          <div class="prod-foot"><b class="prod-price">$59 <small>per arm</small></b><a class="btn-primary sm" href="#order" data-pick="mini4pro-arms">Reserve</a></div>
+        </article>
+        <article class="prod" id="item-mini5pro-arms" data-fits="mini5pro">
+          <div class="prod-ph"><img src="assets/images/shop/used/mini5pro-arms.jpg" alt="DJI Mini 5 Pro Arm Replacements, used" loading="lazy" width="520" height="520"></div>
+          <div class="prod-top"><span class="stock">In stock now</span><span class="cond">Used</span></div>
+          <h3>DJI Mini 5 Pro Arm Replacements</h3>
+          <div class="fits">Fits: DJI Mini 5 Pro</div>
+          <p>Replacement arms with motors attached, priced per arm. Front arms $110, rear arms $95.</p>
+          <div class="prod-foot"><b class="prod-price">$95 <small>to $110</small></b><a class="btn-primary sm" href="#order" data-pick="mini5pro-arms">Reserve</a></div>
+        </article>
+        <article class="prod" id="item-mini3-arms" data-fits="mini3pro">
+          <div class="prod-ph"><img src="assets/images/shop/used/mini3-arms.jpg" alt="DJI Mini 3 Pro Arm Replacements, used" loading="lazy" width="520" height="520"></div>
+          <div class="prod-top"><span class="stock">In stock now</span><span class="cond">Used</span></div>
+          <h3>DJI Mini 3 Pro Arm Replacements</h3>
+          <div class="fits">Fits: DJI Mini 3 Pro</div>
+          <p>Replacement arms with motors attached, priced per arm. Front arms $69, rear arms $49. Mini 3 Pro only, they don't fit the plain Mini 3.</p>
+          <div class="prod-foot"><b class="prod-price">$49 <small>to $69</small></b><a class="btn-primary sm" href="#order" data-pick="mini3-arms">Reserve</a></div>
+        </article>
+        <article class="prod" id="item-axis-springs" data-fits="mini3 mini3pro mini4pro">
+          <div class="prod-ph"><img src="assets/images/shop/used/axis-springs.jpg" alt="Front arm axis springs, used" loading="lazy" width="520" height="520"></div>
+          <div class="prod-top"><span class="stock">In stock now</span><span class="cond">Used</span></div>
+          <h3>Front arm axis springs</h3>
+          <div class="fits">Fits: Mini 3, Mini 3 Pro, Mini 4 Pro</div>
+          <p>Front arm hinge shafts with springs for the Mini 4 Pro and Mini 3 series. One axis $20, or the full kit (two axes plus spudger, tweezers and screwdriver) $39.</p>
+          <div class="prod-foot"><b class="prod-price">$20 <small>to $39</small></b><a class="btn-primary sm" href="#order" data-pick="axis-springs-kit">Reserve</a></div>
+        </article>
+        <article class="prod" id="item-mini4pro-case" data-fits="mini4pro">
+          <div class="prod-ph"><img src="assets/images/shop/used/mini4pro-case.jpg" alt="DJI Mini 4 Pro hard case, used" loading="lazy" width="520" height="520"></div>
+          <div class="prod-top"><span class="stock">In stock now</span><span class="cond">Used</span></div>
+          <h3>DJI Mini 4 Pro hard case</h3>
+          <div class="fits">Fits: DJI Mini 4 Pro</div>
+          <p>HPRC 2300 hard case with foam cut for the Mini 4 Pro, an RC 2 or RC-N2 controller, batteries, the two-way charging hub and cables.</p>
+          <div class="prod-foot"><b class="prod-price">$100</b><a class="btn-primary sm" href="#order" data-pick="mini4pro-case">Reserve</a></div>
+        </article>
+        <article class="prod" id="item-mini4pro-batteries" data-fits="mini4pro mini3pro">
+          <div class="prod-ph"><img src="assets/images/shop/used/mini4pro-batteries.jpg" alt="DJI Mini 4 Pro batteries + charger, used" loading="lazy" width="520" height="520"></div>
+          <div class="prod-top"><span class="stock">In stock now</span><span class="cond">Used</span></div>
+          <h3>DJI Mini 4 Pro batteries + charger</h3>
+          <div class="fits">Fits: Mini 4 Pro, Mini 3 Pro</div>
+          <p>Full set: two flight batteries, the two-way charging hub and a USB-C cable, $299. Or one battery, $119. Fits the Mini 4 Pro and Mini 3 Pro.</p>
+          <div class="prod-foot"><b class="prod-price">$119 <small>to $299</small></b><a class="btn-primary sm" href="#order" data-pick="mini4pro-batteries">Reserve</a></div>
+        </article>
+        <article class="prod" id="item-gimbal-dampers" data-fits="mini3 mini3pro mini4pro">
+          <div class="prod-ph"><img src="assets/images/shop/used/gimbal-dampers.jpg" alt="New gimbal rubber dampers for DJI Mini drones" loading="lazy" width="520" height="520"></div>
+          <div class="prod-top"><span class="stock">In stock now</span><span class="cond new">New</span></div>
+          <h3>Gimbal rubber dampers</h3>
+          <div class="fits">Fits: Mini 3, Mini 3 Pro, Mini 4 Pro</div>
+          <p>The rubber mounts that hold the camera gimbal steady. Left and right pair for the Mini 3, Mini 3 Pro and Mini 4 Pro.</p>
+          <div class="prod-foot"><b class="prod-price">$15 <small>per pair</small></b><a class="btn-primary sm" href="#order" data-pick="gimbal-dampers">Reserve</a></div>
+        </article>
       </div>
     </section>
   </div>
@@ -718,6 +830,21 @@
         <label for="f-item">Item</label>
         <select id="f-item" name="item" required>
           <option value="a1" data-price="1450">Antigravity A1 Essential Bundle · $1,450</option>
+          <option value="rc2" data-price="399">DJI RC 2 controller (used) · $399</option>
+          <option value="rc-n1" data-price="145">DJI RC-N1 controller (used) · $145</option>
+          <option value="rc-n2" data-price="145">DJI RC-N2 controller (used) · $145</option>
+          <option value="rc-n3" data-price="145">DJI RC-N3 controller (used) · $145</option>
+          <option value="mini4pro-arms" data-price="59">DJI Mini 4 Pro Arm Replacement, per arm (used) · $59</option>
+          <option value="mini5pro-arms" data-price="110">DJI Mini 5 Pro Arm Replacement, front (used) · $110</option>
+          <option value="mini5pro-arms-rear" data-price="95">DJI Mini 5 Pro Arm Replacement, rear (used) · $95</option>
+          <option value="mini3-arms" data-price="69">DJI Mini 3 Pro Arm Replacement, front (used) · $69</option>
+          <option value="mini3-arms-rear" data-price="49">DJI Mini 3 Pro Arm Replacement, rear (used) · $49</option>
+          <option value="axis-springs-kit" data-price="39">Front arm axis springs, kit of 2 + tools (used) · $39</option>
+          <option value="axis-springs" data-price="20">Front arm axis spring, single (used) · $20</option>
+          <option value="mini4pro-case" data-price="100">DJI Mini 4 Pro hard case, HPRC 2300 (used) · $100</option>
+          <option value="mini4pro-batteries" data-price="299">DJI Mini 4 Pro charging set: 2 batteries + hub (used) · $299</option>
+          <option value="mini4pro-battery" data-price="119">DJI Mini 4 Pro battery, single (used) · $119</option>
+          <option value="gimbal-dampers" data-price="15">Gimbal rubber dampers, pair (new) · $15</option>
           <option value="other" data-price="">Something else (tell us below)</option>
         </select>
         <div class="two">
@@ -750,8 +877,12 @@
   <div class="band" id="faq">
     <section>
       <div class="eyebrow">Common questions</div>
-      <h2>Before you fly</h2>
+      <h2>Parts and A1 questions</h2>
       <div class="faq">
+        <details><summary>Where can I get DJI Mini parts in Atlanta today?</summary><p>At PQ Robotics, 6059 Boylston Dr NE, Atlanta, GA 30328. We keep DJI Mini 4 Pro, Mini 5 Pro and Mini 3 Pro arms, RC 2 and RC-N controllers, Mini 4 Pro batteries and charging hub, front arm axis springs and gimbal rubber dampers on the shelf. Reserve online or call (404) 408-9063 and pick up at the shop.</p></details>
+        <details><summary>Do you have DJI Mini 4 Pro replacement arms in stock?</summary><p>Yes. Mini 4 Pro arms with motors are $59 per arm, any position (front left, front right, rear left, rear right). We also stock Mini 5 Pro arms ($110 front, $95 rear) and Mini 3 Pro arms ($69 front, $49 rear).</p></details>
+        <details><summary>Can you install the part for me?</summary><p>Yes. The <a href="/drone-repair-atlanta.html">Drone Hospital</a> is in the same shop. Add a note to your reservation or call (404) 408-9063 and we will quote the repair.</p></details>
+        <details><summary>Are the parts new?</summary><p>The Antigravity A1 and the gimbal rubber dampers are new. The other parts are used and working. Each card is marked Used or New.</p></details>
         <details><summary>Do I need a license to fly the A1?</summary><p>Flying for fun, you need the free FAA TRUST certificate. Because the A1 weighs under 250 grams, recreational pilots do not have to register it. Flying in the goggles means you can't see the drone yourself, so bring a friend standing next to you as a visual observer. If you'll be paid for photos or video, you need a Part 107 license, and <a href="/part-107-drone-license-georgia.html">we teach that too</a>.</p></details>
         <details><summary>Can you show me how to fly it?</summary><p>Yes. Book a <a href="/drone-classes-atlanta.html">First-Flight lesson</a> and bring your A1. We set it up with you and teach on your own drone.</p></details>
         <details><summary>What if I crash it?</summary><p>Bring it to the <a href="/drone-repair-atlanta.html">Drone Hospital</a>, our repair shop at the same address. Call (404) 408-9063 and tell us what happened.</p></details>
@@ -838,7 +969,6 @@ window.A1_PHOTOS = [
   { src: "assets/images/shop/a1-goggles-view.jpg", alt: "Wearing the Vision goggles with a 360 view around the pilot", caption: "2560 × 2560 per eye" },
   { src: "assets/images/shop/a1-grip.jpg", alt: "Antigravity Grip motion controller", caption: "Grip motion controller" }
 ];
-window.A1_PIN = "assets/images/shop/a1-drone.jpg";
 (function () {
   var P = window.A1_PHOTOS || [];
   if (!P.length) return;
@@ -853,15 +983,445 @@ window.A1_PIN = "assets/images/shop/a1-drone.jpg";
     b.appendChild(im); b.addEventListener("click", function () { show(i); }); th.appendChild(b);
   });
   show(0); sec.hidden = false;
-  // a taped-on snapshot over the hero scene, and a thumbnail on the shelf card
-  var pin = document.createElement("a"); pin.className = "pin"; pin.href = "#photos";
-  pin.innerHTML = '<img alt=""><span>the real thing!</span>'; pin.querySelector("img").src = window.A1_PIN || P[0].src;
-  pin.setAttribute("aria-label", "See photos of the Antigravity A1");
-  document.querySelector(".scene-wrap").appendChild(pin);
+  // thumbnail on the shelf card
   var f = document.querySelector(".feature .fno");
   if (f) { var t = document.createElement("img"); t.className = "fthumb"; t.src = P[0].src; t.alt = P[0].alt; f.parentNode.insertBefore(t, f.nextSibling); f.parentNode.style.gridTemplateColumns = "auto auto 1fr auto"; }
   if (window.innerWidth < 900 && f) f.parentNode.style.gridTemplateColumns = "";
 })();
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Store",
+   "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop",
+   "name": "PQ Robotics Shop",
+   "description": "Emergency DJI Mini drone parts in stock in Atlanta, at the Drone Hospital repair shop.",
+   "url": "https://pq-robotics.com/drone-shop-atlanta.html",
+   "telephone": "+1-404-408-9063",
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "6059 Boylston Dr NE",
+    "addressLocality": "Atlanta",
+    "addressRegion": "GA",
+    "postalCode": "30328",
+    "addressCountry": "US"
+   }
+  },
+  {
+   "@type": "Product",
+   "name": "DJI RC 2 Remote Controller (used)",
+   "brand": {
+    "@type": "Brand",
+    "name": "DJI"
+   },
+   "description": "Used DJI RC 2 controller with built-in screen, in stock in Atlanta. Works with DJI Mini 4 Pro, Air 3, Air 3S and Neo.",
+   "url": "https://pq-robotics.com/drone-shop-atlanta.html#item-rc2",
+   "offers": {
+    "@type": "Offer",
+    "name": "RC 2",
+    "price": "399.00",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/UsedCondition",
+    "url": "https://pq-robotics.com/drone-shop-atlanta.html#shelf",
+    "seller": {
+     "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+    },
+    "availableAtOrFrom": {
+     "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+    }
+   },
+   "image": "https://pq-robotics.com/assets/images/shop/used/rc2.jpg"
+  },
+  {
+   "@type": "Product",
+   "name": "DJI RC-N1 / RC-N2 / RC-N3 Remote Controller (used)",
+   "brand": {
+    "@type": "Brand",
+    "name": "DJI"
+   },
+   "description": "Used DJI RC-N1, RC-N2 and RC-N3 controllers in stock in Atlanta.",
+   "url": "https://pq-robotics.com/drone-shop-atlanta.html#item-rc-n",
+   "offers": [
+    {
+     "@type": "Offer",
+     "name": "RC-N1",
+     "price": "145.00",
+     "priceCurrency": "USD",
+     "availability": "https://schema.org/InStock",
+     "itemCondition": "https://schema.org/UsedCondition",
+     "url": "https://pq-robotics.com/drone-shop-atlanta.html#shelf",
+     "seller": {
+      "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+     },
+     "availableAtOrFrom": {
+      "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+     }
+    },
+    {
+     "@type": "Offer",
+     "name": "RC-N2",
+     "price": "145.00",
+     "priceCurrency": "USD",
+     "availability": "https://schema.org/InStock",
+     "itemCondition": "https://schema.org/UsedCondition",
+     "url": "https://pq-robotics.com/drone-shop-atlanta.html#shelf",
+     "seller": {
+      "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+     },
+     "availableAtOrFrom": {
+      "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+     }
+    },
+    {
+     "@type": "Offer",
+     "name": "RC-N3",
+     "price": "145.00",
+     "priceCurrency": "USD",
+     "availability": "https://schema.org/InStock",
+     "itemCondition": "https://schema.org/UsedCondition",
+     "url": "https://pq-robotics.com/drone-shop-atlanta.html#shelf",
+     "seller": {
+      "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+     },
+     "availableAtOrFrom": {
+      "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+     }
+    }
+   ],
+   "image": "https://pq-robotics.com/assets/images/shop/used/rc-n.jpg"
+  },
+  {
+   "@type": "Product",
+   "name": "DJI Mini 4 Pro Arm Replacement with motor (used)",
+   "brand": {
+    "@type": "Brand",
+    "name": "DJI"
+   },
+   "description": "Used DJI Mini 4 Pro replacement motor arms, any position, in stock in Atlanta.",
+   "url": "https://pq-robotics.com/drone-shop-atlanta.html#item-mini4pro-arms",
+   "offers": {
+    "@type": "Offer",
+    "name": "Per arm",
+    "price": "59.00",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/UsedCondition",
+    "url": "https://pq-robotics.com/drone-shop-atlanta.html#shelf",
+    "seller": {
+     "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+    },
+    "availableAtOrFrom": {
+     "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+    }
+   },
+   "image": "https://pq-robotics.com/assets/images/shop/used/mini4pro-arms.jpg"
+  },
+  {
+   "@type": "Product",
+   "name": "DJI Mini 5 Pro Arm Replacement with motor (used)",
+   "image": "https://pq-robotics.com/assets/images/shop/used/mini5pro-arms.jpg",
+   "brand": {
+    "@type": "Brand",
+    "name": "DJI"
+   },
+   "description": "Used DJI Mini 5 Pro replacement motor arms, front and rear, in stock in Atlanta.",
+   "url": "https://pq-robotics.com/drone-shop-atlanta.html#item-mini5pro-arms",
+   "offers": [
+    {
+     "@type": "Offer",
+     "name": "Front arm",
+     "price": "110.00",
+     "priceCurrency": "USD",
+     "availability": "https://schema.org/InStock",
+     "itemCondition": "https://schema.org/UsedCondition",
+     "url": "https://pq-robotics.com/drone-shop-atlanta.html#shelf",
+     "seller": {
+      "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+     },
+     "availableAtOrFrom": {
+      "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+     }
+    },
+    {
+     "@type": "Offer",
+     "name": "Rear arm",
+     "price": "95.00",
+     "priceCurrency": "USD",
+     "availability": "https://schema.org/InStock",
+     "itemCondition": "https://schema.org/UsedCondition",
+     "url": "https://pq-robotics.com/drone-shop-atlanta.html#shelf",
+     "seller": {
+      "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+     },
+     "availableAtOrFrom": {
+      "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "Product",
+   "name": "DJI Mini 3 Pro Arm Replacement with motor (used)",
+   "brand": {
+    "@type": "Brand",
+    "name": "DJI"
+   },
+   "description": "Used DJI Mini 3 Pro replacement motor arms, front and rear, in stock in Atlanta.",
+   "url": "https://pq-robotics.com/drone-shop-atlanta.html#item-mini3-arms",
+   "offers": [
+    {
+     "@type": "Offer",
+     "name": "Front arm",
+     "price": "69.00",
+     "priceCurrency": "USD",
+     "availability": "https://schema.org/InStock",
+     "itemCondition": "https://schema.org/UsedCondition",
+     "url": "https://pq-robotics.com/drone-shop-atlanta.html#shelf",
+     "seller": {
+      "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+     },
+     "availableAtOrFrom": {
+      "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+     }
+    },
+    {
+     "@type": "Offer",
+     "name": "Rear arm",
+     "price": "49.00",
+     "priceCurrency": "USD",
+     "availability": "https://schema.org/InStock",
+     "itemCondition": "https://schema.org/UsedCondition",
+     "url": "https://pq-robotics.com/drone-shop-atlanta.html#shelf",
+     "seller": {
+      "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+     },
+     "availableAtOrFrom": {
+      "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+     }
+    }
+   ],
+   "image": "https://pq-robotics.com/assets/images/shop/used/mini3-arms.jpg"
+  },
+  {
+   "@type": "Product",
+   "name": "DJI Mini 4 Pro / Mini 3 Front Arm Axis Spring (used)",
+   "description": "Front arm hinge shafts with springs for DJI Mini 4 Pro, Mini 3 and Mini 3 Pro, single or kit with tools, in stock in Atlanta.",
+   "url": "https://pq-robotics.com/drone-shop-atlanta.html#item-axis-springs",
+   "offers": [
+    {
+     "@type": "Offer",
+     "name": "Single axis",
+     "price": "20.00",
+     "priceCurrency": "USD",
+     "availability": "https://schema.org/InStock",
+     "itemCondition": "https://schema.org/UsedCondition",
+     "url": "https://pq-robotics.com/drone-shop-atlanta.html#shelf",
+     "seller": {
+      "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+     },
+     "availableAtOrFrom": {
+      "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+     }
+    },
+    {
+     "@type": "Offer",
+     "name": "Kit of 2 with tools",
+     "price": "39.00",
+     "priceCurrency": "USD",
+     "availability": "https://schema.org/InStock",
+     "itemCondition": "https://schema.org/UsedCondition",
+     "url": "https://pq-robotics.com/drone-shop-atlanta.html#shelf",
+     "seller": {
+      "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+     },
+     "availableAtOrFrom": {
+      "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+     }
+    }
+   ],
+   "image": "https://pq-robotics.com/assets/images/shop/used/axis-springs.jpg"
+  },
+  {
+   "@type": "Product",
+   "name": "HPRC 2300 Hard Case for DJI Mini 4 Pro (used)",
+   "brand": {
+    "@type": "Brand",
+    "name": "HPRC"
+   },
+   "description": "Used HPRC 2300 hard case with foam for the DJI Mini 4 Pro, RC 2 or RC-N2, batteries and charging hub.",
+   "url": "https://pq-robotics.com/drone-shop-atlanta.html#item-mini4pro-case",
+   "offers": {
+    "@type": "Offer",
+    "name": "Case",
+    "price": "100.00",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/UsedCondition",
+    "url": "https://pq-robotics.com/drone-shop-atlanta.html#shelf",
+    "seller": {
+     "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+    },
+    "availableAtOrFrom": {
+     "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+    }
+   },
+   "image": "https://pq-robotics.com/assets/images/shop/used/mini4pro-case.jpg"
+  },
+  {
+   "@type": "Product",
+   "name": "DJI Mini 4 Pro Intelligent Flight Battery and Two-Way Charging Hub (used)",
+   "brand": {
+    "@type": "Brand",
+    "name": "DJI"
+   },
+   "description": "Used DJI Mini 4 Pro batteries, fit Mini 4 Pro and Mini 3 Pro. Full set with two batteries, two-way charging hub and USB-C cable, or a single battery.",
+   "url": "https://pq-robotics.com/drone-shop-atlanta.html#item-mini4pro-batteries",
+   "offers": [
+    {
+     "@type": "Offer",
+     "name": "Full set",
+     "price": "299.00",
+     "priceCurrency": "USD",
+     "availability": "https://schema.org/InStock",
+     "itemCondition": "https://schema.org/UsedCondition",
+     "url": "https://pq-robotics.com/drone-shop-atlanta.html#shelf",
+     "seller": {
+      "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+     },
+     "availableAtOrFrom": {
+      "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+     }
+    },
+    {
+     "@type": "Offer",
+     "name": "Single battery",
+     "price": "119.00",
+     "priceCurrency": "USD",
+     "availability": "https://schema.org/InStock",
+     "itemCondition": "https://schema.org/UsedCondition",
+     "url": "https://pq-robotics.com/drone-shop-atlanta.html#shelf",
+     "seller": {
+      "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+     },
+     "availableAtOrFrom": {
+      "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+     }
+    }
+   ],
+   "image": "https://pq-robotics.com/assets/images/shop/used/mini4pro-batteries.jpg"
+  },
+  {
+   "@type": "Product",
+   "name": "Gimbal Rubber Dampers for DJI Mini 3 / Mini 3 Pro / Mini 4 Pro (new)",
+   "description": "New left and right gimbal rubber damper pair for DJI Mini 3, Mini 3 Pro and Mini 4 Pro.",
+   "url": "https://pq-robotics.com/drone-shop-atlanta.html#item-gimbal-dampers",
+   "offers": {
+    "@type": "Offer",
+    "name": "Pair",
+    "price": "15.00",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition",
+    "url": "https://pq-robotics.com/drone-shop-atlanta.html#shelf",
+    "seller": {
+     "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+    },
+    "availableAtOrFrom": {
+     "@id": "https://pq-robotics.com/drone-shop-atlanta.html#shop"
+    }
+   },
+   "image": "https://pq-robotics.com/assets/images/shop/used/gimbal-dampers.jpg"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Where can I get DJI Mini parts in Atlanta today?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "At PQ Robotics, 6059 Boylston Dr NE, Atlanta, GA 30328. We keep DJI Mini 4 Pro, Mini 5 Pro and Mini 3 Pro arms, RC 2 and RC-N controllers, Mini 4 Pro batteries and charging hub, front arm axis springs and gimbal rubber dampers on the shelf. Reserve online or call (404) 408-9063 and pick up at the shop."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Do you have DJI Mini 4 Pro replacement arms in stock?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Mini 4 Pro arms with motors are $59 per arm, any position (front left, front right, rear left, rear right). We also stock Mini 5 Pro arms ($110 front, $95 rear) and Mini 3 Pro arms ($69 front, $49 rear)."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can you install the part for me?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. The Drone Hospital is in the same shop. Add a note to your reservation or call (404) 408-9063 and we will quote the repair."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Are the parts new?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The Antigravity A1 and the gimbal rubber dampers are new. The other parts are used and working. Each card is marked Used or New."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Do I need a license to fly the A1?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Flying for fun, you need the free FAA TRUST certificate. Because the A1 weighs under 250 grams, recreational pilots do not have to register it. Flying in the goggles means you can't see the drone yourself, so bring a friend standing next to you as a visual observer. If you'll be paid for photos or video, you need a Part 107 license, and we teach that too."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can you show me how to fly it?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Book a First-Flight lesson and bring your A1. We set it up with you and teach on your own drone."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What if I crash it?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Bring it to the Drone Hospital, our repair shop at the same address. Call (404) 408-9063 and tell us what happened."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "I'm buying it as a gift. Anything else I should add?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "A First-Flight lesson gift certificate pairs well with it, so they learn to fly on day one. Mention the gift in the order notes."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can I return it?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes, unopened and complete within 14 days of pickup or delivery, for a full refund of the purchase price. Opened units are covered by Antigravity's warranty for defects, and we help you with the claim."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can I pay with a credit card?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Not online yet. Right now we take Zelle, Venmo and checks. Call (404) 408-9063 if you need another option."
+     }
+    }
+   ]
+  }
+ ]
+}
 </script>
 <script src="assets/js/shop-scenes.js" defer></script>
 <script>
@@ -883,6 +1443,16 @@ window.A1_PIN = "assets/images/shop/a1-drone.jpg";
     b.addEventListener("keydown", function (e) {
       var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
       if (d) { var n = tabs[(i + d + tabs.length) % tabs.length]; pick(n); n.focus(); }
+    });
+  });
+
+  // Parts filter by drone
+  var chips = document.querySelectorAll(".fits-filter button");
+  chips.forEach(function (c) {
+    c.addEventListener("click", function () {
+      var f = c.getAttribute("data-f");
+      chips.forEach(function (x) { x.classList.toggle("on", x === c); });
+      document.querySelectorAll(".prod[data-fits]").forEach(function (p) { p.classList.toggle("dim", f !== "all" && p.getAttribute("data-fits").split(" ").indexOf(f) < 0); });
     });
   });
 
