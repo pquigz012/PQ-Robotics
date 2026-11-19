@@ -415,12 +415,15 @@
     const L = {};
     for (const n of ['sky', 'far', 'ground', 'house', 'roll', 'items', 'elfA', 'elfB', 'sback', 'load', 'sleigh', 'drone', 'fx', 'near']) L[n] = mk('g', {}, svg);
     const FA = 396, FB = 410;
+    const HERO = document.documentElement.getAttribute('data-hero');
+    const FRAME = (HERO && window.innerWidth <= 900) ? ['-120 96 880 344', 'xMidYMax meet'] : { '1': ['-160 110 960 330', 'xMidYMax slice'], '2': ['-200 110 1040 330', 'xMidYMax meet'], '3': ['36 104 620 336', 'xMidYMax meet'] }[HERO];
+    if (FRAME) { svg.setAttribute('viewBox', FRAME[0]); svg.setAttribute('preserveAspectRatio', FRAME[1]); }
     // sky: aurora, moon, stars
     const au = mk('g', { class: 'aurora', filter: 'url(#soft)' }, L.sky);
-    mk('path', { class: 'au1', d: 'M-20 70C80 30 150 96 250 58S420 20 520 64S640 40 680 52' }, au);
-    mk('path', { class: 'au2', d: 'M-20 104C90 76 170 126 280 92S450 70 560 100S650 86 680 90' }, au);
+    mk('path', { class: 'au1', d: 'M-520 90C-400 50 -220 110 -20 70C80 30 150 96 250 58S420 20 520 64S640 40 680 52S920 20 1220 70' }, au);
+    mk('path', { class: 'au2', d: 'M-520 120C-380 96 -200 140 -20 104C90 76 170 126 280 92S450 70 560 100S650 86 680 90S940 70 1220 104' }, au);
     mk('path', { class: 'moon', d: 'M404 40a20 20 0 1 0 16 31a16 16 0 1 1 -16 -31z' }, L.sky);
-    for (let i = 0; i < 26; i++) { const st = mk('circle', { class: 'star', cx: rnd(10, 630).toFixed(0), cy: rnd(10, 170).toFixed(0), r: rnd(0.5, 1.3).toFixed(2) }, L.sky); st.style.animationDelay = (-rnd(0, 4)).toFixed(2) + 's'; }
+    for (let i = 0; i < 80; i++) { const st = mk('circle', { class: 'star', cx: rnd(-520, 1220).toFixed(0), cy: rnd(-220, 200).toFixed(0), r: rnd(0.5, 1.3).toFixed(2) }, L.sky); st.style.animationDelay = (-rnd(0, 4)).toFixed(2) + 's'; }
     // far pines
     const pine = (x, y, h, cls) => {
       const g = mk('g', { class: 'pine ' + (cls || '') }, L.far);
@@ -431,9 +434,11 @@
       }
     };
     pine(340, 372, 70, 'dim'); pine(300, 376, 46, 'dim'); pine(424, 366, 60, 'dim'); pine(630, 384, 110);
+    pine(-40, 390, 120); pine(-130, 386, 90, 'dim'); pine(-250, 382, 70, 'dim'); pine(-380, 386, 110); pine(-470, 382, 64, 'dim');
+    pine(705, 388, 96); pine(790, 382, 74, 'dim'); pine(880, 386, 110); pine(980, 380, 60, 'dim'); pine(1080, 386, 100);
     // snow ground
-    mk('path', { class: 'snowfield', d: 'M0 382Q70 372 150 384T320 380T470 388T640 378V440H0Z' }, L.ground);
-    mk('path', { class: 'snow-shade', d: 'M0 410Q120 400 250 414T520 412T640 404V440H0Z' }, L.ground);
+    mk('path', { class: 'snowfield', d: 'M-600 386Q-400 372 -200 384T0 382Q70 372 150 384T320 380T470 388T640 378T900 386T1240 380V440H-600Z' }, L.ground);
+    mk('path', { class: 'snow-shade', d: 'M-600 412Q-300 400 0 410Q120 400 250 414T520 412T640 404T1000 410T1240 406V440H-600Z' }, L.ground);
     // the North Pole building
     const H = mk('g', { transform: 'translate(30 46) scale(.88)' }, L.house);
     mk('rect', { class: 'chim', x: 156, y: 204, width: 22, height: 44 }, H);
@@ -476,6 +481,8 @@
     // near snow drifts (in front of everything)
     mk('path', { class: 'snowfield', d: 'M0 432Q40 420 90 430Q130 424 170 434V440H0Z' }, L.near);
     mk('path', { class: 'snowfield', d: 'M600 432Q620 424 640 428V440H600Z' }, L.near);
+    mk('path', { class: 'snowfield', d: 'M-600 434Q-400 420 -200 432Q-100 426 0 432V440H-600Z' }, L.near);
+    mk('path', { class: 'snowfield', d: 'M640 430Q800 418 1000 432Q1100 426 1240 432V440H640Z' }, L.near);
     // the A1 hovering with its tag
     const dr = mk('g', {}, L.drone);
     a1Side(dr, 2.2);

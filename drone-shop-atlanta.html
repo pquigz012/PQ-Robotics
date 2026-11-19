@@ -10,6 +10,8 @@
       var h = document.documentElement;
       h.setAttribute('data-look', /^[1-4]$/.test(p || '') ? p : '4');
       if (p) h.classList.add('show-looks');
+      var hz = new URLSearchParams(location.search).get('hero');
+      if (/^[123]$/.test(hz || '')) { h.setAttribute('data-hero', hz); h.classList.add('show-heroes'); }
     })();
   </script>
   <title>DJI Mini Parts In Stock in Atlanta + Antigravity A1 | PQ Robotics</title>
@@ -563,6 +565,55 @@
     @media (max-width: 640px) { .emergency { padding: 12px 1.15rem; font-size: 13px; align-items: flex-start; } .em-dot { margin-top: 5px; } .em-go { display: none; } }
     @media (prefers-reduced-motion: reduce) { .em-dot { animation: none; } }
 
+
+    /* ── HERO LAYOUT OPTIONS (preview with ?hero=1|2|3) ── */
+    @media (min-width: 901px) {
+      /* 1: full screen like the home page, words over the sky, the yard across the bottom */
+      html[data-hero="1"] #top { min-height: calc(100vh - 130px); display: flex; flex-direction: column; }
+      html[data-hero="1"] .hero-inner { position: static; display: block; max-width: 940px; text-align: center; padding: 3.2rem 2rem 0; margin: 0 auto; flex: 1 0 auto; }
+      html[data-hero="1"] .hero-inner > div:first-child { position: relative; z-index: 3; }
+      html[data-hero="1"] .hero-inner > div:first-child::before { content: ""; position: absolute; inset: -40px -120px -30px; z-index: -1; pointer-events: none; background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(10,19,36,.9) 0%, rgba(10,19,36,.55) 55%, rgba(10,19,36,0) 100%); }
+      html[data-hero="1"] .scene-wrap { position: absolute; left: 0; right: 0; bottom: 0; height: 72%; z-index: 1; }
+      html[data-hero="1"] #scene { width: 100%; height: 100%; -webkit-mask-image: linear-gradient(180deg, transparent, #000 18%); mask-image: linear-gradient(180deg, transparent, #000 18%); }
+      html[data-hero="1"] .hero-tag, html[data-hero="1"] .hero-cta, html[data-hero="1"] .price { justify-content: center; }
+      html[data-hero="1"] .hero-sub { margin: 0 auto 1.2rem; max-width: 760px; }
+      html[data-hero="1"] .price { margin-bottom: 1.2rem; }
+      html[data-hero="1"] .hero-note { display: none; }
+      html[data-hero="1"] h1 { font-size: clamp(2.6rem, 4.2vw, 4.2rem); margin-bottom: 1rem; }
+      html[data-hero="1"] .hero-map { display: none; }
+
+      /* 2: wide banner, words on top, the yard edge to edge underneath */
+      html[data-hero="2"] .hero-inner { display: block; max-width: 1180px; text-align: center; padding: 2.4rem 2rem 0; }
+      html[data-hero="2"] .hero-inner > div:first-child { position: relative; z-index: 2; }
+      html[data-hero="2"] .hero-tag, html[data-hero="2"] .hero-cta, html[data-hero="2"] .price { justify-content: center; }
+      html[data-hero="2"] .hero-tag { margin-bottom: .8rem; }
+      html[data-hero="2"] h1 { font-size: clamp(2.4rem, 3.7vw, 3.7rem); margin-bottom: .8rem; }
+      html[data-hero="2"] .hero-sub { margin: 0 auto 1rem; max-width: 980px; font-size: .95rem; }
+      html[data-hero="2"] .price { margin-bottom: 1rem; }
+      html[data-hero="2"] .price .now { font-size: 2.6rem; }
+      html[data-hero="2"] .hero-cta { margin-bottom: 0; }
+      html[data-hero="2"] .hero-note { display: none; }
+      html[data-hero="2"] .scene-wrap { margin: -70px calc(50% - 50vw) 0; width: 100vw; position: relative; z-index: 1; }
+      html[data-hero="2"] #scene { -webkit-mask-image: linear-gradient(180deg, transparent, #000 22%, #000 92%, transparent); mask-image: linear-gradient(180deg, transparent, #000 22%, #000 92%, transparent); }
+
+      /* 3: big split, short text column, the yard fills the rest to the edge */
+      html[data-hero="3"] .hero-inner { max-width: none; grid-template-columns: minmax(340px, .72fr) minmax(0, 1.6fr); gap: 1rem; padding: 2.5rem 0 1.5rem max(2.5rem, calc((100vw - 1180px) / 2 + 2.5rem)); min-height: calc(100vh - 106px); }
+      html[data-hero="3"] h1 { font-size: clamp(2.2rem, 3.4vw, 3.3rem); }
+      html[data-hero="3"] .hero-sub { font-size: .95rem; }
+      html[data-hero="3"] .scene-wrap { align-self: stretch; display: flex; align-items: center; }
+      html[data-hero="3"] #scene { -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%), linear-gradient(180deg, transparent, #000 14%, #000 94%, transparent); -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent, #000 6%), linear-gradient(180deg, transparent, #000 14%, #000 94%, transparent); mask-composite: intersect; }
+    }
+    @media (max-width: 900px) {
+      html[data-hero] .scene-wrap { margin: 0 -1.15rem; }
+      html[data-hero] #scene { -webkit-mask-image: none; mask-image: none; }
+    }
+    .heroes { display: none; }
+    .show-heroes .heroes { display: flex; position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 200; gap: 4px; align-items: center; padding: 6px; border-radius: 99px; background: rgba(10,14,26,.92); border: 1px solid rgba(255,255,255,.15); box-shadow: 0 14px 40px -10px rgba(0,0,0,.6); font-size: 12.5px; white-space: nowrap; }
+    .heroes span { color: #8a9ab5; padding: 0 10px 0 12px; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+    .heroes a { color: #e8eaf0; text-decoration: none; padding: 7px 14px; border-radius: 99px; }
+    .heroes a.on { background: #d63c35; color: #fff; }
+    .show-heroes .looks { display: none; }
+
     /* box grid breakpoints last so they win */
     @media (max-width: 1040px) { #bundle .box-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
     @media (max-width: 640px) { #bundle .box-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; } }
@@ -936,6 +987,12 @@
     </div>
   </footer>
 
+  <div class="heroes" aria-label="Hero layout options">
+    <span>Hero layout</span>
+    <a href="?hero=1" data-h="1">1 · Full screen</a>
+    <a href="?hero=2" data-h="2">2 · Wide banner</a>
+    <a href="?hero=3" data-h="3">3 · Big split</a>
+  </div>
   <div class="looks" id="looks" aria-label="Design options">
     <span>Design option</span>
     <a href="?look=4" data-l="4">4 · North Pole</a>
@@ -1480,6 +1537,8 @@ window.A1_PHOTOS = [
   // Design option picker
   var lk = document.documentElement.getAttribute("data-look");
   document.querySelectorAll(".looks a").forEach(function (a) { if (a.getAttribute("data-l") === lk) a.classList.add("on"); });
+  var hk = document.documentElement.getAttribute("data-hero");
+  document.querySelectorAll(".heroes a").forEach(function (a) { if (a.getAttribute("data-h") === hk) a.classList.add("on"); });
 
   // Order form
   var sel = document.getElementById("f-item"), qty = document.getElementById("f-qty");
