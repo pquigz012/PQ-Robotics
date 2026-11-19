@@ -622,14 +622,16 @@
     .details .acc:last-child { border-bottom: 0; }
     .acc > summary { list-style: none; cursor: pointer; display: flex; align-items: baseline; gap: 14px; padding: 17px 1.6rem; font-family: inherit; font-size: inherit; }
     .acc > summary::-webkit-details-marker { display: none; }
-    .acc > summary::after { content: ""; margin-left: auto; align-self: center; width: 9px; height: 9px; border-right: 2px solid var(--sub); border-bottom: 2px solid var(--sub); transform: rotate(45deg); transition: transform .2s; flex: none; }
-    .acc[open] > summary::after { content: ""; transform: rotate(-135deg); }
+    .acc > summary::after { content: none; }
+    .acc > summary::before { content: ""; align-self: center; width: 8px; height: 8px; margin: 0 4px 0 2px; border-right: 2px solid var(--accent); border-bottom: 2px solid var(--accent); transform: rotate(-45deg); transition: transform .2s; flex: none; }
+    .acc[open] > summary::before { transform: rotate(45deg); }
+    .details .acc[open] > summary::after { content: none; }
     .acc > summary { justify-content: flex-start; }
     .acc > summary:hover .acc-t { color: var(--accent); }
     .acc-t { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; color: var(--ink); }
     .acc-s { font-size: 13px; color: var(--sub); }
     .acc .panel { padding: 0 1.6rem 1.5rem; }
-    @media (max-width: 640px) { .acc > summary { flex-wrap: wrap; gap: 2px 10px; padding: 15px 1.1rem; } .acc-s { flex-basis: 100%; order: 2; } .acc .panel { padding: 0 1.1rem 1.2rem; } }
+    @media (max-width: 640px) { .acc > summary { flex-wrap: wrap; gap: 2px 10px; padding: 15px 1.1rem; } .acc-s { flex-basis: 100%; order: 2; padding-left: 24px; } .acc .panel { padding: 0 1.1rem 1.2rem; } }
 
     /* box grid breakpoints last so they win */
     @media (max-width: 1040px) { #bundle .box-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
