@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" data-look="1">
+<html lang="en" data-look="4">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>
-    /* Design options: ?look=1 Workshop (default), 2 Spec sheet, 3 Snow globe */
+    /* Design options: ?look=4 North Pole (default), 1 Workshop, 2 Spec sheet, 3 Snow globe */
     (function () {
       var p = new URLSearchParams(location.search).get('look');
       var h = document.documentElement;
-      h.setAttribute('data-look', /^[123]$/.test(p || '') ? p : '1');
+      h.setAttribute('data-look', /^[1-4]$/.test(p || '') ? p : '4');
       if (p) h.classList.add('show-looks');
     })();
   </script>
@@ -130,6 +130,7 @@
     .scene { width: 100%; height: auto; display: block; overflow: visible; }
     html[data-look="3"] .scene-wrap { max-width: 470px; margin: 0 auto; width: 100%; }
     html[data-look="3"] #scene { cursor: pointer; }
+    html[data-look="4"] #scene { -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent), linear-gradient(180deg, transparent, #000 6%, #000 88%, transparent); -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent), linear-gradient(180deg, transparent, #000 6%, #000 88%, transparent); mask-composite: intersect; }
     html[data-look="2"] .scene-wrap { background: var(--paper); border: 1.5px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); }
 
     /* ── SVG ink (robots use the home page outline style) ── */
@@ -241,6 +242,52 @@
     /* mini robots on the shelf */
     .scene.mini .visor { animation: visor 5s ease-in-out infinite; }
 
+
+    /* look 4: North Pole parts yard */
+    .scene .elf-g { fill: #1f8a4c; } .scene .elf-r { fill: #d6362f; }
+    .scene .elfhat, .scene .elfband, .scene .collar { stroke: var(--ink); stroke-opacity: .45; stroke-width: .4; stroke-linejoin: round; }
+    .scene .bell { fill: var(--gold); stroke: #7a5a10; stroke-width: .4; }
+    .scene .elfbelt { fill: #15161c; }
+    .scene .buckle { fill: none; stroke: var(--gold); stroke-width: .7; }
+    .scene .p-prop { fill: #2a2f3a; stroke: var(--ink); stroke-opacity: .7; stroke-width: .8; }
+    .scene .p-hub { fill: #c9ced8; }
+    .scene .p-batt { fill: #2b3346; stroke: var(--ink); stroke-opacity: .7; stroke-width: .9; }
+    .scene .p-bolt { fill: var(--gold); }
+    .scene .p-motor { fill: #8a96a8; stroke: #1c2433; stroke-width: .9; }
+    .scene .p-coil { fill: none; stroke: #c97a3a; stroke-width: 1.4; }
+    .scene .p-shaft { stroke: #c9ced8; stroke-width: 1.6; stroke-linecap: round; }
+    .scene .leaving { opacity: 0; transition: opacity .6s; }
+    .scene .aurora path { fill: none; stroke-width: 26; stroke-linecap: round; }
+    .scene .au1 { stroke: #3fd3a0; stroke-opacity: .22; animation: aurora 14s ease-in-out infinite alternate; }
+    .scene .au2 { stroke: #4fa8ff; stroke-opacity: .16; animation: aurora 18s ease-in-out infinite alternate-reverse; }
+    .scene .pine path { fill: #143b2c; stroke: #0b2219; stroke-width: 1; stroke-linejoin: round; }
+    .scene .pine .pine-snow { fill: #eef2fb; stroke: none; }
+    .scene .pine.dim { opacity: .5; }
+    html[data-look="4"] .scene .snowfield { fill: #dfe7f7; }
+    .scene .snow-shade { fill: #c7d2ea; }
+    .scene .chim { fill: #6b2a24; stroke: #2a1210; stroke-width: 1.2; }
+    .scene .wall { fill: #8e2b26; stroke: #2a1210; stroke-width: 1.4; }
+    .scene .plank { stroke: #000; stroke-opacity: .18; stroke-width: 1; }
+    .scene .roof { fill: #2a1c1a; stroke: #140c0b; stroke-width: 1.2; }
+    .scene .roof-snow { fill: #eef2fb; }
+    .scene .sign { fill: #f6efdc; stroke: #6b4a1c; stroke-width: 1.5; }
+    .scene .sign-t { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .14em; fill: #c42f29; }
+    .scene .sign-snow { fill: #fff; }
+    .scene .lbl.dark { fill: #f6efdc; fill-opacity: .9; }
+    .scene .win-glow { fill: #f6c25a; }
+    .scene .mullion { stroke: #4a2a14; stroke-width: 2; }
+    .scene .sill { stroke: #eef2fb; stroke-width: 3.5; stroke-linecap: round; }
+    .scene .door { fill: url(#doorglow); }
+    .scene .shelf { stroke: #4a2a14; stroke-width: 2; }
+    .scene .shelf-box { fill: #6b3f17; }
+    .scene .doorframe { fill: none; stroke: #3a1c14; stroke-width: 3; }
+    .scene .pole-w { fill: #fbfbf7; }
+    .scene .pole-r { fill: #d6362f; }
+    .scene .pole-ball { fill: var(--gold); stroke: #7a5a10; stroke-width: 1; }
+    .scene .roller { fill: var(--robot); stroke: var(--ink); stroke-opacity: .7; stroke-width: 1; }
+    .scene .smoke { fill: #c7d2ea; }
+    @keyframes aurora { from { transform: translateX(-24px); } to { transform: translateX(24px); } }
+
     @keyframes belt { to { stroke-dashoffset: -14; } }
     @keyframes twinkle { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
     @keyframes blink { 50% { opacity: .25; } }
@@ -254,13 +301,32 @@
     .specs-inner { max-width: 1180px; margin: 0 auto; padding: 1.4rem 2.5rem; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; }
     .spec b { display: block; font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; line-height: 1.2; }
     .spec span { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--sub); }
-    html[data-look="1"] .spec b::before { content: ""; display: inline-block; width: 8px; height: 8px; background: var(--red); margin-right: 8px; vertical-align: middle; transform: rotate(45deg); }
+    html[data-look="1"] .spec b::before, html[data-look="4"] .spec b::before { content: ""; display: inline-block; width: 8px; height: 8px; background: var(--red); margin-right: 8px; vertical-align: middle; transform: rotate(45deg); }
     html[data-look="2"] .specs-inner { gap: 0; padding: 0 2.5rem; }
     html[data-look="2"] .spec { border-left: 1px solid var(--line2); padding: 1rem 1rem; }
     html[data-look="2"] .spec:last-child { border-right: 1px solid var(--line2); }
     html[data-look="2"] .spec span::before { content: attr(data-n) "  "; color: var(--red); }
     html[data-look="3"] .specs { background: transparent; }
     html[data-look="3"] .spec b { color: var(--gold); }
+
+
+    /* ── A1 PHOTOS (shown once photo files are listed in A1_PHOTOS) ── */
+    .photos-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 14px; }
+    .ph-main { position: relative; margin: 0; border-radius: var(--radius-lg); overflow: hidden; background: #0b0f18; aspect-ratio: 4 / 3; }
+    .ph-main img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ph-main figcaption { position: absolute; left: 14px; bottom: 12px; font-family: var(--hand); font-size: 22px; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,.6); }
+    .ph-thumbs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-content: start; }
+    .ph-thumbs button { border: 2px solid transparent; border-radius: var(--radius-md); overflow: hidden; padding: 0; cursor: pointer; background: #0b0f18; aspect-ratio: 4 / 3; }
+    .ph-thumbs button.on { border-color: var(--accent); }
+    .ph-thumbs img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    html[data-look="2"] .ph-main, html[data-look="2"] .ph-thumbs button { border-radius: 0; box-shadow: 4px 4px 0 var(--ink); }
+    .pin { position: absolute; z-index: 3; right: 1%; top: -3%; width: 25%; max-width: 190px; background: #fbf8f1; padding: 7px 7px 26px; border-radius: 3px; transform: rotate(4deg); box-shadow: 0 18px 40px -12px rgba(0,0,0,.6); text-decoration: none; }
+    .pin img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+    .pin span { position: absolute; left: 0; right: 0; bottom: 3px; text-align: center; font-family: var(--hand); font-weight: 700; font-size: 18px; color: #b3261e; }
+    .pin::before { content: ""; position: absolute; top: -9px; left: 50%; width: 46px; height: 16px; margin-left: -23px; background: rgba(242,193,78,.75); transform: rotate(3deg); }
+    .fthumb { width: 96px; height: 72px; border-radius: var(--radius-sm); object-fit: cover; }
+    @media (max-width: 900px) { .photos-grid { grid-template-columns: 1fr; } .ph-thumbs { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 640px) { .pin { width: 27%; top: -2%; padding: 5px 5px 20px; } .pin span { font-size: 14px; } }
 
     /* ── SECTIONS ── */
     section { max-width: 1180px; margin: 0 auto; padding: 5rem 2.5rem; }
@@ -279,8 +345,8 @@
     .item svg .r { color: var(--red); }
     .item h3 { font-family: var(--font-display); font-size: 1.02rem; font-weight: 600; line-height: 1.3; margin-bottom: .4rem; }
     .item p { font-size: 13.5px; color: var(--sub); line-height: 1.6; }
-    html[data-look="1"] .item { border-top: 3px solid var(--red); border-radius: 4px; background-image: repeating-linear-gradient(90deg, transparent 0 46px, rgba(255,255,255,.015) 46px 48px); }
-    html[data-look="1"] .item-no::before { content: "CRATE "; }
+    html[data-look="1"] .item, html[data-look="4"] .item { border-top: 3px solid var(--red); border-radius: 4px; background-image: repeating-linear-gradient(90deg, transparent 0 46px, rgba(255,255,255,.015) 46px 48px); }
+    html[data-look="1"] .item-no::before, html[data-look="4"] .item-no::before { content: "CRATE "; }
     html[data-look="2"] .item { background: var(--paper); border: 1.5px solid var(--ink); border-radius: 0; }
     html[data-look="2"] .item-no { border-bottom: 1px solid var(--line2); margin: -1.3rem -1.2rem 1rem; padding: .45rem 1.2rem; color: var(--ink); }
     html[data-look="2"] .item-no::before { content: "PART "; color: var(--red); }
@@ -472,6 +538,18 @@
     </div>
   </div>
 
+
+  <!-- REAL PHOTOS: hidden until photo files are listed in A1_PHOTOS at the bottom of the page -->
+  <section id="photos" hidden>
+    <div class="eyebrow">Meet the A1</div>
+    <h2>Here's what's under the wrapping</h2>
+    <p class="section-sub">The real thing, not a drawing. Tap a photo to see it larger.</p>
+    <div class="photos-grid">
+      <figure class="ph-main"><img id="ph-big" src="" alt=""><figcaption id="ph-cap"></figcaption></figure>
+      <div class="ph-thumbs" id="ph-thumbs"></div>
+    </div>
+  </section>
+
   <!-- IN THE BOX -->
   <section id="bundle">
     <div class="eyebrow">The Essential Bundle</div>
@@ -634,6 +712,7 @@
 
   <div class="looks" id="looks" aria-label="Design options">
     <span>Design option</span>
+    <a href="?look=4" data-l="4">4 · North Pole</a>
     <a href="?look=1" data-l="1">1 · Workshop</a>
     <a href="?look=2" data-l="2">2 · Spec sheet</a>
     <a href="?look=3" data-l="3">3 · Snow globe</a>
@@ -669,6 +748,35 @@
     }
   ]
 }
+</script>
+<script>
+/* A1 photos. Put the files in assets/images/shop/ and list them here, first one is the main photo.
+   Empty list = the photo section and the hero snapshot stay hidden. */
+window.A1_PHOTOS = [
+];
+(function () {
+  var P = window.A1_PHOTOS || [];
+  if (!P.length) return;
+  var sec = document.getElementById("photos"), big = document.getElementById("ph-big"), cap = document.getElementById("ph-cap"), th = document.getElementById("ph-thumbs");
+  function show(i) {
+    big.src = P[i].src; big.alt = P[i].alt; cap.textContent = P[i].caption || "";
+    th.querySelectorAll("button").forEach(function (b, j) { b.classList.toggle("on", i === j); });
+  }
+  P.forEach(function (p, i) {
+    var b = document.createElement("button"); b.type = "button"; b.setAttribute("aria-label", "Show photo: " + p.alt);
+    var im = document.createElement("img"); im.src = p.src; im.alt = ""; im.loading = "lazy";
+    b.appendChild(im); b.addEventListener("click", function () { show(i); }); th.appendChild(b);
+  });
+  show(0); sec.hidden = false;
+  // a taped-on snapshot over the hero scene, and a thumbnail on the shelf card
+  var pin = document.createElement("a"); pin.className = "pin"; pin.href = "#photos";
+  pin.innerHTML = '<img alt=""><span>the real thing!</span>'; pin.querySelector("img").src = P[0].src;
+  pin.setAttribute("aria-label", "See photos of the Antigravity A1");
+  document.querySelector(".scene-wrap").appendChild(pin);
+  var f = document.querySelector(".feature .fno");
+  if (f) { var t = document.createElement("img"); t.className = "fthumb"; t.src = P[0].src; t.alt = P[0].alt; f.parentNode.insertBefore(t, f.nextSibling); f.parentNode.style.gridTemplateColumns = "auto auto 1fr auto"; }
+  if (window.innerWidth < 900 && f) f.parentNode.style.gridTemplateColumns = "";
+})();
 </script>
 <script src="assets/js/shop-scenes.js" defer></script>
 <script>

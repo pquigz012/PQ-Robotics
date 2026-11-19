@@ -2,8 +2,9 @@
    The robots are the home page Drone Hospital crew (tank tracks, pincher arm,
    red cross on the chest), dressed for the holidays. Same body as drawRobot in
    drone-hospital-line.js (published B1 version).
-   Three looks, picked with ?look=1|2|3 (set on <html data-look> in the page head):
-   1 Workshop (Bay 04 gift wrap line), 2 Spec sheet (drawing + garland), 3 Snow globe. */
+   Four looks, picked with ?look=1|2|3|4 (set on <html data-look> in the page head):
+   4 North Pole parts yard (default), 1 Workshop (Bay 04 gift wrap line),
+   2 Spec sheet (drawing + garland), 3 Snow globe. */
 (function () {
   'use strict';
   const NS = 'http://www.w3.org/2000/svg';
@@ -25,7 +26,7 @@
     const g = mk('g', { class: 'bot', transform: tf }, back);
     const top = -26, cy = -18.3;
     // tank track
-    mk('rect', { class: 'k thin lug', x: -12.9, y: -8.9, width: 25.8, height: 9.8, rx: 4.9 }, g);
+    const lug = mk('rect', { class: 'k thin lug', x: -12.9, y: -8.9, width: 25.8, height: 9.8, rx: 4.9 }, g);
     mk('rect', { class: 'kf', x: -12, y: -8, width: 24, height: 8, rx: 4 }, g);
     mk('path', { class: 'k thin', d: 'M-8 -4H8' }, g);
     for (const cx of [-8, 0, 8]) { mk('circle', { class: 'k thin', cx, cy: -4, r: 2.3 }, g); mk('circle', { class: 'ink', cx, cy: -4, r: 0.75 }, g); }
@@ -46,13 +47,19 @@
     const head = mk('g', {}, g);
     mk('rect', { class: 'kf', x: -2.4, y: top - 3.2, width: 4.8, height: 3.4, rx: 0.8 }, head);
     mk('path', { class: 'k thin', d: `M-2.4 ${top - 1.5}h4.8` }, head);
+    if (o.elf) mk('path', { class: 'kf ear', d: 'M8.2 -36.6L15.2 -41.6L11.2 -33.4L8.2 -32.2Z' }, head);
     mk('circle', { class: 'kf', cx: 8.6, cy: -34.2, r: 1.8 }, head);
     mk('circle', { class: 'ink', cx: 8.9, cy: -34.2, r: 0.55 }, head);
     mk('rect', { class: 'kf', x: -8.5, y: -39.2, width: 17, height: 10, rx: 3 }, head);
     const visor = mk('rect', { class: 'visor', x: -7.3, y: -36.8, width: 10.5, height: 4.8, rx: 2.2 }, head);
     mk('circle', { class: 'red eye', cx: -4.4, cy: -34.4, r: 1.15 }, head);
     mk('path', { class: 'k thin', d: 'M-1.6 -35.8h3.4M4.6 -36.7v4.6M6.2 -36.7v4.6M-6 -30.6h4' }, head);
-    if (o.hat) {
+    if (o.elf) {
+      const c = o.elf === 'r' ? ['elf-r', 'elf-g'] : ['elf-g', 'elf-r'];
+      mk('path', { class: 'elfhat ' + c[0], d: 'M-8.2 -40.6C-6.5 -46.5 -2.5 -51.5 4 -55C8 -57 12.6 -56.8 15.4 -54.2C12 -54.4 9 -52.6 7.2 -49.6C6 -46.8 6.8 -43.4 8.2 -40.6Z' }, head);
+      mk('path', { class: 'elfband ' + c[1], d: 'M-9.2 -43.2H9.2V-40.8L7.4 -38.6L5.6 -40.8L3.7 -38.6L1.9 -40.8L0 -38.6L-1.9 -40.8L-3.7 -38.6L-5.6 -40.8L-7.4 -38.6L-9.2 -40.8Z' }, head);
+      mk('circle', { class: 'bell', cx: 15.8, cy: -53.4, r: 1.9 }, head);
+    } else if (o.hat) {
       mk('path', { class: 'hat', d: 'M-7.6 -40.4C-7 -48 -2.5 -53.5 3 -53.5C7.8 -53.5 11.2 -50.2 12.6 -45.6C10.4 -47.6 8.2 -48 6.8 -46.6C7.4 -44.6 7.8 -42.4 7.9 -40.4Z' }, head);
       mk('rect', { class: 'trim', x: -9.2, y: -42, width: 18.4, height: 3.6, rx: 1.8 }, head);
       mk('circle', { class: 'trim', cx: 13, cy: -44.4, r: 2.3 }, head);
@@ -62,6 +69,12 @@
       mk('rect', { class: 'kf', x: 2.9, y: -40.2, width: 2.6, height: 1.2, rx: 0.4 }, head);
       mk('path', { class: 'k', d: 'M4.2 -40.2L6 -44.4' }, head);
       mk('circle', { class: 'red tip', cx: 6.2, cy: -45.2, r: 1.4 }, head);
+    }
+    if (o.elf) {
+      const c = o.elf === 'r' ? 'elf-g' : 'elf-r';
+      mk('path', { class: 'collar ' + c, d: 'M-6.4 -29.9H6.4L5.4 -27L4 -28.8L2.6 -26.4L1.3 -28.6L0 -26.2L-1.3 -28.6L-2.6 -26.4L-4 -28.8L-5.4 -27Z' }, g);
+      mk('rect', { class: 'elfbelt', x: -9, y: -14.3, width: 18, height: 2.6 }, g);
+      mk('rect', { class: 'buckle', x: -1.9, y: -14.9, width: 3.8, height: 3.8, rx: 0.5 }, g);
     }
     if (o.scarf) {
       mk('path', { class: 'scarf', d: 'M2.6 -27.4l3.2 8.2l-3.4 0.7l-2 -8.4z' }, g);
@@ -76,7 +89,7 @@
     const j2 = mk('polyline', { class: 'jaw' }, fr);
     mk('circle', { class: 'kf', cx: -9, cy: -18, r: 2.5 }, fr);
     const elbow = mk('circle', { class: 'kf', r: 1.5 }, fr);
-    const R = { x, y, s, f, g, fr, head, visor, upper, fore, j1, j2, elbow, w: { x: 0, y: 0 }, u: { x: 1, y: 0 } };
+    const R = { x, y, s, f, g, fr, lug, head, visor, upper, fore, j1, j2, elbow, w: { x: 0, y: 0 }, u: { x: 1, y: 0 } };
     armTo(R, -16, -5);
     return R;
   }
@@ -99,6 +112,13 @@
     R.j2.setAttribute('points', `${P(0, 0)} ${P(2.6, -1.2 - o)} ${P(5.4, -0.9 - o * 0.6)} ${P(6.4, -0.1 - o * 0.3)}`);
     R.elbow.setAttribute('cx', e.x.toFixed(2)); R.elbow.setAttribute('cy', e.y.toFixed(2));
     R.w = w; R.u = { x: ux, y: uy };
+  }
+  function place(R, x, f) {     // drive along the ground; the track lugs roll
+    R.roll = (R.roll || 0) - ((x - R.x) * f) / R.s;
+    R.lug.style.strokeDashoffset = R.roll.toFixed(2);
+    R.x = x; R.f = f;
+    const tf = `translate(${x.toFixed(1)} ${R.y}) scale(${f * R.s} ${R.s})`;
+    R.g.setAttribute('transform', tf); R.fr.setAttribute('transform', tf);
   }
   const reach = (R, wx, wy, open) => armTo(R, (wx - R.x) / (R.f * R.s), (wy - R.y) / R.s, open);
   const tipWorld = (R, t) => ({ x: R.x + (R.w.x + R.u.x * t) * R.f * R.s, y: R.y + (R.w.y + R.u.y * t) * R.s });
@@ -124,6 +144,27 @@
     t.textContent = 'A1';
     return g;
   }
+  function part(parent, kind) {           // origin at the bottom centre
+    const g = mk('g', { class: 'part' }, parent);
+    if (kind === 'a1') carton(g, 28, 22);
+    else if (kind === 'gift') gift(g, 24, 16, 'g-red');
+    else if (kind === 'gift2') gift(g, 22, 18, 'g-gold');
+    else if (kind === 'prop') {
+      mk('path', { class: 'p-prop', d: 'M-15 -3C-9 -7 -3 -5 0 -3.5C3 -2 9 0 15 -4C11 1 4 1 0 -0.6C-3 -2 -9 -2 -15 -3Z' }, g);
+      mk('circle', { class: 'p-hub', cx: 0, cy: -2.2, r: 2.4 }, g);
+    } else if (kind === 'batt') {
+      mk('rect', { class: 'p-batt', x: -9, y: -22, width: 18, height: 22, rx: 2.5 }, g);
+      mk('rect', { class: 'p-batt', x: -4, y: -24.5, width: 8, height: 3, rx: 1 }, g);
+      mk('path', { class: 'p-bolt', d: 'M1.5 -18L-3.5 -10H0.5L-1.5 -4L4 -12.5H0Z' }, g);
+    } else {
+      mk('rect', { class: 'p-motor', x: -8, y: -16, width: 16, height: 16, rx: 1.5 }, g);
+      mk('ellipse', { class: 'p-motor', cx: 0, cy: -16, rx: 8, ry: 2.6 }, g);
+      mk('path', { class: 'p-coil', d: 'M-6 -12.5H6M-6 -9H6M-6 -5.5H6' }, g);
+      mk('path', { class: 'p-shaft', d: 'M0 -18.6V-22' }, g);
+    }
+    return g;
+  }
+
   // The A1, side on: compact body, 360 lens on top and bottom, folding arms
   function a1Side(parent, s) {
     const g = mk('g', { class: 'a1' }, parent);
@@ -312,6 +353,185 @@
     };
   }
 
+
+  /* ---------- look 4: North Pole parts yard (default) ---------- */
+  function northPole(svg) {
+    svg.setAttribute('viewBox', '0 0 640 440');
+    svg.setAttribute('aria-label', 'North Pole parts yard: Drone Hospital robots dressed as elves carry drone parts and gifts from a snowy building marked North Pole and load them onto a sleigh, while an Antigravity A1 drone hovers above with the price tag.');
+    const defs = mk('defs', {}, svg);
+    const bl = mk('filter', { id: 'soft', x: '-20%', y: '-60%', width: '140%', height: '220%' }, defs);
+    mk('feGaussianBlur', { stdDeviation: 9 }, bl);
+    const dg = mk('linearGradient', { id: 'doorglow', x1: 0, y1: 0, x2: 0, y2: 1 }, defs);
+    mk('stop', { offset: 0, 'stop-color': '#5a3410' }, dg); mk('stop', { offset: 1, 'stop-color': '#f6c25a' }, dg);
+    const pc = mk('clipPath', { id: 'poleclip' }, defs); mk('rect', { x: 246, y: 224, width: 11, height: 170, rx: 2 }, pc);
+    const L = {};
+    for (const n of ['sky', 'far', 'ground', 'house', 'roll', 'items', 'elfA', 'elfB', 'load', 'sleigh', 'drone', 'fx', 'near']) L[n] = mk('g', {}, svg);
+    const FA = 396, FB = 410;
+    // sky: aurora, moon, stars
+    const au = mk('g', { class: 'aurora', filter: 'url(#soft)' }, L.sky);
+    mk('path', { class: 'au1', d: 'M-20 70C80 30 150 96 250 58S420 20 520 64S640 40 680 52' }, au);
+    mk('path', { class: 'au2', d: 'M-20 104C90 76 170 126 280 92S450 70 560 100S650 86 680 90' }, au);
+    mk('path', { class: 'moon', d: 'M404 40a20 20 0 1 0 16 31a16 16 0 1 1 -16 -31z' }, L.sky);
+    for (let i = 0; i < 26; i++) { const st = mk('circle', { class: 'star', cx: rnd(10, 630).toFixed(0), cy: rnd(10, 170).toFixed(0), r: rnd(0.5, 1.3).toFixed(2) }, L.sky); st.style.animationDelay = (-rnd(0, 4)).toFixed(2) + 's'; }
+    // far pines
+    const pine = (x, y, h, cls) => {
+      const g = mk('g', { class: 'pine ' + (cls || '') }, L.far);
+      for (const [k, w] of [[0, 0.42], [0.3, 0.34], [0.56, 0.25]]) {
+        const ty = y - h * k, th = h * 0.5;
+        mk('path', { d: `M${x} ${ty - th}L${x - h * w} ${ty}H${x + h * w}Z` }, g);
+        mk('path', { class: 'pine-snow', d: `M${x} ${ty - th}L${x - h * w * 0.4} ${ty - th * 0.6}Q${x} ${ty - th * 0.5} ${x + h * w * 0.4} ${ty - th * 0.6}Z` }, g);
+      }
+    };
+    pine(340, 372, 70, 'dim'); pine(392, 370, 54, 'dim'); pine(626, 384, 110); pine(8, 388, 120); pine(300, 376, 46, 'dim');
+    // snow ground
+    mk('path', { class: 'snowfield', d: 'M0 382Q70 372 150 384T320 380T470 388T640 378V440H0Z' }, L.ground);
+    mk('path', { class: 'snow-shade', d: 'M0 410Q120 400 250 414T520 412T640 404V440H0Z' }, L.ground);
+    // the North Pole building
+    const H = L.house;
+    mk('rect', { class: 'chim', x: 156, y: 204, width: 22, height: 44 }, H);
+    mk('path', { class: 'roof-snow', d: 'M152 206Q167 196 182 206V211H152Z' }, H);
+    mk('rect', { class: 'wall', x: 28, y: 258, width: 182, height: 132 }, H);
+    for (let y = 272; y < 390; y += 13) mk('path', { class: 'plank', d: `M28 ${y}H210` }, H);
+    mk('path', { class: 'roof', d: 'M12 264L119 190L226 264Z' }, H);
+    mk('path', { class: 'roof-snow', d: 'M8 266L119 186L230 266Q222 272 214 266Q205 276 196 268Q186 277 176 268Q164 276 154 267Q143 276 132 267Q121 275 110 267Q98 276 88 267Q77 275 66 267Q55 276 44 267Q33 274 24 267Q16 272 8 266ZM119 196L38 256Q119 218 200 256Z' }, H);
+    lights(H, 22, 216, 268, 7, 9);
+    // sign
+    mk('rect', { class: 'sign', x: 46, y: 282, width: 146, height: 30, rx: 3 }, H);
+    const sg = mk('text', { class: 'sign-t', x: 119, y: 302, 'text-anchor': 'middle' }, H); sg.textContent = 'NORTH POLE';
+    mk('path', { class: 'sign-snow', d: 'M44 283Q60 276 80 282Q100 275 122 282Q146 276 168 281Q182 276 194 283Z' }, H);
+    const sd = mk('text', { class: 'lbl small dark', x: 119, y: 326, 'text-anchor': 'middle' }, H); sd.textContent = 'DRONE PARTS DEPT.';
+    // window and the open door with shelves inside
+    mk('rect', { class: 'win-glow', x: 42, y: 334, width: 44, height: 34, rx: 2 }, H);
+    mk('path', { class: 'mullion', d: 'M64 334V368M42 351H86' }, H);
+    mk('path', { class: 'sill', d: 'M38 370H90' }, H);
+    mk('rect', { class: 'door', x: 124, y: 334, width: 64, height: 56 }, H);
+    for (const yy of [350, 368]) mk('path', { class: 'shelf', d: `M128 ${yy}H184` }, H);
+    for (const [bx, by, bw, bh] of [[132, 350, 9, 7], [144, 350, 6, 10], [158, 350, 12, 6], [173, 350, 7, 9], [134, 368, 12, 8], [151, 368, 8, 5], [166, 368, 10, 9]]) mk('rect', { class: 'shelf-box', x: bx, y: by - bh, width: bw, height: bh }, H);
+    mk('rect', { class: 'doorframe', x: 124, y: 334, width: 64, height: 56 }, H);
+    // striped North Pole post
+    const pole = mk('g', { 'clip-path': 'url(#poleclip)' }, H);
+    mk('rect', { class: 'pole-w', x: 246, y: 224, width: 11, height: 170 }, pole);
+    for (let y = 214; y < 400; y += 15) mk('path', { class: 'pole-r', d: `M244 ${y + 8}L259 ${y}V${y + 7}L244 ${y + 15}Z` }, pole);
+    mk('circle', { class: 'pole-ball', cx: 251.5, cy: 218, r: 7.5 }, H);
+    mk('path', { class: 'roof-snow', d: 'M244 222Q251.5 214 259 222V226H244Z' }, H);
+    // roller ramp out of the door
+    const RT = 362;
+    mk('rect', { class: 'kf', x: 150, y: RT, width: 136, height: 6, rx: 2 }, L.roll);
+    for (let x = 156; x <= 282; x += 9) mk('circle', { class: 'roller', cx: x, cy: RT + 3, r: 2.2 }, L.roll);
+    for (const lx of [210, 276]) { mk('rect', { class: 'kf', x: lx - 2, y: RT + 6, width: 4, height: 392 - RT - 6 }, L.roll); mk('rect', { class: 'kf', x: lx - 6, y: 390, width: 12, height: 3, rx: 1 }, L.roll); }
+    // sleigh, the same sleigh as the workshop look
+    mk('path', { class: 'sleigh', d: 'M492 334H508V356H582C600 356 606 346 610 336C614 326 626 328 624 340C621 362 606 384 584 384H500C494 384 492 378 492 372Z' }, L.sleigh);
+    mk('path', { class: 'sleigh-trim', d: 'M500 371H590' }, L.sleigh);
+    mk('path', { class: 'runner', d: 'M486 404H604C622 404 630 394 628 384M506 384V404M546 384V404M584 384V404' }, L.sleigh);
+    const yl = mk('text', { class: 'lbl', x: 52, y: 32 }, L.fx); yl.textContent = 'NORTH POLE · PARTS YARD';
+    const sl = mk('text', { class: 'lbl dim', x: 52, y: 48 }, L.fx);
+    const SLOTS = [[521, 364], [548, 364], [575, 364], [534, 342], [561, 342], [548, 322]];
+    // near snow drifts (in front of everything)
+    mk('path', { class: 'snowfield', d: 'M0 432Q40 420 90 430Q130 424 170 434V440H0Z' }, L.near);
+    mk('path', { class: 'snowfield', d: 'M600 432Q620 424 640 428V440H600Z' }, L.near);
+    // the A1 hovering with its tag
+    const dr = mk('g', {}, L.drone);
+    a1Side(dr, 2.2);
+    const swing = mk('g', {}, dr);
+    mk('path', { class: 'string', d: 'M0 22V44' }, swing);
+    tag(mk('g', { transform: 'translate(0 44)' }, swing), '$1,450', '$1,650');
+    // two elves on tracks, at different depths so they pass each other
+    const mkElf = (layer, F, s, kind, off) => {
+      const back = mk('g', {}, layer), hold = mk('g', {}, layer), front = mk('g', {}, layer);
+      const R = robot(back, front, 302, F, s, { elf: kind });
+      R.hold = hold; R.off = off; R.item = null; R.next = null;
+      return R;
+    };
+    const EA = mkElf(L.elfA, FA, 2.5, 'g', 0), EB = mkElf(L.elfB, FB, 2.7, 'r', 5);
+    const PX = 300, LX = 450, CYC = 10, END = 278;
+    const KINDS = ['a1', 'prop', 'gift', 'batt', 'a1', 'motor', 'gift2', 'prop'];
+    let k = 0, sleighNo = 1, loaded = 0, clearAt = 0, puffT = 0;
+    const rolling = [], falling = [], resting = [], puffs = [], sparks = [];
+    const label = () => { sl.textContent = `SLEIGH ${String(sleighNo).padStart(2, '0')} · LOADED ${loaded}/${SLOTS.length}`; };
+    label();
+    const newItem = (layer) => ({ g: part(layer, KINDS[k++ % KINDS.length]), x: 160, y: RT, t: 0 });
+    // elf A starts at the ramp with a part waiting, elf B starts at the sleigh with a part in hand
+    EA.next = newItem(L.items); EA.next.x = END; EA.next.t = 1;
+    EB.item = newItem(EB.hold);
+    function cycle(E, tc, t) {
+      const s = E.s;
+      const holdAt = () => { const p = tipWorld(E, 5.4); E.item.g.setAttribute('transform', `translate(${p.x.toFixed(1)} ${(p.y + 3).toFixed(1)})`); };
+      if (tc < 1.0) {                                  // reach down and pinch the part at the end of the ramp
+        place(E, PX, 1);
+        const it = E.next;
+        reach(E, END + 1, RT - 18, tc < 0.7 ? 2.2 : 0.2);
+        if (tc >= 0.72 && it && it.t >= 1 && !E.item) { E.item = it; E.next = null; E.hold.appendChild(it.g); }
+        if (E.item) holdAt();
+      } else if (tc < 1.6) {                           // lift it overhead and turn round
+        const u = ease((tc - 1.0) / 0.6);
+        place(E, PX, tc < 1.3 ? 1 : -1);
+        armTo(E, lerp(-26, -4, u), lerp(-12, -46, u), 0.2);
+        if (E.item) holdAt();
+      } else if (tc < 5.0) {                           // drive to the sleigh
+        place(E, lerp(PX, LX, ease((tc - 1.6) / 3.4)), -1);
+        armTo(E, -4 + Math.sin(t * 6) * 0.8, -46 + Math.abs(Math.sin(t * 6)) * 1.2, 0.2);
+        if (E.item) holdAt();
+      } else if (tc < 6.2) {                           // reach over the side and let go
+        place(E, LX, -1);
+        const u = ease(clamp((tc - 5.0) / 0.7, 0, 1));
+        armTo(E, lerp(-4, -27, u), lerp(-46, -30, u), tc < 5.75 ? 0.2 : 2.2);
+        if (E.item && tc < 5.75) holdAt();
+        else if (E.item) {
+          const p = tipWorld(E, 5.4), sl = SLOTS[loaded % SLOTS.length];
+          L.load.appendChild(E.item.g);
+          falling.push({ g: E.item.g, x0: p.x, y0: p.y + 3, x1: sl[0], y1: sl[1], t: 0 });
+          loaded++; E.item = null;
+        }
+      } else if (tc < 9.6) {                           // drive back for the next part
+        place(E, lerp(LX, PX, ease((tc - 6.2) / 3.4)), 1);
+        armTo(E, -15 + Math.sin(t * 3) * 1.5, -6, 1.4);
+      } else { place(E, PX, 1); armTo(E, -18, -8, 2); }
+      // order the next part when heading back, so it rolls out of the door in time
+      if (tc >= 6.4 && !E.next && !E.ordered) { E.ordered = true; const it = newItem(L.items); E.next = it; rolling.push(it); }
+      if (tc < 6.4) E.ordered = false;
+      E.visor.classList.toggle('on', tc > 0.5 && tc < 1.2 || tc > 5.4 && tc < 6);
+      tilt(E, tc < 1 ? -8 : tc > 5 && tc < 6.2 ? -6 : 3 * Math.sin(t * 2 + E.off));
+    }
+    return function step(dt, t) {
+      for (let i = rolling.length - 1; i >= 0; i--) {   // parts roll out of the door to the end of the ramp
+        const it = rolling[i]; it.t = Math.min(1, it.t + dt / 2.6);
+        it.x = lerp(160, END, ease(it.t));
+        it.g.setAttribute('transform', `translate(${it.x.toFixed(1)} ${RT})`);
+        if (it.t >= 1) rolling.splice(i, 1);
+      }
+      if (EA.next && EA.next.t >= 1 && !rolling.includes(EA.next)) EA.next.g.setAttribute('transform', `translate(${END} ${RT})`);
+      cycle(EA, (t + EA.off) % CYC, t);
+      cycle(EB, (t + EB.off) % CYC, t);
+      for (let i = falling.length - 1; i >= 0; i--) {   // parts drop into the sleigh
+        const f = falling[i]; f.t = Math.min(1, f.t + dt / 0.55);
+        const x = lerp(f.x0, f.x1, f.t), y = lerp(f.y0, f.y1, f.t * f.t) - 26 * Math.sin(Math.PI * f.t);
+        f.g.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${(10 * Math.sin(Math.PI * f.t)).toFixed(1)})`);
+        if (f.t >= 1) {
+          falling.splice(i, 1); resting.push(f.g); sparkle(L.fx, sparks, f.x1, f.y1 - 14); label();
+          if (loaded >= SLOTS.length) clearAt = t + 2.2;
+        }
+      }
+      if (clearAt && t > clearAt) {                     // sleigh full: it leaves, a new one is loaded
+        clearAt = 0; resting.splice(0).forEach(g => { g.classList.add('leaving'); setTimeout(() => g.remove(), 700); });
+        loaded = 0; sleighNo++; label();
+      }
+      puffT -= dt;                                      // chimney smoke
+      if (puffT <= 0) { puffT = 0.7; puffs.push({ el: mk('circle', { class: 'smoke', cx: 167, cy: 200, r: 4 }, L.house), t: 0, x: rnd(-2, 2) }); }
+      for (let i = puffs.length - 1; i >= 0; i--) {
+        const p = puffs[i]; p.t += dt;
+        if (p.t > 4.5) { p.el.remove(); puffs.splice(i, 1); continue; }
+        p.el.setAttribute('cx', (167 + p.x + p.t * 9 + Math.sin(p.t * 1.5) * 3).toFixed(1));
+        p.el.setAttribute('cy', (200 - p.t * 22).toFixed(1));
+        p.el.setAttribute('r', (4 + p.t * 3).toFixed(1));
+        p.el.style.opacity = (0.3 * (1 - p.t / 4.5)).toFixed(2);
+      }
+      const hx = 556 + 8 * Math.sin(t * 0.5), hy = 196 + 6 * Math.sin(t * 1.4);
+      dr.setAttribute('transform', `translate(${hx.toFixed(1)} ${hy.toFixed(1)}) rotate(${(3 * Math.cos(t * 0.5)).toFixed(2)})`);
+      swing.setAttribute('transform', `rotate(${(6 * Math.sin(t * 1.4 + 0.7)).toFixed(2)})`);
+      stepSparks(sparks, dt);
+    };
+  }
+
   /* ---------- look 2: spec sheet with a garland ---------- */
   function spec(svg) {
     svg.setAttribute('viewBox', '0 0 640 480');
@@ -465,7 +685,7 @@
   /* ---------- shelf: robots peeking out of the coming-soon boxes ---------- */
   function shelf() {
     const tones = ['g-red', 'g-green', 'g-gold', 'g-white'];
-    const kinds = [{ hat: true }, { antlers: true }, { scarf: true }, {}, { hat: true, flip: true }, { antlers: true, flip: true }, { scarf: true, flip: true }, { hat: true, scarf: true }, { flip: true }];
+    const kinds = [{ elf: 'g' }, { hat: true }, { elf: 'r', flip: true }, { antlers: true }, { elf: 'g', flip: true }, { scarf: true, flip: true }, { elf: 'r' }, { hat: true, flip: true }, { elf: 'g' }];
     document.querySelectorAll('.peek').forEach((el, i) => {
       const s = mk('svg', { viewBox: '0 0 120 100', class: 'scene mini', 'aria-hidden': 'true' }, el);
       const back = mk('g', {}, s), front = mk('g', {}, s);
@@ -511,7 +731,7 @@
   const hero = document.getElementById('top');
   shelf();
   if (!svg) return;
-  const step = look === '2' ? spec(svg) : look === '3' ? snowGlobe(svg) : workshop(svg);
+  const step = look === '2' ? spec(svg) : look === '3' ? snowGlobe(svg) : look === '1' ? workshop(svg) : northPole(svg);
   const cv = document.getElementById('snow');
   const snow = cv && look !== '2' ? snowfall(cv) : null;
   if (reduce) {                 // still frame: run the line forward a little, then stop
