@@ -11,7 +11,7 @@
   var TEXT_BODY = "Hi PQ Robotics, I've got a drone that needs a look. ";
   var TZ = "America/New_York";   // the shop's clock, whatever time zone the visitor is in
 
-  // Must match the app's schedule (2026-10-24): Paul on site Mon–Fri 9 AM–6 PM,
+  // Must match the app's schedule (2026-10-24): tech on site Mon–Fri 9 AM–6 PM,
   // weekends closed. staff = the old front-desk hours, no longer on the schedule.
   var SCHEDULE = [
     { staff: null, tech: null },        // Sun closed

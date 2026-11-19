@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
   <title>Secure Sign-in · PQ Robotics</title>
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -215,6 +216,19 @@
     }
 
     .btn-signin:active { transform: translateY(0); }
+    .btn-signin:disabled { opacity: 0.6; cursor: default; transform: none; }
+
+    .login-error {
+      margin-top: 1rem;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: rgba(248,113,113,0.1);
+      border: 1px solid rgba(248,113,113,0.3);
+      color: var(--error);
+      font-size: 13px;
+      text-align: center;
+    }
+    .login-error[hidden] { display: none; }
 
     /* ── Divider ── */
     .divider {
@@ -307,6 +321,8 @@
         Sign in
       </button>
 
+      <div class="login-error" id="login-error" role="alert" hidden></div>
+
       <div class="security-note">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
@@ -322,13 +338,23 @@
 
 <script>
   function handleLogin() {
-    const email = document.getElementById('email').value;
+    const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value;
+    const errorEl = document.getElementById('login-error');
+    const btn = document.querySelector('.btn-signin');
+    errorEl.hidden = true;
     if (!email || !password) {
-      alert('Please enter your email and password.');
+      errorEl.textContent = 'Please enter your email and password.';
+      errorEl.hidden = false;
       return;
     }
-    window.location.href = 'stream.html';
+    btn.disabled = true;
+    setTimeout(() => {
+      document.getElementById('password').value = '';
+      errorEl.textContent = 'Incorrect username or password.';
+      errorEl.hidden = false;
+      btn.disabled = false;
+    }, 900);
   }
 
   // Allow Enter key to submit
