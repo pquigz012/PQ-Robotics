@@ -750,24 +750,24 @@
           <div class="prod-top"><span class="stock">In stock now</span><span class="cond">Used</span></div>
           <h3>DJI Mini 4 Pro Arm Replacements</h3>
           <div class="fits">Fits: DJI Mini 4 Pro</div>
-          <p>Replacement arms with motors attached, priced per arm. Front left, front right, rear left or rear right: tell us which one you need.</p>
-          <div class="prod-foot"><b class="prod-price">$59 <small>per arm</small></b><a class="btn-primary sm" href="#order" data-pick="mini4pro-arms">Reserve</a></div>
+          <p>Replacement arms with motors attached, priced per arm. Pick front left, front right, rear left or rear right when you reserve.</p>
+          <div class="prod-foot"><b class="prod-price">$59 <small>per arm</small></b><a class="btn-primary sm" href="#order" data-pick="mini4pro-arm-front-left">Reserve</a></div>
         </article>
         <article class="prod" id="item-mini5pro-arms" data-fits="mini5pro">
           <div class="prod-ph"><img src="assets/images/shop/used/mini5pro-arms.jpg" alt="DJI Mini 5 Pro Arm Replacements, used" loading="lazy" width="520" height="520"></div>
           <div class="prod-top"><span class="stock">In stock now</span><span class="cond">Used</span></div>
           <h3>DJI Mini 5 Pro Arm Replacements</h3>
           <div class="fits">Fits: DJI Mini 5 Pro</div>
-          <p>Replacement arms with motors attached, priced per arm. Front arms $110, rear arms $95.</p>
-          <div class="prod-foot"><b class="prod-price">$95 <small>to $110</small></b><a class="btn-primary sm" href="#order" data-pick="mini5pro-arms">Reserve</a></div>
+          <p>Replacement arms with motors attached, priced per arm. Front arms $110, rear arms $95. Pick the position when you reserve.</p>
+          <div class="prod-foot"><b class="prod-price">$95 <small>to $110</small></b><a class="btn-primary sm" href="#order" data-pick="mini5pro-arm-front-left">Reserve</a></div>
         </article>
         <article class="prod" id="item-mini3-arms" data-fits="mini3pro">
           <div class="prod-ph"><img src="assets/images/shop/used/mini3-arms.jpg" alt="DJI Mini 3 Pro Arm Replacements, used" loading="lazy" width="520" height="520"></div>
           <div class="prod-top"><span class="stock">In stock now</span><span class="cond">Used</span></div>
           <h3>DJI Mini 3 Pro Arm Replacements</h3>
           <div class="fits">Fits: DJI Mini 3 Pro</div>
-          <p>Replacement arms with motors attached, priced per arm. Front arms $69, rear arms $49. Mini 3 Pro only, they don't fit the plain Mini 3.</p>
-          <div class="prod-foot"><b class="prod-price">$49 <small>to $69</small></b><a class="btn-primary sm" href="#order" data-pick="mini3-arms">Reserve</a></div>
+          <p>Replacement arms with motors attached, priced per arm. Front arms $69, rear arms $49. Pick the position when you reserve. Mini 3 Pro only, they don't fit the plain Mini 3.</p>
+          <div class="prod-foot"><b class="prod-price">$49 <small>to $69</small></b><a class="btn-primary sm" href="#order" data-pick="mini3pro-arm-front-left">Reserve</a></div>
         </article>
         <article class="prod" id="item-axis-springs" data-fits="mini3 mini3pro mini4pro">
           <div class="prod-ph"><img src="assets/images/shop/used/axis-springs.jpg" alt="Front arm axis springs, used" loading="lazy" width="520" height="520"></div>
@@ -829,22 +829,43 @@
         <h3>Your order</h3>
         <label for="f-item">Item</label>
         <select id="f-item" name="item" required>
-          <option value="a1" data-price="1450">Antigravity A1 Essential Bundle · $1,450</option>
-          <option value="rc2" data-price="399">DJI RC 2 controller (used) · $399</option>
-          <option value="rc-n1" data-price="145">DJI RC-N1 controller (used) · $145</option>
-          <option value="rc-n2" data-price="145">DJI RC-N2 controller (used) · $145</option>
-          <option value="rc-n3" data-price="145">DJI RC-N3 controller (used) · $145</option>
-          <option value="mini4pro-arms" data-price="59">DJI Mini 4 Pro Arm Replacement, per arm (used) · $59</option>
-          <option value="mini5pro-arms" data-price="110">DJI Mini 5 Pro Arm Replacement, front (used) · $110</option>
-          <option value="mini5pro-arms-rear" data-price="95">DJI Mini 5 Pro Arm Replacement, rear (used) · $95</option>
-          <option value="mini3-arms" data-price="69">DJI Mini 3 Pro Arm Replacement, front (used) · $69</option>
-          <option value="mini3-arms-rear" data-price="49">DJI Mini 3 Pro Arm Replacement, rear (used) · $49</option>
-          <option value="axis-springs-kit" data-price="39">Front arm axis springs, kit of 2 + tools (used) · $39</option>
-          <option value="axis-springs" data-price="20">Front arm axis spring, single (used) · $20</option>
-          <option value="mini4pro-case" data-price="100">DJI Mini 4 Pro hard case, HPRC 2300 (used) · $100</option>
-          <option value="mini4pro-batteries" data-price="299">DJI Mini 4 Pro charging set: 2 batteries + hub (used) · $299</option>
-          <option value="mini4pro-battery" data-price="119">DJI Mini 4 Pro battery, single (used) · $119</option>
-          <option value="gimbal-dampers" data-price="15">Gimbal rubber dampers, pair (new) · $15</option>
+          <optgroup label="New">
+            <option value="a1" data-price="1450">Antigravity A1 Essential Bundle · $1,450</option>
+            <option value="gimbal-dampers" data-price="15">Gimbal rubber dampers, pair · $15</option>
+          </optgroup>
+          <optgroup label="Controllers (used)">
+            <option value="rc2" data-price="399">DJI RC 2 · $399</option>
+            <option value="rc-n1" data-price="145">DJI RC-N1 · $145</option>
+            <option value="rc-n2" data-price="145">DJI RC-N2 · $145</option>
+            <option value="rc-n3" data-price="145">DJI RC-N3 · $145</option>
+          </optgroup>
+          <optgroup label="DJI Mini 4 Pro arms (used)">
+            <option value="mini4pro-arm-front-left" data-price="59">Mini 4 Pro arm, front left · $59</option>
+            <option value="mini4pro-arm-front-right" data-price="59">Mini 4 Pro arm, front right · $59</option>
+            <option value="mini4pro-arm-rear-left" data-price="59">Mini 4 Pro arm, rear left · $59</option>
+            <option value="mini4pro-arm-rear-right" data-price="59">Mini 4 Pro arm, rear right · $59</option>
+          </optgroup>
+          <optgroup label="DJI Mini 5 Pro arms (used)">
+            <option value="mini5pro-arm-front-left" data-price="110">Mini 5 Pro arm, front left · $110</option>
+            <option value="mini5pro-arm-front-right" data-price="110">Mini 5 Pro arm, front right · $110</option>
+            <option value="mini5pro-arm-rear-left" data-price="95">Mini 5 Pro arm, rear left · $95</option>
+            <option value="mini5pro-arm-rear-right" data-price="95">Mini 5 Pro arm, rear right · $95</option>
+          </optgroup>
+          <optgroup label="DJI Mini 3 Pro arms (used)">
+            <option value="mini3pro-arm-front-left" data-price="69">Mini 3 Pro arm, front left · $69</option>
+            <option value="mini3pro-arm-front-right" data-price="69">Mini 3 Pro arm, front right · $69</option>
+            <option value="mini3pro-arm-rear-left" data-price="49">Mini 3 Pro arm, rear left · $49</option>
+            <option value="mini3pro-arm-rear-right" data-price="49">Mini 3 Pro arm, rear right · $49</option>
+          </optgroup>
+          <optgroup label="Repair parts (used)">
+            <option value="axis-springs-kit" data-price="39">Front arm axis springs, kit of 2 + tools · $39</option>
+            <option value="axis-springs" data-price="20">Front arm axis spring, single · $20</option>
+          </optgroup>
+          <optgroup label="Batteries and cases (used)">
+            <option value="mini4pro-batteries" data-price="299">Mini 4 Pro charging set: 2 batteries + hub · $299</option>
+            <option value="mini4pro-battery" data-price="119">Mini 4 Pro battery, single · $119</option>
+            <option value="mini4pro-case" data-price="100">Mini 4 Pro hard case, HPRC 2300 · $100</option>
+          </optgroup>
           <option value="other" data-price="">Something else (tell us below)</option>
         </select>
         <div class="two">
@@ -1496,5 +1517,6 @@ window.A1_PHOTOS = [
   });
 })();
 </script>
+<script src="/assets/js/mobile-nav.js" defer></script>
 </body>
 </html>
