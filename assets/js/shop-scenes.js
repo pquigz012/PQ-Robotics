@@ -74,7 +74,6 @@
       const c = o.elf === 'r' ? 'elf-g' : 'elf-r';
       mk('path', { class: 'collar ' + c, d: 'M-6.4 -29.9H6.4L5.4 -27L4 -28.8L2.6 -26.4L1.3 -28.6L0 -26.2L-1.3 -28.6L-2.6 -26.4L-4 -28.8L-5.4 -27Z' }, g);
       mk('rect', { class: 'elfbelt', x: -9, y: -14.3, width: 18, height: 2.6 }, g);
-      mk('rect', { class: 'buckle', x: -1.9, y: -14.9, width: 3.8, height: 3.8, rx: 0.5 }, g);
     }
     if (o.scarf) {
       mk('path', { class: 'scarf', d: 'M2.6 -27.4l3.2 8.2l-3.4 0.7l-2 -8.4z' }, g);
@@ -163,6 +162,54 @@
       mk('path', { class: 'p-shaft', d: 'M0 -18.6V-22' }, g);
     }
     return g;
+  }
+
+
+  // Santa's sleigh: red body with gold scrollwork and snowflakes, curled front and back,
+  // gold runners with curls, a sack and a pile of presents. Faces left. Origin at the runner bottom centre.
+  function snowflake(p, x, y, r, cls) {
+    let d = '';
+    for (let a = 0; a < 3; a++) {
+      const c = Math.cos(a * Math.PI / 3), sn = Math.sin(a * Math.PI / 3);
+      d += `M${(x - c * r).toFixed(1)} ${(y - sn * r).toFixed(1)}L${(x + c * r).toFixed(1)} ${(y + sn * r).toFixed(1)}`;
+      for (const k of [-1, 1]) {
+        const bx = x + k * c * r * 0.6, by = y + k * sn * r * 0.6, b = r * 0.32;
+        for (const t of [-0.6, 0.6]) {
+          const ang = Math.atan2(k * sn, k * c) + Math.PI + t;
+          d += `M${bx.toFixed(1)} ${by.toFixed(1)}l${(Math.cos(ang) * b).toFixed(1)} ${(Math.sin(ang) * b).toFixed(1)}`;
+        }
+      }
+    }
+    mk('path', { class: cls || 'flk', d }, p);
+  }
+  function fancySleigh(back, body, x, y, s) {
+    const tf = `translate(${x} ${y}) scale(${s})`;
+    const B = mk('g', { transform: tf }, back), F = mk('g', { class: 'fsl', transform: tf }, body);
+    // what's already aboard: blanket, sack and presents
+    mk('path', { class: 'blanket', d: 'M30 -58C34 -76 54 -84 66 -78C76 -74 74 -62 70 -58Z' }, B);
+    mk('path', { class: 'sack', d: 'M-44 -56C-56 -86 -40 -114 -16 -116C-6 -128 14 -126 16 -114C34 -104 36 -76 26 -56Z' }, B);
+    mk('path', { class: 'sack-fold', d: 'M-26 -64C-32 -84 -26 -100 -14 -108M4 -62C8 -80 6 -96 12 -106' }, B);
+    mk('path', { class: 'sack-tie', d: 'M-14 -112Q0 -106 14 -112' }, B);
+    const box = (bx, by, w, h, tone, rot) => { const g = mk('g', { transform: `translate(${bx} ${by}) rotate(${rot || 0})` }, B); gift(g, w, h, tone); };
+    box(-4, -116, 16, 13, 'g-teal', -6); box(16, -112, 13, 11, 'g-red', 8); box(-24, -110, 12, 10, 'g-gold', -10);
+    box(52, -58, 20, 24, 'g-white'); box(40, -56, 14, 12, 'g-teal', 4);
+    box(-70, -60, 14, 12, 'g-green', -4);
+    box(54, -87, 13, 10, 'g-red', -6); box(70, -64, 12, 16, 'g-gold', 3);
+    box(-50, -60, 15, 13, 'g-teal', 3); box(-32, -58, 17, 11, 'g-white', -2); box(26, -60, 13, 14, 'g-gold', -4);
+    // body
+    mk('path', { class: 'fs-body', d: 'M74 -30H-62C-88 -30 -104 -50 -104 -72C-104 -92 -90 -103 -77 -101C-63 -99 -61 -85 -69 -79L-64 -58H44C50 -78 63 -95 81 -97C97 -98 105 -84 99 -74C95 -67 87 -67 85 -73L93 -50C95 -38 88 -30 74 -30Z' }, F);
+    mk('path', { class: 'fs-shade', d: 'M-62 -30H74C88 -30 95 -38 93 -50L91 -44C86 -38 80 -36 72 -36H-58C-80 -36 -96 -50 -100 -66C-100 -48 -84 -30 -62 -30Z' }, F);
+    // gold trim and scrolls
+    mk('path', { class: 'fs-gold', d: 'M-69 -79L-64 -58H44C50 -78 63 -95 81 -97M-64 -58C-64 -50 -60 -42 -52 -40H80' }, F);
+    mk('path', { class: 'fs-gold', d: 'M-69 -79C-61 -85 -63 -99 -77 -101C-91 -103 -104 -91 -104 -72C-104 -50 -88 -30 -62 -30H74C88 -30 95 -38 93 -50L85 -73C87 -67 95 -67 99 -74C105 -84 97 -98 81 -97' }, F);
+    mk('path', { class: 'fs-gold thin', d: 'M-80 -88C-74 -94 -66 -88 -70 -82C-73 -78 -80 -80 -78 -85M86 -86C92 -90 98 -84 94 -79C91 -76 86 -78 88 -82' }, F);
+    mk('path', { class: 'fs-gold thin', d: 'M-90 -60C-84 -72 -74 -70 -76 -62C-77 -57 -84 -58 -82 -63M60 -46C66 -56 76 -54 74 -46M-40 -46C-30 -54 -18 -54 -12 -46M4 -46C14 -54 26 -54 32 -46' }, F);
+    for (const [fx, fy, r] of [[-84, -46, 6], [-58, -48, 4.2], [-26, -40, 5.5], [10, -40, 4.6], [44, -42, 5.5], [76, -60, 4.2], [-92, -80, 3.6]]) snowflake(F, fx, fy, r, 'fs-flk');
+    // runners with curls, and scroll struts
+    mk('path', { class: 'fs-run', d: 'M-92 -6H82C98 -6 106 -16 101 -25C97 -32 88 -30 90 -23C91 -19 96 -20 96 -23M-92 -6C-106 -6 -114 -18 -108 -26C-103 -32 -95 -28 -97 -22C-98 -18 -103 -19 -103 -22' }, F);
+    for (const sx of [-62, -10, 42]) mk('path', { class: 'fs-strut', d: `M${sx} -30C${sx - 12} -28 ${sx - 12} -16 ${sx - 3} -15C${sx + 3} -14 ${sx + 3} -21 ${sx - 2} -21M${sx - 3} -15C${sx + 6} -12 ${sx + 8} -8 ${sx + 6} -6` }, F);
+    mk('path', { class: 'fs-strut', d: 'M-36 -30C-30 -22 -22 -22 -18 -28M16 -30C22 -22 30 -22 34 -28M66 -30C70 -24 76 -22 80 -24' }, F);
+    return { x, y, s };
   }
 
   // The A1, side on: compact body, 360 lens on top and bottom, folding arms
@@ -363,9 +410,9 @@
     mk('feGaussianBlur', { stdDeviation: 9 }, bl);
     const dg = mk('linearGradient', { id: 'doorglow', x1: 0, y1: 0, x2: 0, y2: 1 }, defs);
     mk('stop', { offset: 0, 'stop-color': '#5a3410' }, dg); mk('stop', { offset: 1, 'stop-color': '#f6c25a' }, dg);
-    const pc = mk('clipPath', { id: 'poleclip' }, defs); mk('rect', { x: 246, y: 224, width: 11, height: 170, rx: 2 }, pc);
+    const pc = mk('clipPath', { id: 'poleclip' }, defs); mk('rect', { x: 10, y: 226, width: 11, height: 170, rx: 2 }, pc);
     const L = {};
-    for (const n of ['sky', 'far', 'ground', 'house', 'roll', 'items', 'elfA', 'elfB', 'load', 'sleigh', 'drone', 'fx', 'near']) L[n] = mk('g', {}, svg);
+    for (const n of ['sky', 'far', 'ground', 'house', 'roll', 'items', 'elfA', 'elfB', 'sback', 'load', 'sleigh', 'drone', 'fx', 'near']) L[n] = mk('g', {}, svg);
     const FA = 396, FB = 410;
     // sky: aurora, moon, stars
     const au = mk('g', { class: 'aurora', filter: 'url(#soft)' }, L.sky);
@@ -382,12 +429,12 @@
         mk('path', { class: 'pine-snow', d: `M${x} ${ty - th}L${x - h * w * 0.4} ${ty - th * 0.6}Q${x} ${ty - th * 0.5} ${x + h * w * 0.4} ${ty - th * 0.6}Z` }, g);
       }
     };
-    pine(340, 372, 70, 'dim'); pine(392, 370, 54, 'dim'); pine(626, 384, 110); pine(8, 388, 120); pine(300, 376, 46, 'dim');
+    pine(340, 372, 70, 'dim'); pine(300, 376, 46, 'dim'); pine(424, 366, 60, 'dim'); pine(630, 384, 110);
     // snow ground
     mk('path', { class: 'snowfield', d: 'M0 382Q70 372 150 384T320 380T470 388T640 378V440H0Z' }, L.ground);
     mk('path', { class: 'snow-shade', d: 'M0 410Q120 400 250 414T520 412T640 404V440H0Z' }, L.ground);
     // the North Pole building
-    const H = L.house;
+    const H = mk('g', { transform: 'translate(30 46) scale(.88)' }, L.house);
     mk('rect', { class: 'chim', x: 156, y: 204, width: 22, height: 44 }, H);
     mk('path', { class: 'roof-snow', d: 'M152 206Q167 196 182 206V211H152Z' }, H);
     mk('rect', { class: 'wall', x: 28, y: 258, width: 182, height: 132 }, H);
@@ -408,24 +455,23 @@
     for (const yy of [350, 368]) mk('path', { class: 'shelf', d: `M128 ${yy}H184` }, H);
     for (const [bx, by, bw, bh] of [[132, 350, 9, 7], [144, 350, 6, 10], [158, 350, 12, 6], [173, 350, 7, 9], [134, 368, 12, 8], [151, 368, 8, 5], [166, 368, 10, 9]]) mk('rect', { class: 'shelf-box', x: bx, y: by - bh, width: bw, height: bh }, H);
     mk('rect', { class: 'doorframe', x: 124, y: 334, width: 64, height: 56 }, H);
-    // striped North Pole post
-    const pole = mk('g', { 'clip-path': 'url(#poleclip)' }, H);
-    mk('rect', { class: 'pole-w', x: 246, y: 224, width: 11, height: 170 }, pole);
-    for (let y = 214; y < 400; y += 15) mk('path', { class: 'pole-r', d: `M244 ${y + 8}L259 ${y}V${y + 7}L244 ${y + 15}Z` }, pole);
-    mk('circle', { class: 'pole-ball', cx: 251.5, cy: 218, r: 7.5 }, H);
-    mk('path', { class: 'roof-snow', d: 'M244 222Q251.5 214 259 222V226H244Z' }, H);
+    // striped North Pole post, on the left of the house
+    const pole = mk('g', { 'clip-path': 'url(#poleclip)' }, L.house);
+    mk('rect', { class: 'pole-w', x: 10, y: 226, width: 11, height: 170 }, pole);
+    for (let y = 216; y < 400; y += 15) mk('path', { class: 'pole-r', d: `M8 ${y + 8}L23 ${y}V${y + 7}L8 ${y + 15}Z` }, pole);
+    mk('circle', { class: 'pole-ball', cx: 15.5, cy: 220, r: 7.5 }, L.house);
+    mk('path', { class: 'roof-snow', d: 'M8 224Q15.5 216 23 224V228H8Z' }, L.house);
+    mk('path', { class: 'snowfield', d: 'M0 394Q16 384 34 392Z' }, L.house);
     // roller ramp out of the door
     const RT = 362;
-    mk('rect', { class: 'kf', x: 150, y: RT, width: 136, height: 6, rx: 2 }, L.roll);
-    for (let x = 156; x <= 282; x += 9) mk('circle', { class: 'roller', cx: x, cy: RT + 3, r: 2.2 }, L.roll);
-    for (const lx of [210, 276]) { mk('rect', { class: 'kf', x: lx - 2, y: RT + 6, width: 4, height: 392 - RT - 6 }, L.roll); mk('rect', { class: 'kf', x: lx - 6, y: 390, width: 12, height: 3, rx: 1 }, L.roll); }
-    // sleigh, the same sleigh as the workshop look
-    mk('path', { class: 'sleigh', d: 'M492 334H508V356H582C600 356 606 346 610 336C614 326 626 328 624 340C621 362 606 384 584 384H500C494 384 492 378 492 372Z' }, L.sleigh);
-    mk('path', { class: 'sleigh-trim', d: 'M500 371H590' }, L.sleigh);
-    mk('path', { class: 'runner', d: 'M486 404H604C622 404 630 394 628 384M506 384V404M546 384V404M584 384V404' }, L.sleigh);
+    mk('rect', { class: 'kf', x: 168, y: RT, width: 104, height: 6, rx: 2 }, L.roll);
+    for (let x = 173; x <= 268; x += 9) mk('circle', { class: 'roller', cx: x, cy: RT + 3, r: 2.2 }, L.roll);
+    for (const lx of [214, 264]) { mk('rect', { class: 'kf', x: lx - 2, y: RT + 6, width: 4, height: 392 - RT - 6 }, L.roll); mk('rect', { class: 'kf', x: lx - 6, y: 390, width: 12, height: 3, rx: 1 }, L.roll); }
+    // Santa's sleigh, loaded with presents; elves add to the pile
+    fancySleigh(L.sback, L.sleigh, 520, 410, 1);
+    const SLOTS = [[466, 352], [488, 350], [534, 350], [556, 352], [476, 332], [544, 330]];
     const yl = mk('text', { class: 'lbl', x: 52, y: 32 }, L.fx); yl.textContent = 'NORTH POLE · PARTS YARD';
     const sl = mk('text', { class: 'lbl dim', x: 52, y: 48 }, L.fx);
-    const SLOTS = [[521, 364], [548, 364], [575, 364], [534, 342], [561, 342], [548, 322]];
     // near snow drifts (in front of everything)
     mk('path', { class: 'snowfield', d: 'M0 432Q40 420 90 430Q130 424 170 434V440H0Z' }, L.near);
     mk('path', { class: 'snowfield', d: 'M600 432Q620 424 640 428V440H600Z' }, L.near);
@@ -438,18 +484,18 @@
     // two elves on tracks, at different depths so they pass each other
     const mkElf = (layer, F, s, kind, off) => {
       const back = mk('g', {}, layer), hold = mk('g', {}, layer), front = mk('g', {}, layer);
-      const R = robot(back, front, 302, F, s, { elf: kind });
+      const R = robot(back, front, 286, F, s, { elf: kind });
       R.hold = hold; R.off = off; R.item = null; R.next = null;
       return R;
     };
     const EA = mkElf(L.elfA, FA, 2.5, 'g', 0), EB = mkElf(L.elfB, FB, 2.7, 'r', 5);
-    const PX = 300, LX = 450, CYC = 10, END = 278;
+    const PX = 286, LX = 382, CYC = 10, END = 264;
     const KINDS = ['a1', 'prop', 'gift', 'batt', 'a1', 'motor', 'gift2', 'prop'];
     let k = 0, sleighNo = 1, loaded = 0, clearAt = 0, puffT = 0;
     const rolling = [], falling = [], resting = [], puffs = [], sparks = [];
     const label = () => { sl.textContent = `SLEIGH ${String(sleighNo).padStart(2, '0')} · LOADED ${loaded}/${SLOTS.length}`; };
     label();
-    const newItem = (layer) => ({ g: part(layer, KINDS[k++ % KINDS.length]), x: 160, y: RT, t: 0 });
+    const newItem = (layer) => ({ g: part(layer, KINDS[k++ % KINDS.length]), x: 172, y: RT, t: 0 });
     // elf A starts at the ramp with a part waiting, elf B starts at the sleigh with a part in hand
     EA.next = newItem(L.items); EA.next.x = END; EA.next.t = 1;
     EB.item = newItem(EB.hold);
@@ -495,7 +541,7 @@
     return function step(dt, t) {
       for (let i = rolling.length - 1; i >= 0; i--) {   // parts roll out of the door to the end of the ramp
         const it = rolling[i]; it.t = Math.min(1, it.t + dt / 2.6);
-        it.x = lerp(160, END, ease(it.t));
+        it.x = lerp(172, END, ease(it.t));
         it.g.setAttribute('transform', `translate(${it.x.toFixed(1)} ${RT})`);
         if (it.t >= 1) rolling.splice(i, 1);
       }
@@ -516,16 +562,16 @@
         loaded = 0; sleighNo++; label();
       }
       puffT -= dt;                                      // chimney smoke
-      if (puffT <= 0) { puffT = 0.7; puffs.push({ el: mk('circle', { class: 'smoke', cx: 167, cy: 200, r: 4 }, L.house), t: 0, x: rnd(-2, 2) }); }
+      if (puffT <= 0) { puffT = 0.7; puffs.push({ el: mk('circle', { class: 'smoke', cx: 177, cy: 220, r: 4 }, L.house), t: 0, x: rnd(-2, 2) }); }
       for (let i = puffs.length - 1; i >= 0; i--) {
         const p = puffs[i]; p.t += dt;
         if (p.t > 4.5) { p.el.remove(); puffs.splice(i, 1); continue; }
-        p.el.setAttribute('cx', (167 + p.x + p.t * 9 + Math.sin(p.t * 1.5) * 3).toFixed(1));
-        p.el.setAttribute('cy', (200 - p.t * 22).toFixed(1));
+        p.el.setAttribute('cx', (177 + p.x + p.t * 9 + Math.sin(p.t * 1.5) * 3).toFixed(1));
+        p.el.setAttribute('cy', (220 - p.t * 22).toFixed(1));
         p.el.setAttribute('r', (4 + p.t * 3).toFixed(1));
         p.el.style.opacity = (0.3 * (1 - p.t / 4.5)).toFixed(2);
       }
-      const hx = 556 + 8 * Math.sin(t * 0.5), hy = 196 + 6 * Math.sin(t * 1.4);
+      const hx = 560 + 6 * Math.sin(t * 0.5), hy = 138 + 6 * Math.sin(t * 1.4);
       dr.setAttribute('transform', `translate(${hx.toFixed(1)} ${hy.toFixed(1)}) rotate(${(3 * Math.cos(t * 0.5)).toFixed(2)})`);
       swing.setAttribute('transform', `rotate(${(6 * Math.sin(t * 1.4 + 0.7)).toFixed(2)})`);
       stepSparks(sparks, dt);
