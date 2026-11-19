@@ -615,6 +615,22 @@
     .heroes a.on { background: #d63c35; color: #fff; }
     .show-heroes .looks { display: none; }
 
+
+    /* details as closed sections, open on tap */
+    .details { overflow: visible; }
+    .details .acc { padding: 0; border-top: 0; border-bottom: 1px solid var(--line2); }
+    .details .acc:last-child { border-bottom: 0; }
+    .acc > summary { list-style: none; cursor: pointer; display: flex; align-items: baseline; gap: 14px; padding: 17px 1.6rem; font-family: inherit; font-size: inherit; }
+    .acc > summary::-webkit-details-marker { display: none; }
+    .acc > summary::after { content: ""; margin-left: auto; align-self: center; width: 9px; height: 9px; border-right: 2px solid var(--sub); border-bottom: 2px solid var(--sub); transform: rotate(45deg); transition: transform .2s; flex: none; }
+    .acc[open] > summary::after { content: ""; transform: rotate(-135deg); }
+    .acc > summary { justify-content: flex-start; }
+    .acc > summary:hover .acc-t { color: var(--accent); }
+    .acc-t { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; color: var(--ink); }
+    .acc-s { font-size: 13px; color: var(--sub); }
+    .acc .panel { padding: 0 1.6rem 1.5rem; }
+    @media (max-width: 640px) { .acc > summary { flex-wrap: wrap; gap: 2px 10px; padding: 15px 1.1rem; } .acc-s { flex-basis: 100%; order: 2; } .acc .panel { padding: 0 1.1rem 1.2rem; } }
+
     /* box grid breakpoints last so they win */
     @media (max-width: 1040px) { #bundle .box-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
     @media (max-width: 640px) { #bundle .box-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; } }
@@ -719,13 +735,9 @@
     </div>
 
     <div class="details" id="details">
-      <div class="tabs" role="tablist" aria-label="A1 bundle details">
-        <button role="tab" id="t-spec" aria-controls="p-spec" aria-selected="true">Specifications</button>
-        <button role="tab" id="t-war" aria-controls="p-war" aria-selected="false" tabindex="-1">Warranty &amp; support</button>
-        <button role="tab" id="t-del" aria-controls="p-del" aria-selected="false" tabindex="-1">Pickup &amp; delivery</button>
-        <button role="tab" id="t-ret" aria-controls="p-ret" aria-selected="false" tabindex="-1">Returns</button>
-      </div>
-      <div class="panel" role="tabpanel" id="p-spec" aria-labelledby="t-spec">
+      <details class="acc" id="p-spec">
+        <summary><span class="acc-t">Specifications</span><span class="acc-s">Brand, video, flight time, goggles and more</span></summary>
+        <div class="panel">
         <dl class="spec-table">
           <div><dt>Brand</dt><dd>Antigravity</dd></div>
           <div><dt>Model</dt><dd>A1, Essential Bundle</dd></div>
@@ -741,30 +753,40 @@
           <div><dt>Controls</dt><dd>Grip motion controller with FreeMotion point-to-fly</dd></div>
           <div><dt>Safety</dt><dd>Auto return to home</dd></div>
         </dl>
-      </div>
-      <div class="panel" role="tabpanel" id="p-war" aria-labelledby="t-war" hidden>
+        </div>
+      </details>
+      <details class="acc" id="p-war">
+        <summary><span class="acc-t">Warranty &amp; support</span><span class="acc-s">Antigravity warranty, Drone Hospital help</span></summary>
+        <div class="panel">
         <ul class="policy">
           <li><b>Manufacturer warranty.</b> Your A1 is covered by Antigravity's manufacturer warranty.</li>
           <li><b>Drone Hospital help.</b> If something isn't right, bring it to the shop. We diagnose it and help you file the warranty claim with Antigravity.</li>
           <li><b>Crashes and damage.</b> Things the warranty doesn't cover, we can repair at the <a href="/drone-repair-atlanta.html">Drone Hospital</a>.</li>
           <li><b>Questions any time.</b> Call or text <a href="tel:+14044089063">(404) 408-9063</a>.</li>
         </ul>
-      </div>
-      <div class="panel" role="tabpanel" id="p-del" aria-labelledby="t-del" hidden>
+        </div>
+      </details>
+      <details class="acc" id="p-del">
+        <summary><span class="acc-t">Pickup &amp; delivery</span><span class="acc-s">Pick up in Atlanta or local delivery</span></summary>
+        <div class="panel">
         <ul class="policy">
           <li><b>Pickup.</b> At our shop, 6059 Boylston Dr NE, Atlanta, GA 30328, at a time we set together when we confirm your order.</li>
           <li><b>Atlanta-area delivery.</b> Choose it in the order form and we quote the delivery when we confirm.</li>
           <li><b>Shipping.</b> We don't ship the A1 outside the Atlanta area yet.</li>
           <li><b>Payment.</b> Zelle, Venmo or check, after we confirm stock. Nothing is charged when you reserve.</li>
         </ul>
-      </div>
-      <div class="panel" role="tabpanel" id="p-ret" aria-labelledby="t-ret" hidden>
+        </div>
+      </details>
+      <details class="acc" id="p-ret">
+        <summary><span class="acc-t">Returns</span><span class="acc-s">14 days, unopened</span></summary>
+        <div class="panel">
         <ul class="policy">
           <li><b>14 days, unopened.</b> Return it unopened and complete within 14 days of pickup or delivery for a full refund of the purchase price.</li>
           <li><b>Opened units.</b> Defects are covered by the manufacturer warranty, and we help you with the claim.</li>
           <li><b>Start a return.</b> Call or text <a href="tel:+14044089063">(404) 408-9063</a>.</li>
         </ul>
-      </div>
+        </div>
+      </details>
     </div>
   </section>
 
