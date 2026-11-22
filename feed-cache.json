@@ -1,15 +1,565 @@
 {
- "updated": "2026-11-22T01:22:06.846341Z",
+ "updated": "2026-11-22T08:23:57.126242Z",
  "errors": [],
  "counts": {
   "general": 200,
   "local": 52,
   "robotics": 25,
-  "military": 27,
-  "consumer": 44,
-  "laws": 40
+  "military": 28,
+  "consumer": 49,
+  "laws": 38
  },
  "items": [
+  {
+   "title": "Drone Strikes Hit Homes in Sudan's Capital - ASHARQ AL-AWSAT English",
+   "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNTWhvMGVoekx6MTZvUVZTSkVpY1VOb3MzcjhpQXZ0YmF3ZEZacE94WVdsM0lTV1ZyQjJDWHk1MlU1TjlCdGVaTXV5ejEyeHlNZlNFSXN4aEpWRHE0bmNIS0hKcHI3SkM2Smk0dWYtNmNxMFl4cURpNEpoRVhnN1E4VFh3cU83ME1UTTNfYg?oc=5",
+   "pubDate": "2026-11-22T08:17:29Z",
+   "description": "",
+   "source": "ASHARQ AL-AWSAT English",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [],
+   "local": false
+  },
+  {
+   "title": "Witnesses report drone interceptions over Khartoum — Anadolu Agency - UA.NEWS",
+   "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNSE9tbkVLRUplWDlObnlrOGVndXRKZWdfMzZXdVRrOXJqS00wZUZmbXBmelFDT2VLcjBZa3RlOTdWUE9Gb3o5Ym5hcE1EZFVqQzZNMVgxNVVMSl9QNFdtdzB5N0dFdmV4MjY1azh2dXpjM0VpLVNhM0VvU3pzSk93QWc2c0k3Wjg0Ml9lV1RIUGhvU1NEYW1hQkxsN0hldEphSkg5UUVkRi1kYWlMLUE?oc=5",
+   "pubDate": "2026-11-22T08:15:14Z",
+   "description": "",
+   "source": "UA.NEWS",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [],
+   "local": false
+  },
+  {
+   "title": "Russian forces attacked energy facilities in Zhytomyr region with drones 4 times over the past day - regional military administration - Mezha.net",
+   "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNdVhfTzIzOWI0MW1aV3hoWXEtVkhXY2NrWU9xYVUzeDhaLW9xTGpaUnlYZ3FTOWZQMExfOXdpdzd0YjU4aVgwcG5fZUVvSmVwNy1xYzVCOElvaGlkOGdWV0FmSVN3T1FGSTlBTG5HTkE2VDQ1Y1JESHNESlpkdDNzTXBJMjl4TnZQc2c?oc=5",
+   "pubDate": "2026-11-22T08:13:51Z",
+   "description": "",
+   "source": "Mezha.net",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [],
+   "local": false
+  },
+  {
+   "title": "Russian ship on fire and abandoned after Baltic Sea drone attack - TradeWinds News",
+   "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPUXhiUWNkN20xQnZHek9sNzF3LThENlJGUTlLdUp2VjNNRFB2a2pkeDhEOHQ4Ti1HVl8yUWlhTjZLNGp0REJDZ05ySEdGM29TMUlGYms0VFhJNTd1NTBYUFROdGpWVTJUanI1RVlRbkFBdU1GU2drNEhFRFFPVjNianBEeVd1MXhoc05oV2dOM2wtY2UtU25sazVKLUVwbFhpR2pibmpwd21hajMwY2hRZzlUbGQ0YjlBNUE?oc=5",
+   "pubDate": "2026-11-22T08:12:31Z",
+   "description": "",
+   "source": "TradeWinds News",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [],
+   "local": false
+  },
+  {
+   "title": "Germany is funding the construction of a new drone factory for Ukraine, in partnership with Auterion and Skyfall - Informat.ro",
+   "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOTThZRVppd2NWNmp1ZFFOelBEOHNIa0pkVkFodVNPbVAyZ1EySjZnREFpSlJBTUdNcEV5MVlkOG0tVDBfbVRnNkJHM2tOVWozQ1N5XzUxVXlLVGJmNS1oMmJsNHFJRjk4MzVWZ3BzeGF6a3ZpLUs5bkVKM1ZMMGVZU3JmMTBnTnFtTFpBNTdRYXZzRDBQMXRRbUFZYVFoQWI1dGM1ZnZuYzE?oc=5",
+   "pubDate": "2026-11-22T08:06:51Z",
+   "description": "",
+   "source": "Informat.ro",
+   "feedLabel": "Military (Google News)",
+   "topics": [
+    "military"
+   ],
+   "local": false
+  },
+  {
+   "title": "Drone strikes hit homes in Sudan’s capital: witnesses - Arab News",
+   "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQTWRWNC0yUlF6T2VhbjhQd1Q0NUhXVzd2RWlhSHg2VDBZYnRCM2hSdTNsekI1b0hTeWM1MDZyQjdSTjRSeDA1M0J2MXhfMzdXLTU0NF9sM0J0VU9aTlRMRHcwVkd2WS1mQnRpYUpCcXZQRG43YlF6cXF5WnFEeld1b3J0ZVl4Q3hIWFBsbk1sT1NaeVBrMkV3ZnRPYVk?oc=5",
+   "pubDate": "2026-11-22T08:05:28Z",
+   "description": "",
+   "source": "Arab News",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [],
+   "local": false
+  },
+  {
+   "title": "Trump explains the presence of Russian drones in Poland. Makes surprising remarks - Defence24.com",
+   "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPZS14X0lsWTJMZnpPYWJaMEVPS3dXaF8xbGxFb28xMGNoeGNDNWVTenVkTDFwVEsyR0F4UTVhZTRURXd2RG5XTW5vcDVLMFA5ZUluS2tZdlRDQmlUQlNpRXNMcFdKWF9XdjB0Z3FYV3FaUjl4T285Q3M3TVhrbms5a3AtbkEwUFF5TlczZVJ3NmhUZkNBM2N6U3c1V3BpLUxMejVKR2U0UnVDNUphcXl0Q0gwUjYtQnBv?oc=5",
+   "pubDate": "2026-11-22T08:00:16Z",
+   "description": "",
+   "source": "Defence24.com",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [],
+   "local": false
+  },
+  {
+   "title": "Sudanese army intercepts drones over Khartoum, witnesses say - Anadolu Ajansı",
+   "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNVFNzNDlhRnZpZEVWRXNkZFhWbmYwb09VWTZ5ZXVRVUQwdldFOGhqa0x6ZkoyTlB0T3djU25HRXppS0NncHJvM2ZwYWhZWVNrTm9tYmF3X1FuaFc1aTNjNWZiaHF4SjlCWkFMcHotbUNoaGdPNS1hR1g0YzZHQWM3MWhtUHlWTzhxUnJkaU1hUDNfdURCR3ctRTlBQmViQjZERWc?oc=5",
+   "pubDate": "2026-11-22T07:57:23Z",
+   "description": "",
+   "source": "Anadolu Ajansı",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [],
+   "local": false
+  },
+  {
+   "title": "Russian National Guard headquarters in Krasnodar possibly caught fire after drone attack – media - Ukrinform",
+   "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPNElReXZiVFVmU2pGakFWT2lGeGZtTjJMZ1o5MUpicXhJZHIyYmZGRTk1UWlNSm5BMkdpOEhzWXk1MU04cXZ3UDNFX0VYazhIcDUwUV9FQU1wbUxIM25od19LNkhKS1J2eGp3RzRKNnZ0czFwenJZOFJUSXluSzZzMkZSSF9GZF8tVll6dm9EbkVLVkhmMVpIQlJnWlZtNVdZalp4c0RwTTEweWZBb0ZXUjVhRFp4R3lfLUtPeWx2S0tKdXNqX0N6SUlzN2lnUGRnOXFaWVRRVVMtRVBq?oc=5",
+   "pubDate": "2026-11-22T07:48:00Z",
+   "description": "",
+   "source": "Ukrinform",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [],
+   "local": false
+  },
+  {
+   "title": "Drones Attack Russian National Guard Headquarters in Krasnodar Krai - Мілітарний",
+   "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNdFAxOG1DRkZ1b09kUXptRDg1VWpUQk9MNmI1N21NVlNJUzRwZzZzRzZtLS1yTE00ZnBDeHo0NTExOUJvNEtFOVFfYnZUVjd2eERELTB4ay1VN1Y1cDlfM0gzWWpBMkhIUGYyM1VMV21YUDQyMUtzVUdMQkVmYmJ0dEJrdDlMVnFIci01ZnFuSTFObkxaQmxsbmFhLUZ4TFFx?oc=5",
+   "pubDate": "2026-11-22T07:43:25Z",
+   "description": "",
+   "source": "Мілітарний",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [],
+   "local": false
+  },
+  {
+   "title": "Indian Army buying Chinese-made drone components, says DFI president - Business Standard",
+   "link": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxNY2h5YlFTdTJfOXR4Tk5fNHRnWHFlMUJLUGpCVkZ6UHhsM0xudEdqSnVMMW1OcUIyREdfYUtxT21rbE9tQjZnUkM4TWxSZXRCTThLeE1TaEVkZ2tjVTNlbjJRSnJ5YUhlR0NNdDFuN1JTVXFxM1JyUjg5aFFzV2lXSWVjcjdZQzBubmlBOTBaTUFKZmZNY21DeDNHd3RpcVlyYWJxTi1NWEdINXNoanloWmxCVERLYzhDMm5BLXhHRGhxRVY5cmYzMXJEQW1EeTAybWxNLUNRWGFCei0zUHRPUWpMN1o3V2ZUeGpHa3BuUG56dXVFVm4xR1FiNNIBgAJBVV95cUxObnEyZ2txb0hiNXQ4dkNnR1J0Yk5USHJHQjJIR2d2dlFjOGVwdVJPOEp0by1NQTZ0am0yUWhqME04MExpRlh2UEd4aVVsVmxPTm5LOGQ2WjJ4UFJqektqRHBqWlVLRThGekk5Sk5tcHRlVUNIdjh1ZE5HV3RLbzB5eTJBSjB3X1FxOTdRUm9wZHRBVUlXLUNKUE91MEJhMTFiejN0NzhRWVUtdG1RV04zR3N5VkJOTDZWeGtrcDhTVVR6SUc3eEd6M0JhVlo3UHFRUFFqdThXNVlOSk4wS1FOM0g3SUlkRi1GaG11bUVoSnEwYmxXaHdyRHpWclFMUVVq?oc=5",
+   "pubDate": "2026-11-22T07:37:55Z",
+   "description": "",
+   "source": "Business Standard",
+   "feedLabel": "Laws & politics (Google News)",
+   "topics": [
+    "laws"
+   ],
+   "local": false
+  },
+  {
+   "title": "Drones attack Krasnodar Region: explosions were heard near Afipsk oil refinery. VIDEO - Цензор.НЕТ",
+   "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPTnNrNm5VbFhlNWQ1bC0tREs5RFVYVlVrVTItX040bXpIMzVfdXJzOFNnekJqTUJvcV9fbUdGZXhMYlh0ckJGUFVzMFN4VDQwYjdJOTBaYUpwcGJBR1VXdUNKMjJqdHhyTERSaGkzVi05c2JpTEdfczlKNi1Ja2t4OGhzQkdNUjNNRGpOa0htd1ktbEdRb2RjME41cDV2VlFTU1hSTGswM1pTOUNyN2wwbDRB?oc=5",
+   "pubDate": "2026-11-22T07:34:00Z",
+   "description": "",
+   "source": "Цензор.НЕТ",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [],
+   "local": false
+  },
+  {
+   "title": "Russian vessel struck by drone near Finland still on fire - Українська правда",
+   "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1kTVpXVldtSWxsRnh2Y2tLQnNuOUhtQm0wNXpONGZkZ0ZnaU9xdXFORzFlWVVReWZaS1VGb1JIb0xubmk3TjNqYmhKUHIzakw0MU5tejhuTnJzSi1LdWZCam5aclDSAXBBVV95cUxQQW9YbUluNC12R0pMM3dfMDhfMERYRlRHaUllb01uMEVBSEJiTGZHa2RXYzlHRDV1Q0ppNkNvNnBKSkE0aHBmMEJybmw0M2lIQW15bTY3c0tndUp5RGZsU05yR1RacG1BZUtGbWZTME5u?oc=5",
+   "pubDate": "2026-11-22T07:32:00Z",
+   "description": "",
+   "source": "Українська правда",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [],
+   "local": false
+  },
+  {
+   "title": "Kentucky County Drone Finds Escaped Man After 13-Hour Manhunt - DroneXL",
+   "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQSUY4MF9sMk1ySGVtOXh5RHNiaUVaX2hqeWl5NWRCdV9mei1rVS1EWTZXVHlaQzc4OUF6NEVmTjJuSkZvcmpvYmhmdndBN1p4WllNbkVGMFEtOFJvbWszMm9KbmFjbE9mQmV5cTRXT3FXb0lDTV9nZnBrMWFyMjNNRUVaNTd6bk5FMS1fZmpTY2VJT2QwelB3NmJ4SnN1dw?oc=5",
+   "pubDate": "2026-11-22T07:27:00Z",
+   "description": "An Adair County Emergency Management drone spotted Deon Bostic in a field near Breeding, Kentucky, about 13 hours after police say he escaped custody.",
+   "source": "DroneXL",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [
+    "consumer",
+    "laws"
+   ],
+   "local": true
+  },
+  {
+   "title": "Ukrainian ’middle strike’ and ’deep strike’ drones to be manufactured in Britain - Цензор.НЕТ",
+   "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOOHlJMWxfOVlLNS1DYUtDWDNPTkZFb1lBNngzc0RvRzkyUVR3X1BoSzE4RlFYemxzb0d6cm1UZHRQSEIyV18xTXlmZWtmS2p5WTByOUNnb3FqcnVTSFQ3VThhQ015Vm5mQjV3NzNZcXVPN2NIT1BzZTRMcmdnQXVzM2FCMVduSEsyWldjb3Z5XzRNbjlCTlAtS1lFV1d1bTl1a3lkU1JzRHctSWxweFdLSG9ReEdfWElFeXFNUmNsNDJMaWRleDJPZEdldUY?oc=5",
+   "pubDate": "2026-11-22T07:26:54Z",
+   "description": "",
+   "source": "Цензор.НЕТ",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [],
+   "local": false
+  },
+  {
+   "title": "Ukraine, UK Agree to Jointly Produce Ukrainian Deep-Strike Drones in Britain - Kyiv Post",
+   "link": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE50V29TRjhiOFpfUEVld0Etb0NXdDRKNFdKYXc1THpjaHhHdEVhbFUwMTZXaUhjUEdHOE83b01jaGdhU0M3bEhfSkxlMA?oc=5",
+   "pubDate": "2026-11-22T07:25:30Z",
+   "description": "",
+   "source": "Kyiv Post",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [
+    "military"
+   ],
+   "local": false
+  },
+  {
+   "title": "Russian Military-Linked Cargo Ship Burns After Drone Strike Near Finland - Khaama Press",
+   "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9HdWVQbFpLY3ZHS0RUaVFEc1E2OGFyYWJPU09HM1loZldCU1h5U3d4VTdIT05ycWVOXy1sY21Mb3NlUzBxcFVJVDZYWlB0M2lIQTQ1bGloaTBLTndzd2dzQ3BWVkRFMVZuZ3VRVlV4dGs?oc=5",
+   "pubDate": "2026-11-22T07:20:14Z",
+   "description": "",
+   "source": "Khaama Press",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [
+    "military"
+   ],
+   "local": false
+  },
+  {
+   "title": "Russia downs 170 Ukrainian drones overnight - Breakingthenews.net",
+   "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPeEdWMVo5VExkZDlEekZpYjNkeFdNVmlOS0U2MWktUWxMT3VMOVZ4Q2N4alVPX3dpaWVXT2oyRlRMbExWZF9vSE9odTB4MUNPWloyb0ZrcTRrSmV2aDZjMVRkbDB1X2lTZk52U25SZVcxMEszVWxQNDVsczZPU1oyUi1UelRaaFd2bjMwdzI1aS00UQ?oc=5",
+   "pubDate": "2026-11-22T07:16:00Z",
+   "description": "",
+   "source": "Breakingthenews.net",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [],
+   "local": false
+  },
+  {
+   "title": "Intruding Reconnaissance Drone Shot Down South of Iran - تسنیم",
+   "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQSUdMR25weDBYNFoxdFl1S0MzdGIwTDdRdE1wRWwtMzYwaUp6OTJjdWNJOEE1dzN5aHBqZFJPQUVteFlJUFlpZXNYY2R2R0pqT3VKNXZSbi1rTWJJcWlkV0pfcDRtWkRXMXpURVJjdjR4ZFhuZ1NOOTcyUy1VYmw4cnM4R2FPMmhEcFpmQjRpTS1JcGZvNGYtTUhWMUx0NzRhRnVfdlU0VTVsVknSAbABQVVfeXFMTUF1VnpQYk9MRkVsRGYxNHZaamFNbFhzWlBHN1M0RzI2YTdTalVfUnNjOXlPaDdvQ1ljZDN0X09BbmRheW9yWjJlUWh1bmZhMUdfVWE2bTNGbmF4Q3pHN1haeDBKVThkUWhRclpsMXJhSmN3dGZyb3IxN0hWd3RWQlFPNGtqWTRPX0QwalpZeXQxQmxQZzF3SEdTWjZBcHRzeFNZZ2JCX2xSLTJpa3lhckY?oc=5",
+   "pubDate": "2026-11-22T07:08:13Z",
+   "description": "",
+   "source": "تسنیم",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [
+    "military"
+   ],
+   "local": false
+  },
+  {
+   "title": "DJI Flip Fly More Combo Hits $545, Just $96 Over the RC 2 Bundle",
+   "link": "https://dronexl.co/2026/11/22/dji-flip-fly-more-combo-545-amazon-black-friday-record-low/",
+   "pubDate": "2026-11-22T06:56:00Z",
+   "description": "The DJI Flip Fly More Combo with RC 2 is a record-low $545 on Amazon, $234 off. Its two extra batteries and hub cost $224.70 bought separately.",
+   "source": "DroneXL",
+   "feedLabel": "DroneXL",
+   "topics": [
+    "consumer",
+    "laws"
+   ],
+   "local": false
+  },
+  {
+   "title": "Most Prime Air drone orders arrive in under 90 minutes, Amazon says - PPC Land",
+   "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxORl9CWG5TdGVRWGpHd3VpTGQtb21pTlYzUEFUeVRHOEx4UWVrMjJjTVI5UkJxM29UNGZYVU0yZnkwSUNOcGNEWXROWHRXNFdoVVh5MlVHcXAycjdZUS02OHVjRjZ1ai1hSGtYUTZCSEQxcFFuMkt5ajRXbzBVd2lpQ1RFZG9RWGJZUUV5Tw?oc=5",
+   "pubDate": "2026-11-22T06:55:37Z",
+   "description": "",
+   "source": "PPC Land",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [],
+   "local": false
+  },
+  {
+   "title": "Russia strikes Ukraine with 186 drones overnight - Air defense's work reported - RBC-Ukraine",
+   "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOUWlKVE5BZHZ3a3ZjcDgzbW02a0ctVExRZ3lqYU9Sbnlud0xDS1ExNUptODQyZVN4R0I1am5wekFObWVrcHVjTUhvOE9EUGdTcG9qT1dwS3BPVXNpM0NRbUt6b3dyYndkeDA4dVNZcDlMWXRlMEVuRHdQWmNsM29ONGFsQ19NQTlZYzJSRmVhQVlMNjUyV05IS3FNQXY?oc=5",
+   "pubDate": "2026-11-22T06:49:07Z",
+   "description": "",
+   "source": "RBC-Ukraine",
+   "feedLabel": "Military (Google News)",
+   "topics": [
+    "military"
+   ],
+   "local": false
+  },
+  {
+   "title": "Headline Options: Air Defense Forces Shot Down 161 Russian Drones Overnight - UA.NEWS",
+   "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOTDQwUHh2N3E5ZVZOc2RQMnJMZEtwTVpHb1hDcTJzY3ZpXzN3WENQZy1Za0VCUXBQcU5NSmpDUElPQ19INHp3RG82aTFveE02ZUVVRno5bFJGMXBZVmQzWVZrWmJQV3dMbEhqeEUzM09OdTRRcVNyMmFWZXYtbXRkZ2NKNmFFUUNjZllHUW9oRW0?oc=5",
+   "pubDate": "2026-11-22T06:40:55Z",
+   "description": "",
+   "source": "UA.NEWS",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [
+    "military"
+   ],
+   "local": false
+  },
+  {
+   "title": "Russia attacks Ukraine with 186 drones: hits recorded at 18 locations - Українська правда",
+   "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBhRDB5QmNOVVhHMEgtRlo4bVhFVG5fWVFISUlYb01qMF8yYnpvNWJfX05WdVJOcE0taDlIMjBOWTZYQ1lJTEtxTXU2VFVlV0Y2YWs5bmlHWUtVQ3N4ZkRMczFleU_SAXBBVV95cUxOMzJ0Z3lBT2tuTmZCZTEtNlRKOWI0V0YxV0hRdmNpUk44aXlJeHJJREFueDZ0OW92RGNiY0tyYWt4OGtjaDJRX3Jkc3ctcm1Xc1FoaHltclpRN2FyNG90ZDdfM3RocUNkQlN6dXdYYXpR?oc=5",
+   "pubDate": "2026-11-22T06:27:00Z",
+   "description": "",
+   "source": "Українська правда",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [],
+   "local": false
+  },
+  {
+   "title": "Ukraine says it downed 161 drones overnight - Breakingthenews.net",
+   "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxON2NWaUg3dWpiZ1oxWVl6OXR4ZU9taFNEZHlyeHRYZjFsbFZrQ3FNMmpVRDlYYmlrOTZUVXNlYXNPM3hrby1wVGVONF93aW56MTR2VGZxX0hfUzdJbnhqVDNwbU5VdTFVRENoNUZKNHBVek5nU0xoMlJmMERWNVIzTndYekZzYW5hNkEtRGZJSDZfZw?oc=5",
+   "pubDate": "2026-11-22T06:25:00Z",
+   "description": "",
+   "source": "Breakingthenews.net",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [],
+   "local": false
+  },
+  {
+   "title": "Putin Conjures Nuclear Strikes On EU, Drones Against Its Diplomats - Forbes",
+   "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPR2RZblZBY1d2X1hHSm9ZclpuNGl1bVcwT1F1ZHNDV1JVZlhwNEpSZExjakpPajhZMTktWVY1S1FWeXhENGtjbjFSZ0l1UUJRZmxoNHZTaW15LUVmZk1ZRVFOSWdPVjJSMzltNGQ2X1A5Wkt3RUdQbTIzTVU2R2tocWhScVVaMEtsVloza1RhWV9yX19oMlFrNXZhVWRpWGpCS3R5dmdKN21zZGdDV0ljdUJvMExzUkdESmw3ZW5MQzQ?oc=5",
+   "pubDate": "2026-11-22T06:24:39Z",
+   "description": "",
+   "source": "Forbes",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [
+    "robotics"
+   ],
+   "local": false
+  },
+  {
+   "title": "LAPD Chief Warns of Weaponized Spray Drones at the 2028 Olympics - DroneXL",
+   "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPYzZFcl9URnd4bXRmclh6VlJZSWVsOUdSTlF1eW5OQzBqZ1I2aDRObDFNS0czcjNUMWE1VHNabWpIZW42dnRFUnVJRXgwOVJMQW83MXRZalFTQ0p0bHR3XzFXNTQxR294TXJCaHhhSlozTndQRTZIc1c5RTVSRTExVV8tbXdtLUNjYndTQjhPV0NoWW5DbWNSR3dDalI1cURy?oc=5",
+   "pubDate": "2026-11-22T06:21:00Z",
+   "description": "LAPD Chief Jim McDonnell told ABC7 that spray drones could be weaponized at the 2028 Olympics. The city took a $9.77M counter-drone grant in April.",
+   "source": "DroneXL",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [
+    "military",
+    "consumer",
+    "laws"
+   ],
+   "local": false
+  },
+  {
+   "title": "Russia attacked Ukraine with 186 drones: air defense destroyed 161 UAVs - Українські Національні Новини (УНН)",
+   "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOd1pVLU5mQzNsM2VxR0Z0cnVXUU14VTFTcHlkbnVRLWJIZVFZQzRXaTZjMS02bVJFUDBlMURqT2RfdmxJak9uaEhlakFRSWV4ZGs5OXlveEx0LXdobHZWSlUtRVVBVmZsUlplZjBSdUJJcks3UThYQjZXN1Y2ZTZJa3EzLWd1dFhVVkNfekdRMjhBUEN5MTgyTNIBlwFBVV95cUxQRENydGVzU3BGRkkzYlVDcHB3MmYzUHRPZ0FFZjFUMm16T0hlSWdHWWdDR1Z5OXZrYU1pOC1QM211cV9tTW9EOHQwcmVuOHl2dC1KTFpxRUo1S1JQbHVwdThtWmZZWWMxcGlmMTNRNGt3WkhzQW54T0h2VU9UTDhpajFyR0R6cXpIcjBrcHBxaTRXVmpjLVVn?oc=5",
+   "pubDate": "2026-11-22T06:18:05Z",
+   "description": "",
+   "source": "Українські Національні Новини (УНН)",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [
+    "military"
+   ],
+   "local": false
+  },
+  {
+   "title": "Russian cargo ship hit by drones in Baltic Sea, Finland suspects Ukraine attack - India Today",
+   "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPclFRaUtJaUVQbHRST2M2ejkxWG5ic2JmMG1hb1hwclg0T1F5dy1td2JzWk5PVnhneS1lQldnZGlVNEdhR1V0NXFPSUFxRDkxRGpCR3dhVENTTTYwa0J5czBZa1RwYnZGMTNWVXVuTGtWeG5ieEJKSzYyNU8zd1hVMndsN2RwSkNfUHNiYk1hYmdfXzNHMUItNlB6Q0h1QjNnRzEyYVlxaDRtZW5nT29SSllOMkFCUWVaMHpjVHBTYjZucGfSAcgBQVVfeXFMT1MwTWF5SEpKVkNGSWxBMXp0aTJiVVpZM3hLNldCVkUwcDBzM0FMVDJOZklUcjhnTTlUdEhnLWNwSV9HNXl1dzFaUXVUUnJJdGRpQ3NkTUFXOFctQXQ5dGJTcXJYSnhhZ1RHWHRIUC01YVNleVlOQjQ5X0RiVjQyWlNuXy1BWFVxa0xqdFNKUU9XZFNRcmJmTXNhWlkwbkc5NzljTmM4UlNpYTRYUl9sWUNXWkxqZFpKUF9hcEhjMkZIQmduQUI1Z0s?oc=5",
+   "pubDate": "2026-11-22T06:12:03Z",
+   "description": "",
+   "source": "India Today",
+   "feedLabel": "Military (Google News)",
+   "topics": [
+    "military"
+   ],
+   "local": false
+  },
+  {
+   "title": "Air defense shoots down or suppresses 161 enemy drones (UAVs) - Mezha.net",
+   "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNSWVYaTEtajNodFQweDZJQk9jSFRyeG5vNXNNOTBxcmR2eWl3UDJUQWlFX0RGbkEtVGZGSnFkWFROcVlsQ05iblRJLU1ReGpCcVBlMFZTUVNqdFNOazJRRE1KRGZ2ZlZRdURsT0lXSDc3NGJUTUI1bXk1SGNaeFA3cGNRUQ?oc=5",
+   "pubDate": "2026-11-22T06:09:32Z",
+   "description": "",
+   "source": "Mezha.net",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [
+    "military"
+   ],
+   "local": false
+  },
+  {
+   "title": "DJI Mini 5 Pro vs Mini 4 Pro: a bigger sensor, and a stranger way to buy it - The Gadgeteer",
+   "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBXZ21rUVNXUnA5cnhzbkRKOHhaZnR3VUhiVS1SQkZNR2gwckF0bnNWWTl4Ni03OG82UmtQYjVkM0VadVBWYjFhVlF3RFZwNVE3eWpmWHA4V1BWWGZaYWwtb1h0YU92VmV6YjhSVnRlQXpIbFJ0?oc=5",
+   "pubDate": "2026-11-22T06:01:00Z",
+   "description": "",
+   "source": "The Gadgeteer",
+   "feedLabel": "DJI (Google News)",
+   "topics": [
+    "consumer"
+   ],
+   "local": false
+  },
+  {
+   "title": "Amazon Drone Hit a Wire and Came Down on a Garage, Customer Says - DroneXL",
+   "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQYzJZQzdWZW80ZG9NTEFCcldkOGRjMGkxUi02aEtCOXdSYWVfQklMWkpiUHZJb3VoNDVadWxTOUY1N0NoLWsyaHRGZGRNaTIxcW1BUmExcmdLYnpnbHFhSjk5Qlp4dFFlMjdUeFdXYnp4Zm9zZk5lX1h3MlhZYVBNV3VwbF9vT1pBY3BxZ1BYTUJtVEc5SFE?oc=5",
+   "pubDate": "2026-11-22T05:46:00Z",
+   "description": "An Amazon MK30 ended up on a Michigan garage roof after a delivery. The customer says it hit a line and lost a propeller. Amazon calls it a landing.",
+   "source": "DroneXL",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [
+    "consumer",
+    "laws"
+   ],
+   "local": false
+  },
+  {
+   "title": "Russian drones damage buildings and a car in Mykolaiv region; no injuries reported - Mezha.net",
+   "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOX0tkekpjMHhXSHMxUmd1MDJidkdPNjRhNW9uWUhHcDR2cnFtVmFFSWtMa3ZxbXVMeExuS2JscVpkUGFqOVBaSG13OC1VekVFVjZRVWdQaW5hZGI4OUJ3bXRpa0tOXzlOcWlpR3NFZkVtN0JHbm03TkdsX2VWUEhMaV9hM0hGZTA?oc=5",
+   "pubDate": "2026-11-22T05:33:21Z",
+   "description": "",
+   "source": "Mezha.net",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [],
+   "local": false
+  },
+  {
+   "title": "Was Kaliningrad attacked by drones? Explosions were reported at Baltiysk, but no strike is confirmed - Nacionale",
+   "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNSm1TOW5ZQkYyeGh1YU13b0xrd2s3UXZCYWZGcXRHSjFPeW80MmlCOVoySlpnNDdsREVxOENNTk5MdEJ2U2hMYXVTcjVHcnBCTTBmRTlnRUlrNVZFR0JHQmF6YmN6RDZ2TzV4MlhuNVlobjdsWW1QblhFNjF0aUhENkdpekVhV1NMMGZQbENRODNVbXRfVll5QnJjVDFDaWxJc0ZsejFVMHNHRnV6UnZXdFBSSzd2NWt3clp1bA?oc=5",
+   "pubDate": "2026-11-22T05:22:50Z",
+   "description": "",
+   "source": "Nacionale",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [],
+   "local": false
+  },
+  {
+   "title": "Yemen says new domestically made Rajum drones struck Saudi-backed forces - ABNA English",
+   "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQdEVpS09YV05ySjZLa1RKOXVsc1g2U216RThRbXZPRlhfeHpLTjdKUmVmbEo5b1o5SGxWQVoybUhDdEtfTFJlTldKdGZqcWZwbHZ0QzNoUFBQelptQ0RNSTA5cEFDejZuS0ZuMW5WMDJWTDF4bldMaDBNQk5JZERuZDltX05KaEl6RFlzX24zUWM2MnJNX3RKUmNqOWRwOVNSSVE?oc=5",
+   "pubDate": "2026-11-22T05:17:00Z",
+   "description": "",
+   "source": "ABNA English",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [],
+   "local": false
+  },
+  {
+   "title": "Muncie Bill Would Put Every Police Drone Purchase to a Council Vote - DroneXL",
+   "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOckM0d01seFhET1hEZlBlaGd1ZnkwZ2p2SXZJU1lCOFQ0ME8wcE9HWlB5OHVqRGRtRjl3cDZzeXVPOF9MNmk4SnZNNzRvYlRnMFJEYXVpWEVpUmZld0FUXzdFdXF5cThtU0Vvc1BpV1lBR25xNVJMRU9IZWhrdDBaZndjb2UzeVZaS2ZCbXVCek9CYzAyUlVuRkxCMm8wT3ZWZHc?oc=5",
+   "pubDate": "2026-11-22T05:11:00Z",
+   "description": "Muncie's Ordinance 29-26 would require a council vote before police acquire any drone, even a free one. Drones the department already flies would stay.",
+   "source": "DroneXL",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [
+    "laws"
+   ],
+   "local": false
+  },
+  {
+   "title": "Apartment building 'destroyed' in Kyiv Oblast following Russian drone attack - The Kyiv Independent",
+   "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPNFMxM0FjdUlsc0E5OFpyaS01QWsydjhXNy16YjYtQkZaN3d4YWpDamFKWFZjdDNUQlBDeXp3OTBISU9GR24xZE1pZHBIdS1xZ2hOdE1SeGJHTDVFRmFRc3JETzJPZ01Xc0NKbTdCcXZ4Y184cHZmQmxfZ2hIakZTbU1qS002OFVRS1RBbVF2eURmQlNack5NVDdieTJRTlMwalEwQ2xR?oc=5",
+   "pubDate": "2026-11-22T04:49:11Z",
+   "description": "",
+   "source": "The Kyiv Independent",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [
+    "military"
+   ],
+   "local": false
+  },
+  {
+   "title": "Russia Reports 170 Ukrainian Drones Shot Down Overnight - Военное дело",
+   "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNamE2T3ItamloMGdLbWMxZkxpbVhnMThwMDZfa0ludVg0ZVNkYVRNWDdPMHpJMzNwc29DWmlmeTE0RklvWjVhdW5MZEt0eElkV3A4MnJXamgwcFdMT2hUUE9wbVp5cUx0ZnNGRlFDVXhqMWU5WWpMSThQWFZkMm1XYXJ3aHpsb0oxaVZUamxiQWVqX2lpQUpod09BRGY?oc=5",
+   "pubDate": "2026-11-22T04:37:03Z",
+   "description": "",
+   "source": "Военное дело",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [
+    "military"
+   ],
+   "local": false
+  },
+  {
+   "title": "FCC Exempts 23 Drone Makers From Its Ban for US Factory Pledges - DroneXL",
+   "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPUW1lXzBWdW9fVXNXLUVxVXBxVHlvcFJDWVptdXhNTTQzOTZzZV9ITFVhVDBxSVZ3d2ZYSzBuSWNCMjFhdTU1NEZsX3JEaUpmODdiYWF2R1FaLTRzMXQ2UE9Ya3FuSEVlRXNjVU11cFFUdnVLZjE2N1EtQjk3d1Z6SnJzU1oxTzJVQ0NEaUtUVFVSd0R1aURvTVJrOA?oc=5",
+   "pubDate": "2026-11-22T04:35:00Z",
+   "description": "The FCC says 71 companies, 23 of them drone makers, are cleared to sell gear its Covered List bars. Each approval hinges on a plan to build in the US.",
+   "source": "DroneXL",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [
+    "consumer",
+    "laws"
+   ],
+   "local": false
+  },
+  {
+   "title": "Dashcam video captures Russian drone strike in Ukraine - CBS News",
+   "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOcUhvdGlEOGhCcDRNX09vS1ExRmwyM1Zmc0VLTDVpN3NvQ2poUmlpTXA3NVZJeFEyZk5PakZoX0VmZi1WUDFYV082QjQ4Sjh0Z2xEcnlub1JEa3hBTUhsZkdiWk1KR1I3SENKZWdybGg0bkJ6UzZJc0hRSHZCRXNsN2ttOTFLcFdNUjN4a0VNem9GVm1uTWJVTw?oc=5",
+   "pubDate": "2026-11-22T04:30:00Z",
+   "description": "",
+   "source": "CBS News",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [],
+   "local": false
+  },
+  {
+   "title": "US ally bombarded with ballistic missile, jet-powered drones by nuclear enemy - Interesting Engineering",
+   "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOUkpBMnJQTXllel9xdHVfaGFGM2Q5emV6Z19SZGpLR0F1ZVZhREQ3Yy15OGRRNjgwNURIS1VKUjBHSlBUcHlnM3NoQ3pIeE5ORWZvcUVXcDNnSkM1MjVpbmEyc1JpcXZZeThqYk1sTW52VklfZTZodGUwN1g3LVBKeW9vYkxQZEE?oc=5",
+   "pubDate": "2026-11-22T04:29:00Z",
+   "description": "",
+   "source": "Interesting Engineering",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [
+    "military"
+   ],
+   "local": false
+  },
+  {
+   "title": "Belgian F-16s Are Defending the Baltic With Counter-Drone Guided Rockets - The Aviationist",
+   "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1mbFRKNC1adkJPWDZINlNrdWFNWElodTZabXo2elIwblkwTlJ2VUF2SmRGVlRJeDNKLXVHdFJSOW9BSmEzQW04cUF2bkVuajRtVGhLaUhfbF9hbTdYZVV2dnU2QTJVNXJIQjZhMm9uaGR4MzFj?oc=5",
+   "pubDate": "2026-11-22T03:36:00Z",
+   "description": "",
+   "source": "The Aviationist",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [
+    "military"
+   ],
+   "local": false
+  },
+  {
+   "title": "Anti-war campaigners gather at West Wales Airport over military drone testing - Herald.Wales",
+   "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPcGpsNFFQekR2NlJ4czlBRUJpOTRiNXlfdWs2OEFHTkhCUXlSQ0daTUZ6OS0za1FCSnpkaXotY1RjM3VHdjBVSnUxenI0ZG4wWlduUWw5WHZVUlZPdFZrU0RpMjRyVUFLS2h2S24wVHloREFvcnJmRVhOeDlCWmxLT3dzblhJRGhIQXhRTlBwYk1UbjZkLXFKdkp0UncySG1GdFJnSmdzeEpUVGZrLXpJSEoyTXZOUjNNZjNnNERmOE56VzVLNnBmR2JB?oc=5",
+   "pubDate": "2026-11-22T03:23:55Z",
+   "description": "",
+   "source": "Herald.Wales",
+   "feedLabel": "Military (Google News)",
+   "topics": [
+    "military"
+   ],
+   "local": false
+  },
+  {
+   "title": "​Sixteen Chinese Brands Named in 689 Military and Government Drone Tenders Since 2021 - The 420.in",
+   "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOdUFCQ2JlX2hWZ0xScHhhcUpJYnp2NDdRMGM2ckJCa0RhdmRnLU1zUVVQYkNXLTJMWEc0UmYxZnFMM3dlaWNZUzN1TFVPRW5BV1pGWXlYNkdZZGFGMG9MM0xUbkFPakQ1R2RqaVN4V2RUYUt0RmRCZy1BZ0VBNGw2aTdwQVI3OW5GeDA3QzBDd2QzRlhySFRwR3hfSFN4bEc4S0Y3c19B?oc=5",
+   "pubDate": "2026-11-22T03:21:50Z",
+   "description": "",
+   "source": "The 420.in",
+   "feedLabel": "Military (Google News)",
+   "topics": [
+    "military"
+   ],
+   "local": false
+  },
+  {
+   "title": "Iran's IRGC says targeted US positions at 2 bases in Bahrain with missiles, drones - 巴士的報",
+   "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPTVNiMEZtXy1TWkN3aENabURaSklmQWxFYjFuUDBpb0E4MVRUaTBiNE5zTjllRzVLbzZTZGRwMjAtSVNCa1M0b2cxZUFBeTNxQ0ZJUnFOR2t6N096Z2pERzk3dERUbmN4LWI3V3JMTEFQRHg2LU1LX09xV1RDMVUzcTMxcXN6V1hJLWFXT2FvbHRNaUMyelEta1lVamlLcHBiUTVJaGdHaGJLRnNUaFpnblBNb1BkUFlsUmZheFZ6NlBBUXJpVkt6aXhncWM?oc=5",
+   "pubDate": "2026-11-22T03:19:00Z",
+   "description": "",
+   "source": "巴士的報",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [],
+   "local": false
+  },
+  {
+   "title": "Ukrainian drones reportedly strike Russian National Guard facility in Krasnodar - The Kyiv Independent",
+   "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQb3UxYlVjdzIySTV1SDQybG42b1NFTjU4cW15cmZtY3p3a05SaXBudHZCSXpiYTFCenhnVmRUZV9UMU80XzcxMGlKQV9Ycm5EVTJ3M3l6dmhLWXlTMWxjT2RMRnFhQTBIcWYzV2otM25MdHJFekRZWHlyRVhJUkFnU0Zmd1dTcFJvZzM5Z3F3dTZyd1JFLV9MbURNTWIwbkFSaHVOMGN2LWNGZEkz?oc=5",
+   "pubDate": "2026-11-22T03:18:23Z",
+   "description": "",
+   "source": "The Kyiv Independent",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [
+    "military"
+   ],
+   "local": false
+  },
+  {
+   "title": "US Army demonstrates autonomous drone swarm launched from unmanned ground vehicle in Germany - Zona Militar",
+   "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQbVVLREJ1WHZ6d1kyZDVibG1CZHFsZG9ZS2pST2pLSVlVX0pYdVlzME1icElvdmF3cDU4RlZZX1lMSnZDV0pNLWR3dXRkVFVLQWE1eXJsRXpVVmNscWJEN3RrZHM2c3U1emRpS05GWlhmal9UV1FLMGh3RGFtZ25TSE1fcjRaSVNTMFk5cFhRc29GNW5ycFNJMUllTDBzY3VfOFVxRkk4dW5iaFgybnZDTEF1M0JxU3RQaV9leUVkSnhfNGRoWVNLY19pbGdudi1pblE?oc=5",
+   "pubDate": "2026-11-22T03:05:00Z",
+   "description": "",
+   "source": "Zona Militar",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [
+    "robotics"
+   ],
+   "local": false
+  },
+  {
+   "title": "Soft-armed drone changes shape to slam into gaps and snaps back mid-air - Interesting Engineering",
+   "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNem5DNHE3WlByVGY2UW9KT3ZLMWZ6MEFyb0lQZ1d1RjMxaWh5S1l4Q3B3bVc0VzlTeVNwWnAtaS1uUHN0Q0tQazdLV3RNaThuTk9seVo5cy1CalFPNDhJRzFTbjVCMGVRemwwY196bWNvbDJaX21Eczg4YndITl9qdGhuTk1yLVBZdlFZdThKY0I5YVl5?oc=5",
+   "pubDate": "2026-11-22T02:47:00Z",
+   "description": "",
+   "source": "Interesting Engineering",
+   "feedLabel": "Drone headlines today (Google News)",
+   "topics": [],
+   "local": false
+  },
+  {
+   "title": "UK to produce 'middle strike,' long-range drones for Ukraine in Britain - The Kyiv Independent",
+   "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxORERiWGZBNllzemVxWFBOZFoxQXBDeVFmUUE5ZEcyQWJjbC1qTC1fb0lha012WEg2ejJrY0VHNWg1TndPemlIVmZqamFGYlpuTW5YNHdMVGlNMHE2ZHFFcmM2akFOdTJxSEVXdVUxRm1WcDdLVTdYQmRBLVp3LXA5STZibjZ3dHd1ZFVzRUtreDJWZGFGaUpEeVVBUkNKdw?oc=5",
+   "pubDate": "2026-11-22T01:30:56Z",
+   "description": "",
+   "source": "The Kyiv Independent",
+   "feedLabel": "Military (Google News)",
+   "topics": [
+    "military"
+   ],
+   "local": false
+  },
   {
    "title": "Drone locates 2 seriously hurt in UTV crash in Eloy - Atlanta News First",
    "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOMkcxSmhrUkJDUHNmeXVKaWU4bzlOX2I2MXo4b0YxS1lWN3dmNS1zUW43SnRENVZ1SHlrVnlaWktQbm5qczBLVmFuMTVoSHN3TEtwQ3Y3TkdmTFBrUVkyM3ZiYVQ1eUFBX3NRdEx1dzdVaWE1Ui1VSWtnSGc3Q2NjaUdDZEM3T1Z2aGhaYnZtWWRKVjRvOGRiNDJtVHA?oc=5",
@@ -21,45 +571,15 @@
    "local": true
   },
   {
-   "title": "Kaliningrad Drone Claims: What Ukrainian Channels and Russian Officials Say - Around Prague",
-   "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQWDM3N3l6TWVvTEFPMDFrbGVaRERvdDJDajN2Y1ljbnlGSlZ2OUpXRFMxdWRTNXVhamJsQlVZdjdLUk9sd0d6RDBmSFpTd0xveFpZVDdiQU9ycDJiVTROdjFJZ0dzRVp3cEhuMnM0aEJFY0tiWlRZUzBRRFYyelRDNjFfUVYybk5Kb25zMG41d2J2aW9JUVRGTEJrTmZOLVdXRXd0bDF2UnEtOC1IbHNsRkl3?oc=5",
-   "pubDate": "2026-11-22T00:23:19Z",
+   "title": "Iran says targeted US positions at 2 bases in Bahrain with missiles, drones - Daily Finland",
+   "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQWlF2cHBwSmhtY0pLdGNya3FjNGRpaktuWF9rWXNmVFdHRHVMMXpFbjZ3MHRVX0FuUUtnNGptZ0l0bllkTGlpSTdLZGJueHFLcEpmZ2dtU2Vxa084TVozdElGVG5zdThGWVBFZTZ1Q2RGc1g0WEE1Q1ZGaFU3N1EwOTdyaUJXbTJSRXhJVnV4NHVfRV9JeUZLazdHdkpBV2hkYTZOVldjRzJRc1RBcC1Nb2JYbnJJUEU5M2c?oc=5",
+   "pubDate": "2026-11-21T23:26:12Z",
    "description": "",
-   "source": "Around Prague",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
-   "local": false
-  },
-  {
-   "title": "Russian cargo ship ablaze in Baltic Sea after drone strike, crew evacuates - Sight Magazine",
-   "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOelBrbFZHejZzakZ1Z3V4WGF4bFJneGVFRHNmUDJmNVhESm5uV21IaGZ1RU5jbEJkaDJ5N3d4MktEWUpuVkNRa05vNndCU0xGUl9jb09GbUJPT0dEajhBMkJUbENNVTZJUTljY0tLc1dRTE01bl9FMC1jcXhXakF4cER3a1g1LVAzTHZTNEc0YTRYaDlPM0ZLRmlEaFFRSjdBbTJiaU1ZNFFnaEli?oc=5",
-   "pubDate": "2026-11-22T00:06:47Z",
-   "description": "",
-   "source": "Sight Magazine",
-   "feedLabel": "Drone headlines today (Google News)",
+   "source": "Daily Finland",
+   "feedLabel": "Military (Google News)",
    "topics": [
     "military"
    ],
-   "local": false
-  },
-  {
-   "title": "Drones, Texts and Diversions: How Mexico Captured a Most Wanted Man - The New York Times",
-   "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPZ3ZrbUhDcHRheWFRRDhZWFVhYng0UElSUTdKT3lPSzc1c3o5RG5nRHc0ZjJTQjNLZ2cyNWtKRzhub2VLckVvSWRRZy1aWEpRaEVCUmNIeFVZVlUxYmVsVHg1ZEgxQ000V1ptV19FQTRpSUJhcHRnNUdvZndxMnlvelp5T3MzckRTNEI4?oc=5",
-   "pubDate": "2026-11-22T00:01:08Z",
-   "description": "",
-   "source": "The New York Times",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
-   "local": false
-  },
-  {
-   "title": "The crew of the Russian cargo ship Sparta II was evacuated after a drone attack in the Gulf of Finland - Українські Національні Новини (УНН)",
-   "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNWERWMnpCdnBrUzBDeF8xTXI0TmlrdXBZa3pOdElPdUszb2hXYUJraEgzWmVGS3Y3bGZPOGNMcGdWOU1zWDhEM1ppQjNZWTRpZ2ZzckFsYWdabW4wYnhMc2JJcVloRlZUNVFjT3I3bU8yOTdlbjVlMUNzQm5iVTVXU3NtcFhteGNBblVQMU5iaWtsT01XTEZlVUxUVUJUMUNZVWhnMTVhZEV0TXQxVkJ1bXUxWTVhbWlVb08yNTctNXREZHfSAcIBQVVfeXFMUGEwT3lnaTZlRFRBWEExNlpsc0FwMEY1c19aeVBhckNlX0lsSWRwZFBadHRBa3dXbmlwcWhHdXRFVl95ODRzbXdLNVZfTVBnMl93NHYxVkpOLWNjMDBoM21iYzR6YlpQMDcwNFRGR2FaN0Y3VF9sb2ZHTnhidE84bHlfM1FLVzNLZnFka2pfYWxYdTViMXhINk5pZnZUaGtfRG1xY1p0aWY2anFGUU5uQ2dPZVFNamZHa09iOTdqMTNCRUE?oc=5",
-   "pubDate": "2026-11-21T23:55:40Z",
-   "description": "",
-   "source": "Українські Національні Новини (УНН)",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
    "local": false
   },
   {
@@ -75,45 +595,15 @@
    "local": false
   },
   {
-   "title": "Finland Detects Drone Attack on Russian Cargo Ship Bound for Kaliningrad: 18 outlets compared - NewsCord",
-   "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxOaUpIZGx1RXRGR3FBdDBKb3l3dzBKejBoZzFlSGtybngxTWEyc05oTExsR0t4dUxkcVlMU3RRbTFrRk05MHhWeTVVWjJKakFOTXlKT3FOYmxORVdLVm1EMUxhN2hOUlI1T1pWS2NZbUJoT1A0QmIwNm0zVlNGX1NCRFJNRjhoaGxGam1mOVFqc3VRLWcyZ0hjWUhJZXNSd0RiZm5veU5mcF9uY0duSXhCM2xlczlPMXl3dUQxUzhHNmtkVjNBWXpBWjVybFRJS0RkNlhsc204TmVMUkM5dkhN?oc=5",
-   "pubDate": "2026-11-21T23:20:08Z",
+   "title": "LAPD working to get technology up to speed to prevent drone attacks at LA 2028 Olympics - ABC7 Los Angeles",
+   "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNa1VOMkZtSFJGQWNTaFV6cldpTnhldERrUl8yU3FNYnpTUUFfTnJxcmU3ZDV5V2Qwa2RMZEhwakMzd1JRWV81MFN6OF9FV04xaDY0d2RxTURjZjNKUDA0NWliSFA4Rl9GWHpUNnVsOUh3a2RuN0NXRDFqa3hSZWhOQ0dsS3FudzRWdFlWNTlod0VFbEF4cEppRERoVnpOSUNRS2luaDlXOXJSQkFK0gGsAUFVX3lxTE1rVU4yRm1IUkZBY1NoVXpyV2lOeGV0RGtSXzJTcU1ielNRQV9OcnFyZTdkNXlXZDBrZExkSHBqQzN3UlFZXzUwU3o4X0VXTjFoNjR3ZHFNRGNmM0pQMDQ1aWJIUDhGX0ZYelQ2dWw5SHdrZG43Q1dEMWpreFJlaE5DR2xLcW53NFZ0WVY1OWh3RUVsQXhwSmlERGhWek5JQ1FLaW5oOVc5clJCQUo?oc=5",
+   "pubDate": "2026-11-21T23:12:13Z",
    "description": "",
-   "source": "NewsCord",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
-   "local": false
-  },
-  {
-   "title": "Drones hit Russian cargo ship in Baltic, Finland tightens security - The Times of India",
-   "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPVWVaVWdoZTE3MU9zRlBYQXNqNjVLc3cxYUUwVy1na0w2LWVkY3ZlM0t5OHRPY010Qk1FTDBvV25QR3RCbUZMdG5OVHNZYy1mdnk2Q21Hbmdmbjg2aXhQVTdubTVnMkotYTh0ZmRPbnRTRVlDOENhU09PeWNLQ3FFUFZlc3ZycV9vbW85MUNqQXlGYnI1M3pSY25SQlJfZlZ3WnNaZmZoUzRPcjhVZVlmOExMSmhYMmkxM0xqVTRkQmRUVTZzNWJpWFhmU1N1ZGdDU2R5SDZ1SdIB3AFBVV95cUxOOFBGWVVNRElZZ05sSGprUHUyd3Fuc1pYa3BPSklBSzV3dHJCMllfUThDMjlFMUgzZTJzOTJra3lpZFVKY2ZyUVZBLV9KLXBNc2IyOEdiOGpHemtaWElLSWJLWWdXRDJWcWFMZkViR2xadVB4NzJtSXNrcC1aM1pSbTlmOHBpVUwtSUtrZHgwdVY5WFNBdDJFZ3kxTzZRZlF1Um1zbU9Sam1vMXYyblBfVUVlXzRiSU5TRG5aWXRUUDd2c3dXeEc5bG9OV2p5dENqdlNtalpNOGQ2SVF6?oc=5",
-   "pubDate": "2026-11-21T23:19:00Z",
-   "description": "",
-   "source": "The Times of India",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
-   "local": false
-  },
-  {
-   "title": "Amazon delivery drone crashes into Huntington Woods garage after completing a shampoo delivery - WXYZ Channel 7",
-   "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNQWo1SFVnQXdYV2RIcTVBeXVVNzM1eUhxVnVnd043WGhLVzF0VUxaZDQ1aEhubVNZOXpxWWlpQzZ2MnkzdHJJMzZKV1FZTldzVkIyVUhSaHpCT2ZnYlZmZGRPbnBoNjN3cUYxSldETE9DR1BIaWZCdHRHMU03M3d2S2FUbFcwdjBEaVJDVlZpbi1sdm8zWmFCb2t1NFVJbXpIMHNXUTltTWwtUUFrYWxIMmFIU3d0eEJyUWR3Yg?oc=5",
-   "pubDate": "2026-11-21T23:16:03Z",
-   "description": "",
-   "source": "WXYZ Channel 7",
-   "feedLabel": "Drone headlines today (Google News)",
+   "source": "ABC7 Los Angeles",
+   "feedLabel": "Laws & politics (Google News)",
    "topics": [
-    "consumer"
+    "laws"
    ],
-   "local": false
-  },
-  {
-   "title": "Russo-Ukrainian war, day 1732: Residents report explosions and drone activity at Russia’s Baltic Fleet base in Kaliningrad - Euromaidan Press",
-   "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1yYlJUZjJMY3pQZUttVW5IQTlZRDcweGQxc1l6TTR2T0F1b2VycE1XYl9XSmtGb2wzX2poR0c1MG1SX0VIRHM5a2FNbnM1MEItQTJuaERTNmR4aW5iX25tdEhkZlZidG5rM2tua3QxT2FUSmFCVTU0?oc=5",
-   "pubDate": "2026-11-21T23:11:53Z",
-   "description": "",
-   "source": "Euromaidan Press",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
    "local": false
   },
   {
@@ -129,23 +619,15 @@
    "local": false
   },
   {
-   "title": "Estonia Issues Drone Alert as NATO Jets Scrambled; Finland Restricts Airspace and Shipping in Gulf of Finland - Avi-Go",
-   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1LcF9uODNwa2hNanhHbFNKclZsajNVa25tMFNaNHFRYU1hMmpoZ0k0ektJZFNkVFBiUWtNNTJrNi0xR3FvZy13VTMxV2FpYlBlX3BGTXpHc1h2UjhzSGo2RXZxZjBDNGFXWnFuUEtiTmI2V28?oc=5",
-   "pubDate": "2026-11-21T22:59:43Z",
+   "title": "Amazon delivery drone crashes into Huntington Woods garage after completing a shampoo delivery - WXYZ Channel 7",
+   "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNQWo1SFVnQXdYV2RIcTVBeXVVNzM1eUhxVnVnd043WGhLVzF0VUxaZDQ1aEhubVNZOXpxWWlpQzZ2MnkzdHJJMzZKV1FZTldzVkIyVUhSaHpCT2ZnYlZmZGRPbnBoNjN3cUYxSldETE9DR1BIaWZCdHRHMU03M3d2S2FUbFcwdjBEaVJDVlZpbi1sdm8zWmFCb2t1NFVJbXpIMHNXUTltTWwtUUFrYWxIMmFIU3d0eEJyUWR3Yg?oc=5",
+   "pubDate": "2026-11-21T23:05:21Z",
    "description": "",
-   "source": "Avi-Go",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
-   "local": false
-  },
-  {
-   "title": "Estonia Warns of Possible Drone Threat as NATO Allied Aircraft, Including Turkish Fighters, Take to the Air - Avi-Go",
-   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5DM01seWMyZzJiaUkySUJBQW5OQy1YdzZIVTFEdWJGVEpiTWp6eE9fX0YxUXZJd1Bnb3FRbkhfOGl6QkoxQTV5WjNWa2hDdW5yU3I4aGJFLVczbUlXeHdfU21UOUgtYVZBdkMzTUZFc2plbUU?oc=5",
-   "pubDate": "2026-11-21T22:59:38Z",
-   "description": "",
-   "source": "Avi-Go",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
+   "source": "WXYZ Channel 7",
+   "feedLabel": "Consumer use (Google News)",
+   "topics": [
+    "consumer"
+   ],
    "local": false
   },
   {
@@ -154,7 +636,7 @@
    "pubDate": "2026-11-21T22:53:08Z",
    "description": "",
    "source": "upi",
-   "feedLabel": "Drone headlines today (Google News)",
+   "feedLabel": "Military (Google News)",
    "topics": [
     "military"
    ],
@@ -166,7 +648,7 @@
    "pubDate": "2026-11-21T22:43:00Z",
    "description": "",
    "source": "Audacy",
-   "feedLabel": "Drone headlines today (Google News)",
+   "feedLabel": "Consumer use (Google News)",
    "topics": [
     "consumer"
    ],
@@ -178,102 +660,34 @@
    "pubDate": "2026-11-21T22:37:54Z",
    "description": "",
    "source": "Українські Національні Новини (УНН)",
-   "feedLabel": "Drone headlines today (Google News)",
+   "feedLabel": "Military (Google News)",
    "topics": [
     "military"
    ],
-   "local": false
-  },
-  {
-   "title": "How Russia’s new drones are shaping the war in Ukraine - The Times",
-   "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxOYjNPaVdmT05YTWhCVDM5V3htUVVHLTlObEFYY0tkNktzemZZLW9FYzZtbGQ4Q1VlU2FCSHRPSmFSXzlPbW83TkJEQU9HTXpqbVNIS2tOajZ2cTRDLWhiYjlqeXFpRGc0RGFlcVZZeGdwSzZiRGo3OEhmeVVNTklweFB3b1Zma1VRRGZIWUdZMlVFcF85S0FiZ3FNeFdWZw?oc=5",
-   "pubDate": "2026-11-21T22:30:00Z",
-   "description": "",
-   "source": "The Times",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
-   "local": false
-  },
-  {
-   "title": "Iran's IRGC says targeted U.S. positions at 2 bases in Bahrain with missiles, drones - Xinhua",
-   "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBhQnNxa1p3SEQ1MmRacm11NTFpRDlmN2JpZmV3eWtDemdDOEFrNXlGcUNPQWVOZVpzT05yUGh2cFlyZlZoRl8zMFk2cVpzV09Xb1BRNFVVTGJQRHplTVNfV3VrYXkwYmdZQVM1UjJEaUU0eTRCYy1ES3BEVFY?oc=5",
-   "pubDate": "2026-11-21T22:09:15Z",
-   "description": "",
-   "source": "Xinhua",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
-   "local": false
-  },
-  {
-   "title": "Russian ship catches fire after drone attack as Finland warns of war spreading - Nacionale",
-   "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOWFR0S3g2YkZjX2dOVnJwM1VyTS1YY3NTUWsweXVNYUZsTDZ0Y3JhZVN0eXhBUzVNb1lLYW45REgxbDBzdmpXWXgwWi1nYlpJNV9WTmVwWEVNOFZXd2tKWTRJWGswU3JPWGhMQk5BVU9JcnpyQl9lb19RRi1PdG9mMUNudDN3aS1aeWRjZC1oVks5MTVldzN1d1NzYlRwQ2syWFhWWUIzMA?oc=5",
-   "pubDate": "2026-11-21T22:08:23Z",
-   "description": "",
-   "source": "Nacionale",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
    "local": false
   },
   {
    "title": "Russian cargo ship burns in Baltic Sea after drone strike, crew evacuates - ABC News & Headlines – Australian Broadcasting Corporation",
    "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPS0ZTVEFISHpBWVRLbUFRSGkwZmhtbVlrbnVtcGRkSjNrWjBXa043cUtKdjlTaU1iUERuMWdtNjg2TUtPcVFBYTdYQUdBdXJMY1JQMFpzYkFuYlB1bjRiYno0dXRSaGNtbUF0bmZ0R1VJX0JiWW01Vks4a19PYWZjel9rNjdEYjVBejNGV0dmQnRUT0tyZHJYbndzbGIzU2tFSTB1RE1TemhXUQ?oc=5",
-   "pubDate": "2026-11-21T21:52:45Z",
+   "pubDate": "2026-11-21T21:57:42Z",
    "description": "",
    "source": "ABC News & Headlines – Australian Broadcasting Corporation",
-   "feedLabel": "Drone headlines today (Google News)",
+   "feedLabel": "Military (Google News)",
    "topics": [
     "military"
    ],
    "local": false
   },
   {
-   "title": "Jet-powered drone violates Moldovan airspace twice - Ukrinform",
-   "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOMDFFTm5WcDZKWkxVeTVqOEdueTBLRFZQaUhWNXdrUXM0SGE3bWp6aHlwSllwT1VfNjd5X3Bwa2lQaXB4VGRpZ1o1Yk1SUy1PejRLSnZTeHJ3RHBaRC1SaE1QVERlcjJJNWZCWTN6d2JDUDVvcEJCVHhlUTRNcl9NbkV3UzBkWWZoaENtakF0ZUdSUHFBYTJ5MHpjZEEwT2lO0gGmAUFVX3lxTE5LUnNZNlAxMnpLVVh3NUp5WEJYOFNJdjdfVzQxWEhqVER4UVIzYTJTb3kxcWZ6TjhqcGtjTHg3ZUVDZ2NkUkUxVnRhRmRBYjdjeUI4Mm9lRXdEUFV6MUM5ZGZMZHB0cDd2a01wczYyazVIX2dteGIyYU01NmFhSjkwb2NydVkxQmJUR2tDdXdtV3RYclUzV3M5aVFhai1QaG1CamVRNVE?oc=5",
-   "pubDate": "2026-11-21T21:40:00Z",
+   "title": "Finland warns Ukraine war ‘spilling over’ after Baltic Sea drone strike on Russian cargo ship - CNN",
+   "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE03c0w4dmN2aEdLWTBCeTR6eEFtZ1BkSi1SQlV5NS1WVExuUnZJTjFxZDlCRU13U1dmc1lkdjNwM3pVUjJjTktDOU81Qy0yaEVHS2JlVFlnUVRVRWlQbnM1WEQtX0pqYWI0VmJaV2UySkxaTFZuS09XV094R1huQQ?oc=5",
+   "pubDate": "2026-11-21T21:23:25Z",
    "description": "",
-   "source": "Ukrinform",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
-   "local": false
-  },
-  {
-   "title": "Local students compete in an aerial drone competition - MyWabashValley.com",
-   "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQb0ZZTmhMdHNZTlRQYXY1WjA1bDM1NENWelFQNTFac1dNRXY2R0plTGpWdWN1Rm5OZ3FERmRxMVQ4cEZBbWFnS0hWbDZjNFNUNFlmeUJSTEVPbVdPMlpob0FtN3pELVVEbUR3OF9vVVlnazhyeWlreXE3eFVMNm9xZ0c0Q0E0eHlqZnliUE15RThCUFJVdnB5Z1U1VGVFR2dvbXNfbzNrcl9TQdIBrwFBVV95cUxNOGZMdVRVQWU0ZjdFNnJzTHc3d0Z3RHVlTDFHa1FEQ25YQnA4eXlqOW9yMFNsdDlHenBSeUVKV3pwdE9nclRGR2lXWGt5c0hJeFhISmU5VFlYODlEUnZWc2hsQzhRbEV2UnpWTDdCQUVJdlo4XzVrNVVrNXBEZFFTdUpTZmJ2RWNVaFo0dEU1SmJ6dF83cThkQTZyYjhYbEhraDU2RTlEWWhWeUZVTHlz?oc=5",
-   "pubDate": "2026-11-21T21:36:04Z",
-   "description": "",
-   "source": "MyWabashValley.com",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
-   "local": false
-  },
-  {
-   "title": "Russian cargo ship is attacked by drones in Gulf of Finland - The Seattle Times",
-   "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQT0VXWkVCeVdldEJCU3ZzWDdWT1ZaOU5YUm51cXBmbzNqY3NLZVpWY1Bfek12WUQwMFJNa2lnbU1EYV9uYi1XUVczTlhoOGh2dUd1NUhOMkNpZG9reng0S3E2UHBrY1NyRE10QVV6d3d0eGtTc1d2MzdPV25oc0FaU3psN1pucXdFaVF1RTljeTZBUlliNl9xOXdUT3hEanc?oc=5",
-   "pubDate": "2026-11-21T21:26:41Z",
-   "description": "",
-   "source": "The Seattle Times",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
-   "local": false
-  },
-  {
-   "title": "Russia’s Kaliningrad Region was attacked by drones for the first time – the Baltic Fleet base may have been targeted - Українські Національні Новини (УНН)",
-   "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxONW9ZZHpYZ2xiVjJWVG5RSkRwSDFldnM3OWl0cUhUYl9IWnA0N3pyd2xaSjBFX0toaXV6T2JtaTZCSjYwSjR0dzdaQmY1OHFhRnpNRTQyWkpYMW1DclR6bnk0bFlSQjZSRk90Q1hBNWZxcTlQaFpDNVdzVjNMcVRZZnlZS05HWTE1NFFudEc3RHlKNWZFS0dQRmJOX0czN25xVHI0dXpnWmNVZ3k2ZjEzc3M5WmI5MENiZnF3RDBVOFNQbXRIeHNaRmlGQWY0X3BiX3fSAdABQVVfeXFMUFRmcVFYVmJSSWNUa1ZLVV84Vm1EUlpTbnNLM3lISUNNRUg1aXptZEx3MEhzdnloNUk1QUJkdnVhT1JxUWlzQm1QVURtX084dTlLMnlXOEVzMEMzU1VSTm5DSGtfdVF0cGxrM2hZV1RjQ19xZ2VfZzQ4bmswNmtTSDVOemhhd3AzTDdQU0VlWnFnMlNpbUtDTUxfcm9aTkVUQkhCRktFQnU5VkdsWXczM3AtV0ozV2gtV0JCNUhFN1JxRnZRTHdxeWMwUEVFLTV3ZQ?oc=5",
-   "pubDate": "2026-11-21T21:13:39Z",
-   "description": "",
-   "source": "Українські Національні Новини (УНН)",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
-   "local": false
-  },
-  {
-   "title": "Cargo ship bound for Russia hit by drones, Finland tightens security - USA Today",
-   "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQVzhqRFhSeXpINklxd1RxVkxubEVmeENRcDdvYzNKMTdyMENIV2ZlNmZsU1VjaGdKV2hDZEFDMHQzM3g4b1VjN0RPUDJHX0ZxdjRaV0xZQ3NXbG1SdjhUeUs1SzBEMHVwVXdGVUJDMmVFZ1piRTRiaEJ1WWpoM0E5OEdrd05NQXJZdGVuUFhZaS1vRFRrU3RmbV92UzFHM29mZWp1cg?oc=5",
-   "pubDate": "2026-11-21T21:11:00Z",
-   "description": "",
-   "source": "USA Today",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
+   "source": "CNN",
+   "feedLabel": "Military (Google News)",
+   "topics": [
+    "military"
+   ],
    "local": false
   },
   {
@@ -299,152 +713,14 @@
    "local": true
   },
   {
-   "title": "Russia Says Drones Hit Cargo Ship Sparta II in Gulf of Finland, Finland Tightens Security: how 5 outlets framed it - NewsCord",
-   "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxPRFVkaHRobXdUaWZkbWxpcUhFOGxuSlRFMEZuNDAxSG42UmRxR2oyRGNkbDh2WHQ3a29KSlQ2ZWRBeVA2Z2p1R3dBMnZuUUNYVTFEa2l3MVRvMjlFRWNiYVBxdllHLWZBRkllMDlJYW40TjhrbjJ0Z2d6T3pFUXI4ZERCYWkyYm80WGtBU0tDcDBnOUVlLUk3bXVWS0szbDZFYVhabGlNSTRjRDlaZm5vaFVEc2pObThsUDdBeENhTnNSWUZrWWFOWXJOcHFwY3dKREQwVDBzcVZ0TEpGSFE4MUU0WDdYSXB4?oc=5",
-   "pubDate": "2026-11-21T20:39:23Z",
-   "description": "",
-   "source": "NewsCord",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
-   "local": false
-  },
-  {
-   "title": "Britain to build Ukrainian drones in joint project - Yahoo",
-   "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQNWFGcHVWTGpvUmJQOUlKSVVvTTFHZmZacDVMWHNtNVBIZndqaUtuQ2Jac3N4ZTVaT3FFTU45VWJLSmtIcEdYUnlpUkh6Qm5vLXJkUWs1amtGaXlRZ2cxcUh3YVBIb2dzQzFUT2tIN2YzdDVnaXc4Rjl1Qk9kS1IyX1htcVVFOF8yR2h4Wk1yWHhiNzBVZkZwRA?oc=5",
-   "pubDate": "2026-11-21T20:33:24Z",
-   "description": "",
-   "source": "Yahoo",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
-   "local": false
-  },
-  {
-   "title": "'War is spilling over': Russian cargo ship struck by drones off the coast of Finland - SBS",
-   "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNWGZ6OXFfVUhwYWFpUHNMTVZlY2lhaFRiYjluOGNkSXIzSjF1QnZxRGJPUVBXYmJtQW1semlIalZBVUVLWkc4TzB3c055Mk42NzFGR0lkTGhZazNUclg3MUlpSDFhU1pqa2ZOYWVOdGtEbXZjb09Cd2JNNElpRmZ6S1piVnVYelZoMFRWOU5HV2RwWTlJbzFxVUd3eGx3aXhyRUlvb1E5bng?oc=5",
-   "pubDate": "2026-11-21T20:26:27Z",
-   "description": "",
-   "source": "SBS",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
-   "local": false
-  },
-  {
    "title": "Black Friday makes DJI Flip’s complete drone bundle $234 cheaper - DroneDJ",
    "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9Nd3ZOOGZodzYwd0YxSnh0eXJIaGwtVnp3Q1BzTzlCa1VNRlNlRWZWOUlvX1NHYWxObmZkYnBPRUlNdHFvX19SYlZ0UkRyVGdZQ3pENTJTSDNMa3g0N3pvcUsweGJIeVpDd1pxc3BR?oc=5",
    "pubDate": "2026-11-21T20:21:00Z",
    "description": "Some drones are built for professional filmmakers. Others are designed for people who already know their way around a joystick. And then there’s the DJI Flip, a drone that makes you wonder why getting those incredible aerial shots ever had to be so complicated. more…",
    "source": "DroneDJ",
-   "feedLabel": "Drone headlines today (Google News)",
+   "feedLabel": "DJI (Google News)",
    "topics": [
     "consumer"
-   ],
-   "local": false
-  },
-  {
-   "title": "Russian cargo ship hit by drones in Baltic, Finland tightens security - CNA",
-   "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPaFNSSTZxR2lYaFRsR1gxRFNhUlpyT2tsN0daSlA0b2E1ejJCNlhXZU0tUnFjRHExOURDMmduNlkxMDhqSEJwbWsxTWJMTnZLSzVVbmNIallhaVpjSUFfSlQydVBWbEw5V0dlaXEzbW9jNXVVWjdzaXJ6U2pjck5ieldVTEpNOWZOZ184RVY4NTl6b28zZnFsRGRBS0hzcHNMQ01fcGdZajlaVk5vdGY2bg?oc=5",
-   "pubDate": "2026-11-21T20:19:00Z",
-   "description": "",
-   "source": "CNA",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
-   "local": false
-  },
-  {
-   "title": "Crew evacuated amid battle to put out fire on Russian ship hit by drones - Al Jazeera",
-   "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNQ2U3ZVVxRFhhdW1QdlBWLXJwRUpVYjlfb2YzMGFBR0RCTUdWM3VsRUtyZVItZFdCQ1lhbjFZa0tjLTl5MVZma2FrQkRfT0doQ212M3ZZbXM2ZDVwX2gtZF94N3UwN3gxX2gySUFCZGYxWk5ONmJacE02LVdaOXVGazlwYTZteUJ2SVRTN0NrTUxHM295VFlCRGtYeFhHX2pXaXVrN3M2MUFFZUp2WW9MWkRR0gG3AUFVX3lxTE0yZHFzYlU2ZzZ1b1VSc1htTi00Tjc3WmtxWXhwYjJRbERDMXhmdzQ0dFpQcmU4TkQyRnI2NHhrdFJIenpWR095MUFsZmhhX0gtbUgzSlBieEpmUVBqRDIyZW9YNmRab3RmbUlyOHI1aThMZWFFTXhIRTdmZWZzT0d5Wm1BU05XNFc2QVlXZHBaejhxVTVFdk9RRmI1QXctZTVCeFljXzluVUpTUmpqN1FZLWpvSUNDTQ?oc=5",
-   "pubDate": "2026-11-21T20:09:35Z",
-   "description": "",
-   "source": "Al Jazeera",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
-   "local": false
-  },
-  {
-   "title": "Russia Says Cargo Ship Attacked By Drones in Gulf of Finland - Bloomberg.com",
-   "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNRnlCOGxaOTZVblY3RTRxSV9Hd1pESWxqZ2hGaC1wdjZLMDhGN001S3pJQ3lpLVZSVTVtRk0tU1pnM3UtMEVZZWZIWFVKekV6T2EzTEpOM2RiMGR3MmVxUk90ZmtBMk5qalNvUjhqMXZOck9SN2tNbFpNREYwNGlWcTAzN28tVkE5OEFsaTU1MmdoSmRCOHNHY1h3NG95R2F4N0RvS2RIYm5xM1J1TjFqXw?oc=5",
-   "pubDate": "2026-11-21T20:01:26Z",
-   "description": "",
-   "source": "Bloomberg.com",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
-   "local": false
-  },
-  {
-   "title": "Ukraine, UK agree to jointly produce Ukrainian middle- and deep-strike drones in Britain - Ukrinform",
-   "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOVm1Kdk5ucUJTUDNyUUVVamhqdU5fLVhkS1NsS2std3gyUElDMXo1TTJlbWxtLVN0OTVzY0RESHJEN0UxVWNnOWdfTHp0NEE3TzJxek5CZU4xTmZpWHBBU0hCQVU2VG5MeUlxTDNjc21vMjgtX05COVdyMFUtNENNYjRDM2QxdFZTc3dTSnFBV0NfZmdrSDJmYkRLd2p1YW9CR0xVM2dFR2N2eTN0bDgxWWtua1lBNFRlR0xIVTF0WEtkejNHeDZ2QjB0VFNlb1JCY2dBVjlLT3p0ZGvSAdsBQVVfeXFMTlZtSnZObnFCU1AzclFFVWpoanVOXy1YZEtTbEtrLXd4MlBJQzF6NU0yZW1sbS1TdDk1c2NEREhyRDdFMVVjZzlnX0x6dDRBN08ycXpOQmVOMU5maVhwQVNIQkFVNlRuTHlJcUwzY3NtbzI4LV9OQjlXcjBVLTRDTWI0QzNkMXRWU3N3U0pxQVdDX2Zna0gyZmJES3dqdWFvQkdMVTNnRUdjdnkzdGw4MVlrbmtZQTRUZUdMSFUxdFhLZHozR3g2dkIwdFRTZW9SQmNnQVY5S096dGRr?oc=5",
-   "pubDate": "2026-11-21T20:01:00Z",
-   "description": "",
-   "source": "Ukrinform",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [
-    "military"
-   ],
-   "local": false
-  },
-  {
-   "title": "Saudi-led coalition says it intercepted another Houthi drone headed toward Riyadh region - Anadolu Ajansı",
-   "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNVUludHo4ZFhMYTM4aGJESmR5eXV4U0JmRnFReGIwNElWVDV1N0ViZml2ZmpLdHNKN2dMS0dTUlVtSnc4Y2ZRY1pFLXNIRDRQU0Z4WjF6dlg1djk0NDhFeVl2OTFheGxQUU5FaE02WWN2R0QzMEgwM2ZJUTNvQW1sS21UaTJrODBtMl9OWDd0X1BTSWNORDZ3MTVkY1U4UWlQZ2xDb3ZJUTBKTUlKN3R0S1daUFZTWW45d2RoY1N5akNPWm9tRW40ZQ?oc=5",
-   "pubDate": "2026-11-21T19:49:12Z",
-   "description": "",
-   "source": "Anadolu Ajansı",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
-   "local": false
-  },
-  {
-   "title": "Ukrainian drones are attacking Russia’s Kaliningrad exclave for the first time - EUalive",
-   "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQNVBrNjM5X2FkTVBoaUY4NUNDLVExT1YyZEh5eDAtd1ZyRDF6VGJXQ0lORjNrRlVqNDNTVW1JUXFNeU5wNGhucG9vRjFoWlBzTFY0YW9uMC1ZNzIwWnVhaEtTZ2JIUF9MVEtha0RqOTY5ZmtzVGxNbUlEN2U0SUFMenFlc2pMWGRZM1JLRkF5cUo4dTU5UHp5dDRjZmJsZnc?oc=5",
-   "pubDate": "2026-11-21T19:44:50Z",
-   "description": "",
-   "source": "EUalive",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
-   "local": false
-  },
-  {
-   "title": "Finland confirms Ukrainian drones hit Russian ship Sparta II, now burning in Finnish waters - The New Voice of Ukraine",
-   "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQdWFseS1HdFFjcWZxS3J4c1BDNU5EUmlTUGVMTlFkNHZ6UVh1TG10SDJKX1RQRHFVbzFVQnF3QnNNd2pjVW9JMnk2R0YtMFNhVUlZTkt5SXlKclpTejRxaDZpek9qMndEQ1h6SktTSTFnYy04T2o3RjZOMXJqUV94ZlZIMHhaS25tYkFhOUhIQzhaNWR4eTJkdFpuU2xqSnZvd0JYYXV6dnRtRFZSbjR2WmlBQ0F4cHEycGMwOWFmeFJXRVJZNGRUUHBaeV9fQdIBygFBVV95cUxQMk5HUzVfLXRhczU5Z3F1Tnk0ZFc3NGxYMDBjZk5ieHhVbjlUSTlabzk3YTN1bFRFdEd4NVF5X0gwUmJ2akhYZGF6VGZ6aV9hbmZDMjJWQkFIWmxzVXgyOGFHdEJrdnhfLTVRSUVtdm1LUmpVRlJGWjJORlBfMWctbmwtN2pMeUMxamJQLVBSWWFwbXpUR2laSmJiNGJ2RkZpNnhuYnltY0tGbEp2VUFaOTFNTmZzNk9lWVZpQjd0NlJCNTZKeDFXLUhn?oc=5",
-   "pubDate": "2026-11-21T19:40:00Z",
-   "description": "",
-   "source": "The New Voice of Ukraine",
-   "feedLabel": "Military (Google News)",
-   "topics": [
-    "military"
-   ],
-   "local": false
-  },
-  {
-   "title": "Alarms ring as military drone tenders specify China-linked parts, Indian industry cites security risk - The Times of India",
-   "link": "https://news.google.com/rss/articles/CBMihgJBVV95cUxPMjlKdU56d1N3ZUZ2RVQwamhHMjRYMWdJOTN5cEw0eTlOMTVxY0tYdTRlMldQWnFLems3SFRUVXRacHRMaDhFekV3NENudTFkenZsc1RvYi1rc3dBWnZpMVBCLXU1UWs5RTQwUEJGbS1VdzNhdTdjcmRYblpPM1RQUURnNFlkbmN4dVN6UW5Dd18ySnNSUERnWk9Jc05hN0VnVGJJQVo2R1BZWURCQy1KdmpDamw0eWFFS3FNcjBqNE9TbHZMX3dOMXk3YnJKdkRScUVHNEFVRGdUZkRSZWZDZGlwc0tKNVg4Wmc3TmpfV2FyZ1FjMmVTaV9sOVR2YjV2MDdQdW530gGLAkFVX3lxTE82S095WWxiNnNJVkQ5TDFTWjNSWnNfLV9tSTRyNUlwRkZJc3FoZUxtckpTeFBGLVNLcTMtNVdUSE4yUkYyY29HY1hncVZQT3BqeEo0M2theHhnRE5RTmpBNWQxN29VV2JIWGRWNXgxZ200c29xUWZpLU9tR2M0SGUycGNOOTFwRW8tUUp1ZWRUMlAtUVNlajdyb21NOGJwcWxBVXg1d09hRDZLTnBPaHM4amZHNWV0d09JSGU5cHdnM1NvbmszRUhFekl4TjExZ25wZ0tsRW1DNS1pcXFjVkIxMUpNdXc3RmJ0MGhkR1FuLXowWEVib0c4WV9ic1QtU3U2TkVCMjBldmdmVQ?oc=5",
-   "pubDate": "2026-11-21T19:32:00Z",
-   "description": "",
-   "source": "The Times of India",
-   "feedLabel": "Military (Google News)",
-   "topics": [
-    "military"
-   ],
-   "local": false
-  },
-  {
-   "title": "Russian Military RoRo Abandoned After Drone Attack in the Baltic - The Maritime Executive",
-   "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNVlN5RmliaDlzaVpjVXRsQlFSeGNZUlcxcnh1UFg4dWE1clpWOFd0UUQ2cTNzVUt4NGJEdXJNek8ybUFjRXRfX3hhbWVCVS1VRDZyNTM2bWw5Z0xiemhwY2FrQm96eldiVXhsUmpHdjF1X0ltc08wZEtPd1NnbmJneE9GSHRwMGdTRWl3RTNHZ1IxMU54OWhqRFhqa3FBdXZ1bEJfSDltbmhaQQ?oc=5",
-   "pubDate": "2026-11-21T19:28:46Z",
-   "description": "",
-   "source": "The Maritime Executive",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
-   "local": false
-  },
-  {
-   "title": "Explosions reported near Russian Baltic Fleet base in Kaliningrad Oblast amid drone alerts - The Kyiv Independent",
-   "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOdlNJWkJwQVZDTEIyZjNUY0gyeURmRU9zTUF2azdmQTIxOWpqWkQ3azY4dzdvN3RwTEo3MXFVSkR2N3k2aC1oUmpyNWwxNWdWYzRMa2ZZbUlaRVpzWHRQMHBVOHhjbWRlTkdmQmlRclhnYk1tVmhLS3JLdGFKWUx5emx2aGVvVzR3VTBVODJUV0ozcjhONVMwcmZiTUFEQzhzR1REblJWa3dsYWd0czlqc004LXF4NWlwU2l3?oc=5",
-   "pubDate": "2026-11-21T19:01:53Z",
-   "description": "",
-   "source": "The Kyiv Independent",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [
-    "military"
    ],
    "local": false
   },
@@ -454,91 +730,9 @@
    "pubDate": "2026-11-21T19:00:01Z",
    "description": "",
    "source": "The Washington Post",
-   "feedLabel": "Drone headlines today (Google News)",
+   "feedLabel": "Consumer use (Google News)",
    "topics": [
     "consumer"
-   ],
-   "local": false
-  },
-  {
-   "title": "Ukrainian mid- and long-range strike drones to be produced in UK - Українська правда",
-   "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9HckJ6U2E3Q0R2b3hsOW5EX0xhZWhiTFFOMGxMc1ZjYnpuaWRVZHVvemNMNlBqdXNPTkNqb21zMF9HNTktYl91UkdkZkNncVdKNWFRRXp6dkRaNV8zUEoyYzdfa1TSAXBBVV95cUxPSWFYeHhZRE5ONGcySXVaZDFYc0tBdWh5OVZQNXdKVkYyT1lndUFXYU5rdXhaOVpUVXBBM0ZfNzFxdkN3dmI1c09SSWdhcHZiMXhGR0hFWnVxcmNVZTNtWWVOd0VVaUN6U3F3ano5UzdS?oc=5",
-   "pubDate": "2026-11-21T18:46:00Z",
-   "description": "",
-   "source": "Українська правда",
-   "feedLabel": "Drone headlines today (Google News)",
-   "topics": [],
-   "local": false
-  },
-  {
-   "title": "Ukrainian drones will be manufactured in the United Kingdom for the needs of the Defense Forces - Українські Національні Новини (УНН)",
-   "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNbVIxNFV1NzBOdGZMTGk5ZXJ3NmVmWnJ4am55dVNjbFhicjI2THBKYjM3emFjVC1ncUlPci1VZkpsak1GZmpUVWlOU1dWQjF5VWVUcnZ3MnpSZ0hIaDZ5NTBiQk9BdVhaRFZiSFlXa0liSG1kcUZJODFrSXFnR3NmdUdpRkVmMm1uZHZzd182RWxKQmVCVm9nZFdPMHhmNlhDSjdub2h6ZVZVRzhERlF1RzAxS0VNWjJTdmfSAbgBQVVfeXFMTmVONWhZYXc5ZVpKMHh6bW5mUXBndUpLMm16UlZ2OE9qZUstTlNRelR5VWZrMHRzSXNlRnJRbS1TeE8xUGo4dHdkbkhoYzNxc2lUNGVjSTRscDBEbXI5c01SSE82cWw5UzM3R2FoQ2s4M29vLW90eHJpdnhLZUNJYkd4aWRhZHpQZ3Jvc1c2QmRRNEE1QmFWdklHWHUwRURUZGFaV194bFdmQ2V1WEdoYmh3ZUdrZlVtLQ?oc=5",
-   "pubDate": "2026-11-21T18:43:06Z",
-   "description": "",
-   "source": "Українські Національні Новини (УНН)",
-   "feedLabel": "Military (Google News)",
-   "topics": [
-    "military"
-   ],
-   "local": false
-  },
-  {
-   "title": "Russian helicopter suspected of violating Finnish airspace, after tanker hit by drone in Baltic Sea - DW.com",
-   "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPWjhmRVhhRTZGREtGOXVMTFBSQjg3Y3V4YkdIR25TU3FUalh1Z25HT2sxU3VHNmg2OXJHd3RqdnEyNmx0VVJpNUhiaHRsTmdlb1B4cWhxMHRrOW9iNFJHNmlrUHVPckYtbngwMkRVaFh6am5GQkZ3bFNnbFQ1RDJnODNkajVoMkExLWo0SmJtVDFZbm5yNnfSAZYBQVVfeXFMTlZhMjNULTZKTFh1ZHZEWlQzN0s4Mm45bElTRVVBejU0dDdVVnl1Y090YU9IVEJyeTNKLVZ6MEdtdmpZMmFFNmFCVUh6MDJtaHpzSjJIVUx6QUNYQW96VzlHMDJOamxLekUxdS1xSUN5WjdpSUxFdWFVaUh2S1NtNkRtVjdCQzZwMUFlVS1uOTdjMDBKaXpR?oc=5",
-   "pubDate": "2026-11-21T17:54:28Z",
-   "description": "",
-   "source": "DW.com",
-   "feedLabel": "Military (Google News)",
-   "topics": [
-    "military"
-   ],
-   "local": false
-  },
-  {
-   "title": "2027: Sowore promises drones, AI security system, says Nigerians may not need fences - Galaxy Television",
-   "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxORDA0bkg1QzY3TFNYX1lBc3RIbWZObGtzQ0JSM2FtRjI3azlKcVpIUGhNdWtIMTNlOTV1V01ETzdUWDRwRFhQOEFySW9XUHdxQkpxU3NoeFZHX1hlQzlLTnRkbDhvdi1ueVhhOS04bE5FSUQxdUlIcVdGZ0hlOHhJV3kyZmdEWEhLOXJYenNpUXAtSmRubldIWlh4ZXVXcVc2YmphdWNoTGFBZjlQWUlGVkZKLW9aWHhFZkI0NnJMbll3S1hL?oc=5",
-   "pubDate": "2026-11-21T17:43:55Z",
-   "description": "",
-   "source": "Galaxy Television",
-   "feedLabel": "Robotics (Google News)",
-   "topics": [
-    "robotics"
-   ],
-   "local": false
-  },
-  {
-   "title": "Russian military-linked cargo ship could sink after drone strike in Gulf of Finland, Finnish official warns - The Kyiv Independent",
-   "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPM09WRGRxRU9tR0NKVk40NGw4SVdDR2ZBaTZsWTU5aFl2ejhEc2FKM01PMVB3dWI5UjhZdnlQa2czLVo3cVFFSE5qY241YmF4U3V6R0JFUjk2bS01cmx2dng3QmtwQ2t3b2d2RklOTXN1NXVxdHRRbmVRbHRGMERRNVZnWlB5VHBvSnVfeWdONkdvLUVfOGl4QmdSSkVuU2NhT0V2RjRLQkdEYUFHeHZ4dWxKQUhpSE4zd0luakVKS3E?oc=5",
-   "pubDate": "2026-11-21T17:39:48Z",
-   "description": "",
-   "source": "The Kyiv Independent",
-   "feedLabel": "Military (Google News)",
-   "topics": [
-    "military"
-   ],
-   "local": false
-  },
-  {
-   "title": "Gold Star families frustrated with Pentagon investigation into Iran drone strike that killed 6 soldiers - CBS News",
-   "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQcFlHd1lLa29JeElZX3p5aXdWU1JQZU1mMmVvQndCb2lGbHNsaGJmV1ZyUjZBdEd3aG9XRUF1a1dyWkJxOGRvZnZJQ044Wm5jSmxBalBQbmJManAzdHZYaFBCczJncUdTdjh3V3FtUnF1UUpTbXdHZFVVc09XMWRKRlZqcjd0RUNsRV85eXRUMA?oc=5",
-   "pubDate": "2026-11-21T17:02:37Z",
-   "description": "",
-   "source": "CBS News",
-   "feedLabel": "Military (Google News)",
-   "topics": [
-    "military"
-   ],
-   "local": false
-  },
-  {
-   "title": "Iran’s IRGC says it shot down reconnaissance drone off Bushehr coast - A News",
-   "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNd1Z1TVVNV05DUW5NWUMtcW9hQXhuSDRibk9MWFA5RUVtVTJrZU5peXlURlRMOUNhMXJFQjBVdzYyU3NLTGpib0RWS0FWTEhLeF84eWc0SG4zeXBpMmpoU2V6VXFPaUlUNlNXemtUdEZFUnlYNUZqZDlqUzFtZXU4RmZ4dWNuSFNpQnE1TEJLY3hIQjBwNVZCWFF2eEtWZUw3WVNQc3k2XzN3Zm54MWfSAbMBQVVfeXFMTlk1NkhJM28yajJfV0RFek5QVENweDBtQm1yaGpjYVExTm9rTG5KamtoTFRsZWRRZW1OSm1lR1BxTjdqdkZ0eEtRV19OSlNHMmxTbk9nbER2UkdaWGRjUkIyNV9OWjNOazNvOGJhQVJvMUJYcW9Icm9Odno1Vl9nTTNnb3BYRzRmN0NDR2F6cl9ZSXRpSktQZWNFdi1KRTBqWEJDVnlvajRVRmlOdHMwcks4dzQ?oc=5",
-   "pubDate": "2026-11-21T16:41:00Z",
-   "description": "",
-   "source": "A News",
-   "feedLabel": "Military (Google News)",
-   "topics": [
-    "military"
    ],
    "local": false
   },
@@ -552,42 +746,6 @@
    "topics": [
     "consumer",
     "laws"
-   ],
-   "local": false
-  },
-  {
-   "title": "CANCELLED: Walnut Grove Christmas Tree Lighting and Drone Show cancelled due to weather concerns - WaltonTribune.com",
-   "link": "https://news.google.com/rss/articles/CBMilgJBVV95cUxQdjBNTEpzWmQta3ZGV0hzR0FqdThQaWFRTHlSZTU3bVhLQXh0ZWJxSXl1NTA5TTMta2NwRU9lQllUNnBQV3VzcEUxN1loZXdWTnZGbENoQ0dBRl82ZnZkUndGaVU5TDJSZWhiMGl3NTZhaUJnbEU3VkdOVnhkX292Q0VCSnhkRm9ndndPWHZOY0JrMUFhZ2F2N0tWVkd2NjAwSzZLdUprX3FNc3NzUFBqQ3ktSkxoengzak8zSzlXdXFobWR6UUhBSW5nMDFEWU5ENE43aGdtcWc4VjVvZ1Q4RWdEXzQ3TUhyM1NRR0dfUWxMYlRnQnNkeEljbUotNjJlR0pJbVk5V3dHVDFYVWUtMUpZNFJ1Zw?oc=5",
-   "pubDate": "2026-11-21T16:25:00Z",
-   "description": "",
-   "source": "WaltonTribune.com",
-   "feedLabel": "Consumer use (Google News)",
-   "topics": [
-    "consumer"
-   ],
-   "local": false
-  },
-  {
-   "title": "What happened to the Sparta II? Drones hit a Russian cargo ship, which drifted into Finnish waters - Nacionale",
-   "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNaWwzT0hRdU5jenFHcmgzTE8zTTcwelp0Q0FkMjRZeVd5NVZwbjF0dFZRR09SbnhuaTN3eFVoM3VNY1B2dGdqOE1za0psM3BjQk5LdVgzZElEUjdVeU1YaGVrMnNxdk9JV29yQWtzb3g5Q2k2eE83eU1NTlNmRmZ6UEJJY1JLamVIal9vdDR5Wk9xWHhDMUdaZ25lNnhzS1RvYkVSRUhlRThVZWtpNXZxZ3EweUxVVUFfNXo5R2ZENm92Zw?oc=5",
-   "pubDate": "2026-11-21T15:54:05Z",
-   "description": "",
-   "source": "Nacionale",
-   "feedLabel": "Military (Google News)",
-   "topics": [
-    "military"
-   ],
-   "local": false
-  },
-  {
-   "title": "Cargo ship bound for Russia’s Kaliningrad hit by drones, Finland tightens security - NBC News",
-   "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQYlpZczVINzdKM29MeVhTVDRNMThmU1JGSWZRbDhlWmFZa3dORmdZVlJSdm5kcUFzbW9IbmRGcmR2UnRaQzdSQjJNSGF3YW1vUlM2dEhIZm5tUTdBVUQyQ3RIRmtwa2J3TWxLVTdUUUgtb2NBOVZhSzF1WU9wQk9leTVwZlRyTjdsVzV1RTc5VGhZNDVoaHRUYy1RREExbXhRU3F6WjJsTHpJak4wMnRYcFRaTWJBdkswdnc?oc=5",
-   "pubDate": "2026-11-21T15:52:26Z",
-   "description": "",
-   "source": "NBC News",
-   "feedLabel": "Military (Google News)",
-   "topics": [
-    "military"
    ],
    "local": false
   },
@@ -616,18 +774,6 @@
    "local": false
   },
   {
-   "title": "Turkey signs serial production contract for 80 ANKA-3 stealth combat drones - ssbulten.com.tr",
-   "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPbE5QWFlTRFVsTjlOTHlTT1BVNHdHN1JOUVpTdlFHeGRISjloN0ViNjBJOUoxUFJGbjNINng4NjU2WEpzRTdweU1pR1BNTm1SR0RfRUFhWVVKLTNhZWtCQWxXZ1loNFBxSlQ0VXBpS21PWXVkcndJRUpsNTZOWnJaUmVsenR6WEFDT05TbXNSMTBZdTJVV3VtTGI0N0xNUGo2YURwVlhiTEoyaFJSbkMyRFRMekJTUS15RHpIcEtPZw?oc=5",
-   "pubDate": "2026-11-21T15:19:38Z",
-   "description": "",
-   "source": "ssbulten.com.tr",
-   "feedLabel": "Military (Google News)",
-   "topics": [
-    "military"
-   ],
-   "local": false
-  },
-  {
    "title": "Elroy Air Scores a $70M Deal for Its Autonomous Heavy-Cargo Drone in the UAE - autoevolution",
    "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOeFptdWJWbzNSRnJpdjAyZ2dFVEhoclQ3eHo1RkY3UkFacWZtQXJOaVV2MVVPRVphaExJS2dIMVdvZ05PTGdqWmxwSEJrSUFKblctX2lqMVZVRU40Umd4T0JTQ0lJMzhQX0pyRDJmTTRBYjF0ZEVCTDM2aVRuNksxUzVIOXpaS3VFajlXNUlESDl5cVZJMDVGWGtudXB6ZFpWVkdpLUFOV25uODlMdEJUVnVRa2NOQmwtVWQ4Y3o2NA?oc=5",
    "pubDate": "2026-11-21T15:12:43Z",
@@ -645,12 +791,11 @@
    "pubDate": "2026-11-21T14:56:00Z",
    "description": "",
    "source": "DroneXL",
-   "feedLabel": "Military (Google News)",
+   "feedLabel": "Laws & politics (Google News)",
    "topics": [
-    "military",
     "laws"
    ],
-   "local": false
+   "local": true
   },
   {
    "title": "Knoxville Police Launch Drone First Responder Program - Wisevoter",
@@ -677,18 +822,6 @@
    "local": false
   },
   {
-   "title": "IRGC Announces Downing of 19th US MQ-1 Drone over Sirik - ISNA News Agency",
-   "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQRjQtY2VmTzFjYkpaSkF3cTBFLTUwVlhLWkdpWHdDd2xwNDVQbDRnQzdMLWxwamcwX2ZxXzR2UWtLM3BycEVfYVZuOUNTbDBTbUotNnRVdGd3SDVyQk1jY3NMZE1DTXFtendIWGJLck50TjI1WjNSMkVISnlQR0ZxdGppOTFqV2s4dksyZlZqSkVqclgwQ01qSNIBTkFVX3lxTE1uRFphZy15RjJJTVV1VHdOMGttMWJaZ1VDcnh5YzJVdlBFaXY4TGk2Wi02TWtFcGF1bThlMFh2N1c0V0pKV1hDWHZvXzJZZw?oc=5",
-   "pubDate": "2026-11-21T14:05:46Z",
-   "description": "",
-   "source": "ISNA News Agency",
-   "feedLabel": "Military (Google News)",
-   "topics": [
-    "military"
-   ],
-   "local": false
-  },
-  {
    "title": "Red Cat's Legal Scrutiny Deepens as Drone Maker's Shares Slide to a 52-Week Low - ad-hoc-news.de",
    "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxOMFEydWlUWGEwUVFiNk8tYUtzdFMzM2x2bHZVTUU0YU1Lek9mdHFYOEFycmJiQTFHWTNTS2FSYloyc1k0RTJvTl9DUGtMOHBYM0F2cGJVdE9MTHpKeDY4YnExbmVLcmRDQUM5UHduM1NMQWVKajJyLUVHUTJIYmlJakFkVVN6dzk0VzJOb0FVczRXRmFtNDNDUXYyVkVfUmFpVU02cmw2anFDb0F4LUJGZ0hPZEo3S3lHbFl5aDIzbURNaHNCR1JWeXE4Rk1GaWI0YmNRUmZucFdrYUNoclh2OVZvY0Q4QQ?oc=5",
    "pubDate": "2026-11-21T14:02:01Z",
@@ -701,47 +834,11 @@
    "local": false
   },
   {
-   "title": "Japan to provide coastal radar, drones to Philippines - Indo-Pacific Defense FORUM",
-   "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNeklxdFp3MjNsSmxIWmNFcU93VjMzRk9RbnFhQjRuTVpaZlFvbXFDRmdIRzhjUDRrYVBoWUppbmNHZlgyRjBOSExPZUk1anFZbXpMU0tXNW5QVnV5RWNLT1I5dXUyT0prMnd0a1ZESW1MNlh2T19veG82ZEl6VGthaVRBUDlVcWwyTHVTSnFfX0JYQQ?oc=5",
-   "pubDate": "2026-11-21T14:00:18Z",
-   "description": "",
-   "source": "Indo-Pacific Defense FORUM",
-   "feedLabel": "Military (Google News)",
-   "topics": [
-    "military"
-   ],
-   "local": false
-  },
-  {
    "title": "New semi-autonomous 911 drones will reach nearly all of Knoxville in 90 seconds or less — 12 Skydio docks launch within seconds, purge video after 15 days - Tom's Hardware",
    "link": "https://news.google.com/rss/articles/CBMijwJBVV95cUxNNmdWT1BJWlFGcGZtUkpJeWRQb181NFBCdmdNcTNPUXBrdnAtRzRvNVJvaVJUWjJSQ3hpTUxfcnZ5ZWVjR0lHX0tSTVFKZExHdWFwVTg2M2lERGN2Mi1LaXE0SVRaVTVZZTVYT0pfQktDai1fcjJpTEw0NTFibUZROXZPVEVNbGVvdjhJYklDSWt6cUdWM2J5QUZFTHN3V1ZFY2phQ1JNeUJJMWNMaGdwaVVkeXdFcUN0cUF0N0NwSnE1bUZiRGdIZE9nczg0Q1A0dThDM282LTB6ZzdESV9iT3ctUUYwWHNwYjdteWZiUURvQ0dGVE1hVm5VeDU5WXJ4UVNhUFVIc3B4UzJoVjdF?oc=5",
    "pubDate": "2026-11-21T14:00:00Z",
    "description": "",
    "source": "Tom's Hardware",
-   "feedLabel": "Robotics (Google News)",
-   "topics": [
-    "robotics"
-   ],
-   "local": false
-  },
-  {
-   "title": "Defense firm’s EMP ‘Dragon’ weapon fries 51 jam-proof drones simultaneously — high-power electromagnetic system relies on 120-year-old vacuum tube tech to defeat fiber optic UAVs - Tom's Hardware",
-   "link": "https://news.google.com/rss/articles/CBMixgJBVV95cUxPUm14RHpXc1c5bFJreTZOVGdOVzNaTDlnTm90d3h5S1ZxVU1mMEtmZ1hqVFVPQWE4VXZ2cjh4cXZWUDVnY29Mbzl3ZXZTZFRBMzhyLTA2eXAwNWNXb1F6dXlZVXN5ekdYdE1rMk4ySzR3ZUNZOGNjc1RlY2U4Z1Z2Nks2STkxelcyb1hZQ3ZVSEtDS0xBeWJoV2U1ZlJkN1FZa1phQ05QUzhpTU5ValNVZTR6MVhhV0Uya3loSXB0aWZqdnhfR0w4OTQ1OFVLWGZGU0dZUlFTNXR2X2RuNTg1WXFVSHJlT2trek1BblJLOGp2Z2JfdFQ5X251bmhsZGNwTkxZSzVaYUg2ZWdFWFRyYXNhcXB0WHZVU09uRnYtT3hZLS1aX0pHV3QtUXNfR0JmdkxCc0pYSnV6aFRkYTJ4aHJzSUFtdw?oc=5",
-   "pubDate": "2026-11-21T13:54:41Z",
-   "description": "",
-   "source": "Tom's Hardware",
-   "feedLabel": "Military (Google News)",
-   "topics": [
-    "military"
-   ],
-   "local": false
-  },
-  {
-   "title": "AI cameras, thermal drone to track elephant movement in Keralam’s Vadasserikkara - The Hindu",
-   "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQME90UEttQXluWGdDVVc0aWYza09sTUNPUFhFQkdPTDZfZWlZRGhwTHN4MW1MQllmUGpSaXBGREZWaFJGZmN0dVRNQ3RLaE1yMFdZOE40WWc3T1kzeXM2bjMwU1EyNktRczFLd2lWam05azZ6OE9BTFBCVkdBT0pCSHhQS3RCRGZIbWswQUwteDAwZmdRZkJUaklwM1VoTDk2WmdrQ25CSXZOYkdaZUE4YV9CUzFSbTBiZExTOUhuT1dNVzVrUW1uaW1jZVF1c2luSk5pbHNyMjdDaGdi0gHjAUFVX3lxTFBXeUstSjJaRVJXc0xNNW5MRDlNcENRTzBGYU5oTzVQQjJYbFUtU3NTeDk5RGFGZ09mU2JWSDBxVzBuSWw4TFdqd2NxOC1EY0d1UG8weHQtNVhuMVczVk9RMERGZlhweHNoWFltQVpucDdleHlXcHNoUEUyRDNTUVRRUUpPRksyMFJ1Z2xMb2VnNF9kS0NZOWpuRVZTNzBjQmVJRkFha19ONVNmVEw3TmU0d3dSZ3pRbXF0cy1GWVMwM01zSkR4a0MtMmhMaEU5SmxheUtJV3pyS21BY3JPQTJjRnlR?oc=5",
-   "pubDate": "2026-11-21T13:46:14Z",
-   "description": "",
-   "source": "The Hindu",
    "feedLabel": "Robotics (Google News)",
    "topics": [
     "robotics"
@@ -761,42 +858,6 @@
    "local": false
   },
   {
-   "title": "Navy Flies Drones Without GPS, Lands Autonomously on Moving Ships - Defense.info",
-   "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPUHhsTmNUQXhjSUtrY3lEdEU1Y1V4M2JudkNkODZhWGN4SVFPSi0wQUhEQjl0bWhBWXpiVGVPUlRWaThObGhNYmhHTTFzY3J4aklsUmp2NFhGRFJ0UG1vUld0VnBYSEFFT3lLa2VNdV96RU9rRHR4aHR0Si1UZENyY2lPZEtLVi1GcktOc2o3aDk4dEVmM1NJdTZBVnVlbGhWQTFmQUlISQ?oc=5",
-   "pubDate": "2026-11-21T13:37:20Z",
-   "description": "",
-   "source": "Defense.info",
-   "feedLabel": "Military (Google News)",
-   "topics": [
-    "military"
-   ],
-   "local": false
-  },
-  {
-   "title": "Drones attack Russian cargo ship in Gulf of Finland, sparking fire - The New Voice of Ukraine",
-   "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOOFpLMmFWQTVTTHRXNlZXSnY0RmdqeEZ0OGJMNTcxRGZ4V2hNS0UzTWE0cXRXYWJURmhXcjJ1WW9BN2hVVGdIa1BPTGpjdDVudDF1b2RqMEx5UFBxMHVUZ2FVcktOMXRILU8zOWFlOG5LR1I1ZUtFY3RrUGdzU1RGOW9uZkQ5Ti04ZldmVXJkMFJzbGFuRF9oRVBWdV9mSHViU2FPZHpvVXVkdEHSAacBQVVfeXFMUFZMOFZkTi1VS2VobUI1UWpaN085eFlNY3NIVk42eE8xdFVxd24ySnNuVnBBdWYwMlRCYVp1M1J5MHIyM3pfY3ZfbTg0b1ZpWG1aZnAxeGdtQVppdU1VVUVFS01WWDltNF9GSkdzNFN1RGVRclk2VzllVUoteU1peFBya2dPYV9tU3VyT0Njc0NMNVZwR3dBVzlvVG0xY2ZtRVM3OG54MlU?oc=5",
-   "pubDate": "2026-11-21T13:35:00Z",
-   "description": "",
-   "source": "The New Voice of Ukraine",
-   "feedLabel": "Military (Google News)",
-   "topics": [
-    "military"
-   ],
-   "local": false
-  },
-  {
-   "title": "'I've never seen such an impressive swarm of drones - Putin should be worried by coalition's muscle flex' - The Mirror",
-   "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQZDVUbmlxdmptSlpycnc5a3lyX2oyenNhSXlZOEQ0SE1fYWlQX2pjZFNxTEVpZV8tUEVrV3RiTDVlcmdReVhUZ25DMFZLclppdVFVZC03aFc4cFNFTDFBamkxdGxsTDFfRXJub1dJZU9WQkNlSm5udWtyQ2VSWENqbGdPajhhdmpLc29Z?oc=5",
-   "pubDate": "2026-11-21T13:34:07Z",
-   "description": "",
-   "source": "The Mirror",
-   "feedLabel": "Robotics (Google News)",
-   "topics": [
-    "robotics"
-   ],
-   "local": false
-  },
-  {
    "title": "Chinatown Knife Scare Ends in Arrest as HPD Drone Helps Locate Man - Hoodline",
    "link": "https://www.google.com/url?rct=j&sa=t&url=https://hoodline.com/2026/11/chinatown-knife-scare-ends-in-arrest-as-hpd-drone-helps-locate-man/&ct=ga&cd=CAIyGmU0YjVhMGQ2YTA2MzhlZDU6Y29tOmVuOlVT&usg=AOvVaw14WCXX4CDovmprppsnx0tn",
    "pubDate": "2026-11-21T13:29:40Z",
@@ -805,18 +866,6 @@
    "feedLabel": "Alert: Atlanta Drone",
    "topics": [],
    "local": true
-  },
-  {
-   "title": "New Swedish interceptor takes aim at Russia's jet-powered Geran drones as Ukraine prepares battlefield testing - Euromaidan Press",
-   "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNenRRSGJJWlhUOHVyVlpnMlZWNGtoZmE5NHUzTkZHY2NORDdjcG1RdnUtSkphUGtnSHcyU21RemR2WXJ5TXlyWEFiLTJVVU96UjFwUTU5QlZiLUV2dktuNFpHdU1DdmVsTlZrSFBzM2VTMHk2bXozaF9vY0dTQTA5UkFPUl9YcVE?oc=5",
-   "pubDate": "2026-11-21T13:28:30Z",
-   "description": "",
-   "source": "Euromaidan Press",
-   "feedLabel": "Military (Google News)",
-   "topics": [
-    "military"
-   ],
-   "local": false
   },
   {
    "title": "AI-Powered Drone Monitoring Could Help Contractors Spot Critical Jobsite Changes - For Construction Pros",
@@ -843,35 +892,11 @@
    "local": false
   },
   {
-   "title": "Ukraine Unveils AI-Powered Control Station That Detects Drones for Ground Robotic Systems - EMPR.media",
-   "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPamdLOGF0Vm1PU1JFbm1HelJCalJZSWU0VkZtWFlfSFlMNFh5djRRMlpjUzdJOGcwaDdCX2ViRFZQb0VxVFNGV05Ub0RPdm9LdHU3cjhPaXhSM3VwWC03QjRVTGNyTUw2aUtsUi00aWpVRThBMHI4TGxudHN5WURON0dNNDZUY1NPR0ttbnJXaUZWQ28xNmltNEc1OVp2RVczRTlfYmR2VVlIRlpFdFhZXzVvandvQWlSbjVUMmdTeEpPWWF4SFphejdQMVJHRWdfOW5z?oc=5",
-   "pubDate": "2026-11-21T12:23:08Z",
-   "description": "",
-   "source": "EMPR.media",
-   "feedLabel": "Robotics (Google News)",
-   "topics": [
-    "robotics"
-   ],
-   "local": false
-  },
-  {
    "title": "Why are drone companies suddenly flocking to this Houston suburb? - Chron",
    "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOTjNGek1nSjZYZlBmMDVpWHQ0c0U1MExDRlRWVEgwbTJDVC1SeE9CNHNRVXpmYlNETTZlM0R5WldJQnNQSEJYS28ybEJnMjVrWWNDQ1ZvVXRqNXg0Sy1RWFpoUGQyYzNTQ1pUaXZ3V3lxOFBlOVk2Q2NSRV8zQjVEYw?oc=5",
    "pubDate": "2026-11-21T12:07:53Z",
    "description": "",
    "source": "Chron",
-   "feedLabel": "Consumer use (Google News)",
-   "topics": [
-    "consumer"
-   ],
-   "local": false
-  },
-  {
-   "title": "Madrid Christmas lights today: what time the drone show starts and how to get to Cibeles - Demócrata",
-   "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOVXFqaWpkeGt5b1JxTHNISUJHdzV4ald1dDJPV1JiUlc5TGJadEhwWW40bjg1TjNqLUFiYXBYUm5wZTg1TG1CMEV2UHhUSndsMmd1LWZWQXp0Y3laU245RHp6Z2NiTFZiZVhubkFDSEo3R2N5a3NpODRjY2tqWlpFTlhDLWlEWVN4cGRQb2VyQlpzbzZzY09rQ1RaUmdWZExVR0RnVHJFR0NORV9zQWU2X2t1RExJUlc1TXg3UXdGaEtpNTNfQVoyT2dEY9IB0AFBVV95cUxNenJEd19WdDJ2M0Ywa2FiY3dmd09wUnZ6N1JXOXlaUlRfRUFRTzZ2aUR4RDBWRVN3OTFvbk1YNzdmTkRBekNZXzVKVHk4SzliTVdaajVOMk5SRWhWX05jOTlpN09ZZ0cxcTZwNXhOazdvNGl0YXlXZXE2b3JKR1RmUjVjZUNSNWNTSFhIOGd2bVVuNm16bndZZk45THd0bTExQ2U3MFppSjhFUDVTYkU2RnZPbExLcFhQclR0QXh2VXZEMkxGd1hHVlFZSnJlVWZu?oc=5",
-   "pubDate": "2026-11-21T11:48:00Z",
-   "description": "",
-   "source": "Demócrata",
    "feedLabel": "Consumer use (Google News)",
    "topics": [
     "consumer"
@@ -981,7 +1006,6 @@
    "source": "DroneXL",
    "feedLabel": "DroneXL",
    "topics": [
-    "consumer",
     "laws"
    ],
    "local": false
@@ -992,9 +1016,8 @@
    "pubDate": "2026-11-21T09:35:15Z",
    "description": "",
    "source": "India News Network",
-   "feedLabel": "Robotics (Google News)",
+   "feedLabel": "Laws & politics (Google News)",
    "topics": [
-    "robotics",
     "laws"
    ],
    "local": false
@@ -1022,6 +1045,18 @@
    "local": true
   },
   {
+   "title": "FBI warns Iran aspired to attack California with drones in retaliation for war: Alert - ABC News - Breaking News, Latest News and Videos",
+   "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOQ2hlRlY5RFh4YWgtOFBHaFNnc1dKRXh6Q243VXU0bUFUWk5TeThyVFM2Yk1jWUpnYWRUQkV6eGhZM3YzNzBzY296NXNwRlRXbWl1eFFVb0dvckZ4aUhsVHctOERRMkJJRTNZbVo1ZjVqejViYWxuaDRIY2Q0STZ2al9EVHlXVlgtbE9lSVhQbjZCSzZwTmtpM01uUWdxS2tPLWRj0gGoAUFVX3lxTE1wUUM0QkFNelExVzUzcVBxdnM2c1l4bklTdndFT3pzcEZVQXZkOVA0VHFRYXREZjAtcVhXcktBVi12VEZ6dVFRcEpVSEJZb0thLUs3NGY1d2pBV3BJOXdBS2NkWnJ1T0RrTWpzNm8yS2R5Q3ZnaDYyYmRMejdKYm5kd2RNZmhZOE9BdHRrU1NfdmlicXJUR3hZMDVTQldmN3lCWUFFYWIxdw?oc=5",
+   "pubDate": "2026-11-21T06:00:31Z",
+   "description": "",
+   "source": "ABC News - Breaking News, Latest News and Videos",
+   "feedLabel": "Laws & politics (Google News)",
+   "topics": [
+    "laws"
+   ],
+   "local": false
+  },
+  {
    "title": "Language Model Fusion Boosts Drone Swarm Cooperative Target Recognition Accuracy - Bioengineer.org",
    "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPR3d1Ynp4ZHZLVm9JYUxVbV9zVXBLTU1PazdoQzBGNkZWd2k5V0liSm9jRkxhT1pQTzBoeVU0MlhQUm5LeDZEVlZKNWNHSWZwMFJHTDFPUVJoNFZ6bGRPZlo0S2FMZnplenNubTBOZVVpODgtaG9jdWxTRUZyTnlSS2k0cEM3VFQ4emZNRm45c0RyeDZFOE1HOEc3b0JtOVg3NUd5b3NRRTE?oc=5",
    "pubDate": "2026-11-21T05:42:03Z",
@@ -1034,14 +1069,14 @@
    "local": false
   },
   {
-   "title": "Shaheed Dweep Youth Receive Training in Photography, Drone Imaging Under MSME Skill Programme - The Wave Andaman",
-   "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPVGczREhpZVhmMFFmQS1ZQ3ppdkRVQUVzUzNzWU4wejllOVRjN21ObGVYVVcyTldJV3dodm9Hb184WF9wdm1iYlVRVTJJU3Jwa1V6TEtsa0R1ekF5WVBXcFEyMzNhUWJlVmZTVDJadFg1cjN6QnZTVHRVWXBlUWJFS2ZpSzlIankxYWc?oc=5",
-   "pubDate": "2026-11-21T03:45:48Z",
+   "title": "If You Thought AI Was Bad, Wait Until You Hear About the Drones - WSJ",
+   "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQZE5OSjZUY0x0ZXVkUzJaOENUMndROFV2WFFSWkVZTmlpYWRFTTVxcmpROEt1Z2tBR2l5dVp0RUs5SjdoTzBKUzJaSTJMZ2hRNThhVVRyc0NIZWZfbFB5MWNaWjF6YmNaLVI1a2c4RHZ2dHJyWXU5YkJRODA2aFJZeXFiYnBhTkVmNkxQSGNMc3gyM0NZbEhPWGg2aEhPa0cwUnVXRVdzZ2xWRWtBS3c?oc=5",
+   "pubDate": "2026-11-21T02:56:52Z",
    "description": "",
-   "source": "The Wave Andaman",
-   "feedLabel": "Consumer use (Google News)",
+   "source": "WSJ",
+   "feedLabel": "Robotics (Google News)",
    "topics": [
-    "consumer"
+    "robotics"
    ],
    "local": false
   },
@@ -1082,18 +1117,6 @@
    "local": false
   },
   {
-   "title": "It's a Lego Christmas + Theft ring busted + Drone delivery service - CTV News",
-   "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOclE2ZVk2ODBUZGREYUhwTk9ORklRVHR1bk5oY0F5a3A4SFZQUzJPNEs1ZE94QVRPb183c1pQOTVSc1U3aGE3NERNaURwZU42dWZhZGZoQ1JpTUVqcE5oMUZIdV9aTXJLRXQ0ZUphUG9IVjRCT0VWb2taLVNuekVuamhfVDBhOE92UG5Kbk9YNGctbWltTHNrYzJxOXdXWXlTWTQ1VV81eEtONVNWZHlv?oc=5",
-   "pubDate": "2026-11-21T01:39:00Z",
-   "description": "",
-   "source": "CTV News",
-   "feedLabel": "Consumer use (Google News)",
-   "topics": [
-    "consumer"
-   ],
-   "local": false
-  },
-  {
    "title": "Blueway Mississippi event previews electric aircraft, seagliders and drones for the Coast - WLOX",
    "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNeVJwc1VzZFAxVEp5WUFmWk11dGN1VC1Dem5MVEZDRW9WdW11a2VIalNXeEVyUDFtSFVud2ZBblVfNm43SlVSNzRBOVpLdVRteXkyUUlMVm9WXzc2YnhscVlHanR1NGtOenNHWE9KNXBNYTZ6TWt3OGlGdmRYbjJ6VGh6RFE5SEp5ZzllZWpoZW5aMF9RLUVBZlRndURITU5jbDFJclNpZ3hJOWNQOEHSAcIBQVVfeXFMTXFacGotS0FqaGdMeW9GQ19UM29FYWxkT3dfd2VaSFRmSjd2X0d2NGJTQkNad0ZfU2NHS0lpUm9qX3p0cWtZSG02NVRycFRXSDhqU0RSNUhnQW0yWGxpdmJkX2lNMFVHcDVxN3NDR09rU1JOelI1QVpTUkY5WUM2Zjk1UHI5M1RYSVRIVl95Y3Fjd0g4c2dUejFlOHlubTFXVm9wUnJOWjhIRjYteFBncWhxOWJLcE4wN0kxeDBOUml1SWc?oc=5",
    "pubDate": "2026-11-21T00:39:00Z",
@@ -1102,18 +1125,6 @@
    "feedLabel": "Laws & politics (Google News)",
    "topics": [
     "laws"
-   ],
-   "local": false
-  },
-  {
-   "title": "Germany backs an Auterion and SkyFall joint venture to build Ukrainian strike drones in a German factory - MLQ.ai",
-   "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOYVlvZnRrNEFzZC1zS2ZxeVhXMjM4eGtTX0tyZ2FUeGZhRHVMXzZPY3dKRmhUNlBNcndHRU1NMTdORUlrNTVXS2M3cVo4NV9uVlgzVXV5cmpTS0Fxanl6Q0sxZDNRMFZrTHA2OVV4NVpvQzlfR3lTQmNIcU0wOTBXd1lfMFMwQUtUcnZhLXZNS1R0RWhlc0pQOUpzQXN0M0txRDBaSVNBUXRNTVBiSTRnaURMc2kyU045OFpqOE1US2xnMUk?oc=5",
-   "pubDate": "2026-11-20T23:39:21Z",
-   "description": "",
-   "source": "MLQ.ai",
-   "feedLabel": "Robotics (Google News)",
-   "topics": [
-    "robotics"
    ],
    "local": false
   },
@@ -1130,11 +1141,11 @@
    "local": false
   },
   {
-   "title": "Festival of Lights Drone Show - wicz.com",
-   "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPMG9mVDBGZVRYU0FrUjliMGRpTWhIYWU5SzI3V1lVM3JhZUFHdGU0OFljVHM5Mi1UTHZGeGI3WXgtUmRpcWkxVDRtWUltZlJBOThLQ253RzVjXzh4MEp5aVJydXkyUHFwdXNzb3dRQ016aTQ4YmoteDBaaXVhM09WUWNPTFI3V0JXb1BkUHJMNkZTOVkzTk1zM0F0MlhQWkpCVXZPWFFn?oc=5",
-   "pubDate": "2026-11-20T23:13:00Z",
+   "title": "Amazon drone delivery could soon be available in Iowa - WQAD",
+   "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxONDJXMy0takt2LWZlWFBVTUJTTDJLWHBQZjJ1SmtaYTgyandoTDNYLWZuN3czREUwNWl1M21fRVlwdS16UTBvNi03dWhfM29mOEpSR3lnTEU3WU1WazJ4aDhPNHFFLXJVRGwtVkFaWERMRE9qV3BRa3Qwbkd1MndScW9GS1BNRUpSWVFVWWVUT2h4bVZwZ1h6b2hicDRiVmt3NE1jOVdOdzRNT1pqUmVMaEFpeDhLNkliSDZ1Z3dCVmUwZGV4R19DSWQ2alM?oc=5",
+   "pubDate": "2026-11-20T23:24:06Z",
    "description": "",
-   "source": "wicz.com",
+   "source": "WQAD",
    "feedLabel": "Consumer use (Google News)",
    "topics": [
     "consumer"
@@ -1150,18 +1161,6 @@
    "feedLabel": "Consumer use (Google News)",
    "topics": [
     "consumer"
-   ],
-   "local": false
-  },
-  {
-   "title": "FBI warns Iran aspired to attack California with drones in retaliation for war: Alert - ABC News - Breaking News, Latest News and Videos",
-   "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOQ2hlRlY5RFh4YWgtOFBHaFNnc1dKRXh6Q243VXU0bUFUWk5TeThyVFM2Yk1jWUpnYWRUQkV6eGhZM3YzNzBzY296NXNwRlRXbWl1eFFVb0dvckZ4aUhsVHctOERRMkJJRTNZbVo1ZjVqejViYWxuaDRIY2Q0STZ2al9EVHlXVlgtbE9lSVhQbjZCSzZwTmtpM01uUWdxS2tPLWRj0gGoAUFVX3lxTE1wUUM0QkFNelExVzUzcVBxdnM2c1l4bklTdndFT3pzcEZVQXZkOVA0VHFRYXREZjAtcVhXcktBVi12VEZ6dVFRcEpVSEJZb0thLUs3NGY1d2pBV3BJOXdBS2NkWnJ1T0RrTWpzNm8yS2R5Q3ZnaDYyYmRMejdKYm5kd2RNZmhZOE9BdHRrU1NfdmlicXJUR3hZMDVTQldmN3lCWUFFYWIxdw?oc=5",
-   "pubDate": "2026-11-20T22:10:05Z",
-   "description": "",
-   "source": "ABC News - Breaking News, Latest News and Videos",
-   "feedLabel": "Laws & politics (Google News)",
-   "topics": [
-    "laws"
    ],
    "local": false
   },
@@ -1202,16 +1201,26 @@
    "local": false
   },
   {
-   "title": "Drones, AI cameras help cops manage 15L crowd at Ram Katha - The Times of India",
-   "link": "https://news.google.com/rss/articles/CBMinwJBVV95cUxPaFV0NFRObE93akpKUlphY0MzTXJQY1o0bFRvbk5WaWlwR2hnbTJwNFJBY2d2eUhTcVFtTTF0NS1VSHBjc0I0MTJJQjBYeFkzS3hnalVpN0daTGFZQUpNdFhIRjBpT1JHTXF2MUxrQUNCQWpWTS1QR3pYS3VSaVRmYmNLZUtpMGFGZUNtaF83Rk9ZNE9sQ0k1NWJnb2FJN2Jjc2dVWTV5VzVtS2YzbFBoaTctX1dTQ09wbVpfcl9lLVlXMVR4aURQa3QyQVQ1d3VZem9OZUpmamFhZjdFTEdsU0J5NXNjdUhOYUNpTmtod0JNT2Vxckh5dE9JQ3ZpeldlTVFIcGtERUp3cTdQU0RqbmdkTUVxVGtnMTI1QnF5b9IB1AFBVV95cUxOem1wWG1PVnNCTWdsa19MNG1EdEM1NzVXb3hwNHJSRkREUGE2QS02cF9qUHVxbG5JWHhqMDktQ3Z6S0ZMZnd6TDJfdGRnMHJrTlZvQk9FSnJObWFQS1hSQmJxSC1zZlZjN0xTc2pTR0Q5ZHdLS0RLUHFTUEFiZURweHZXZGxPa3Z0THpsdUxka1ZjMlExMlJWdTlaSUdqU1UyRXNTTEt6aVFuUzNoY2ZuSzIwYTV3SDh5SjBFQ1ozQkdzV3A5RWhWMk9HRnhwbDhnT1ZHMg?oc=5",
-   "pubDate": "2026-11-20T20:27:00Z",
+   "title": "Best drone deal: Save $134 on the DJI Flip (RC-N3) - Mashable",
+   "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9qMVlaVkVpMVpmUGZYem03bzI2ekRycXE0bWRsbHpyRFlzSWZpWEVKdHdxeElLNko1UXVYQjhpVzRRZHd1LUhCYVlNUnFTYXZxNEpBbTBPQWk3NE90MkE0N1ZzMmtnN2JmQ28yYUtKaE8yS0VaRko3ZDVJVTdEY3c?oc=5",
+   "pubDate": "2026-11-20T21:11:15Z",
    "description": "",
-   "source": "The Times of India",
-   "feedLabel": "Robotics (Google News)",
+   "source": "Mashable",
+   "feedLabel": "DJI (Google News)",
    "topics": [
-    "robotics"
+    "consumer"
    ],
    "local": false
+  },
+  {
+   "title": "News - Maneuver Battle Lab assesses drone-defeating shotgun rounds - DVIDS",
+   "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQTHlaQ0dEcU1pcmlnNGdsc0JlUHl5aXMzS0RqQ0NqbExTbkVHTF9mQkNoZk4tay0xOThpSGUyUWg1cWtFNmVuOTBTdFUxdzcxVzM0QThFMm56dlR4V3hwX3pFZlctajJ1QkJLVFdsRjY1M3ZWYkVJMjQtblpHVHk5YlZ4eDJHaDQzU2hpcUgyNFg1RXc1NENWLXVsR2Q?oc=5",
+   "pubDate": "2026-11-20T20:24:00Z",
+   "description": "",
+   "source": "DVIDS",
+   "feedLabel": "Georgia drone (Google News)",
+   "topics": [],
+   "local": true
   },
   {
    "title": "Shawnee Police adding drones, license plate readers in Axon deal - Johnson County Post",
@@ -1262,18 +1271,6 @@
    "local": false
   },
   {
-   "title": "Drones, cryptocurrencies, radicalisation, AI misuse dominate anti-terror conference discussions - Livemint",
-   "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOYzRETHAxaHFMQ3RPUjh0WElfNE03M1d5RU5Bdm9HR2x4VFllOTNpMlFoSXllcmhTa0djQWQ3c1ZaR2VORDctNnhhekhDMk9Lc3U5Qzh2UnBWc2VUakRPY2hwRmxreGF0b3FVN3JTZlRYeG8wVzFtWURmcXdSbGVYZ0NwUHRPZ09yYmMyVXU1TE9zVG16TEVpODFDVEZMcl9yYWRIelpMZ0NoYV9IT2xpcTkxM2N6c1NocXRFSVBMUmY5OHN6YURiVTBwSXd3ZkpqS2F0R19Ib0R5b28?oc=5",
-   "pubDate": "2026-11-20T19:20:59Z",
-   "description": "",
-   "source": "Livemint",
-   "feedLabel": "Robotics (Google News)",
-   "topics": [
-    "robotics"
-   ],
-   "local": false
-  },
-  {
    "title": "Mysterious MQ-25 Stingray-Like Chinese Drone Emerges At Little-Known Flight Test Center",
    "link": "https://www.twz.com/air/mysterious-mq-25-stingray-like-chinese-drone-emerges-at-little-known-flight-test-center",
    "pubDate": "2026-11-20T14:16:03-05:00",
@@ -1292,9 +1289,7 @@
    "description": "Grapevine, Texas approved a five-year, $1.05M Axon lease for three Skydio X10 police drones. The state grant behind it covers one year.",
    "source": "DroneXL",
    "feedLabel": "DroneXL",
-   "topics": [
-    "laws"
-   ],
+   "topics": [],
    "local": false
   },
   {
@@ -1322,18 +1317,6 @@
    "local": false
   },
   {
-   "title": "Morocco unveils $400 million defence plan: 50,000 jobs, military drones and AI weapons - Geo News",
-   "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPa0EwMnJyaEEzbXcwODVyYWhxZ2JGM3cwV0hfUUVxeW9wLWdTWUlPV0FnRlgwZzFNZTNlSTlZR0lGRmRZdEZiZWpobXlkeWdiNjN4RnJfSDJtUkNWT1ItR2VYU2RWbUxZemtNbllLRHB0MUkwYnpjeGQ4ZWVWV2x1UWJwWjY0OE93YnlleXZhbnlENkFLd2VIR0MxQ0V1cmVUcmFVYnV5N2dDX0tPaDYtaktDaFVJdw?oc=5",
-   "pubDate": "2026-11-20T18:36:00Z",
-   "description": "",
-   "source": "Geo News",
-   "feedLabel": "Robotics (Google News)",
-   "topics": [
-    "robotics"
-   ],
-   "local": false
-  },
-  {
    "title": "Zipline Asks FAA for 130,000 Drone Deliveries a Day Over Arizona",
    "link": "https://dronexl.co/2026/11/20/zipline-faa-arizona-draft-ea-130000-deliveries-phoenix-tucson/",
    "pubDate": "2026-11-20T18:30:00Z",
@@ -1343,18 +1326,6 @@
    "topics": [
     "consumer",
     "laws"
-   ],
-   "local": false
-  },
-  {
-   "title": "German-Ukrainian Quantum Frontline Industries to Increase Drone Production Fivefold - Мілітарний",
-   "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNaGdZaVN0SGxDaGtIMEFsZjdYSFpZckVndkpsV0pRb2xOSnJJalBmVHVsV25SYzNha0NGb0RzUVg4VS1lQlB4dGV3eHN5ckI4YWhVb0tWU2QzNXVMODkwMUxsUmxXUWRhWV9LemVWWU5uakd0R3N5UWFpT3dqVTlicg?oc=5",
-   "pubDate": "2026-11-20T18:29:16Z",
-   "description": "",
-   "source": "Мілітарний",
-   "feedLabel": "Robotics (Google News)",
-   "topics": [
-    "robotics"
    ],
    "local": false
   },
@@ -1383,11 +1354,11 @@
    "local": false
   },
   {
-   "title": "GTA 6 drone show - CW39 Houston",
-   "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9MdllhNGpYZ1lWcC1nSzR2MVJRd09rdlcwX3o4Q2NYNVpXT1JlaHByWkl5S1dOemxaRS1vanAzazJuQ2tPVGd3VlN2cUJNb2pXSDlybm1FQTVJazhQMlE?oc=5",
-   "pubDate": "2026-11-20T18:06:10Z",
+   "title": "Study Evaluates Carbon Footprint of Medical Drone Delivery in Rural Uganda - Bioengineer.org",
+   "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNZHM3V2ZXYkF5MTJEMmVXeElNUkJ2cnY0YTZjOWNET0h2UEl4b3ZvalNuN1dwM3hzc3VKSGJBZmhYTElNazAxWkNnaFVmSG9CTTNOMlJfLUxDMUwtLWpnd01BanNkbXF4LWxTWnJfVDI1TllzdzYwQVp4SUY1UlNOTXJ3WkFCODk3Q0ZkZTlxLTRaY004Y0pYUTRYRkNkZG15?oc=5",
+   "pubDate": "2026-11-20T18:03:31Z",
    "description": "",
-   "source": "CW39 Houston",
+   "source": "Bioengineer.org",
    "feedLabel": "Consumer use (Google News)",
    "topics": [
     "consumer"
@@ -1408,15 +1379,14 @@
    "local": false
   },
   {
-   "title": "DJI Asks Court to Force FCC Ruling, BRINC on iPhone, SkyeBrowse 3D",
-   "link": "https://dronexl.co/2026/11/20/dji-asks-court-force-fcc-ruling-brinc-liveops-iphone-skyebrowse-realistic-3d/",
+   "title": "DJI Asks Court to Force FCC Ruling, BRINC on iPhone, SkyeBrowse 3D - DroneXL",
+   "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNWkxsSXAxT05tZU1qdm9VU0pjcHotTWxPUWlsNk9UYmN4Wk1rS1VXXzVzak03ZWg0V2JjS21uMExrN2dwWkhRdUF0R0ZYRFU3Z0pGZ0d1N1FfdzQ0OW1RWVNHYmd1eUkyTFlsbVJVX0o5VWo3eWxzSXNpbkZZNUk1SzN2SGxQc0FyOVhQU1VHUmx3akRCUzJuTmFWeXU5aXZRd3FvSkhsaHFPcGc?oc=5",
    "pubDate": "2026-11-20T17:21:00Z",
-   "description": "Pilot Institute's weekly update: DJI asks the Ninth Circuit to force an FCC ruling, BRINC puts live drone feeds on iPhones, SkyeBrowse adds Realistic 3D.",
+   "description": "",
    "source": "DroneXL",
-   "feedLabel": "DroneXL",
+   "feedLabel": "DJI (Google News)",
    "topics": [
-    "consumer",
-    "laws"
+    "consumer"
    ],
    "local": false
   },
@@ -1428,18 +1398,6 @@
    "source": "DroneLife",
    "feedLabel": "DroneLife",
    "topics": [],
-   "local": false
-  },
-  {
-   "title": "Delhi On High Alert: Drones, Paragliders And Wedding Laser Shows Banned Near IGI Airport Amid Terror Threat - The Daily Jagran",
-   "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxOOWE2TUV4cklRb1VZWWJUUHUwNmo3VERJR2hTeUxpNU9hd1hLb2lQOHpRY3NqYWU4cV9sbGpoekNPakFYdGRTcWxyd01CSUVXTlNBNHZHaUppVnZkcjY4T0NxVkZsMkIxNHZPUmJkdVlqcHRlUHNPSEpIUFh3UUtXMThHcC1oWDhjS3gybU9fSUhZaEVfTEVlbmpsbFpqUWt4Q3dHOXJVYXFaZk1qSlZtZTd5enJHeWdjZ2pUcXFzZTN4S1VmalhDNWNsZGlEMXRIZzI4RGlEaWhWWTJyb01HSHFkVktSME9YdUlOcNIB8wFBVV95cUxPSVZMWUtxZGtxM3A4cTExQ09Tb1RYMURJX2ozcjNhdFpZelFqUUdWaGNhX1daT2F6TmR5bm92QjBiS3pNMGplc1BBZVZWZjVFN2tMVkpGeldlMVdTSnZSNlB3eXlPNGpKazEyakMydmFFbmVSNURGaU1Fdk5NSzZ2aThUMU1rcnpMSDYzLXU0Z2QwQVBzWjZpU1k5V0FLTU9pbHVFUkx2bHlfbXNFZVl3cFcwVHRQUVgzRHhmbWdYdEV0SS0yV09SUUZSS3dqSXQ1RGZZRm5LZTk5MEw1VUJ4Smp4WU9na3pBVVFWWFdoM1hLM00?oc=5",
-   "pubDate": "2026-11-20T17:04:00Z",
-   "description": "",
-   "source": "The Daily Jagran",
-   "feedLabel": "Laws & politics (Google News)",
-   "topics": [
-    "laws"
-   ],
    "local": false
   },
   {
@@ -1455,14 +1413,14 @@
    "local": false
   },
   {
-   "title": "Best drone deal: Save $134 on the DJI Flip (RC-N3) - Mashable",
-   "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9qMVlaVkVpMVpmUGZYem03bzI2ekRycXE0bWRsbHpyRFlzSWZpWEVKdHdxeElLNko1UXVYQjhpVzRRZHd1LUhCYVlNUnFTYXZxNEpBbTBPQWk3NE90MkE0N1ZzMmtnN2JmQ28yYUtKaE8yS0VaRko3ZDVJVTdEY3c?oc=5",
-   "pubDate": "2026-11-20T16:52:56Z",
+   "title": "Silynxcom Ltd. (SYNX) Develops Prototype AI Drone-Detection Platform - TradingView",
+   "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPREh2MWx2TDFhSnA1R3ZNSDlSdm1QUE9UMjdoSkJmUW1adVd2Z2Z3bnhEZUZ2Yk1qcGNTc20zMjlTd0haZHFObmVDLW1Cb2QwYnc2WGdDRW9xRnRXd2dZeFFfZXl0eDVqck5IT2Q5ZzdIMHV5TzBtNV9kdGRhWlJ4N2RfWXpmRnFoZDhEYzl6NWlvOVJZWUNKcTc5ckNOTE1LRmRELVBtQUdKSEJwTWpzY1lqTlBhRXlOcHFYdFJMTC1zbHltMEE?oc=5",
+   "pubDate": "2026-11-20T16:50:16Z",
    "description": "",
-   "source": "Mashable",
-   "feedLabel": "DJI (Google News)",
+   "source": "TradingView",
+   "feedLabel": "Robotics (Google News)",
    "topics": [
-    "consumer"
+    "robotics"
    ],
    "local": false
   },
@@ -1474,18 +1432,6 @@
    "source": "DroneLife",
    "feedLabel": "DroneLife",
    "topics": [],
-   "local": false
-  },
-  {
-   "title": "Unifly Joins EU Defence Project SPECTRE on Counter-Drone Systems - DroneXL",
-   "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQWlcySV93d0d5eWxpbmpYbU5aejBJTzdENnJfdmkybWo5R0U4QXlnX2NMOGVESjZOV0F0VFNqbWN0WXJNMTJoSkZxdGtmbVZVaElmaUZWQVNXY1Zlal9aSThsWDhGUGM2cTB5VV9nNjh3N0NKNGs1SzRSQ0lNVFJ3R1B6WFg?oc=5",
-   "pubDate": "2026-11-20T16:48:00Z",
-   "description": "",
-   "source": "DroneXL",
-   "feedLabel": "Laws & politics (Google News)",
-   "topics": [
-    "laws"
-   ],
    "local": false
   },
   {
@@ -1531,18 +1477,6 @@
    "local": false
   },
   {
-   "title": "Nashville Drones Beat Police to 98% of Calls, Then Overtime Ran Low",
-   "link": "https://dronexl.co/2026/11/20/nashville-police-skydio-dfr-trial-98-percent-overtime-ran-low/",
-   "pubDate": "2026-11-20T15:39:00Z",
-   "description": "Nashville police say Skydio X10 drones reached 911 calls in 2 minutes against 15 for officers. The trial ended at 30 flight days as overtime money ran low.",
-   "source": "DroneXL",
-   "feedLabel": "DroneXL",
-   "topics": [
-    "laws"
-   ],
-   "local": false
-  },
-  {
    "title": "Council approves zoning variance expanding drone delivery service in Katy - Katy Times",
    "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOM3hHRmtFVkFheUQ5Y1RNV050c21PQ1ZKU2JmSWVPN3VKWVVBSFpPV3JnSnFlSDVSaDRHUl9WdGwyRFdVWDItYlVZanVEdFV1NkFqWmJwMUFFYWJ4Q2xSSlQ4WjRDdnlFTzZ3SjBxT193Uzh3a1VDNFFORVkzZHRJMTh1WGNQWWVBWE9VTjNzVTQyR1FPUDFXRF9Qam5XNW50VjFOZjFHaDFoWUwwcERr?oc=5",
    "pubDate": "2026-11-20T15:37:00Z",
@@ -1555,14 +1489,14 @@
    "local": false
   },
   {
-   "title": "Delhi Police ban drones and laser beams near IGI Airport for 60 days - The News Mill",
-   "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOYkxDX1lkcG9kMko5SHNtQ05YNGcxd1Z1Y2VLOGVTVUtFRWw3MElGMm9sVjI4QW44b0NWTWkzV1hVeVpZMXdabFVmdWFqN3pHOEZ0Y0RWMl9ucjlUclBpODZ5a2Jvc19fb0FIc21ZSG1JRkNsWFBtek8tbEJ4UHoxM2M0ZUdlZWtNbGR2Si1DSjNONFlpbjhOdmJPaWVCQVdfeGhJ?oc=5",
-   "pubDate": "2026-11-20T15:10:13Z",
+   "title": "Archery Defence Unveils Robotic Cell for Sovereign Drone Production - DroneXL",
+   "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPdHhXc1BlQnZCQ3FXbEp1b2ZZa0ZWS2txRWQ4aGx4ZFZ3dHYxY1RMSXB4SXVCOHE0U0R5N1lBWldSZExLdll5d3dSOUlpXzFxZG1raUpOdEVTU2ZwcHQ3aFA4M1BKNlNfZ2l2YTBhMDBVZTQtNTVyQlRhbE1icDRkb1VPUEYtZzVsaF95QUdGSQ?oc=5",
+   "pubDate": "2026-11-20T15:06:00Z",
    "description": "",
-   "source": "The News Mill",
-   "feedLabel": "Laws & politics (Google News)",
+   "source": "DroneXL",
+   "feedLabel": "Robotics (Google News)",
    "topics": [
-    "laws"
+    "robotics"
    ],
    "local": false
   },
@@ -1592,26 +1526,14 @@
    "local": false
   },
   {
-   "title": "Take 30% Off the DJI Flip Camera Drone With This Early Black Friday Deal - PCMag",
-   "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE50Q09YNEpQdkFtQjZtaHB6azNlVWJhQ2oySUJrbkZNRUZjeXltaEZvUGlOS0E0WUdvUnFwOENpTVJRR2JTV2l1ZzRMNGJJYXJWYTAzR1E5Tnh1UlAwWUE3c3ZHbl9VSFdwQVV0ZnBTVDk?oc=5",
-   "pubDate": "2026-11-20T14:32:33Z",
+   "title": "Robotaxis and delivery drones: China’s autonomous vehicle race - Euronews.com",
+   "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNZXZoclo0aTN5Tzg2SG90NjJVekR6Rm1scWFMNkhSSmZjY0tWUksyVHh6cWNBX3BLdThHTFAwVU9MbU1BUmJObENNbVdBc2gwc3dMQTJnSzhPQXprYTRkX0wxLVQ0SW5jbHBzWkZ1bERrY3lQSUYtaGVWS0ZDc3JTR1d4SEpyel9HRWJvYnVPaEVrVjVfRlZJbjVMd1Q3UUlnQnVYRm0zZk5TUndXcHZLb0pnVjQwcGlUSEdUMXR2RkhmQUFr?oc=5",
+   "pubDate": "2026-11-20T14:00:38Z",
    "description": "",
-   "source": "PCMag",
-   "feedLabel": "DJI (Google News)",
+   "source": "Euronews.com",
+   "feedLabel": "Robotics (Google News)",
    "topics": [
-    "consumer"
-   ],
-   "local": false
-  },
-  {
-   "title": "DJI Neo 3 Likely Targets a November Release Window - Geeky Gadgets",
-   "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE8ydEoxaG5oa2ZhdE9aVko1V3M1X0Vzd3pTTU5kdFFIR1BwQlpKb1pqTHNPWUVvd2E1QzNvWnBXSk9lLXhLelhzOUFaTHYxcGFNaF93aEYtM3N5MHlDQkdCZkRUdk05UVZYaGZpQg?oc=5",
-   "pubDate": "2026-11-20T14:19:25Z",
-   "description": "",
-   "source": "Geeky Gadgets",
-   "feedLabel": "DJI (Google News)",
-   "topics": [
-    "consumer"
+    "robotics"
    ],
    "local": false
   },
@@ -1621,93 +1543,83 @@
    "pubDate": "2026-11-20T14:00:38Z",
    "description": "",
    "source": "Euronews.com",
-   "feedLabel": "Consumer use (Google News)",
+   "feedLabel": "Robotics (Google News)",
    "topics": [
-    "consumer"
+    "robotics"
    ],
    "local": false
   },
   {
-   "title": "Robotaxis and delivery drones: China’s autonomous vehicle race - Euronews.com",
-   "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNZXZoclo0aTN5Tzg2SG90NjJVekR6Rm1scWFMNkhSSmZjY0tWUksyVHh6cWNBX3BLdThHTFAwVU9MbU1BUmJObENNbVdBc2gwc3dMQTJnSzhPQXprYTRkX0wxLVQ0SW5jbHBzWkZ1bERrY3lQSUYtaGVWS0ZDc3JTR1d4SEpyel9HRWJvYnVPaEVrVjVfRlZJbjVMd1Q3UUlnQnVYRm0zZk5TUndXcHZLb0pnVjQwcGlUSEdUMXR2RkhmQUFr?oc=5",
-   "pubDate": "2026-11-20T14:00:38Z",
+   "title": "Scaled Autonomy, Neways Partner to Advance Drone AI Production - I-Connect007",
+   "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxONEpxUUZRU2hWcl9iWlBSdWpqOVNGOWtJZFRVd1gwRmgzZU1HellRYVozdHpYcnVJWjlscHhuYy1od0FJbURSbHIwMEJIcWlhQkpDbWN0enc3VFY0UUthT20wb2FxZG1oVTlFSm1hbEsxdkp5U2k5N1BlTUtqVjR5Q0hjRy1FMEZKUzhUX3g1TGd0YTR6d2k5dUZSY1U3ekdIcXZKVlRYU2dZZGE1dWx5dQ?oc=5",
+   "pubDate": "2026-11-20T12:53:00Z",
    "description": "",
-   "source": "Euronews.com",
-   "feedLabel": "Consumer use (Google News)",
+   "source": "I-Connect007",
+   "feedLabel": "Robotics (Google News)",
    "topics": [
-    "consumer"
+    "robotics"
    ],
    "local": false
   },
   {
-   "title": "UCLA Police Cleared for Five Skydio X10s to Guard LA28 Olympic Village",
-   "link": "https://dronexl.co/2026/11/20/ucla-police-skydio-x10-drones-la28-olympic-village-regents/",
-   "pubDate": "2026-11-20T13:56:00Z",
-   "description": "UC Regents let UCLA police grow from three Skydio X10 drones to five for the LA28 Athletes Village. The first three cost $216,543 over ten years.",
-   "source": "DroneXL",
-   "feedLabel": "DroneXL",
-   "topics": [
-    "laws"
-   ],
-   "local": false
-  },
-  {
-   "title": "Dutch, Austrian Embassies Hit in Kyiv After Destinus Bridge Strike",
-   "link": "https://dronexl.co/2026/11/20/dutch-embassy-kyiv-russian-drone-destinus-ruta-crimean-bridge/",
-   "pubDate": "2026-11-20T13:24:00Z",
-   "description": "Projectiles damaged the Dutch and Austrian embassies in Kyiv two days after Destinus Ruta missiles helped drop a Crimean Bridge span. Russia denies aiming.",
-   "source": "DroneXL",
-   "feedLabel": "DroneXL",
-   "topics": [],
-   "local": false
-  },
-  {
-   "title": "Delhi police ban drones and lasers near IGI Airport for 60 days - The News Mill",
-   "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxObG10Znh0LWZURXZJMWx2T0JRXzBiQTM3cDdpa0h4TzRZM3FUTF9HQUNaX1N2cHRLYl9oZF9oVFhiVEtEbEI5VHhnUTRSbDVwYy1LR0d4RlI3QWxkTHptNE5CYnotNndYcDFNQ0plcnpLcXNtOUV1MDhRX2hWd1dYeG1OQlBNMDBSN25pbVpNU2pndHdMc1RzRW1IeGQ?oc=5",
-   "pubDate": "2026-11-20T13:10:12Z",
-   "description": "",
-   "source": "The News Mill",
-   "feedLabel": "Laws & politics (Google News)",
-   "topics": [
-    "laws"
-   ],
-   "local": false
-  },
-  {
-   "title": "Amazon Jacksonville Drone Pad: Code Says 500 Feet, Request Says 29",
-   "link": "https://dronexl.co/2026/11/20/amazon-jacksonville-drone-pad-setback-500-feet-29-planning-commission/",
+   "title": "Amazon Jacksonville Drone Pad: Code Says 500 Feet, Request Says 29 - DroneXL",
+   "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQVnhIUmlXSS1jZjVQN3JBQnhxZHI4ZUpia1h6WlNuUjByNDZQZWE4b3l2Y2d3empGRXBJU25kMGRpblQ4TnBsRmhMb3BmV21XaGIxd0xhWVFpdU9aWUctMjBFcGNtUHMxeFJQcFVOY2lCcVpPQmNqaFZPd0FfRW4yRXZVWm5wYXk0RnNJNEJrbTdGU1M4LVZrckxnQTZRYXlBVGc?oc=5",
    "pubDate": "2026-11-20T12:49:00Z",
-   "description": "Amazon confirmed Prime Air is coming to Jacksonville. The city agenda for its pad lists a request to cut a 500-foot helicopter setback to 29.",
-   "source": "DroneXL",
-   "feedLabel": "DroneXL",
-   "topics": [
-    "consumer"
-   ],
-   "local": false
-  },
-  {
-   "title": "FAU AI Spots Arctic Belugas After Just 34 Labeled DJI Drone Images",
-   "link": "https://dronexl.co/2026/11/20/fau-ai-beluga-whales-34-labeled-dji-drone-images/",
-   "pubDate": "2026-11-20T12:16:00Z",
-   "description": "Florida Atlantic University trained an AI on 34 labeled DJI drone images to find Arctic belugas. With 1,709 labels it still misses a third of the calves.",
-   "source": "DroneXL",
-   "feedLabel": "DroneXL",
-   "topics": [
-    "consumer"
-   ],
-   "local": false
-  },
-  {
-   "title": "From the Averof to drones: The donations transforming the Hellenic Navy - ProtoThema English",
-   "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNTlBwSHBjZENrSDNybHhBc2hRRFA3MDFSenpDVmFhYkdGc3IyWjRqc1VqdTZOYzZhWUF0RW1UYWxDTU9ocE5pdk00SVRzRG14UFhPZWFJbTE0dXlxU1Z4dHZjbFFCVmJicm1LY3ViaUNaYkVmSG03Y1JoUHFNWkp2SkhnOUR1NXBURk16d045R0gxZlFGczF5cFZHV3BJWXVFVmJRZU1rd3kyRlE?oc=5",
-   "pubDate": "2026-11-20T11:01:28Z",
    "description": "",
-   "source": "ProtoThema English",
-   "feedLabel": "Georgia drone laws (Google News)",
+   "source": "DroneXL",
+   "feedLabel": "Consumer use (Google News)",
    "topics": [
-    "laws"
+    "consumer"
    ],
-   "local": true
+   "local": false
+  },
+  {
+   "title": "Semi-Supervised AI Detects Beluga Whales and Calves in Aerial Drone Surveys - Bioengineer.org",
+   "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNNXc3R0ZvNWZ6WHJhMmVXWmRBV0phbHI5dER4Xzd6NzRNYTN1TzJ4azdIa19kS1BST2VpX1NrSE5RQzRUeUJjYlFyQ0tRaXR3WGljSTVVcW1OZkRDR2hHc0szakRoRFBiZE1UWXE2SEh5akgzR19hbDNQXzR4YVRGSWVvV05vR0EzRTJUX2JLc1lrUWR3VHEzdGxmRnhzX2RHdlE?oc=5",
+   "pubDate": "2026-11-20T12:16:26Z",
+   "description": "",
+   "source": "Bioengineer.org",
+   "feedLabel": "Robotics (Google News)",
+   "topics": [
+    "robotics"
+   ],
+   "local": false
+  },
+  {
+   "title": "FAU AI Spots Arctic Belugas After Just 34 Labeled DJI Drone Images - DroneXL",
+   "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPWlNUZlppU3loQXd6QVA0Tk9pZzc5UlhIYWdpcDI4V0hKdlVyVjdZU3NNTFljZXcxY3o2YmU4MndUVE1nUEhpaVhLbEM5UkYtY0JuU0RMT2tHRUtDcXV1a05CWUhSUGJaQ2hKTmVMY21xTlFlWnhVa3dHVmZHRmRtaVd5Sy1jdw?oc=5",
+   "pubDate": "2026-11-20T12:16:00Z",
+   "description": "",
+   "source": "DroneXL",
+   "feedLabel": "Robotics (Google News)",
+   "topics": [
+    "robotics"
+   ],
+   "local": false
+  },
+  {
+   "title": "Kennedy Space Center Holiday Drone Show Jumps From 600 to 1,000 Drones - DroneXL",
+   "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQUy1VV0dBcWFyZHlOcmJrRW5peHJ4WlhXaHBMWXpSaGU0ZWJGUF8ybWJVRlV3M3FwRHJfYlJJWTdlU2lNTHVpVDlaUjk4blFlZUtzWDF1ZzVIVGIyajI5NnFzbVlJM1RUd094b3A4RGtWeVBRVVd1Z2NvUkRSeWU3aEIwZlNodERBb1pPb1FLYzYyUm93QnlpLVRKTEQ?oc=5",
+   "pubDate": "2026-11-20T11:41:00Z",
+   "description": "",
+   "source": "DroneXL",
+   "feedLabel": "Consumer use (Google News)",
+   "topics": [
+    "consumer"
+   ],
+   "local": false
+  },
+  {
+   "title": "USC celebrates Rivalry Week with annual Tiger Burn, first drone show - WCIV",
+   "link": "https://news.google.com/rss/articles/CBMiqgJBVV95cUxQdF9WTTlHM2Q4Tl9RY0o1WjRsR2M5QVpDbE5lT2d0VFFBbEwtOTVWdGJzZFdnZEhaTWVYSF9pVWtXSVlUc1dFUUdtbkozSVBxcVdjR3ZWR091MWJVN0otVnl1Nm93MmxLZ1pNdnNsVTRWSGNGT2hWal8xc2oyS1ZxaUV0dzNwZjZUY1RlTVNTWHR3ajdFTkNUMGFQM3Jnb3B3YWdvcDVFODV1TGNndEpZRlg1MFdYT3dZbXpVdG9XY2VoNmo1TVltVGo1TWI1M1R5ZzQ4bGtCcXBfRElITUxEMVdCN3pJVk43b2hSeUhEbS12a3hXY2U2SHlpdWx4cmNmdTFjTTRrbVMwb3cxY0hXSngwbDRrZ1BvR3MxeGpKVnZkNGxEeFRmRmJB?oc=5",
+   "pubDate": "2026-11-20T11:39:31Z",
+   "description": "",
+   "source": "WCIV",
+   "feedLabel": "Consumer use (Google News)",
+   "topics": [
+    "consumer"
+   ],
+   "local": false
   },
   {
    "title": "DJI Osmo Pocket 3 drops to $373 in early Black Friday deal",
@@ -1752,6 +1664,30 @@
    "description": "If you’ve been waiting for DJI to finally put its newest self-flying drone on sale, this might be the Black Friday deal you’ve been hoping for. The DJI Neo 2 Fly More Combo with the RC-N3 remote controller has received its first-ever 20% discount . more…",
    "source": "DroneDJ",
    "feedLabel": "DroneDJ",
+   "topics": [
+    "consumer"
+   ],
+   "local": false
+  },
+  {
+   "title": "Amazon drone deliveries could soon take flight in central Iowa - weareiowa.com",
+   "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxORXpTNGdzWVZESHUzMWlIRVI1c2hfWVIxTGlwQUpSai1UWkFKb2VmSTQ3YXAtTFNKcWFqZ2lDNlEyNFdfbFloeVpkUUZ5RkMwQ0EwSEE3TnF5alFqWGxPSkJ6N2xEaG5WMzhOVDg1d1UtNVRZMzdWS2VaOGNZcjgtTF9jTm9GOGxpeEM1RGt5VTlYSUttVHM0RThnc1dXNjl0TXBXODhKeW5OenN1UHAwLWlENGVyYlNjMzRwV3BITkV5cUQyRE5B?oc=5",
+   "pubDate": "2026-11-20T04:44:00Z",
+   "description": "",
+   "source": "weareiowa.com",
+   "feedLabel": "Consumer use (Google News)",
+   "topics": [
+    "consumer"
+   ],
+   "local": false
+  },
+  {
+   "title": "Walmart proposes drone delivery hub at Arvada store, drawing neighborhood concerns - 9NEWS",
+   "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQLVBkdEwybFZiSDJYOTNJS3ZWajUtU1h6VXBpT0JobUdiSmd1aGxKSDI1LW5IQ0k1MVJRTGdqeFRhT1p6YWJ0a0dKNFVrQi0wZ0JxUlpRdDhjLVRSTUlqbTJBVXo2V1c4TkR0VUhQUjBOWjdBNmdpV3B1dnBPbDBqT19sT01iNzdUR3Q0OVJfTG5oX2lFNlI3ZFZaY1lPbU5fQVVKM3hJNTk3cWYwYjNGWHhfN1hrcWp0ZHc?oc=5",
+   "pubDate": "2026-11-20T04:38:00Z",
+   "description": "",
+   "source": "9NEWS",
+   "feedLabel": "Consumer use (Google News)",
    "topics": [
     "consumer"
    ],
@@ -1822,6 +1758,16 @@
    "local": false
   },
   {
+   "title": "Stocking up; Teens killed in police chase; Police drone program - 97.5 Glory FM",
+   "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPbXZka2RPQlFOTi1nVFFLcWhkTmxEZnZyOFJ5NkdLZ1RCQzVHM2tuX0JSa2RTOU1FbVoxRnZRRmJCdkF2eU90aUdpT1FBVzlSOFB5c1RNVUtvRi1oT2FkSGMtWS16UnJiQUhtUVpHUUdfZEpZbklrX3BxQ1FnWWZzUGRJNkh0UU1NNS1FSg?oc=5",
+   "pubDate": "2026-11-19T17:13:00Z",
+   "description": "",
+   "source": "97.5 Glory FM",
+   "feedLabel": "Georgia drone (Google News)",
+   "topics": [],
+   "local": true
+  },
+  {
    "title": "FCC Considers New Rules for Drone Communications and Counter-Drone Radar",
    "link": "https://dronelife.com/2026/11/19/fcc-drone-spectrum-rules-communications-radar/",
    "pubDate": "2026-11-19T17:11:18Z",
@@ -1856,26 +1802,48 @@
    "local": true
   },
   {
-   "title": "Columbus Police to Launch Drone First Responder Program - Wisevoter",
-   "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOMFMzS240UW5tSU1FMHd3Sk9abVlxenNpQnNLck1YaUpybFVsRmNQX3FuQURuLVgtMnI2WTBvYmZSSDllWkFqTEVPczVSVEplTlp0WmNoREVEUFdhSVYzYTBCWDBfa0o0UHBPVmFQRldkbXFpS1JoYmlSLU1IRGt6ZzRtLWliMGhyWjRjNko0U01kbk9lYUdjVDQzMFNoQlNF?oc=5",
-   "pubDate": "2026-11-18T23:53:04Z",
-   "description": "",
-   "source": "Wisevoter",
-   "feedLabel": "Georgia drone laws (Google News)",
+   "title": "Skyrover’s biggest drone upgrade yet is here, and it’s loaded",
+   "link": "https://dronedj.com/2026/11/18/skyrover-v1-drone-us-price/",
+   "pubDate": "2026-11-19T07:51:18Z",
+   "description": "If you’ve been looking for a reason to upgrade your drone or finally get into aerial photography, Skyrover has a new flagship that deserves a closer look. The Skyrover V1 is a compact camera drone that promises longer flights, smarter obstacle avoidance, impressive imaging capabilities, and a few practical features that could make a real difference when you’re out capturing your next adventure. more…",
+   "source": "DroneDJ",
+   "feedLabel": "DroneDJ",
    "topics": [
-    "laws"
+    "consumer"
    ],
-   "local": true
+   "local": false
   },
   {
-   "title": "Moody Airmen train to counter emerging drone threats - Moody Air Force Base (.mil)",
-   "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxORUFrWXlENVNkN3NIamdaTTFRb0hIYWlLYWc1OHlvSThJNUJSMXYxRGY1RS1yZUxjSnRnc1VIb0V5TTdnMjZkU1lXb0ZhcUpNSUlNQ19sZEVNS01Tc0ZaM3JfRGhhT05KNGFxTXE3dnNPRzdjcWJEckEzaUpFQXlzai00UVdsUk55V05SUVdocFdHZ0xsb1hQMWpNTFQxNUx0aWdYcENlUkl4UlZkdUdheEE4OVdOUQ?oc=5",
-   "pubDate": "2026-11-18T21:31:32Z",
-   "description": "",
-   "source": "Moody Air Force Base (.mil)",
-   "feedLabel": "Georgia drone (Google News)",
+   "title": "Elroy Air lands $70 million deal for 20 autonomous cargo drones",
+   "link": "https://dronedj.com/2026/11/18/elroy-air-drone-abu-dhabi/",
+   "pubDate": "2026-11-19T07:04:20Z",
+   "description": "Elroy Air is taking its heavy-lift cargo drones to the Middle East in a big way. The US company has signed an aircraft purchase agreement with Abu Dhabi-based Barq Group for up to 20 Chaparral autonomous cargo aircraft, in a deal valued at up to $70 million. more…",
+   "source": "DroneDJ",
+   "feedLabel": "DroneDJ",
+   "topics": [
+    "consumer"
+   ],
+   "local": false
+  },
+  {
+   "title": "Red Cat Withdraws 2026 Revenue Forecast as Defense Contracts Progress More Slowly Than Expected",
+   "link": "https://dronelife.com/2026/11/18/red-cat-2026-revenue-forecast-defense-contracts/",
+   "pubDate": "2026-11-18T17:29:04Z",
+   "description": "Third-quarter results show continued revenue growth, while procurement delays and the Drone Dominance competition affect the company’s near-term outlook. Red Cat Holdings has withdrawn its full-year 2026 revenue forecast, citing slower-than-expected defense funding and contract awards. The company also pointed to the outcome of the Pentagon’s Drone Dominance Gauntlet II competition as a factor in […] The post Red…",
+   "source": "DroneLife",
+   "feedLabel": "DroneLife",
    "topics": [],
-   "local": true
+   "local": false
+  },
+  {
+   "title": "Pentagon Selects Seven Counter-Drone Laser Systems for Live-Fire Competition",
+   "link": "https://dronelife.com/2026/11/18/pentagon-counter-drone-laser-competition/",
+   "pubDate": "2026-11-18T17:05:20Z",
+   "description": "December testing could lead directly to military purchases as the Pentagon seeks lower-cost defenses against drone threats. The Pentagon has selected seven companies to demonstrate high-energy laser weapons designed to destroy hostile drones. The live-fire competition, scheduled for mid-December at Dugway Proving Ground in Utah, could lead directly to military purchase orders. The Department of […] The post Pentagon…",
+   "source": "DroneLife",
+   "feedLabel": "DroneLife",
+   "topics": [],
+   "local": false
   },
   {
    "title": "Amazon Drones Reach Atlanta With No Georgia File on the FAA Index - DroneXL",
@@ -1888,6 +1856,18 @@
     "laws"
    ],
    "local": true
+  },
+  {
+   "title": "BRINC’s new iOS app turns iPhones and iPads into public safety drone command centers",
+   "link": "https://dronedj.com/2026/11/17/brinc-drone-ios-app-live/",
+   "pubDate": "2026-11-18T07:34:17Z",
+   "description": "First responders no longer need to be sitting inside a command center to see what their agency’s drones are seeing. BRINC has launched a new iOS app that brings live drone feeds, operational data, and airspace awareness directly to their iPhones and iPads. more…",
+   "source": "DroneDJ",
+   "feedLabel": "DroneDJ",
+   "topics": [
+    "consumer"
+   ],
+   "local": false
   },
   {
    "title": "Amazon Launches Prime Air Drone Delivery in Atlanta - Wisevoter",
@@ -1908,6 +1888,42 @@
    "feedLabel": "Atlanta drone (Google News)",
    "topics": [],
    "local": true
+  },
+  {
+   "title": "FCC pushes to shut down DJI’s lawsuit over US drone ban",
+   "link": "https://dronedj.com/2026/11/16/lawsuit-fcc-dji-drone-ban/",
+   "pubDate": "2026-11-17T07:26:02Z",
+   "description": "The legal battle between DJI and the Federal Communications Commission (FCC) has taken another turn, and the latest move could make it harder for the world’s largest drone manufacturer to get its challenge heard in court. more…",
+   "source": "DroneDJ",
+   "feedLabel": "DroneDJ",
+   "topics": [
+    "consumer"
+   ],
+   "local": false
+  },
+  {
+   "title": "DJI Matrice 4 Series gets new firmware update with regulatory changes",
+   "link": "https://dronedj.com/2026/11/16/new-firmware-dji-matrice-4/",
+   "pubDate": "2026-11-17T07:00:34Z",
+   "description": "DJI has released a new firmware update for its Matrice 4 series drones, bringing regulatory-related changes and general bug fixes to the company’s compact flagship enterprise drone lineup. more…",
+   "source": "DroneDJ",
+   "feedLabel": "DroneDJ",
+   "topics": [
+    "consumer"
+   ],
+   "local": false
+  },
+  {
+   "title": "Russia’s Prized Kerch Bridge Struck In Ukrainian Drone Onslaught (Updated)",
+   "link": "https://www.twz.com/news-features/russias-prized-kerch-bridge-struck-in-ukrainian-drone-onslaught",
+   "pubDate": "2026-11-16T20:11:09-05:00",
+   "description": "The strategic crossing that connects occupied Crimea to Russia was left with a damaged arch over one of the road spans. The post Russia’s Prized Kerch Bridge Struck In Ukrainian Drone Onslaught (Updated) appeared first on TWZ .",
+   "source": "The War Zone",
+   "feedLabel": "The War Zone",
+   "topics": [
+    "military"
+   ],
+   "local": false
   },
   {
    "title": "Amazon launches drone delivery in metro Atlanta ahead of holiday season - The Business Journals",
@@ -1960,6 +1976,42 @@
    "local": true
   },
   {
+   "title": "Testing the new generation of AI-enabled fire-extinguishing drones - Georgia Public Broadcasting",
+   "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPSEh2TGR4V3Y3M3VCOXNWWjlwWFFEclV3NnBJT1VXVjFRbGIwc3ppT3N2WjJOeWtmUnFtMXpDMVZzazVCSVdmS2JIQ0RnRkZYeHpFVkdHUDlqcWtENjU0bnRJUXA4V3BNa0F3X2c3eGotVUxhQ3dNdGhOczY1Q2FIOXgtTi1yRmVKdTM1MmhjRWtyeHpWOXNFLTVZbllWbjRReGw5ZA?oc=5",
+   "pubDate": "2026-11-10T19:00:04Z",
+   "description": "",
+   "source": "Georgia Public Broadcasting",
+   "feedLabel": "Georgia drone laws (Google News)",
+   "topics": [
+    "laws"
+   ],
+   "local": true
+  },
+  {
+   "title": "Drones, Flock plate readers aided Central Georgia drug bust, police say - 13WMAZ",
+   "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNXzVBYjJiSGRzTXJFZVctdlljak5jUVhPdHVoNTY3UjlHcTRNRXIyNzdMZWVfelIzaEhuSk1MNnhINmhfanpSdXM1WFcweXpnRFRSYVpqM2ZLWjhCVlJOaV8wUXNKNXNlWGxQTXUwdW9FbDVCUzFCOThZUWc1VGc4WkJJN014NWYwRnd4aEVZVF9wekg0NFBybldoMmJYSG1NUEtNWkFJel9FV3E2dmtOSXo0d2R6WFZHaDJwMVJ1MkFjRXdxX2NyQUpQT3N4dnRzR1pmckFCZ1F6a1U?oc=5",
+   "pubDate": "2026-11-10T15:49:00Z",
+   "description": "",
+   "source": "13WMAZ",
+   "feedLabel": "Georgia drone laws (Google News)",
+   "topics": [
+    "laws"
+   ],
+   "local": true
+  },
+  {
+   "title": "AirSight Provides Software to See, Track, Identify Drones - Dronelife",
+   "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQOURFZnhGY2xfcmZGM1RxTE5ZcUpSNE90bU5SOE1FbDVYVUF1aEpMNTEyaVlIT25mQnJPTk16M3c1QXUzRzloLUFmN28tRkUtaVpDdXl0WXVhZmI3Wms0T2hLQTJRd2hVWWt2bmZ4RHljV21XcVJzNS0td1Qwa1NjZUc0WGRzZ2pYMGF5bEpuRTV0ekU?oc=5",
+   "pubDate": "2026-11-10T15:35:06Z",
+   "description": "",
+   "source": "Dronelife",
+   "feedLabel": "Georgia drone laws (Google News)",
+   "topics": [
+    "laws"
+   ],
+   "local": true
+  },
+  {
    "title": "Fall foliage in the North Georgia mountains | Drone views of Cherry Log - CBS News",
    "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNbTlCc09qWnR4YjBPLTdiakNtMm5uSzRvWHQ5QW5fdlhqWFBUZzZnVXBmRW5xWkw0amJjdTdvT0VfdG9CNzZQYm1RSGtmc1RoMEhkRXRVald3Uzl6RDVzeHJRWGFaR2xncURnOEdLYjNKYkl4T2EyWE9JTXpsOXo3ekNlVGFvbXo3eFY5WUN0NGJaVWFuTGU0eUl6Rk0zb0hIcWdGNGV0QkRMUFpU?oc=5",
    "pubDate": "2026-11-10T08:00:00Z",
@@ -1980,6 +2032,18 @@
    "local": true
   },
   {
+   "title": "Eyes in the sky, weapons in hand: FPV drones and the challenges for IHL and the protection of civilians - ICRC",
+   "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxOSXFyUFJwdWdCRDFsMHZ4TERkZEp3WEtQZlpMYnhSWHcxS2h2TGUwbWZXMmdwc0pHcXdjYkxPaXl1aFlZWk90Tk9wVHEtNTNjVGdTcVpzbUZ5YWlmNDZSNkhVNkZubUUzWlNrd0I4QVRUdlkwOFlKcEx3SDZqT3Y0QUh3SEk4LVN4N0t4bmlFV3dkSjZ2emRfVFFrbjZJUURVQ1BtYlpKdnVlT0lPTmdqUUV5ZmxqS3lPb01NQUZnX3J6UTEzY2tFaDRvMl95WThhNThxZTJlSFRXVUZFekt0YkJ6NXdRZw?oc=5",
+   "pubDate": "2026-11-10T08:00:00Z",
+   "description": "",
+   "source": "ICRC",
+   "feedLabel": "Georgia drone laws (Google News)",
+   "topics": [
+    "laws"
+   ],
+   "local": true
+  },
+  {
    "title": "FAA Approves Long-Range Drone Flight to Offshore Oil Platform - AVweb",
    "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOWE04cXA1UnkxbWE4Mkh3cVlJQjh2ZVlaWGt4Z0RHOURZVFdqdFNoUFJlOHlWdGVJRmRYd2ppYmVyakk3dng3eWoyVVpnazhPay11aFoxcmpnaFEyY0xUVmF5aEQxVDFEcmxRVmVvTEYwSFFidkFHcUdZLV9LNGRwbA?oc=5",
    "pubDate": "2026-11-09T08:00:00Z",
@@ -1992,11 +2056,11 @@
    "local": true
   },
   {
-   "title": "State lawmakers check out new drones designed to assist first responders - AOL.com",
-   "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPZWxONHRSTm5hcVBsUmd2WVg1VUFWTmhHVHRsVS04YnFXbkFvN3JfZDdwODJ6cWIySW50Rlc3aHlsR3kzVE5ZeUFQNHNGOUN1azVtOTVGazVZQnlPZEVOOEFoR3JIYWlkMVlJWWRtQnFlRnhMSXVGbkVvM3JCWU00bmM3eFczRzFC?oc=5",
+   "title": "Perry police credit drones, license plate readers in drug trafficking and RICO investigation | What we know - 13WMAZ",
+   "link": "https://news.google.com/rss/articles/CBMigwJBVV95cUxQRF9jWnJnWjU0WDF6ZkppbEkwYTJjLXZyVEFyWC1pZS1TRHBPT19IS1ZvSHpFN2V4WFA4SmZuajVnNlptVWJnTXpwakZHUnJZS1k5bmtPSlNJeG90N21IQmtNOTlxTThuNFJ0UzA3d216VTNYc2w3XzE2LWh3NjJOZVF5V0lka3J6Q2kwcnhUdU5rT1J0Xzd4cHpTV2piTktoNmktUU4zYjBpbm5qVDJtTl9Wdll2ejd3SENNVVJEd2taWVR2Wm9KdHg3WnVJSjVjS2Q5Q1JrQ3VOckRzYk51WS1aZ1JKcW8tMElJNWRZeDB5RmZRUXplaWFaSHZvRlNmMGtR?oc=5",
    "pubDate": "2026-11-09T08:00:00Z",
    "description": "",
-   "source": "AOL.com",
+   "source": "13WMAZ",
    "feedLabel": "Georgia drone laws (Google News)",
    "topics": [
     "laws"
@@ -2010,7 +2074,9 @@
    "description": "",
    "source": "Mezha.net",
    "feedLabel": "Georgia drone (Google News)",
-   "topics": [],
+   "topics": [
+    "laws"
+   ],
    "local": true
   },
   {
@@ -2030,9 +2096,7 @@
    "description": "",
    "source": "MotorBiscuit",
    "feedLabel": "Georgia drone (Google News)",
-   "topics": [
-    "laws"
-   ],
+   "topics": [],
    "local": true
   },
   {
@@ -2086,30 +2150,6 @@
    "local": true
   },
   {
-   "title": "The Future Is Now: How Drone Technology Is Emerging as a Serious Physical Security Deterrent - Security Info Watch",
-   "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPdC00bUl6SFBHdmFmV3ltYXB2eTVBNDh5TGFiRVl2S09wU2NJcy1PejNwNVpMWlctbTR4c3ZvSjFDbndfYTVlQkhlR180TnlvUGZaWWhqTHJlWklBZTFCSjRpNnJrakV1QWNMZkhZeVgxaUJIblByd3Z5UmxsU2haYVhfM21xaE80SEU3ZTZRa1NfWDlsRExEZllIdVMzUm1xZ1hfaUl0ZmZBczFVaHV6MW5TbEc1MzJWRVkyVUhJVmlyRnZoMnZMOGxPNEpRdVcxWUZyeXF4Wm1rNkdoMUhDa2FBaHJfZw?oc=5",
-   "pubDate": "2026-11-03T13:56:12Z",
-   "description": "",
-   "source": "Security Info Watch",
-   "feedLabel": "Georgia drone laws (Google News)",
-   "topics": [
-    "laws"
-   ],
-   "local": true
-  },
-  {
-   "title": "Occupied Abkhazia's de facto border chief claims Ukrainian drones violated its airspace multiple times - Georgia Today",
-   "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNTTFBM3VUWFBSYjBXN0VGcXpsVHFWU1RfZUdydG9La2kxM3FKVXEtWkNlNWtjVWFHYWxXM0NDMm5fX0dmVGllU0xVRkczYWRQVTRBdFNubWZVb2dWamZKUDRFNVM1VTI5Q2psbnJqNVNidTc1WXNhNTJEMmxaRVM1eFRtSThPVFMxN0p3RUhqdHZSUXczUFZjcEJvMzJhQ2JZeHBYVzJkN3lEM2l0WndjYUJDcTdtc3NEeDBDcEdQT3lzU2F2?oc=5",
-   "pubDate": "2026-11-03T08:22:17Z",
-   "description": "",
-   "source": "Georgia Today",
-   "feedLabel": "Georgia drone laws (Google News)",
-   "topics": [
-    "laws"
-   ],
-   "local": true
-  },
-  {
    "title": "Georgia Tech Student Claims Dorm-Built Jet Drone Hit 491 MPH With a Payload - Gadget Review",
    "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNbGZObXl1Qy1aZmxWakd5Y2hsRzB2Qi1mVHdPeDBvSjB5bEVGcTF5bm9nRkpmdHpfbnVqY3ZXTE9qakU1UVJRcmt0XzVKa0YtWDVYSWhCRW5ldWdBdGE3N3FMSGtJZDNiaE1iTU1Jb0dvbDlDNWtNYlJHNXJVTWQ5U1V5Sl9reWxBZ1B5NFYzOUVDQ0hkd1dqYUw2ODktVktiV29PTXlSRQ?oc=5",
    "pubDate": "2026-11-03T08:00:00Z",
@@ -2150,18 +2190,6 @@
    "local": true
   },
   {
-   "title": "Student Drone Hits 491 mph in Unofficial Record - Wisevoter",
-   "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPMnFaSlZ1bjFNOFpKLUlZMFppbktrRksxUTh5Q3l2bVRIa2N0cXBnWFktWnZabV90OU9wZzJKOXFhR2lHOHEyN3JRdHZkY3lYYXpNeXZvM0h4VFFaRE9QbkVPc1kxQnh5N0hoVkhFV1NzMWdfN2lpSk5GUEJUbXVSaGZ4c2poalZjLVFuZGVFVGlYRm9F?oc=5",
-   "pubDate": "2026-11-01T07:00:00Z",
-   "description": "",
-   "source": "Wisevoter",
-   "feedLabel": "Georgia drone laws (Google News)",
-   "topics": [
-    "laws"
-   ],
-   "local": true
-  },
-  {
    "title": "Drone surveillance, road closures expected for Atlanta G20 meeting - FOX 5 Atlanta",
    "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNVkhaSGhnWF9tS2lmcFp4b2ZtY1QyZXFORDVzRDlab2VXS3BobFY0cEJxby05cEdVSXloaEl2d1FEN2N5dW13d09KOUs4T0FlS0Fkd1NfN3F1WGwydGp2bG9RQllVNWRtWkVsZkgzeXFDeUstT1F3ZDJhLXR6N0NVV0xGd0F0X0Y5bmQ4VEYyLTFROTcxaVA4ZWp3?oc=5",
    "pubDate": "2026-10-29T07:00:00Z",
@@ -2178,9 +2206,7 @@
    "description": "",
    "source": "Georgia Public Broadcasting",
    "feedLabel": "Georgia drone (Google News)",
-   "topics": [
-    "laws"
-   ],
+   "topics": [],
    "local": true
   },
   {
@@ -2204,21 +2230,21 @@
    "local": true
   },
   {
-   "title": "Eyes in the sky: New drone service expands search efforts in one north Georgia county - WSB-TV",
-   "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxObTVVeE9fMEJLVlNzenJZN0o5dTZrNm9kanVfZ1c4TnlpY196alVJcHZJSTV3QW9udkxNdDQ1aEVRenFTOXhoZjdYTTRXZUpFZkhzSlRjOU9oMkM3OFI2dUYtZDM0UEdsdUF3X2NFLTlzYjVZQWkxVlZnNVNqSzlnUC1DbHMwVHpRRU5SbG10a1RfNnpqb1I4R1FoOHdGZjU0UUhXRXpMSUZJd2ZYQnJDaUU2b1BuNG5uT0ViNktnMEF4VWRueVl4WFcxczRTUjZC0gHkAUFVX3lxTE5hOFdrR0lSaktJVnZJSFozdUNpZ3VFLVNJcUVjSEFiR1NPWmxHelNWYURhT2hHWVAwSXRaTjFmR0xOZDJnZGcxaG5jSEw3M2NEVTNvUGVDRlB6Y2V0cFI0ZXFQSnZlMXdlaTVDRUdSN2x0ZEhLUmRDbnJaS0xSWGxNTXpBUFloUTFrQXVISDBiT1Jqb2I2RFVGeGZYcld3YlBCOU15UnFyNGhsTVB5MHBlOGs5a0czc2NyazlKVTBkZEZKZFlJNWlITW50eEhRQzhzY2lYRXpRaG5NTU1lWGZqS1ZtdQ?oc=5",
-   "pubDate": "2026-10-26T07:00:00Z",
-   "description": "",
-   "source": "WSB-TV",
-   "feedLabel": "Georgia drone (Google News)",
-   "topics": [],
-   "local": true
-  },
-  {
    "title": "White County’s new drone expands reach of emergency responders - Now Georgia",
    "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPekJfYnRudGg1VXpGOVdqYkRKdlFrNWFjMEFjeUpHTjJMYlFyQWl0elc2V1VYUUVxTVJCa0JJb2dsaVdWNkd4d3FybEF3S1pKSk5ybzA0b1BOQnNGQTBqYVpkVHJSWDk0a29uQnRHajdOMGpfbUZlZEIybGRSN1NZRXJkb2ZMNXdPQng1Q0h3?oc=5",
    "pubDate": "2026-10-26T07:00:00Z",
    "description": "",
    "source": "Now Georgia",
+   "feedLabel": "Georgia drone (Google News)",
+   "topics": [],
+   "local": true
+  },
+  {
+   "title": "Eyes in the sky: New drone service expands search efforts in one north Georgia county - WSB-TV",
+   "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxObTVVeE9fMEJLVlNzenJZN0o5dTZrNm9kanVfZ1c4TnlpY196alVJcHZJSTV3QW9udkxNdDQ1aEVRenFTOXhoZjdYTTRXZUpFZkhzSlRjOU9oMkM3OFI2dUYtZDM0UEdsdUF3X2NFLTlzYjVZQWkxVlZnNVNqSzlnUC1DbHMwVHpRRU5SbG10a1RfNnpqb1I4R1FoOHdGZjU0UUhXRXpMSUZJd2ZYQnJDaUU2b1BuNG5uT0ViNktnMEF4VWRueVl4WFcxczRTUjZC0gHkAUFVX3lxTE5hOFdrR0lSaktJVnZJSFozdUNpZ3VFLVNJcUVjSEFiR1NPWmxHelNWYURhT2hHWVAwSXRaTjFmR0xOZDJnZGcxaG5jSEw3M2NEVTNvUGVDRlB6Y2V0cFI0ZXFQSnZlMXdlaTVDRUdSN2x0ZEhLUmRDbnJaS0xSWGxNTXpBUFloUTFrQXVISDBiT1Jqb2I2RFVGeGZYcld3YlBCOU15UnFyNGhsTVB5MHBlOGs5a0czc2NyazlKVTBkZEZKZFlJNWlITW50eEhRQzhzY2lYRXpRaG5NTU1lWGZqS1ZtdQ?oc=5",
+   "pubDate": "2026-10-26T07:00:00Z",
+   "description": "",
+   "source": "WSB-TV",
    "feedLabel": "Georgia drone (Google News)",
    "topics": [],
    "local": true
@@ -2239,7 +2265,7 @@
    "pubDate": "2026-10-24T07:00:00Z",
    "description": "",
    "source": "Spectrum News",
-   "feedLabel": "Georgia drone (Google News)",
+   "feedLabel": "Atlanta drone (Google News)",
    "topics": [],
    "local": true
   },
@@ -2250,26 +2276,6 @@
    "description": "",
    "source": "WSB-TV",
    "feedLabel": "Atlanta drone (Google News)",
-   "topics": [],
-   "local": true
-  },
-  {
-   "title": "Gwinnett County police debut drone response program - FOX 5 Atlanta",
-   "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBUbFFZWDRnbFAydDdrZGl2eVJvY3lVOWYyNWQwSDVhdjRyM2xReThuREw0SVUwV1BIaWR3X21TR1Z3LUFPTUVHdlhBRktlaUhoLUNDWFNnempoNDJPWmRVeHlqMWrSAWpBVV95cUxPbGR3eF9yNFg2NXdvYWU0d2JpTFQ4MmU2ZnQtMUZheTJTYm1OQVJnOWJPU2NfVnFpN0M4bzBRczhjOHJTMGtaYW9BQ1RoY0wyXzFQb3E3SkFodkZjbEZNMW9keWFKMGZPU3Z3?oc=5",
-   "pubDate": "2026-10-23T07:00:00Z",
-   "description": "",
-   "source": "FOX 5 Atlanta",
-   "feedLabel": "Atlanta drone (Google News)",
-   "topics": [],
-   "local": true
-  },
-  {
-   "title": "General Atomics FQ-42 CCA Drone Production Ramp Up To Be Boosted By Boeing Subsidiary - TWZ",
-   "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQRHpNWEFROXhtTklXd1BBVkMtQUh3TUt5Mnd4Q2Y0Y05EOFFaTXFoNTlXVzlrYWNEb3ZOQmxyM0g4c3ZhT3NGNmNwRTFJbUpzUU0tMmFhdFBRWk94bGVxQ0F0TU1ITmxNYWx2alRTc1dEa1I3QWN5VUJyWFFhUk53bWE5VlZjVlVRb3dySFhKWDA1WDRzUElZSG1WSGVNMTdxVlRHWVdoa3NxaTEzQlE?oc=5",
-   "pubDate": "2026-10-23T07:00:00Z",
-   "description": "",
-   "source": "TWZ",
-   "feedLabel": "Georgia drone (Google News)",
    "topics": [],
    "local": true
   }
