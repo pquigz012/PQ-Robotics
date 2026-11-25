@@ -31,6 +31,9 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://pq-robotics.com/assets/images/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <style>
 :root{--navy:#14233f;--deep:#0d1627;--ink:#14233f;--sub:#56627a;--line:#e2e6ee;--soft:#f4f6fa;--red:#c8332c;--green:#1f7a4f;
 --f:"Helvetica Neue",Helvetica,Arial,sans-serif}
@@ -209,6 +212,24 @@ footer p{font-size:15px;color:#94a0b8}
 #grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;padding-bottom:110px}
 @media (max-width:980px){.hero{padding:50px 0 30px}.hero h1{font-size:46px}.hero p{font-size:20px}.feature{grid-template-columns:1fr;padding:22px;gap:14px;margin-bottom:60px}.feature h2{font-size:42px}#grid{grid-template-columns:1fr 1fr;gap:14px}.parts-h h2{font-size:42px}.card-name{font-size:19px}.card-price{font-size:19px}.card-tx{padding:2px 14px 0}.card-more{margin:12px 14px 14px}}
 
+/* site menu bar: same as the other pages */
+nav{position:sticky;top:0;z-index:100;background:rgba(7,9,15,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between;gap:0;padding:0 2.5rem;height:60px}
+.nav-logo{position:relative;font-family:'Exo 2',sans-serif;font-size:13px;font-weight:600;letter-spacing:.22em;color:#e8eaf0;text-decoration:none}
+.nav-logo span{color:#e53935}
+nav .nav-links{display:flex;align-items:center;list-style:none;gap:0;margin:0}
+nav .nav-links a{color:#8a9ab5;text-decoration:none;font-family:Inter,sans-serif;font-size:14px;font-weight:500;letter-spacing:.03em;padding:0 1.1rem;height:60px;display:flex;align-items:center;border-bottom:2px solid transparent;box-shadow:none;transition:color .2s,border-color .2s}
+nav .nav-links a:hover{color:#e8eaf0;border-bottom-color:rgba(255,255,255,.13)}
+nav .nav-links a.here{color:#e8eaf0;border-bottom-color:#d63c35;padding-bottom:0}
+.nav-x{color:#e53e3e;margin-right:5px;font-size:15px}
+.nav-dhd-icon{width:15px;height:15px;color:#e53e3e;margin-right:6px;flex:none}
+nav .nav-cta{background:#d63c35;color:#fff;text-decoration:none;border-radius:6px;padding:0 1.1rem;height:34px;font-family:Inter,sans-serif;font-size:12px;font-weight:500;letter-spacing:.08em;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;margin:0}
+nav .nav-cta:hover{opacity:.88}
+nav .nav-cta svg{width:14px;height:14px}
+.mnav-btn{border-color:rgba(255,255,255,.18)!important}
+nav .mnav-btn span{background:#e8eaf0!important}
+@media (max-width:1040px){nav .nav-links a{padding:0 .7rem}}
+@media (max-width:900px){nav .nav-links{display:none}nav{padding:0 1rem}nav .nav-cta{margin-left:auto}}
+
 /* season text swaps */
 .s-x{display:none}
 [data-season=christmas] .s-x{display:inline}
@@ -221,6 +242,16 @@ footer p{font-size:15px;color:#94a0b8}
 .x-bulb{animation:twinkle 2.4s ease-in-out infinite}
 @keyframes twinkle{0%,100%{opacity:1}50%{opacity:.45}}
 [data-season=christmas] .hero{padding-top:110px}
+[data-season=christmas] #top{background:linear-gradient(180deg,#a9c6e8 0,#c4d9f0 200px,#dde9f7 360px,#fff 500px);margin-bottom:60px}
+[data-season=christmas] .hero{padding-bottom:10px}
+.x-meadow{display:block;position:relative;z-index:0;width:100%;height:auto;margin-top:-20px;pointer-events:none}
+[data-season=christmas] #top .feature{margin-top:-64px}
+[data-season=christmas] .hero p{color:#33415c}
+[data-season=christmas] .pill{background:#fff}
+[data-season=christmas] .feature{background:rgba(255,255,255,.96);box-shadow:0 24px 60px rgba(13,22,39,.16);margin-bottom:70px}
+.x-smoke circle{fill:#fff;opacity:0;animation:smoke 4.5s linear infinite}
+.x-smoke circle:nth-child(2){animation-delay:1.5s}.x-smoke circle:nth-child(3){animation-delay:3s}
+@keyframes smoke{0%{opacity:0;transform:translate(0,20px)}20%{opacity:.9}100%{opacity:0;transform:translate(14px,-30px)}}
 [data-season=christmas] .pill{border-color:#d6312b;color:#d6312b}
 .x-fly{position:absolute;top:64px;left:0;z-index:4;pointer-events:none;animation:flyby 18s linear infinite;animation-delay:1.5s;transform:translateX(-200px)}
 .x-bob{animation:bob 2.2s ease-in-out infinite}
@@ -228,8 +259,7 @@ footer p{font-size:15px;color:#94a0b8}
 @keyframes flyby{0%{transform:translateX(-200px)}55%,100%{transform:translateX(calc(100vw + 60px))}}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(14px) rotate(2deg)}}
 @keyframes spin{50%{opacity:.4}}
-nav .logo{position:relative}
-.x-hat{position:absolute;left:10px;top:-13px;width:36px;transform:rotate(16deg);pointer-events:none;z-index:2}
+.x-hat{position:absolute;left:-9px;top:-17px;width:24px;transform:rotate(-18deg);pointer-events:none;z-index:2}
 .feature{position:relative}
 [data-season=christmas] .feature{overflow:visible;margin-top:44px}
 .x-ribbon{position:absolute;top:0;bottom:0;left:50%;width:18px;transform:translateX(-50%);background:#d6312b;box-shadow:inset 3px 0 0 #e8463f,inset -3px 0 0 #b8241f}
@@ -247,28 +277,32 @@ nav .logo{position:relative}
  -webkit-mask:radial-gradient(circle at 20px 24px,#000 0 20px,transparent 21px) 0 0/40px 24px repeat-x;mask:radial-gradient(circle at 20px 24px,#000 0 20px,transparent 21px) 0 0/40px 24px repeat-x}
 @media (max-width:980px){
  [data-season=christmas] .hero{padding-top:84px}
+ .x-meadow{margin-top:-6px}
+ [data-season=christmas] #top .feature{margin-top:-22px}
+ .x-hat{left:-8px;top:-16px;width:22px}
+ .pill{font-size:12px;letter-spacing:.05em;padding:7px 12px}
  .x-ribbon{display:none}
  .x-fly{top:50px}.x-fly svg{width:96px;height:83px}
  .x-tag{font-size:12px;left:auto;right:12px;top:-30px;transform:rotate(6deg)}
  .x-bow{width:96px;top:-36px}
 }
-@media (prefers-reduced-motion:reduce){.x-fly{display:none}.x-bulb,.x-bob,.x-prop{animation:none}}
+@media (prefers-reduced-motion:reduce){.x-fly{display:none}.x-bulb,.x-bob,.x-prop,.x-smoke circle{animation:none}}
 </style>
 </head>
 <body>
-<nav>
-  <a class="logo" href="/"><img src="assets/images/pq-robotics-logo.svg" alt="">PQ ROBOTICS</a>
-  <ul class="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/drone-repair-atlanta.html">Drone Hospital</a></li>
-    <li><a href="/drone-classes-atlanta.html">Education</a></li>
-    <li><a class="here" href="/drone-shop-atlanta.html">Shop</a></li>
-    <li><a href="/drone-news.html">DHD</a></li>
-    <li><a href="/footage.html">Footage</a></li>
-    <li><a href="/#about">About Us</a></li>
-  </ul>
-  <a class="nav-cta" href="#order">Reserve</a>
-</nav>
+  <nav>
+    <a href="/" class="nav-logo">PQ <span>ROBOTICS</span></a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/drone-repair-atlanta.html"><span class="nav-x">✚</span>Drone Hospital</a></li>
+      <li><a href="/drone-classes-atlanta.html">Education</a></li>
+      <li><a class="here" href="/drone-shop-atlanta.html">Shop</a></li>
+      <li><a href="/drone-news.html" title="Drone Hospital Daily" aria-label="DHD, Drone Hospital Daily"><svg class="nav-dhd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18h-5"/><path d="M18 14h-8"/><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><rect width="8" height="4" x="10" y="6" rx="1"/></svg>DHD</a></li>
+      <li><a href="/footage.html">Footage</a></li>
+      <li><a href="/#about">About Us</a></li>
+    </ul>
+    <a class="nav-cta" href="#order"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></svg>Reserve an A1</a>
+  </nav>
 <main>
 
 <div id="top">
