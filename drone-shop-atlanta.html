@@ -1,18 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" data-look="4">
+<html lang="en" data-detail="modal">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>
-    /* Design options: ?look=4 North Pole (default), 1 Workshop, 2 Spec sheet, 3 Snow globe */
+    /* Season skin. Christmas runs Nov 20 to Dec 31 by itself.
+       ?season=christmas or ?season=off previews either one any time. */
     (function () {
-      var p = new URLSearchParams(location.search).get('look');
-      var h = document.documentElement;
-      h.setAttribute('data-look', /^[1-4]$/.test(p || '') ? p : '4');
-      if (p) h.classList.add('show-looks');
-      /* Hero layout: full screen (owner's pick, Nov 19). ?hero=2 or 3 still loads the other two for comparison. */
-      var hz = new URLSearchParams(location.search).get('hero');
-      if (h.getAttribute('data-look') === '4') h.setAttribute('data-hero', /^[123]$/.test(hz || '') ? hz : '1');
+      var q = new URLSearchParams(location.search).get('season'), d = new Date(), m = d.getMonth();
+      var on = (m === 10 && d.getDate() >= 20) || m === 11;
+      if (q === 'christmas') on = true; else if (q === 'off') on = false;
+      if (on) document.documentElement.setAttribute('data-season', 'christmas');
     })();
   </script>
   <title>DJI Mini Parts In Stock in Atlanta + Antigravity A1 | PQ Robotics</title>
@@ -33,872 +31,291 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://pq-robotics.com/assets/images/og-image.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Exo+2:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root{--navy:#14233f;--deep:#0d1627;--ink:#14233f;--sub:#56627a;--line:#e2e6ee;--soft:#f4f6fa;--red:#c8332c;--green:#1f7a4f;
+--f:"Helvetica Neue",Helvetica,Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--f);color:var(--ink);background:#fff;font-size:18px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body.lock{overflow:hidden}
+img{display:block;max-width:100%}
+a{color:var(--navy)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+/* nav */
+nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:28px;padding:12px 28px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--deep);font-weight:800;letter-spacing:.06em;font-size:17px}
+.logo img{width:38px;height:38px;border-radius:8px}
+.nav-links{display:flex;gap:22px;list-style:none;margin-left:auto}
+.nav-links a{text-decoration:none;font-size:15px;font-weight:600;color:var(--sub)}
+.nav-links a.here{color:var(--navy);box-shadow:inset 0 -3px 0 var(--navy);padding-bottom:6px}
+.nav-cta{text-decoration:none;background:var(--navy);color:#fff;font-weight:700;font-size:15px;padding:11px 18px;border-radius:10px;white-space:nowrap}
+.mnav-btn{border-color:rgba(20,35,63,.25)!important}
+nav .mnav-btn span{background:var(--navy)!important}
+/* type + buttons */
+h1,h2,h3{color:var(--deep);letter-spacing:-.02em;line-height:1.05}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--navy);color:#fff;border:0;border-radius:12px;font:700 19px var(--f);padding:17px 30px;cursor:pointer;text-decoration:none;transition:background .15s,transform .15s}
+.btn:hover{background:var(--deep);transform:translateY(-1px)}
+.btn.ghost{background:#fff;color:var(--navy);box-shadow:inset 0 0 0 2px var(--navy)}
+.btn.ghost:hover{background:var(--soft)}
+s{color:#8a93a6;font-weight:500}
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 34px}
+.chips button{font:600 17px var(--f);color:var(--navy);background:#fff;border:2px solid var(--line);border-radius:999px;padding:10px 20px;cursor:pointer}
+.chips button:hover{border-color:var(--navy)}
+.chips button.on{background:var(--navy);border-color:var(--navy);color:#fff}
+/* cards */
+.card{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:box-shadow .2s,transform .2s,border-color .2s;position:relative}
+.card:hover,.card:focus-visible{border-color:var(--navy);box-shadow:0 14px 34px rgba(13,22,39,.12);transform:translateY(-3px)}
+.card[hidden]{display:none}
+.card-ph{display:block;aspect-ratio:1/1;background:#fff;padding:18px}
+.card-ph img{width:100%;height:100%;object-fit:contain}
+.card-tx{display:flex;flex-direction:column;gap:4px;padding:4px 22px 0}
+.card-tag{display:inline-block;align-self:flex-start;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--sub);background:var(--soft);border-radius:6px;padding:4px 9px}
+.card-tag.new{color:#fff;background:var(--navy)}
+.card-name{font-size:23px;font-weight:700;color:var(--deep);line-height:1.15;margin-top:6px}
+.card-price{font-size:22px;font-weight:700;color:var(--navy)}
+.card-price s{font-size:17px}
+.card-more{display:flex;justify-content:space-between;align-items:center;margin:16px 22px 20px;padding-top:14px;border-top:1px solid var(--line);font-size:16px;font-weight:700;color:var(--navy)}
+.card-more i{font-style:normal;font-size:26px;line-height:1}
+/* detail (shared) */
+.d-wrap{position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:start}
+.d-x{position:absolute;top:-6px;right:-6px;z-index:2;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--navy);font-size:30px;line-height:1;cursor:pointer}
+.d-x:hover{background:var(--soft)}
+.d-big{background:#fff;border:1px solid var(--line);border-radius:18px;aspect-ratio:1/1;padding:26px}
+.d-big img{width:100%;height:100%;object-fit:contain}
+.d-thumbs{display:flex;gap:10px;margin-top:12px}
+.d-th{all:unset;cursor:pointer;width:68px;height:68px;border:2px solid var(--line);border-radius:12px;padding:5px;background:#fff;box-sizing:border-box}
+.d-th.on{border-color:var(--navy)}
+.d-th img{width:100%;height:100%;object-fit:contain}
+.d-info{padding-right:40px}
+.d-name{font-size:42px;margin:12px 0 4px}
+.d-sub{font-size:19px;color:var(--sub)}
+.d-price{margin:14px 0 6px;font-size:22px}
+.d-price b{font-size:40px;color:var(--navy)}
+.d-price em{font-style:normal;font-weight:700;font-size:15px;color:#fff;background:var(--red);border-radius:6px;padding:4px 8px;vertical-align:middle}
+.d-blurb{font-size:20px;margin:8px 0 18px}
+.d-lbl{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sub);margin:18px 0 8px}
+.d-opts{display:flex;flex-wrap:wrap;gap:10px}
+.d-opt{font:600 17px var(--f);color:var(--navy);background:#fff;border:2px solid var(--line);border-radius:12px;padding:12px 16px;cursor:pointer}
+.d-opt b{margin-left:6px}
+.d-opt.on{border-color:var(--navy);box-shadow:inset 0 0 0 1px var(--navy);background:var(--soft)}
+.d-fits{display:flex;flex-wrap:wrap;gap:8px}
+.d-fits span{font-size:16px;font-weight:600;background:var(--soft);border-radius:8px;padding:7px 12px}
+.d-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:4px 0 8px}
+.d-stats div{background:var(--soft);border-radius:12px;padding:12px 14px}
+.d-stats b{display:block;font-size:26px;color:var(--navy)}
+.d-stats span{font-size:15px;color:var(--sub)}
+.d-go{width:100%;margin-top:26px;font-size:21px;padding:19px}
+.d-fine{text-align:center;color:var(--sub);font-size:16px;margin-top:10px}
+.d-notes{list-style:none;margin-top:14px;font-size:16px;color:var(--sub)}
+.d-notes li{padding:6px 0 6px 26px;position:relative}
+.d-notes li:before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}
+.d-box{grid-column:1/-1;display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:-18px}
+.d-wrap>.d-box{margin-top:0}
+.d-box figure{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px;text-align:center}
+.d-box img{aspect-ratio:1/1;object-fit:contain;width:100%}
+.d-box figcaption{font-size:14px;font-weight:600;margin-top:4px}
+.d-wrap .d-lbl:first-child{grid-column:1/-1}
+/* modal / drawer shells */
+.scrim{position:fixed;inset:0;background:rgba(13,22,39,.5);opacity:0;visibility:hidden;transition:.25s;z-index:80}
+.scrim.show{opacity:1;visibility:visible}
+.modal{position:fixed;left:50%;top:50%;width:min(1080px,94vw);max-height:90vh;overflow:auto;background:#fff;border-radius:24px;padding:44px;z-index:90;opacity:0;visibility:hidden;transform:translate(-50%,-46%);transition:.25s;box-shadow:0 30px 80px rgba(13,22,39,.3)}
+.modal.show{opacity:1;visibility:visible;transform:translate(-50%,-50%)}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(620px,100vw);overflow:auto;background:#fff;z-index:90;padding:40px 36px;transform:translateX(100%);visibility:hidden;transition:.3s;box-shadow:-24px 0 60px rgba(13,22,39,.25);border-left:6px solid var(--navy)}
+.drawer.show{transform:none;visibility:visible}
+.drawer .d-wrap{grid-template-columns:1fr;gap:22px}
+.drawer .d-info{padding-right:0}
+.drawer .d-box{grid-template-columns:repeat(4,1fr)}
+.drawer .d-x{top:-14px;right:-10px}
+/* order */
+.order-sec{padding:110px 0}
+.order-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:start}
+.sec-t{font-size:56px}
+.sec-s{font-size:21px;color:var(--sub);margin-top:12px}
+.steps{list-style:none;margin-top:34px;display:grid;gap:22px}
+.steps li{display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:center}
+.steps i{font-style:normal;width:56px;height:56px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:24px;font-weight:800}
+.steps b{display:block;font-size:22px;color:var(--deep)}
+.steps span{font-size:17px;color:var(--sub)}
+.pay{margin-top:30px;font-size:17px;color:var(--sub)}
+.pay b{color:var(--deep)}
+form{background:#fff;border:2px solid var(--line);border-radius:22px;padding:34px;display:grid;gap:14px}
+form.picked{border-color:var(--navy)}
+form h3{font-size:28px}
+form label{font-size:15px;font-weight:700;color:var(--sub);text-transform:uppercase;letter-spacing:.06em;margin-top:6px}
+form input,form select,form textarea{width:100%;font:18px var(--f);color:var(--ink);background:var(--soft);border:2px solid transparent;border-radius:12px;padding:15px 16px}
+form input:focus,form select:focus,form textarea:focus{outline:0;border-color:var(--navy);background:#fff}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.radios{display:flex;gap:10px}
+.radios label{flex:1;margin:0;text-transform:none;letter-spacing:0;font-size:17px;color:var(--ink);background:var(--soft);border-radius:12px;padding:13px;display:flex;gap:8px;align-items:center;justify-content:center;cursor:pointer}
+.radios input{width:auto;accent-color:var(--navy)}
+.total{display:flex;justify-content:space-between;align-items:baseline;border-top:2px solid var(--line);padding-top:16px;margin-top:6px;font-size:20px;font-weight:700}
+.total b{font-size:34px;color:var(--navy)}
+form .btn{width:100%;font-size:21px}
+.form-status{font-size:16px;color:var(--sub);text-align:center;min-height:1em}
+/* faq */
+.faq-sec{background:var(--soft);padding:100px 0}
+.faq{margin-top:30px;display:grid;gap:12px;max-width:900px}
+.faq details{background:#fff;border-radius:16px;border:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;font-size:21px;font-weight:700;color:var(--deep);padding:22px 60px 22px 24px;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:30px;font-weight:400;color:var(--navy)}
+.faq details[open] summary:after{content:"–"}
+.faq p{padding:0 24px 22px;font-size:18px;color:var(--sub)}
+/* footer */
+footer{background:var(--deep);color:#c9d1e0;padding:56px 28px 40px;text-align:center}
+footer .logo{justify-content:center;color:#fff;margin-bottom:18px}
+footer ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 24px;margin-bottom:18px}
+footer a{color:#fff;text-decoration:none;font-weight:600;font-size:16px}
+footer p{font-size:15px;color:#94a0b8}
+.pv{position:fixed;left:14px;bottom:14px;z-index:70;background:var(--red);color:#fff;font:700 13px var(--f);letter-spacing:.06em;padding:8px 12px;border-radius:8px;text-transform:uppercase}
+@media (max-width:980px){
+ .nav-links{display:none}
+ nav{padding:10px 16px;gap:10px}
+ .nav-cta{margin-left:auto;padding:10px 14px}
+ .wrap{padding:0 18px}
+ .d-wrap{grid-template-columns:1fr;gap:20px}
+ .d-info{padding-right:0}
+ .d-name{font-size:34px}
+ .d-box{grid-template-columns:repeat(3,1fr);margin-top:0}
+ .modal{inset:auto 0 0 0;left:0;top:auto;width:100%;max-height:92vh;border-radius:24px 24px 0 0;padding:28px 20px 34px;transform:translateY(40px)}
+ .modal.show{transform:none}
+ .drawer{padding:28px 20px}
+ .d-x{top:-4px;right:-4px}
+ .order-sec{padding:70px 0}
+ .order-grid{grid-template-columns:1fr;gap:34px}
+ .sec-t{font-size:42px}
+ form{padding:22px}
+ .two{grid-template-columns:1fr}
+ .faq-sec{padding:70px 0}
+ .faq summary{font-size:19px}
+}
 
-    /* ── THREE LOOKS ──
-       1 Workshop: the site's navy, Bay 04 gift wrap line, string lights, snow
-       2 Spec sheet: drafting paper, navy ink, candy-cane edge, pine and red
-       3 Snow globe: midnight blue, gold trim, glass and handwritten tags */
-    :root {
-      --bg: #0a1324; --bg2: #0c172b; --panel: #0f1b31; --card: #13213a;
-      --ink: #e8eaf0; --sub: #8a9ab5; --muted: #56677f;
-      --line: rgba(255,255,255,0.07); --line2: rgba(255,255,255,0.13);
-      --accent: #d63c35; --red: #e53935; --green: #2f9e6b; --gold: #f2c14e;
-      --robot: #0c172b; --paper: #f6f3ec; --nav: rgba(7,9,15,0.92);
-      --font-display: 'Exo 2', sans-serif; --font-body: 'Inter', sans-serif; --hand: 'Caveat', cursive;
-      --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
-      --radius-sm: 6px; --radius-md: 10px; --radius-lg: 14px;
-    }
-    html[data-look="2"] {
-      --bg: #f3ede1; --bg2: #ebe3d2; --panel: #f8f4eb; --card: #fbf8f1;
-      --ink: #14233f; --sub: #4a5772; --muted: #858b98;
-      --line: rgba(20,35,63,0.12); --line2: rgba(20,35,63,0.28);
-      --accent: #c8332c; --red: #c8332c; --green: #1f6b4a; --gold: #b6861d;
-      --robot: #f3ede1; --paper: #fffdf7; --nav: rgba(243,237,225,0.94);
-    }
-    html[data-look="3"] {
-      --bg: #0b1330; --bg2: #0f1838; --panel: #131d44; --card: #16214c;
-      --ink: #eef0ff; --sub: #a5acd2; --muted: #5f6997;
-      --line: rgba(255,255,255,0.07); --line2: rgba(242,193,78,0.32);
-      --accent: #e5484d; --red: #e5484d; --green: #3fa37a; --gold: #f2c14e;
-      --robot: #16224a; --paper: #fbf3e1; --nav: rgba(8,12,32,0.9);
-    }
+.hero{text-align:center;padding:90px 0 50px}
+.pill{display:inline-block;font-size:15px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);border:2px solid var(--navy);border-radius:999px;padding:7px 16px}
+.hero h1{font-size:76px;margin:22px auto 14px;max-width:900px}
+.hero p{font-size:24px;color:var(--sub)}
+.feature{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;background:var(--soft);border-radius:28px;padding:40px 56px;margin-bottom:100px;cursor:pointer;border:2px solid transparent;transition:border-color .2s}
+.feature:hover{border-color:var(--navy)}
+.feature img{border-radius:18px;background:#fff}
+.feature .card-tag{background:var(--red);color:#fff}
+.feature h2{font-size:60px;margin:14px 0 8px}
+.feature p{font-size:22px;color:var(--sub)}
+.feature .fp{font-size:46px;font-weight:800;color:var(--navy);margin:16px 0 22px}
+.feature .fp s{font-size:24px}
+.parts-h{display:flex;align-items:end;justify-content:space-between}
+.parts-h h2{font-size:56px}
+.chips{justify-content:flex-start}
+#grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;padding-bottom:110px}
+@media (max-width:980px){.hero{padding:50px 0 30px}.hero h1{font-size:46px}.hero p{font-size:20px}.feature{grid-template-columns:1fr;padding:22px;gap:14px;margin-bottom:60px}.feature h2{font-size:42px}#grid{grid-template-columns:1fr 1fr;gap:14px}.parts-h h2{font-size:42px}.card-name{font-size:19px}.card-price{font-size:19px}.card-tx{padding:2px 14px 0}.card-more{margin:12px 14px 14px}}
 
-    html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
-    html[data-look="3"] body { background: linear-gradient(180deg, #0b1330 0%, #120f33 60%, #0b1330 100%); }
-    a { color: inherit; }
-    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
-    /* ── NAV (matches the other pages) ── */
-    nav { position: sticky; top: 0; z-index: 100; background: var(--nav); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 60px; }
-    .nav-logo { font-family: var(--font-display); font-size: 13px; font-weight: 600; letter-spacing: 0.22em; color: var(--ink); text-decoration: none; }
-    .nav-logo span { color: var(--red); }
-    .nav-links { display: flex; align-items: center; list-style: none; }
-    .nav-links a { color: var(--sub); text-decoration: none; font-size: 14px; font-weight: 500; letter-spacing: 0.03em; padding: 0 1.1rem; height: 60px; display: flex; align-items: center; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; }
-    .nav-links a:hover { color: var(--ink); border-bottom-color: var(--line2); }
-    .nav-links a.here { color: var(--ink); border-bottom-color: var(--accent); }
-    .nav-x { color: #e53e3e; margin-right: 5px; font-size: 15px; }
-    .nav-dhd-icon { width: 15px; height: 15px; color: #e53e3e; margin-right: 6px; flex: none; }
-    .nav-cta { background: var(--accent); color: #fff; text-decoration: none; border-radius: var(--radius-sm); padding: 0 1.1rem; height: 34px; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; transition: opacity .2s; }
-    .nav-cta:hover { opacity: .88; }
-    .nav-cta svg { width: 14px; height: 14px; }
-
-    /* ── HERO ── */
-    #top { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
-    .hero-map { position: absolute; inset: 0; pointer-events: none; opacity: .4; background: url("assets/images/hero-map.svg") center / cover no-repeat; mask-image: radial-gradient(ellipse 80% 90% at 70% 50%, #000 30%, transparent 100%); -webkit-mask-image: radial-gradient(ellipse 80% 90% at 70% 50%, #000 30%, transparent 100%); }
-    html[data-look="2"] .hero-map { display: none; }
-    html[data-look="3"] .hero-map { opacity: .18; }
-    #snow { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
-    html[data-look="2"] #snow { display: none; }
-    html[data-look="2"] #top { background: linear-gradient(var(--bg), var(--bg)) padding-box; border-top: 10px solid transparent; border-image: repeating-linear-gradient(-45deg, var(--red) 0 12px, var(--paper) 12px 24px) 10; }
-    html[data-look="3"] #top { background: radial-gradient(ellipse 60% 70% at 75% 45%, rgba(242,193,78,.10), transparent 70%); }
-
-    .hero-inner { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 4.5rem 2.5rem 4rem; display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr); gap: 3rem; align-items: center; }
-    .hero-tag { font-family: var(--font-display); font-size: 11px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--sub); margin-bottom: 1.1rem; display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; }
-    .hero-tag b { color: var(--red); font-weight: 600; }
-    .countdown { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: none; color: var(--ink); border: 1px solid var(--line2); border-radius: 99px; padding: 3px 10px; display: inline-flex; align-items: center; gap: 6px; }
-    .countdown::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 3px rgba(47,158,107,.2); }
-    h1 { font-family: var(--font-display); font-size: clamp(2.3rem, 4.8vw, 3.7rem); font-weight: 600; line-height: 1.06; letter-spacing: -.02em; margin-bottom: 1.3rem; }
-    h1 em { font-style: normal; color: var(--accent); }
-    html[data-look="3"] h1 em { color: var(--gold); }
-    .hero-sub { font-size: 1rem; color: var(--sub); max-width: 500px; margin-bottom: 1.8rem; line-height: 1.75; }
-    .hero-sub strong { color: var(--ink); font-weight: 500; }
-
-    .price { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 1.8rem; }
-    .price .now { font-family: var(--font-display); font-size: 3rem; font-weight: 700; line-height: 1; letter-spacing: -.02em; }
-    .price .was { font-size: 1.1rem; color: var(--sub); text-decoration: line-through; text-decoration-color: var(--red); text-decoration-thickness: 2px; }
-    .price .save { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: .08em; color: #fff; background: var(--green); border-radius: 4px; padding: 4px 9px; }
-    html[data-look="2"] .price { border: 1.5px solid var(--ink); padding: 12px 16px; display: inline-flex; background: var(--paper); box-shadow: 4px 4px 0 var(--ink); }
-    html[data-look="3"] .price .now { color: var(--gold); text-shadow: 0 0 30px rgba(242,193,78,.35); }
-
-    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 1.2rem; }
-    .btn-primary, .btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 9px; border-radius: var(--radius-sm); padding: 12px 26px; font-family: var(--font-body); font-size: 13px; font-weight: 500; letter-spacing: .06em; text-decoration: none; cursor: pointer; transition: opacity .2s, color .2s, border-color .2s; }
-    .btn-primary { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
-    .btn-primary:hover { opacity: .85; }
-    .btn-ghost { background: transparent; color: var(--sub); border: 1px solid var(--line2); }
-    .btn-ghost:hover { color: var(--ink); border-color: var(--sub); }
-    .btn-primary svg, .btn-ghost svg { width: 17px; height: 17px; flex: none; }
-    html[data-look="3"] .btn-primary { border-radius: 99px; box-shadow: 0 10px 30px -10px rgba(229,72,77,.7); }
-    html[data-look="3"] .btn-ghost { border-radius: 99px; }
-    html[data-look="2"] .btn-primary, html[data-look="2"] .btn-ghost { border-radius: 2px; }
-    .hero-note { font-size: 12.5px; color: var(--muted); max-width: 470px; }
-
-    .scene-wrap { position: relative; }
-    .scene { width: 100%; height: auto; display: block; overflow: visible; }
-    html[data-look="3"] .scene-wrap { max-width: 470px; margin: 0 auto; width: 100%; }
-    html[data-look="3"] #scene { cursor: pointer; }
-    html[data-look="4"] #scene { -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent), linear-gradient(180deg, transparent, #000 6%, #000 88%, transparent); -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent), linear-gradient(180deg, transparent, #000 6%, #000 88%, transparent); mask-composite: intersect; }
-    html[data-look="2"] .scene-wrap { background: var(--paper); border: 1.5px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); }
-
-    /* ── SVG ink (robots use the home page outline style) ── */
-    .scene .k { fill: none; stroke: var(--ink); stroke-opacity: .85; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-    .scene .k.faint { stroke-opacity: .25; }
-    .scene .kf { fill: var(--robot); stroke: var(--ink); stroke-opacity: .85; stroke-width: 1.6; stroke-linejoin: round; }
-    .scene .ink { fill: var(--ink); fill-opacity: .7; }
-    .scene .red { fill: var(--red); }
-    .scene .bot .k, .scene .bot .kf { stroke-width: .75; stroke-opacity: .9; }
-    .scene .bot .k.thin { stroke-width: .5; stroke-opacity: .62; }
-    .scene .bot .k.lug { stroke-width: .7; stroke-dasharray: .9 1.5; }
-    .scene .arm { stroke: var(--ink); stroke-opacity: .9; stroke-width: 2.2; stroke-linecap: round; }
-    .scene .jaw { fill: none; stroke: var(--ink); stroke-opacity: .9; stroke-width: .9; stroke-linecap: round; stroke-linejoin: round; }
-    .scene .visor { fill: var(--ink); fill-opacity: .2; transition: fill .15s, fill-opacity .15s; }
-    .scene .visor.on { fill: var(--gold); fill-opacity: .75; }
-    .scene .visor.scan { fill: #ff3b30; fill-opacity: 1; }
-    .scene .tip { animation: blink 2.4s steps(1) infinite; }
-    .scene .hat { fill: var(--red); stroke: var(--ink); stroke-opacity: .5; stroke-width: .5; }
-    .scene .trim { fill: #fbfbf7; stroke: var(--ink); stroke-opacity: .35; stroke-width: .4; }
-    html[data-look="2"] .scene .trim { fill: #fffdf7; stroke-opacity: .8; }
-    .scene .antler { fill: none; stroke: #c99556; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
-    .scene .scarf { fill: var(--green); stroke: var(--ink); stroke-opacity: .45; stroke-width: .4; }
-    .scene .scarf-s { fill: none; stroke: #fff; stroke-opacity: .85; stroke-width: .6; }
-    .scene .beam { fill: #ff3b30; fill-opacity: .2; }
-    .scene .lbl { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; fill: var(--ink); fill-opacity: .8; }
-    .scene .lbl.dim { fill-opacity: .45; }
-    .scene .lbl.small { font-size: 9px; }
-    .scene .drift { fill: #fff; fill-opacity: .12; }
-    .scene .belt-run { fill: none; stroke: var(--ink); stroke-opacity: .4; stroke-width: 1.4; stroke-dasharray: 5 9; animation: belt 1.2s linear infinite; }
-    .scene .sleigh { fill: var(--red); stroke: var(--ink); stroke-opacity: .7; stroke-width: 1.6; stroke-linejoin: round; }
-    .scene .sleigh-trim { fill: none; stroke: var(--gold); stroke-width: 3; stroke-linecap: round; }
-    .scene .runner { fill: none; stroke: var(--gold); stroke-width: 2.6; stroke-linecap: round; }
-    .scene .wire { fill: none; stroke: var(--ink); stroke-opacity: .35; stroke-width: 1.2; }
-    .scene .cap { fill: var(--ink); fill-opacity: .55; }
-    .scene .glow, .scene .orn { animation: twinkle 3s ease-in-out infinite; }
-    .scene .b0 { fill: #ff5a4f; } .scene .b1 { fill: #3fd38a; } .scene .b2 { fill: #ffd25e; } .scene .b3 { fill: #7cc8ff; }
-    .scene .string { fill: none; stroke: var(--ink); stroke-opacity: .6; stroke-width: 1; }
-    .scene .pt-card { fill: var(--paper); stroke: var(--ink); stroke-opacity: .5; stroke-width: 1; }
-    .scene .pt-hole { fill: var(--bg); stroke: var(--ink); stroke-opacity: .5; stroke-width: .8; }
-    .scene .pt-big { font-family: var(--hand); font-weight: 700; font-size: 24px; fill: #b3261e; }
-    .scene .pt-small { font-family: var(--hand); font-weight: 600; font-size: 15px; fill: #5b6478; }
-    .scene .pt-strike { stroke: #b3261e; stroke-width: 1.4; }
-    .scene .spark { fill: var(--gold); }
-    .scene .spark.s1 { fill: #fff; } .scene .spark.s2 { fill: var(--red); }
-    .scene .chk circle { fill: var(--green); stroke: #fff; stroke-width: 1.2; }
-    .scene .chk path { fill: none; stroke: #fff; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-    /* boxes */
-    .scene .cb { fill: #b98a5a; stroke: #5a3e22; stroke-width: 1; }
-    .scene .ct { fill: none; stroke: #e7cfa6; stroke-width: 3; }
-    .scene .cl { font-family: var(--mono); font-weight: 700; font-size: 9px; fill: #4a3018; letter-spacing: .1em; }
-    .scene .gb, .scene .gl { stroke: var(--ink); stroke-opacity: .55; stroke-width: 1; }
-    .scene .gr { fill: var(--gold); }
-    .scene .gbow { fill: var(--gold); stroke: #7a5a10; stroke-opacity: .6; stroke-width: .6; }
-    .scene .g-red .gb, .scene .g-red .gl { fill: #d6362f; }
-    .scene .g-green .gb, .scene .g-green .gl { fill: #1f8a5a; }
-    .scene .g-gold .gb, .scene .g-gold .gl { fill: #e9b949; }
-    .scene .g-gold .gr, .scene .g-gold .gbow { fill: #c42f29; }
-    .scene .g-white .gb, .scene .g-white .gl { fill: #f3f1ea; }
-    .scene .g-white .gr, .scene .g-white .gbow { fill: #d6362f; }
-    /* the A1 */
-    .scene .a1-arm { fill: none; stroke: var(--ink); stroke-opacity: .85; stroke-width: 1.8; stroke-linecap: round; }
-    .scene .top .a1-arm { stroke-width: 4; stroke-opacity: .9; }
-    .scene .a1-motor, .scene .a1-body { fill: var(--robot); stroke: var(--ink); stroke-opacity: .9; stroke-width: .9; }
-    .scene .top .a1-motor, .scene .top .a1-body { stroke-width: 1.2; }
-    .scene .a1-lens { fill: #1c2433; stroke: var(--ink); stroke-opacity: .9; stroke-width: .9; }
-    .scene .a1-glass { fill: #6fb6ff; fill-opacity: .55; }
-    .scene .a1-shine { fill: #fff; fill-opacity: .8; }
-    .scene .a1-line { fill: none; stroke: var(--ink); stroke-opacity: .5; stroke-width: .6; }
-    .scene .a1-led { fill: #3fd38a; animation: blink 1.2s steps(1) infinite; }
-    .scene .a1-prop { fill: var(--ink); fill-opacity: .45; transform-box: fill-box; transform-origin: center; animation: prop .09s linear infinite alternate; }
-    .scene .a1-disc { fill: var(--ink); fill-opacity: .04; stroke: var(--ink); stroke-opacity: .5; stroke-width: .6; stroke-dasharray: 2 3; }
-    .scene .a1-bl { fill: none; stroke: var(--ink); stroke-opacity: .8; stroke-width: 1.6; stroke-linecap: round; }
-    .scene .spin { transform-box: fill-box; transform-origin: center; animation: rot 1.6s linear infinite; }
-    /* look 2 drawing bits */
-    .scene .gridline { fill: none; stroke: var(--ink); stroke-opacity: .06; stroke-width: 1; }
-    .scene .dim path { fill: none; stroke: var(--ink); stroke-opacity: .6; stroke-width: 1; }
-    .scene .dim .arrow { fill: var(--ink); fill-opacity: .7; stroke: none; }
-    .scene .leader { fill: none; stroke: var(--red); stroke-width: 1.1; }
-    .scene .leader-dot { fill: var(--red); }
-    .scene .garland { fill: none; stroke: #1f6b4a; stroke-width: 7; stroke-linecap: round; }
-    .scene .garland-leaf { fill: none; stroke: #2f8f60; stroke-width: 7; stroke-dasharray: 2 5; stroke-linecap: round; }
-    /* look 3 globe */
-    .scene .sky0 { stop-color: #2a3c74; } .scene .sky1 { stop-color: #0c1534; }
-    .scene .star { fill: #fff; animation: twinkle 4s ease-in-out infinite; }
-    .scene .moon { fill: #fbf3e1; fill-opacity: .9; }
-    .scene .city rect { fill: #0a1129; }
-    .scene .city .win { fill: var(--gold); fill-opacity: .8; animation: twinkle 9s ease-in-out infinite; }
-    .scene .spire { stroke: #0a1129; stroke-width: 2; }
-    .scene .snowfield { fill: #e9eefc; }
-    .scene .tree path { fill: #1f7a4f; stroke: #0f3f29; stroke-width: 1; stroke-linejoin: round; }
-    .scene .tree .trunk { fill: #6b4423; }
-    .scene .tree .star-gold { fill: var(--gold); stroke: none; }
-    .scene .flake { fill: #fff; fill-opacity: .9; }
-    .scene .glass { fill: rgba(180,200,255,.04); stroke: #dfe6ff; stroke-opacity: .55; stroke-width: 2.5; }
-    .scene .shine { fill: none; stroke: #fff; stroke-opacity: .32; stroke-width: 7; stroke-linecap: round; }
-    .scene .shine.thin { stroke-width: 3; stroke-opacity: .22; }
-    .scene .base-body { fill: #6a1f22; stroke: var(--gold); stroke-width: 1.5; }
-    .scene .base-top { fill: #82282b; stroke: var(--gold); stroke-width: 1.5; }
-    .scene .base-band { fill: none; stroke: var(--gold); stroke-width: 2; stroke-opacity: .7; }
-    .scene .plaque { fill: #e9c46a; stroke: #8a6416; stroke-width: 1; }
-    .scene .plq { font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: .18em; fill: #3b2a08; }
-    .scene .plq.small { font-family: var(--mono); font-weight: 500; font-size: 8.5px; letter-spacing: .16em; }
-    html[data-look="3"] .scene .bot .kf { fill: #e6ebff; stroke: #0b1330; }
-    html[data-look="3"] .scene .bot .k { stroke: #0b1330; }
-    html[data-look="3"] .scene .bot .ink { fill: #0b1330; }
-    html[data-look="3"] .scene .bot .visor { fill: #0b1330; fill-opacity: .55; }
-    html[data-look="3"] .scene .arm, html[data-look="3"] .scene .jaw { stroke: #e6ebff; }
-    .scene .globe.wobble { animation: wobble .6s ease-out; transform-box: fill-box; transform-origin: 50% 100%; }
-    /* mini robots on the shelf */
-    .scene.mini .visor { animation: visor 5s ease-in-out infinite; }
-
-
-    /* look 4: North Pole parts yard */
-    .scene .elf-g { fill: #1f8a4c; } .scene .elf-r { fill: #d6362f; }
-    .scene .elfhat, .scene .elfband, .scene .collar { stroke: var(--ink); stroke-opacity: .45; stroke-width: .4; stroke-linejoin: round; }
-    .scene .bell { fill: var(--gold); stroke: #7a5a10; stroke-width: .4; }
-    .scene .elfbelt { fill: #15161c; }
-    .scene .p-prop { fill: #2a2f3a; stroke: var(--ink); stroke-opacity: .7; stroke-width: .8; }
-    .scene .p-hub { fill: #c9ced8; }
-    .scene .p-batt { fill: #2b3346; stroke: var(--ink); stroke-opacity: .7; stroke-width: .9; }
-    .scene .p-bolt { fill: var(--gold); }
-    .scene .p-motor { fill: #8a96a8; stroke: #1c2433; stroke-width: .9; }
-    .scene .p-coil { fill: none; stroke: #c97a3a; stroke-width: 1.4; }
-    .scene .p-shaft { stroke: #c9ced8; stroke-width: 1.6; stroke-linecap: round; }
-    .scene .g-teal .gb, .scene .g-teal .gl { fill: #f6f4ee; } .scene .g-teal .gr, .scene .g-teal .gbow { fill: #1f8f8a; }
-    .scene .fs-body { fill: #d42a24; }
-    .scene .fs-shade { fill: #9e1c18; opacity: .55; }
-    .scene .fs-gold { fill: none; stroke: #f2c14e; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-    .scene .fs-gold.thin { stroke-width: 1.8; }
-    .scene .fs-flk { fill: none; stroke: #f6d27a; stroke-width: 1.1; stroke-linecap: round; opacity: .85; }
-    .scene .fs-run { fill: none; stroke: #e9b949; stroke-width: 4.2; stroke-linecap: round; stroke-linejoin: round; }
-    .scene .fs-strut { fill: none; stroke: #e9b949; stroke-width: 2.6; stroke-linecap: round; }
-    .scene .sack { fill: #b3221e; stroke: #6d1210; stroke-width: 1; }
-    .scene .sack-fold { fill: none; stroke: #6d1210; stroke-opacity: .5; stroke-width: 1.4; stroke-linecap: round; }
-    .scene .sack-tie { fill: none; stroke: #f2c14e; stroke-width: 3; stroke-linecap: round; }
-    .scene .blanket { fill: #2a5bd7; stroke: #173a8e; stroke-width: 1; }
-    .scene .leaving { opacity: 0; transition: opacity .6s; }
-    .scene .aurora path { fill: none; stroke-width: 26; stroke-linecap: round; }
-    .scene .au1 { stroke: #3fd3a0; stroke-opacity: .22; animation: aurora 14s ease-in-out infinite alternate; }
-    .scene .au2 { stroke: #4fa8ff; stroke-opacity: .16; animation: aurora 18s ease-in-out infinite alternate-reverse; }
-    .scene .pine path { fill: #143b2c; stroke: #0b2219; stroke-width: 1; stroke-linejoin: round; }
-    .scene .pine .pine-snow { fill: #eef2fb; stroke: none; }
-    .scene .pine.dim { opacity: .5; }
-    html[data-look="4"] .scene .snowfield { fill: #dfe7f7; }
-    .scene .snow-shade { fill: #c7d2ea; }
-    .scene .chim { fill: #6b2a24; stroke: #2a1210; stroke-width: 1.2; }
-    .scene .wall { fill: #8e2b26; stroke: #2a1210; stroke-width: 1.4; }
-    .scene .plank { stroke: #000; stroke-opacity: .18; stroke-width: 1; }
-    .scene .roof { fill: #2a1c1a; stroke: #140c0b; stroke-width: 1.2; }
-    .scene .roof-snow { fill: #eef2fb; }
-    .scene .sign { fill: #f6efdc; stroke: #6b4a1c; stroke-width: 1.5; }
-    .scene .sign-t { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .14em; fill: #c42f29; }
-    .scene .sign-snow { fill: #fff; }
-    .scene .lbl.dark { fill: #f6efdc; fill-opacity: .9; }
-    .scene .win-glow { fill: #f6c25a; }
-    .scene .mullion { stroke: #4a2a14; stroke-width: 2; }
-    .scene .sill { stroke: #eef2fb; stroke-width: 3.5; stroke-linecap: round; }
-    .scene .door { fill: url(#doorglow); }
-    .scene .shelf { stroke: #4a2a14; stroke-width: 2; }
-    .scene .shelf-box { fill: #6b3f17; }
-    .scene .doorframe { fill: none; stroke: #3a1c14; stroke-width: 3; }
-    .scene .pole-w { fill: #fbfbf7; }
-    .scene .pole-r { fill: #d6362f; }
-    .scene .pole-ball { fill: var(--gold); stroke: #7a5a10; stroke-width: 1; }
-    .scene .roller { fill: var(--robot); stroke: var(--ink); stroke-opacity: .7; stroke-width: 1; }
-    .scene .smoke { fill: #c7d2ea; }
-    @keyframes aurora { from { transform: translateX(-24px); } to { transform: translateX(24px); } }
-
-    @keyframes belt { to { stroke-dashoffset: -14; } }
-    @keyframes twinkle { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
-    @keyframes blink { 50% { opacity: .25; } }
-    @keyframes prop { from { transform: scaleX(1); } to { transform: scaleX(.3); } }
-    @keyframes rot { to { transform: rotate(360deg); } }
-    @keyframes wobble { 20% { transform: rotate(-2.5deg); } 45% { transform: rotate(2deg); } 70% { transform: rotate(-1deg); } }
-    @keyframes visor { 0%, 70%, 100% { fill-opacity: .2; } 78%, 92% { fill-opacity: .9; fill: var(--gold); } }
-
-    /* ── SPEC STRIP ── */
-    .specs { border-bottom: 1px solid var(--line); background: var(--bg2); }
-    .specs-inner { max-width: 1180px; margin: 0 auto; padding: 1.4rem 2.5rem; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; }
-    .spec b { display: block; font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; line-height: 1.2; }
-    .spec span { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--sub); }
-    html[data-look="1"] .spec b::before, html[data-look="4"] .spec b::before { content: ""; display: inline-block; width: 8px; height: 8px; background: var(--red); margin-right: 8px; vertical-align: middle; transform: rotate(45deg); }
-    html[data-look="2"] .specs-inner { gap: 0; padding: 0 2.5rem; }
-    html[data-look="2"] .spec { border-left: 1px solid var(--line2); padding: 1rem 1rem; }
-    html[data-look="2"] .spec:last-child { border-right: 1px solid var(--line2); }
-    html[data-look="2"] .spec span::before { content: attr(data-n) "  "; color: var(--red); }
-    html[data-look="3"] .specs { background: transparent; }
-    html[data-look="3"] .spec b { color: var(--gold); }
-
-
-
-    /* in-the-box photos */
-    .box-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; }
-    .item { padding: 1rem 1rem 1.1rem; }
-    .item-ph { background: #f7f5f1; border-radius: 6px; margin-bottom: .7rem; aspect-ratio: 1; overflow: hidden; }
-    .item-ph img { width: 100%; height: 100%; object-fit: contain; display: block; }
-    .item h3 { font-size: .95rem; }
-    .item .qty { font-family: var(--mono); font-size: 11px; color: var(--red); font-weight: 500; margin-left: 4px; }
-    .item p { font-size: 12.5px; }
-    .item-no { margin-bottom: .6rem; }
-    html[data-look="2"] .item-ph { border-radius: 0; }
-    /* details tabs */
-    .details { margin-top: 2.6rem; border: 1px solid var(--line2); border-radius: var(--radius-lg); background: var(--card); overflow: hidden; }
-    html[data-look="2"] .details { border: 1.5px solid var(--ink); border-radius: 0; background: var(--paper); }
-    .tabs { display: flex; flex-wrap: wrap; border-bottom: 1px solid var(--line2); }
-    .tabs button { flex: 1 1 auto; background: none; border: 0; border-bottom: 2px solid transparent; color: var(--sub); font: inherit; font-size: 14px; font-weight: 500; padding: 14px 18px; cursor: pointer; white-space: nowrap; }
-    .tabs button:hover { color: var(--ink); }
-    .tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
-    .panel { padding: 1.4rem 1.6rem 1.6rem; }
-    .spec-table { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; }
-    .spec-table div { display: grid; grid-template-columns: 9.5rem 1fr; gap: 1rem; padding: .7rem 0; border-bottom: 1px solid var(--line); font-size: 14px; }
-    .spec-table dt { color: var(--sub); }
-    .policy { list-style: none; display: grid; gap: .9rem; max-width: 760px; }
-    .policy li { font-size: 14.5px; color: var(--sub); padding-left: 1.1rem; border-left: 2px solid var(--red); }
-    .policy b { color: var(--ink); font-weight: 600; }
-    .policy a { color: var(--ink); }
-    @media (max-width: 1040px) { .box-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-    @media (max-width: 900px) { .spec-table { grid-template-columns: 1fr; } }
-    @media (max-width: 640px) { .box-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; } .item { padding: .6rem .6rem .8rem; } .item p { display: none; } .item-no { display: none; } .item h3 { font-size: .82rem; } .spec-table div { grid-template-columns: 7rem 1fr; } .tabs button { padding: 12px 12px; font-size: 13px; } .panel { padding: 1.1rem; } }
-
-    /* ── A1 PHOTOS (shown once photo files are listed in A1_PHOTOS) ── */
-    .photos-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 14px; }
-    .ph-main { position: relative; margin: 0; border-radius: var(--radius-lg); overflow: hidden; background: #0b0f18; aspect-ratio: 4 / 3; }
-    .ph-main img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .ph-main figcaption { position: absolute; left: 14px; bottom: 12px; font-family: var(--hand); font-size: 22px; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,.6); }
-    .ph-thumbs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-content: start; }
-    .ph-thumbs button { border: 2px solid transparent; border-radius: var(--radius-md); overflow: hidden; padding: 0; cursor: pointer; background: #0b0f18; aspect-ratio: 4 / 3; }
-    .ph-thumbs button.on { border-color: var(--accent); }
-    .ph-thumbs img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    html[data-look="2"] .ph-main, html[data-look="2"] .ph-thumbs button { border-radius: 0; box-shadow: 4px 4px 0 var(--ink); }
-    .pin { position: absolute; z-index: 3; left: 37%; top: 10%; width: 21%; max-width: 160px; background: #fbf8f1; padding: 7px 7px 26px; border-radius: 3px; transform: rotate(4deg); box-shadow: 0 18px 40px -12px rgba(0,0,0,.6); text-decoration: none; }
-    .pin img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
-    .pin span { position: absolute; left: 0; right: 0; bottom: 3px; text-align: center; font-family: var(--hand); font-weight: 700; font-size: 18px; color: #b3261e; }
-    .pin::before { content: ""; position: absolute; top: -9px; left: 50%; width: 46px; height: 16px; margin-left: -23px; background: rgba(242,193,78,.75); transform: rotate(3deg); }
-    .fthumb { width: 96px; height: 72px; border-radius: var(--radius-sm); object-fit: cover; }
-    @media (max-width: 900px) { .photos-grid { grid-template-columns: 1fr; } .ph-thumbs { grid-template-columns: repeat(4, 1fr); } }
-    @media (max-width: 640px) { .pin { width: 24%; top: 12%; padding: 4px 4px 17px; } .pin span { font-size: 12px; } }
-
-    /* ── SECTIONS ── */
-    section { max-width: 1180px; margin: 0 auto; padding: 5rem 2.5rem; }
-    .band { background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    html[data-look="3"] .band { background: rgba(255,255,255,.02); }
-    .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--red); margin-bottom: .8rem; }
-    html[data-look="3"] .eyebrow { color: var(--gold); }
-    h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.4vw, 2.5rem); font-weight: 600; line-height: 1.15; letter-spacing: -.01em; margin-bottom: .8rem; }
-    .section-sub { color: var(--sub); max-width: 640px; margin-bottom: 2.6rem; }
-
-    /* What's in the box */
-    .box-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; }
-    .item { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 1.3rem 1.2rem 1.2rem; }
-    .item-no { font-family: var(--mono); font-size: 10.5px; letter-spacing: .16em; color: var(--muted); margin-bottom: .9rem; }
-    .item svg { width: 54px; height: 54px; color: var(--ink); opacity: .9; margin-bottom: .8rem; }
-    .item svg .r { color: var(--red); }
-    .item h3 { font-family: var(--font-display); font-size: 1.02rem; font-weight: 600; line-height: 1.3; margin-bottom: .4rem; }
-    .item p { font-size: 13.5px; color: var(--sub); line-height: 1.6; }
-    html[data-look="1"] .item, html[data-look="4"] .item { border-top: 3px solid var(--red); border-radius: 4px; }
-    html[data-look="1"] .item-no::before, html[data-look="4"] .item-no::before { content: "CRATE "; }
-    html[data-look="2"] .item { background: var(--paper); border: 1.5px solid var(--ink); border-radius: 0; }
-    html[data-look="2"] .item-no { border-bottom: 1px solid var(--line2); margin: -1.3rem -1.2rem 1rem; padding: .45rem 1.2rem; color: var(--ink); }
-    html[data-look="2"] .item-no::before { content: "PART "; color: var(--red); }
-    html[data-look="3"] .item { border-radius: 18px; border-color: var(--line2); background: linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,.015)); }
-    html[data-look="3"] .item-no { font-family: var(--hand); font-size: 18px; letter-spacing: 0; color: var(--gold); }
-    html[data-look="3"] .item-no::before { content: "gift no. "; }
-
-    .why { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 2.6rem; }
-    .why div { border-left: 3px solid var(--red); padding: .2rem 0 .2rem 1.1rem; }
-    html[data-look="3"] .why div { border-left-color: var(--gold); }
-    .why h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; margin-bottom: .3rem; }
-    .why p { font-size: 14px; color: var(--sub); }
-    .why a { color: var(--ink); }
-
-    /* The shelf */
-    .shelf { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-    .feature { grid-column: 1 / -1; display: grid; grid-template-columns: auto 1fr auto; gap: 1.6rem; align-items: center; background: var(--card); border: 1px solid var(--line2); border-radius: var(--radius-lg); padding: 1.3rem 1.6rem; }
-    .feature .fno { font-family: var(--mono); font-size: 11px; letter-spacing: .16em; color: var(--red); }
-    .feature h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; }
-    .feature p { font-size: 13.5px; color: var(--sub); }
-    .feature .fprice { text-align: right; }
-    .feature .fprice b { font-family: var(--font-display); font-size: 1.7rem; display: block; line-height: 1.1; }
-    .feature .fprice s { color: var(--sub); font-size: 13px; }
-    .feature .btn-primary { margin-top: .5rem; padding: 9px 18px; }
-    .soon { position: relative; background: var(--card); border: 1px dashed var(--line2); border-radius: var(--radius-md); padding: 1rem 1.2rem 1.2rem; text-align: center; transition: transform .25s; }
-    .soon:hover { transform: translateY(-3px); }
-    .peek { width: 150px; margin: 0 auto .4rem; }
-    .soon-no { font-family: var(--mono); font-size: 10.5px; letter-spacing: .16em; color: var(--muted); }
-    .soon h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 600; }
-    .soon p { font-size: 13px; color: var(--sub); }
-    html[data-look="2"] .feature, html[data-look="2"] .soon { background: var(--paper); border: 1.5px solid var(--ink); border-radius: 0; }
-    html[data-look="2"] .soon { border-style: dashed; }
-    html[data-look="3"] .feature { border-radius: 22px; background: linear-gradient(120deg, rgba(242,193,78,.12), rgba(255,255,255,.03)); }
-    html[data-look="3"] .feature .fno { color: var(--gold); }
-    html[data-look="3"] .soon { border-radius: 18px; border-style: solid; border-color: var(--line); background: rgba(255,255,255,.035); }
-    html[data-look="3"] .soon-no { font-family: var(--hand); font-size: 17px; letter-spacing: 0; color: var(--gold); }
-
-    /* Order */
-    .order { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 3rem; align-items: start; }
-    .steps { list-style: none; counter-reset: s; margin-top: 1.4rem; }
-    .steps li { counter-increment: s; position: relative; padding: 0 0 1.4rem 3rem; }
-    .steps li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 2rem; height: 2rem; border-radius: 50%; border: 1px solid var(--line2); display: grid; place-items: center; font-family: var(--mono); font-size: 13px; color: var(--red); }
-    html[data-look="3"] .steps li::before { color: var(--gold); }
-    .steps b { display: block; font-family: var(--font-display); font-weight: 600; }
-    .steps span { font-size: 14px; color: var(--sub); }
-    .contact-form { background: var(--card); border: 1px solid var(--line2); border-radius: var(--radius-lg); padding: 1.6rem; display: grid; gap: .8rem; }
-    html[data-look="2"] .contact-form { background: var(--paper); border: 1.5px solid var(--ink); border-radius: 0; box-shadow: 6px 6px 0 var(--ink); }
-    html[data-look="3"] .contact-form { border-radius: 22px; }
-    .contact-form h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; }
-    .contact-form label { font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--sub); margin-top: .2rem; }
-    .contact-form input, .contact-form select, .contact-form textarea { width: 100%; background: var(--bg); color: var(--ink); border: 1px solid var(--line2); border-radius: var(--radius-sm); padding: 11px 12px; font: inherit; font-size: 14.5px; }
-    html[data-look="2"] .contact-form input, html[data-look="2"] .contact-form select, html[data-look="2"] .contact-form textarea { background: #fff; border-radius: 0; }
-    .two { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
-    .radio-row { display: flex; gap: .7rem; flex-wrap: wrap; }
-    .radio-row label { flex: 1; margin: 0; display: flex; align-items: center; gap: 8px; border: 1px solid var(--line2); border-radius: var(--radius-sm); padding: 10px 12px; font-size: 13.5px; letter-spacing: 0; text-transform: none; color: var(--ink); cursor: pointer; background: var(--bg); white-space: nowrap; }
-    .radio-row input { width: auto; accent-color: var(--accent); }
-    .total { display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid var(--line2); padding-top: .75rem; font-size: 13px; color: var(--sub); }
-    .total b { font-family: var(--font-display); font-size: 1.5rem; color: var(--ink); font-weight: 600; }
-    .contact-form button { width: 100%; padding: 13px; }
-    .contact-status { font-size: 14px; min-height: 1em; line-height: 1.65; }
-    .fine { font-size: 12px; color: var(--muted); }
-
-    /* FAQ */
-    .faq { max-width: 820px; margin-top: 2rem; }
-    details { border-bottom: 1px solid var(--line2); padding: 1.1rem 0; }
-    details:first-of-type { border-top: 1px solid var(--line2); }
-    summary { font-family: var(--font-display); font-weight: 500; font-size: 1.04rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
-    summary::-webkit-details-marker { display: none; }
-    summary::after { content: "+"; color: var(--red); font-family: var(--mono); font-weight: 700; }
-    details[open] summary::after { content: "\2212"; }
-    details p { margin-top: .7rem; font-size: 14.5px; color: var(--sub); line-height: 1.75; max-width: 70ch; }
-    details a { color: var(--ink); }
-
-    /* FOOTER (matches the other pages) */
-    footer { background: var(--bg); border-top: 1px solid var(--line); padding: 1.75rem 2.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; }
-    .footer-logo { font-family: var(--font-display); font-size: 12px; font-weight: 600; letter-spacing: .2em; color: var(--muted); }
-    .footer-logo span { color: var(--red); }
-    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
-    .footer-links li, .footer-copy { white-space: nowrap; }
-    .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color .2s; display: inline-flex; align-items: center; }
-    .footer-links a:hover { color: var(--sub); }
-    .footer-copy { font-size: 12px; color: var(--muted); }
-    .footer-copy a { color: inherit; text-decoration: none; }
-    .site-nap { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 8px 26px; font-size: 13px; color: var(--sub); padding-top: 1rem; border-top: 1px solid var(--line); }
-    .site-nap b { color: var(--ink); }
-    .site-nap a { color: inherit; text-decoration: none; }
-
-    /* Design option picker, only shown when the address has ?look= */
-    .looks { display: none; }
-    .show-looks .looks { display: flex; position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 200; gap: 4px; align-items: center; padding: 6px; border-radius: 99px; background: rgba(10,14,26,.92); border: 1px solid rgba(255,255,255,.15); box-shadow: 0 14px 40px -10px rgba(0,0,0,.6); font-size: 12.5px; white-space: nowrap; }
-    .looks span { color: #8a9ab5; padding: 0 10px 0 12px; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
-    .looks a { color: #e8eaf0; text-decoration: none; padding: 7px 14px; border-radius: 99px; }
-    .looks a:hover { background: rgba(255,255,255,.08); }
-    .looks a.on { background: #d63c35; color: #fff; }
-
-    @media (max-width: 1040px) {
-      .nav-links a { padding: 0 .7rem; }
-    }
-    @media (max-width: 900px) {
-      .nav-links { display: none; }
-      .hero-inner, .order { grid-template-columns: 1fr; }
-      .hero-inner { gap: 2rem; }
-      .specs-inner { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 1.2rem; }
-      html[data-look="2"] .spec { border-right: 1px solid var(--line2); }
-      .why { grid-template-columns: 1fr; }
-      .shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .feature { grid-template-columns: 1fr; text-align: left; gap: .6rem; }
-      .feature .fprice { text-align: left; }
-    }
-    @media (max-width: 640px) {
-      nav { padding: 0 1.1rem; }
-      .hero-inner { padding: 1.4rem 1.15rem 2.6rem; gap: 1.2rem; }
-      .scene-wrap { order: -1; margin: 0 -0.4rem; }
-      html[data-look="3"] .scene-wrap { max-width: 330px; }
-      html[data-look="2"] .scene-wrap { margin: 0; }
-      h1 { font-size: 2.2rem; }
-      .price .now { font-size: 2.5rem; }
-      .hero-cta { flex-direction: column; align-items: stretch; }
-      .specs-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 1.2rem 1.15rem; }
-      html[data-look="2"] .specs-inner { padding: 0 1.15rem; }
-      section { padding: 3.6rem 1.15rem; }
-      .shelf { grid-template-columns: 1fr 1fr; gap: 10px; }
-      .peek { width: 110px; }
-      .two { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 1.75rem 1.15rem 5rem; }
-      .footer-links { justify-content: center; gap: .5rem 1.25rem; }
-      .site-nap { flex-direction: column; gap: 4px; }
-      .show-looks .looks span { display: none; }
-      .looks a { padding: 7px 10px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .scene *, .scene { animation: none !important; }
-    }
-
-    /* used gear cards */
-    .prod { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line2); border-radius: var(--radius-md); padding: 1rem 1.1rem 1.1rem; transition: transform .25s; }
-    .prod:hover { transform: translateY(-3px); }
-    .prod-ph { background: #fff; border-radius: 6px; aspect-ratio: 4 / 3; overflow: hidden; margin-bottom: .8rem; display: grid; place-items: center; }
-    .prod-ph img { width: 100%; height: 100%; object-fit: contain; display: block; }
-    .prod-ph .peek { width: 60%; margin: 0; }
-    html[data-look="1"] .prod-ph:has(.peek), html[data-look="4"] .prod-ph:has(.peek), html[data-look="3"] .prod-ph:has(.peek) { background: var(--bg); }
-    .prod-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: .3rem; }
-    .cond { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); border: 1px solid currentColor; border-radius: 3px; padding: 1px 6px; }
-    .cond.new { color: #3fd38a; }
-    .prod h3 { font-family: var(--font-display); font-size: 1.02rem; font-weight: 600; line-height: 1.3; margin-bottom: .3rem; }
-    .prod p { font-size: 13px; color: var(--sub); line-height: 1.55; flex: 1; }
-    .prod-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: .9rem; padding-top: .8rem; border-top: 1px solid var(--line); }
-    .prod-price { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; }
-    .prod-price small { font-size: 12px; font-weight: 400; color: var(--sub); }
-    .btn-primary.sm { padding: 8px 16px; font-size: 12px; }
-    html[data-look="2"] .prod { background: var(--paper); border: 1.5px solid var(--ink); border-radius: 0; }
-    html[data-look="3"] .prod { border-radius: 18px; background: rgba(255,255,255,.035); border-color: var(--line); }
-    @media (max-width: 640px) { .prod { padding: .7rem .7rem .8rem; } .prod p { font-size: 12px; } .prod h3 { font-size: .9rem; } .prod-foot { flex-direction: column; align-items: stretch; text-align: center; } }
-
-
-    /* emergency parts */
-    .emergency { display: flex; align-items: center; gap: 14px; padding: 11px max(2.5rem, calc((100% - 1180px) / 2 + 2.5rem)); text-decoration: none; color: var(--ink); font-size: 14px; border-bottom: 1px solid var(--line); background: rgba(229,57,53,.08); }
-    .emergency b { color: var(--red); }
-    .em-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--red); flex: none; box-shadow: 0 0 0 0 rgba(229,57,53,.6); animation: pulse 1.8s infinite; }
-    .em-go { margin-left: auto; white-space: nowrap; font-weight: 600; color: var(--red); }
-    .emergency:hover .em-go { text-decoration: underline; }
-    @keyframes pulse { 70% { box-shadow: 0 0 0 10px rgba(229,57,53,0); } 100% { box-shadow: 0 0 0 0 rgba(229,57,53,0); } }
-    .stock { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: #3fd38a; display: inline-flex; align-items: center; gap: 6px; }
-    .stock::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #3fd38a; }
-    .fits { font-family: var(--mono); font-size: 11px; color: var(--sub); margin: -.1rem 0 .4rem; letter-spacing: .02em; }
-    .fits-filter { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: -1.2rem 0 1.8rem; }
-    .fits-filter span { font-size: 13px; color: var(--sub); margin-right: 4px; }
-    .fits-filter button { background: transparent; color: var(--ink); border: 1px solid var(--line2); border-radius: 99px; padding: 6px 14px; font: inherit; font-size: 13px; cursor: pointer; }
-    .fits-filter button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
-    .prod.dim { display: none; }
-    .section-sub a { color: var(--ink); }
-    @media (max-width: 640px) { .emergency { padding: 12px 1.15rem; font-size: 13px; align-items: flex-start; } .em-dot { margin-top: 5px; } .em-go { display: none; } }
-    @media (prefers-reduced-motion: reduce) { .em-dot { animation: none; } }
-
-
-    /* ── HERO LAYOUT OPTIONS (preview with ?hero=1|2|3) ── */
-    @media (min-width: 901px) {
-      /* 1: full screen like the home page, words over the sky, the yard across the bottom */
-      html[data-hero="1"] #top { min-height: calc(100vh - 130px); display: flex; flex-direction: column; }
-      html[data-hero="1"] .hero-inner { position: static; display: block; max-width: 940px; text-align: center; padding: 3.2rem 2rem 0; margin: 0 auto; flex: 1 0 auto; }
-      html[data-hero="1"] .hero-inner > div:first-child { position: relative; z-index: 3; }
-      html[data-hero="1"] .hero-inner > div:first-child::before { content: ""; position: absolute; inset: -40px -120px -30px; z-index: -1; pointer-events: none; background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(10,19,36,.9) 0%, rgba(10,19,36,.55) 55%, rgba(10,19,36,0) 100%); }
-      html[data-hero="1"] .scene-wrap { position: absolute; left: 0; right: 0; bottom: 0; height: min(72%, 36vw); z-index: 1; }
-      html[data-hero="1"] #scene { width: 100%; height: 100%; -webkit-mask-image: linear-gradient(180deg, transparent, #000 18%); mask-image: linear-gradient(180deg, transparent, #000 18%); }
-      html[data-hero="1"] .hero-tag, html[data-hero="1"] .hero-cta, html[data-hero="1"] .price { justify-content: center; }
-      html[data-hero="1"] .hero-sub { margin: 0 auto 1.2rem; max-width: 760px; }
-      html[data-hero="1"] .price { margin-bottom: 1.2rem; }
-      html[data-hero="1"] .hero-note { display: none; }
-      html[data-hero="1"] h1 { font-size: clamp(2.6rem, 4.2vw, 4.2rem); margin-bottom: 1rem; }
-      html[data-hero="1"] .hero-map { display: none; }
-
-      /* 2: wide banner, words on top, the yard edge to edge underneath */
-      html[data-hero="2"] .hero-inner { display: block; max-width: 1180px; text-align: center; padding: 2.4rem 2rem 0; }
-      html[data-hero="2"] .hero-inner > div:first-child { position: relative; z-index: 2; }
-      html[data-hero="2"] .hero-tag, html[data-hero="2"] .hero-cta, html[data-hero="2"] .price { justify-content: center; }
-      html[data-hero="2"] .hero-tag { margin-bottom: .8rem; }
-      html[data-hero="2"] h1 { font-size: clamp(2.4rem, 3.7vw, 3.7rem); margin-bottom: .8rem; }
-      html[data-hero="2"] .hero-sub { margin: 0 auto 1rem; max-width: 980px; font-size: .95rem; }
-      html[data-hero="2"] .price { margin-bottom: 1rem; }
-      html[data-hero="2"] .price .now { font-size: 2.6rem; }
-      html[data-hero="2"] .hero-cta { margin-bottom: 0; }
-      html[data-hero="2"] .hero-note { display: none; }
-      html[data-hero="2"] .scene-wrap { margin: -70px calc(50% - 50vw) 0; width: 100vw; position: relative; z-index: 1; }
-      html[data-hero="2"] #scene { -webkit-mask-image: linear-gradient(180deg, transparent, #000 22%, #000 92%, transparent); mask-image: linear-gradient(180deg, transparent, #000 22%, #000 92%, transparent); }
-
-      /* 3: big split, short text column, the yard fills the rest to the edge */
-      html[data-hero="3"] .hero-inner { max-width: none; grid-template-columns: minmax(340px, .72fr) minmax(0, 1.6fr); gap: 1rem; padding: 2.5rem 0 1.5rem max(2.5rem, calc((100vw - 1180px) / 2 + 2.5rem)); min-height: calc(100vh - 106px); }
-      html[data-hero="3"] h1 { font-size: clamp(2.2rem, 3.4vw, 3.3rem); }
-      html[data-hero="3"] .hero-sub { font-size: .95rem; }
-      html[data-hero="3"] .scene-wrap { align-self: stretch; display: flex; align-items: center; }
-      html[data-hero="3"] #scene { -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%), linear-gradient(180deg, transparent, #000 14%, #000 94%, transparent); -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent, #000 6%), linear-gradient(180deg, transparent, #000 14%, #000 94%, transparent); mask-composite: intersect; }
-    }
-    @media (max-width: 900px) {
-      html[data-hero] .scene-wrap { margin: 0 -1.15rem; }
-      html[data-hero] #scene { -webkit-mask-image: none; mask-image: none; }
-    }
-    .heroes { display: none; }
-    .show-heroes .heroes { display: flex; position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 200; gap: 4px; align-items: center; padding: 6px; border-radius: 99px; background: rgba(10,14,26,.92); border: 1px solid rgba(255,255,255,.15); box-shadow: 0 14px 40px -10px rgba(0,0,0,.6); font-size: 12.5px; white-space: nowrap; }
-    .heroes span { color: #8a9ab5; padding: 0 10px 0 12px; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
-    .heroes a { color: #e8eaf0; text-decoration: none; padding: 7px 14px; border-radius: 99px; }
-    .heroes a.on { background: #d63c35; color: #fff; }
-    .show-heroes .looks { display: none; }
-
-
-    /* details as closed sections, open on tap */
-    .details { overflow: visible; }
-    .details .acc { padding: 0; border-top: 0; border-bottom: 1px solid var(--line2); }
-    .details .acc:last-child { border-bottom: 0; }
-    .acc > summary { list-style: none; cursor: pointer; display: flex; align-items: baseline; gap: 14px; padding: 17px 1.6rem; font-family: inherit; font-size: inherit; }
-    .acc > summary::-webkit-details-marker { display: none; }
-    .acc > summary::after { content: none; }
-    .acc > summary::before { content: ""; align-self: center; width: 8px; height: 8px; margin: 0 4px 0 2px; border-right: 2px solid var(--accent); border-bottom: 2px solid var(--accent); transform: rotate(-45deg); transition: transform .2s; flex: none; }
-    .acc[open] > summary::before { transform: rotate(45deg); }
-    .details .acc[open] > summary::after { content: none; }
-    .acc > summary { justify-content: flex-start; }
-    .acc > summary:hover .acc-t { color: var(--accent); }
-    .acc-t { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; color: var(--ink); }
-    .acc-s { font-size: 13px; color: var(--sub); }
-    .acc .panel { padding: 0 1.6rem 1.5rem; }
-    @media (max-width: 640px) { .acc > summary { flex-wrap: wrap; gap: 2px 10px; padding: 15px 1.1rem; } .acc-s { flex-basis: 100%; order: 2; padding-left: 24px; } .acc .panel { padding: 0 1.1rem 1.2rem; } }
-
-    /* box grid breakpoints last so they win */
-    @media (max-width: 1040px) { #bundle .box-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-    @media (max-width: 640px) { #bundle .box-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; } }
-  </style>
+/* season text swaps */
+.s-x{display:none}
+[data-season=christmas] .s-x{display:inline}
+[data-season=christmas] .s-d{display:none}
+/* ===== Christmas skin ===== */
+#top{position:relative;overflow:hidden}
+#top>.hero,#top>.wrap{position:relative;z-index:2}
+.x-snow{position:absolute;left:0;top:0;z-index:1;pointer-events:none}
+.x-lights{position:absolute;left:0;right:0;top:0;height:56px;z-index:3;pointer-events:none;overflow:hidden}
+.x-bulb{animation:twinkle 2.4s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:1}50%{opacity:.45}}
+[data-season=christmas] .hero{padding-top:110px}
+[data-season=christmas] .pill{border-color:#d6312b;color:#d6312b}
+.x-fly{position:absolute;top:64px;left:0;z-index:4;pointer-events:none;animation:flyby 18s linear infinite;animation-delay:1.5s;transform:translateX(-200px)}
+.x-bob{animation:bob 2.2s ease-in-out infinite}
+.x-prop{animation:spin .12s linear infinite;transform-origin:75px 18px}
+@keyframes flyby{0%{transform:translateX(-200px)}55%,100%{transform:translateX(calc(100vw + 60px))}}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(14px) rotate(2deg)}}
+@keyframes spin{50%{opacity:.4}}
+nav .logo{position:relative}
+.x-hat{position:absolute;left:10px;top:-13px;width:36px;transform:rotate(16deg);pointer-events:none;z-index:2}
+.feature{position:relative}
+[data-season=christmas] .feature{overflow:visible;margin-top:44px}
+.x-ribbon{position:absolute;top:0;bottom:0;left:50%;width:18px;transform:translateX(-50%);background:#d6312b;box-shadow:inset 3px 0 0 #e8463f,inset -3px 0 0 #b8241f}
+.x-bow{position:absolute;left:50%;top:-44px;width:120px;transform:translateX(-50%);filter:drop-shadow(0 4px 6px rgba(13,22,39,.18))}
+.x-tag{position:absolute;left:calc(50% + 46px);top:18px;transform:rotate(9deg);transform-origin:top left;background:#fffdf6;border:2px solid #14233f;border-radius:6px 14px 14px 6px;padding:8px 14px 8px 22px;font:700 14px/1.25 var(--f);color:var(--deep);box-shadow:0 6px 14px rgba(13,22,39,.12)}
+.x-tag i{position:absolute;left:7px;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;border:2px solid #14233f}
+[data-season=christmas] .feature .card-tag{background:#1f8a4c}
+[data-season=christmas] .small-gift .card-ph{position:relative}
+[data-season=christmas] .small-gift .card-ph:after{content:"Stocking stuffer";position:absolute;left:12px;top:12px;font:700 13px var(--f);letter-spacing:.04em;color:#fff;background:#d6312b;border-radius:6px;padding:6px 10px 6px 16px;
+ background-image:repeating-linear-gradient(135deg,#fff 0 3px,transparent 3px 7px);background-size:7px 100%;background-repeat:no-repeat;background-color:#d6312b}
+[data-season=christmas] .order-sec .sec-s .s-x{color:#1f8a4c;font-weight:700}
+[data-season=christmas] footer{position:relative;margin-top:30px}
+[data-season=christmas] footer:before{content:"";position:absolute;left:0;right:0;top:-22px;height:24px;
+ background:radial-gradient(circle at 20px 0,#fff 0 18px,transparent 19px) 0 0/40px 24px repeat-x;background-color:var(--deep);
+ -webkit-mask:radial-gradient(circle at 20px 24px,#000 0 20px,transparent 21px) 0 0/40px 24px repeat-x;mask:radial-gradient(circle at 20px 24px,#000 0 20px,transparent 21px) 0 0/40px 24px repeat-x}
+@media (max-width:980px){
+ [data-season=christmas] .hero{padding-top:84px}
+ .x-ribbon{display:none}
+ .x-fly{top:50px}.x-fly svg{width:96px;height:83px}
+ .x-tag{font-size:12px;left:auto;right:12px;top:-30px;transform:rotate(6deg)}
+ .x-bow{width:96px;top:-36px}
+}
+@media (prefers-reduced-motion:reduce){.x-fly{display:none}.x-bulb,.x-bob,.x-prop{animation:none}}
+</style>
 </head>
 <body>
+<nav>
+  <a class="logo" href="/"><img src="assets/images/pq-robotics-logo.svg" alt="">PQ ROBOTICS</a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/drone-repair-atlanta.html">Drone Hospital</a></li>
+    <li><a href="/drone-classes-atlanta.html">Education</a></li>
+    <li><a class="here" href="/drone-shop-atlanta.html">Shop</a></li>
+    <li><a href="/drone-news.html">DHD</a></li>
+    <li><a href="/footage.html">Footage</a></li>
+    <li><a href="/#about">About Us</a></li>
+  </ul>
+  <a class="nav-cta" href="#order">Reserve</a>
+</nav>
+<main>
 
-  <nav>
-    <a href="/" class="nav-logo">PQ <span>ROBOTICS</span></a>
-    <ul class="nav-links">
-      <li><a href="/">Home</a></li>
-      <li><a href="/drone-repair-atlanta.html"><span class="nav-x">✚</span>Drone Hospital</a></li>
-      <li><a href="/drone-classes-atlanta.html">Education</a></li>
-      <li><a class="here" href="/drone-shop-atlanta.html">Shop</a></li>
-      <li><a href="/drone-news.html" title="Drone Hospital Daily" aria-label="DHD, Drone Hospital Daily"><svg class="nav-dhd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18h-5"/><path d="M18 14h-8"/><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><rect width="8" height="4" x="10" y="6" rx="1"/></svg>DHD</a></li>
-      <li><a href="/footage.html">Footage</a></li>
-      <li><a href="/#about">About Us</a></li>
-    </ul>
-    <a class="nav-cta" href="#order"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></svg>Reserve an A1</a>
-  </nav>
-
-  <main>
-
-  <!-- EMERGENCY PARTS STRIP -->
-  <a class="emergency" href="#shelf">
-    <span class="em-dot" aria-hidden="true"></span>
-    <span><b>Crashed your DJI Mini?</b> Emergency parts in stock now at our Atlanta shop: Mini 4 Pro, Mini 5 Pro and Mini 3 Pro arms, controllers, batteries and more.</span>
-    <span class="em-go">See parts &rarr;</span>
-  </a>
-
-  <!-- HERO -->
-  <div id="top">
-    <div class="hero-map" aria-hidden="true"></div>
-    <canvas id="snow" aria-hidden="true"></canvas>
-    <div class="hero-inner">
-      <div>
-        <div class="hero-tag"><span><b>✚</b> PQ Robotics Shop · Holiday 2026</span><span class="countdown" id="xmas" hidden></span></div>
-        <h1>The Antigravity A1, <em>wrapped and ready.</em></h1>
-        <p class="hero-sub">The 8K 360 camera drone you fly with goggles and a point-to-fly grip. This is the <strong>Essential Bundle</strong>: drone, Vision goggles, Grip motion controller, two batteries, charging hub, carry case, sling bag, landing pad and a 256 GB card. Sold here in Atlanta by the shop that repairs drones and teaches pilots.</p>
-        <div class="price" aria-label="Holiday price 1,450 dollars, regularly 1,650 dollars">
-          <span class="now">$1,450</span><span class="was">$1,650</span><span class="save">SAVE $200</span>
-        </div>
-        <div class="hero-cta">
-          <a class="btn-primary" href="#order"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></svg>Reserve yours</a>
-          <a class="btn-ghost" href="#bundle">What's in the box</a>
-        </div>
-        <p class="hero-note">Reserve online, no payment up front. We confirm stock, then you pay by Zelle, Venmo or check and pick it up at the shop.</p>
-      </div>
-      <div class="scene-wrap">
-        <svg id="scene" class="scene" role="img" viewBox="0 0 640 440" aria-label="Drone Hospital robots dressed for the holidays with the Antigravity A1"></svg>
-      </div>
+<div id="top">
+<header class="hero wrap">
+  <span class="pill"><span class="s-d">PQ Robotics Shop · Atlanta</span><span class="s-x">Holiday Shop · <span id="xmas-days">Atlanta</span></span></span>
+  <h1>DJI Mini parts in stock</h1>
+  <p><span class="s-d">Reserve online. Pick up today.</span><span class="s-x">Gifts and parts, ready to pick up before Christmas.</span></p>
+</header>
+<div class="wrap">
+  <div class="feature" id="bundle" data-open="a1" role="button" tabindex="0" aria-label="Antigravity A1 details">
+    <img src="assets/images/shop/a1-hero.jpg" alt="Antigravity A1 drone with Grip and Vision goggles">
+    <div>
+      <span class="card-tag"><span class="s-d">New · In stock</span><span class="s-x">Holiday deal</span></span>
+      <h2>Antigravity A1</h2>
+      <p>8K 360 drone with goggles. Everything in the box.</p>
+      <div class="fp">$1,450 <s>$1,650</s></div>
+      <span class="btn">See details</span>
     </div>
   </div>
+</div>
+</div>
+<div class="wrap" id="shelf">
+  <div class="parts-h"><h2><span class="s-d">Parts</span><span class="s-x">Parts &amp; stocking stuffers</span></h2></div>
+  <div class="chips" role="group" aria-label="Shop by drone"><button type="button" data-f="all" class="on">All</button><button type="button" data-f="Mini 3">Mini 3</button><button type="button" data-f="Mini 3 Pro">Mini 3 Pro</button><button type="button" data-f="Mini 4 Pro">Mini 4 Pro</button><button type="button" data-f="Mini 5 Pro">Mini 5 Pro</button></div>
+  <div id="grid" data-skip-a1></div>
+</div>
 
-  <!-- SPECS -->
-  <div class="specs">
-    <div class="specs-inner">
-      <div class="spec"><b>8K 360°</b><span data-n="01">Video, every angle</span></div>
-      <div class="spec"><b>&lt;249 g</b><span data-n="02">Takeoff weight</span></div>
-      <div class="spec"><b>24 min</b><span data-n="03">Per battery, ×2</span></div>
-      <div class="spec"><b>10 km</b><span data-n="04">Max video link</span></div>
-      <div class="spec"><b>Point to fly</b><span data-n="05">FreeMotion grip</span></div>
-    </div>
+<section class="order-sec" id="order"><div class="wrap order-grid">
+  <div>
+    <h2 class="sec-t">Reserve it</h2>
+    <p class="sec-s">No checkout. No card fees.<span class="s-x"><br>Buying a gift? Say so in the notes.</span></p>
+    <ol class="steps">
+      <li><i>1</i><div><b>Reserve here</b><span>Nothing to pay yet.</span></div></li>
+      <li><i>2</i><div><b>We text you</b><span>We confirm stock and a pickup time.</span></div></li>
+      <li><i>3</i><div><b>Pay and pick up</b><span>6059 Boylston Dr NE, Atlanta</span></div></li>
+    </ol>
+    <p class="pay"><b>Pay by</b> Zelle, Venmo or check.<br>Questions? Call <a href="tel:+14044089063">(404) 408-9063</a></p>
   </div>
-
-
-  <!-- REAL PHOTOS: hidden until photo files are listed in A1_PHOTOS at the bottom of the page -->
-  <section id="photos" hidden>
-    <div class="eyebrow">Meet the A1</div>
-    <h2>Here's what's under the wrapping</h2>
-    <p class="section-sub">Tap a photo to see it larger.</p>
-    <div class="photos-grid">
-      <figure class="ph-main"><img id="ph-big" src="" alt=""><figcaption id="ph-cap"></figcaption></figure>
-      <div class="ph-thumbs" id="ph-thumbs"></div>
-    </div>
-  </section>
-
-  <!-- IN THE BOX -->
-  <section id="bundle">
-    <div class="eyebrow">The Essential Bundle</div>
-    <h2>Everything you need to fly on Christmas morning</h2>
-    <p class="section-sub">Twelve pieces in the box. The A1 films a full sphere around itself, so you fly first and pick the shot later, and the stitching hides the drone from its own video.</p>
-    <div class="box-grid">
-      <article class="item"><div class="item-no">01</div><div class="item-ph"><img src="assets/images/shop/box/drone.jpg" alt="A1 drone" loading="lazy" width="157" height="157"></div><h3>A1 drone <span class="qty">×1</span></h3><p>8K 360, under 249 g</p></article>
-      <article class="item"><div class="item-no">02</div><div class="item-ph"><img src="assets/images/shop/box/goggles.jpg" alt="Vision goggles" loading="lazy" width="157" height="157"></div><h3>Vision goggles <span class="qty">×1</span></h3><p>Look around in 360 as you fly</p></article>
-      <article class="item"><div class="item-no">03</div><div class="item-ph"><img src="assets/images/shop/box/grip.jpg" alt="Grip motion controller" loading="lazy" width="157" height="157"></div><h3>Grip motion controller <span class="qty">×1</span></h3><p>Point it and pull the trigger</p></article>
-      <article class="item"><div class="item-no">04</div><div class="item-ph"><img src="assets/images/shop/box/battery.jpg" alt="Flight batteries" loading="lazy" width="157" height="157"></div><h3>Flight batteries <span class="qty">×2</span></h3><p>Up to 24 min each</p></article>
-      <article class="item"><div class="item-no">05</div><div class="item-ph"><img src="assets/images/shop/box/props.jpg" alt="Spare propellers" loading="lazy" width="157" height="157"></div><h3>Spare propellers <span class="qty">×4</span></h3><p>Two spare pairs</p></article>
-      <article class="item"><div class="item-no">06</div><div class="item-ph"><img src="assets/images/shop/box/case.jpg" alt="Drone carry case" loading="lazy" width="157" height="157"></div><h3>Drone carry case <span class="qty">×1</span></h3><p>Protects the drone in transit</p></article>
-      <article class="item"><div class="item-no">07</div><div class="item-ph"><img src="assets/images/shop/box/bag.jpg" alt="Sling bag" loading="lazy" width="157" height="157"></div><h3>Sling bag <span class="qty">×1</span></h3><p>Carries the whole kit</p></article>
-      <article class="item"><div class="item-no">08</div><div class="item-ph"><img src="assets/images/shop/box/pad.jpg" alt="Landing pad" loading="lazy" width="157" height="157"></div><h3>Landing pad <span class="qty">×1</span></h3><p>Clean takeoffs on grass or dirt</p></article>
-      <article class="item"><div class="item-no">09</div><div class="item-ph"><img src="assets/images/shop/box/vbatt.jpg" alt="Vision battery" loading="lazy" width="157" height="157"></div><h3>Vision battery <span class="qty">×1</span></h3><p>Powers the goggles</p></article>
-      <article class="item"><div class="item-no">10</div><div class="item-ph"><img src="assets/images/shop/box/hub.jpg" alt="Charging hub" loading="lazy" width="157" height="157"></div><h3>Charging hub <span class="qty">×1</span></h3><p>Charges the flight batteries</p></article>
-      <article class="item"><div class="item-no">11</div><div class="item-ph"><img src="assets/images/shop/box/lens.jpg" alt="Replacement lens kit" loading="lazy" width="157" height="157"></div><h3>Replacement lens kit <span class="qty">×1</span></h3><p>Spare lens parts and cleaning tools</p></article>
-      <article class="item"><div class="item-no">12</div><div class="item-ph"><img src="assets/images/shop/box/sd.jpg" alt="Lexar 256 GB microSD" loading="lazy" width="157" height="157"></div><h3>Lexar 256 GB microSD <span class="qty">×1</span></h3><p>U3 A2 V30, ready to record</p></article>
-    </div>
-
-    <div class="details" id="details">
-      <details class="acc" id="p-spec">
-        <summary><span class="acc-t">Specifications</span><span class="acc-s">Brand, video, flight time, goggles and more</span></summary>
-        <div class="panel">
-        <dl class="spec-table">
-          <div><dt>Brand</dt><dd>Antigravity</dd></div>
-          <div><dt>Model</dt><dd>A1, Essential Bundle</dd></div>
-          <div><dt>Color</dt><dd>White</dd></div>
-          <div><dt>Takeoff weight</dt><dd>Under 249 g (8.78 oz)</dd></div>
-          <div><dt>Video</dt><dd>8K 360 (7680 × 3840) at 30, 25 or 24 fps, plus 5.2K and 4K modes</dd></div>
-          <div><dt>Photos</dt><dd>55 MP 360 stills (10496 × 5248)</dd></div>
-          <div><dt>Flight time</dt><dd>Up to 24 minutes per battery, 2 batteries included</dd></div>
-          <div><dt>Top speed</dt><dd>8 m/s (17.9 mph) in Sport mode</dd></div>
-          <div><dt>Video link</dt><dd>Up to 10 km</dd></div>
-          <div><dt>Storage</dt><dd>microSD, Lexar 256 GB card included</dd></div>
-          <div><dt>Vision goggles</dt><dd>340 g, about 90° diagonal view, 2560 × 2560 per eye, diopter +2D to −5D, TÜV Rheinland Low Blue Light certified</dd></div>
-          <div><dt>Controls</dt><dd>Grip motion controller with FreeMotion point-to-fly</dd></div>
-          <div><dt>Safety</dt><dd>Auto return to home</dd></div>
-        </dl>
-        </div>
-      </details>
-      <details class="acc" id="p-war">
-        <summary><span class="acc-t">Warranty &amp; support</span><span class="acc-s">Antigravity warranty, Drone Hospital help</span></summary>
-        <div class="panel">
-        <ul class="policy">
-          <li><b>Manufacturer warranty.</b> Your A1 is covered by Antigravity's manufacturer warranty.</li>
-          <li><b>Drone Hospital help.</b> If something isn't right, bring it to the shop. We diagnose it and help you file the warranty claim with Antigravity.</li>
-          <li><b>Crashes and damage.</b> Things the warranty doesn't cover, we can repair at the <a href="/drone-repair-atlanta.html">Drone Hospital</a>.</li>
-          <li><b>Questions any time.</b> Call or text <a href="tel:+14044089063">(404) 408-9063</a>.</li>
-        </ul>
-        </div>
-      </details>
-      <details class="acc" id="p-del">
-        <summary><span class="acc-t">Pickup &amp; delivery</span><span class="acc-s">Pick up in Atlanta or local delivery</span></summary>
-        <div class="panel">
-        <ul class="policy">
-          <li><b>Pickup.</b> At our shop, 6059 Boylston Dr NE, Atlanta, GA 30328, at a time we set together when we confirm your order.</li>
-          <li><b>Atlanta-area delivery.</b> Choose it in the order form and we quote the delivery when we confirm.</li>
-          <li><b>Shipping.</b> We don't ship the A1 outside the Atlanta area yet.</li>
-          <li><b>Payment.</b> Zelle, Venmo or check, after we confirm stock. Nothing is charged when you reserve.</li>
-        </ul>
-        </div>
-      </details>
-      <details class="acc" id="p-ret">
-        <summary><span class="acc-t">Returns</span><span class="acc-s">14 days, unopened</span></summary>
-        <div class="panel">
-        <ul class="policy">
-          <li><b>14 days, unopened.</b> Return it unopened and complete within 14 days of pickup or delivery for a full refund of the purchase price.</li>
-          <li><b>Opened units.</b> Defects are covered by the manufacturer warranty, and we help you with the claim.</li>
-          <li><b>Start a return.</b> Call or text <a href="tel:+14044089063">(404) 408-9063</a>.</li>
-        </ul>
-        </div>
-      </details>
-    </div>
-  </section>
-
-  <!-- THE SHELF -->
-  <div class="band" id="shelf">
-    <section>
-      <div class="eyebrow">Emergency parts · in stock now</div>
-      <h2>DJI Mini parts available now in Atlanta</h2>
-      <p class="section-sub">Crashed and need to fly this week? Don't wait days for shipping. These DJI parts are on the shelf at our Atlanta shop right now. Reserve online, pick up at 6059 Boylston Dr NE, or have the <a href="/drone-repair-atlanta.html">Drone Hospital</a> install it for you. Everything below is used and working unless marked new.</p>
-      <div class="fits-filter" role="group" aria-label="Show parts for your drone"><span>Parts for:</span><button type="button" data-f="all" class="on">All</button><button type="button" data-f="mini3">Mini 3</button><button type="button" data-f="mini3pro">Mini 3 Pro</button><button type="button" data-f="mini4pro">Mini 4 Pro</button><button type="button" data-f="mini5pro">Mini 5 Pro</button></div>
-      <div class="shelf">
-        <article class="feature">
-          <div class="fno">NEW · IN STOCK</div>
-          <div><h3>Antigravity A1 8K 360 Drone, Essential Bundle</h3><p>Drone, Vision goggles, Grip motion controller, two batteries, charging hub, case, sling bag, landing pad, 256 GB card.</p></div>
-          <div class="fprice"><b>$1,450</b><s>$1,650</s><br><a class="btn-primary" href="#order" data-pick="a1">Reserve</a></div>
-        </article>
-        <article class="prod" id="item-rc2" data-fits="mini4pro">
-          <div class="prod-ph"><img src="assets/images/shop/used/rc2.jpg" alt="DJI RC 2 controller, used" loading="lazy" width="520" height="520"></div>
-          <div class="prod-top"><span class="stock">In stock now</span><span class="cond">Used</span></div>
-          <h3>DJI RC 2 controller</h3>
-          <div class="fits">Fits: Mini 4 Pro, Air 3, Air 3S, Neo</div>
-          <p>Controller with a built-in screen, so you don't need your phone to fly.</p>
-          <div class="prod-foot"><b class="prod-price">$399</b><a class="btn-primary sm" href="#order" data-pick="rc2">Reserve</a></div>
-        </article>
-        <article class="prod" id="item-rc-n" data-fits="mini3 mini3pro mini4pro mini5pro">
-          <div class="prod-ph"><img src="assets/images/shop/used/rc-n.jpg" alt="DJI RC-N1 / RC-N2 / RC-N3 controller, used" loading="lazy" width="520" height="520"></div>
-          <div class="prod-top"><span class="stock">In stock now</span><span class="cond">Used</span></div>
-          <h3>DJI RC-N1 / RC-N2 / RC-N3 controller</h3>
-          <div class="fits">Fits: RC-N1: Mini 3, Mini 3 Pro · RC-N2: Mini 4 Pro · RC-N3: Mini 4 Pro, Mini 5 Pro</div>
-          <p>Standard controllers that use your phone as the screen. We have the RC-N1, RC-N2 and RC-N3. Tell us your drone and we match the right one.</p>
-          <div class="prod-foot"><b class="prod-price">$145 <small>each</small></b><a class="btn-primary sm" href="#order" data-pick="rc-n3">Reserve</a></div>
-        </article>
-        <article class="prod" id="item-mini4pro-arms" data-fits="mini4pro">
-          <div class="prod-ph"><img src="assets/images/shop/used/mini4pro-arms.jpg" alt="DJI Mini 4 Pro Arm Replacements, used" loading="lazy" width="520" height="520"></div>
-          <div class="prod-top"><span class="stock">In stock now</span><span class="cond">Used</span></div>
-          <h3>DJI Mini 4 Pro Arm Replacements</h3>
-          <div class="fits">Fits: DJI Mini 4 Pro</div>
-          <p>Replacement arms with motors attached, priced per arm. Pick front left, front right, rear left or rear right when you reserve.</p>
-          <div class="prod-foot"><b class="prod-price">$59 <small>per arm</small></b><a class="btn-primary sm" href="#order" data-pick="mini4pro-arm-front-left">Reserve</a></div>
-        </article>
-        <article class="prod" id="item-mini5pro-arms" data-fits="mini5pro">
-          <div class="prod-ph"><img src="assets/images/shop/used/mini5pro-arms.jpg" alt="DJI Mini 5 Pro Arm Replacements, used" loading="lazy" width="520" height="520"></div>
-          <div class="prod-top"><span class="stock">In stock now</span><span class="cond">Used</span></div>
-          <h3>DJI Mini 5 Pro Arm Replacements</h3>
-          <div class="fits">Fits: DJI Mini 5 Pro</div>
-          <p>Replacement arms with motors attached, priced per arm. Front arms $110, rear arms $95. Pick the position when you reserve.</p>
-          <div class="prod-foot"><b class="prod-price">$95 <small>to $110</small></b><a class="btn-primary sm" href="#order" data-pick="mini5pro-arm-front-left">Reserve</a></div>
-        </article>
-        <article class="prod" id="item-mini3-arms" data-fits="mini3pro">
-          <div class="prod-ph"><img src="assets/images/shop/used/mini3-arms.jpg" alt="DJI Mini 3 Pro Arm Replacements, used" loading="lazy" width="520" height="520"></div>
-          <div class="prod-top"><span class="stock">In stock now</span><span class="cond">Used</span></div>
-          <h3>DJI Mini 3 Pro Arm Replacements</h3>
-          <div class="fits">Fits: DJI Mini 3 Pro</div>
-          <p>Replacement arms with motors attached, priced per arm. Front arms $69, rear arms $49. Pick the position when you reserve. Mini 3 Pro only, they don't fit the plain Mini 3.</p>
-          <div class="prod-foot"><b class="prod-price">$49 <small>to $69</small></b><a class="btn-primary sm" href="#order" data-pick="mini3pro-arm-front-left">Reserve</a></div>
-        </article>
-        <article class="prod" id="item-axis-springs" data-fits="mini3 mini3pro mini4pro">
-          <div class="prod-ph"><img src="assets/images/shop/used/axis-springs.jpg" alt="Front arm axis springs, used" loading="lazy" width="520" height="520"></div>
-          <div class="prod-top"><span class="stock">In stock now</span><span class="cond">Used</span></div>
-          <h3>Front arm axis springs</h3>
-          <div class="fits">Fits: Mini 3, Mini 3 Pro, Mini 4 Pro</div>
-          <p>Front arm hinge shafts with springs for the Mini 4 Pro and Mini 3 series. One axis $20, or the full kit (two axes plus spudger, tweezers and screwdriver) $39.</p>
-          <div class="prod-foot"><b class="prod-price">$20 <small>to $39</small></b><a class="btn-primary sm" href="#order" data-pick="axis-springs-kit">Reserve</a></div>
-        </article>
-        <article class="prod" id="item-mini4pro-case" data-fits="mini4pro">
-          <div class="prod-ph"><img src="assets/images/shop/used/mini4pro-case.jpg" alt="DJI Mini 4 Pro hard case, used" loading="lazy" width="520" height="520"></div>
-          <div class="prod-top"><span class="stock">In stock now</span><span class="cond">Used</span></div>
-          <h3>DJI Mini 4 Pro hard case</h3>
-          <div class="fits">Fits: DJI Mini 4 Pro</div>
-          <p>HPRC 2300 hard case with foam cut for the Mini 4 Pro, an RC 2 or RC-N2 controller, batteries, the two-way charging hub and cables.</p>
-          <div class="prod-foot"><b class="prod-price">$100</b><a class="btn-primary sm" href="#order" data-pick="mini4pro-case">Reserve</a></div>
-        </article>
-        <article class="prod" id="item-mini4pro-batteries" data-fits="mini4pro mini3pro">
-          <div class="prod-ph"><img src="assets/images/shop/used/mini4pro-batteries.jpg" alt="DJI Mini 4 Pro batteries + charger, used" loading="lazy" width="520" height="520"></div>
-          <div class="prod-top"><span class="stock">In stock now</span><span class="cond">Used</span></div>
-          <h3>DJI Mini 4 Pro batteries + charger</h3>
-          <div class="fits">Fits: Mini 4 Pro, Mini 3 Pro</div>
-          <p>Full set: two flight batteries, the two-way charging hub and a USB-C cable, $299. Or one battery, $119. Fits the Mini 4 Pro and Mini 3 Pro.</p>
-          <div class="prod-foot"><b class="prod-price">$119 <small>to $299</small></b><a class="btn-primary sm" href="#order" data-pick="mini4pro-batteries">Reserve</a></div>
-        </article>
-        <article class="prod" id="item-gimbal-dampers" data-fits="mini3 mini3pro mini4pro">
-          <div class="prod-ph"><img src="assets/images/shop/used/gimbal-dampers.jpg" alt="New gimbal rubber dampers for DJI Mini drones" loading="lazy" width="520" height="520"></div>
-          <div class="prod-top"><span class="stock">In stock now</span><span class="cond new">New</span></div>
-          <h3>Gimbal rubber dampers</h3>
-          <div class="fits">Fits: Mini 3, Mini 3 Pro, Mini 4 Pro</div>
-          <p>The rubber mounts that hold the camera gimbal steady. Left and right pair for the Mini 3, Mini 3 Pro and Mini 4 Pro.</p>
-          <div class="prod-foot"><b class="prod-price">$15 <small>per pair</small></b><a class="btn-primary sm" href="#order" data-pick="gimbal-dampers">Reserve</a></div>
-        </article>
-      </div>
-    </section>
-  </div>
-
-  <!-- ORDER -->
-  <section id="order">
-    <div class="order">
-      <div>
-        <div class="eyebrow">Reserve</div>
-        <h2>How buying works</h2>
-        <p class="section-sub" style="margin-bottom:0">No checkout, no card fees. Tell us what you want and we hold it for you.</p>
-        <ol class="steps">
-          <li><b>Reserve here</b><span>Fill in the form. Nothing to pay yet.</span></li>
-          <li><b>We confirm</b><span>We check stock and text or email you a pickup time.</span></li>
-          <li><b>Pay and pick up</b><span>Zelle to pquigley@pq-robotics.com, Venmo <a href="https://venmo.com/u/thedronehospital" target="_blank" rel="noopener">@thedronehospital</a>, or a check payable to PQ Robotics. Pick up at 6059 Boylston Dr NE, Atlanta.</span></li>
-        </ol>
-        <p class="fine">Questions first? Call or text <a href="tel:+14044089063">(404) 408-9063</a>.</p>
-      </div>
-
-      <form class="contact-form" id="shop-form" action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="faf18176-5c83-47cf-8b34-26d7a3df52e6">
-        <input type="hidden" name="subject" value="New SHOP order from pq-robotics.com">
-        <input type="hidden" name="from_name" value="PQ Robotics Shop page">
-        <input type="hidden" name="total" id="f-total-hidden" value="">
-        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
-        <h3>Your order</h3>
-        <label for="f-item">Item</label>
-        <select id="f-item" name="item" required>
+  <form id="shop-form" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="faf18176-5c83-47cf-8b34-26d7a3df52e6">
+    <input type="hidden" name="subject" value="New SHOP order from pq-robotics.com">
+    <input type="hidden" name="from_name" value="PQ Robotics Shop page">
+    <input type="hidden" name="total" id="f-total-hidden" value="">
+    <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+    <h3>Your order</h3>
+    <label for="f-item">Item</label>
+    <select id="f-item" name="item" required>
           <optgroup label="New">
             <option value="a1" data-price="1450">Antigravity A1 Essential Bundle · $1,450</option>
             <option value="gimbal-dampers" data-price="15">Gimbal rubber dampers, pair · $15</option>
@@ -938,38 +355,24 @@
           </optgroup>
           <option value="other" data-price="">Something else (tell us below)</option>
         </select>
-        <div class="two">
-          <div><label for="f-qty">Quantity</label>
-            <select id="f-qty" name="quantity"><option>1</option><option>2</option><option>3</option></select></div>
-          <div><label for="f-get">Getting it</label>
-            <select id="f-get" name="getting_it"><option>Pick up at the shop</option><option>Ask about delivery in Atlanta</option></select></div>
-        </div>
-        <label for="f-name">Your details</label>
-        <div class="two">
-          <input type="text" id="f-name" name="name" placeholder="Your name" autocomplete="name" required>
-          <input type="tel" name="phone" placeholder="Phone for a text" autocomplete="tel">
-        </div>
-        <input type="email" name="email" placeholder="Email" autocomplete="email" required>
-        <textarea name="notes" rows="3" maxlength="600" placeholder="Anything else? A gift, a pickup day, another item you want..."></textarea>
-        <label>Paying by</label>
-        <div class="radio-row">
-          <label><input type="radio" name="payment" value="Zelle" checked> Zelle</label>
-          <label><input type="radio" name="payment" value="Venmo"> Venmo</label>
-          <label><input type="radio" name="payment" value="Check"> Check</label>
-        </div>
-        <div class="total"><span>Total</span><b id="f-total">$1,450</b></div>
-        <button type="submit" class="btn-primary">Reserve it</button>
-        <p class="contact-status" role="status" aria-live="polite"></p>
-      </form>
+    <div class="two">
+      <div><label for="f-qty">Quantity</label><select id="f-qty" name="quantity"><option>1</option><option>2</option><option>3</option></select></div>
+      <div><label for="f-get">Getting it</label><select id="f-get" name="getting_it"><option>Pick up at the shop</option><option>Ask about delivery in Atlanta</option></select></div>
     </div>
-  </section>
-
-  <!-- FAQ -->
-  <div class="band" id="faq">
-    <section>
-      <div class="eyebrow">Common questions</div>
-      <h2>Parts and A1 questions</h2>
-      <div class="faq">
+    <label for="f-name">You</label>
+    <input type="text" id="f-name" name="name" placeholder="Name" autocomplete="name" required>
+    <div class="two"><input type="tel" name="phone" placeholder="Phone" autocomplete="tel"><input type="email" name="email" placeholder="Email" autocomplete="email" required></div>
+    <textarea name="notes" rows="2" maxlength="600" placeholder="Notes (optional)"></textarea>
+    <label>Paying by</label>
+    <div class="radios"><label><input type="radio" name="payment" value="Zelle" checked> Zelle</label><label><input type="radio" name="payment" value="Venmo"> Venmo</label><label><input type="radio" name="payment" value="Check"> Check</label></div>
+    <div class="total"><span>Total</span><b id="f-total">$1,450</b></div>
+    <button type="submit" class="btn">Reserve it</button>
+    <p class="form-status" role="status" aria-live="polite"></p>
+  </form>
+</div></section>
+<section class="faq-sec" id="faq"><div class="wrap">
+  <h2 class="sec-t">Questions</h2>
+  <div class="faq">
         <details><summary>Where can I get DJI Mini parts in Atlanta today?</summary><p>At PQ Robotics, 6059 Boylston Dr NE, Atlanta, GA 30328. We keep DJI Mini 4 Pro, Mini 5 Pro and Mini 3 Pro arms, RC 2 and RC-N controllers, Mini 4 Pro batteries and charging hub, front arm axis springs and gimbal rubber dampers on the shelf. Reserve online or call (404) 408-9063 and pick up at the shop.</p></details>
         <details><summary>Do you have DJI Mini 4 Pro replacement arms in stock?</summary><p>Yes. Mini 4 Pro arms with motors are $59 per arm, any position (front left, front right, rear left, rear right). We also stock Mini 5 Pro arms ($110 front, $95 rear) and Mini 3 Pro arms ($69 front, $49 rear).</p></details>
         <details><summary>Can you install the part for me?</summary><p>Yes. The <a href="/drone-repair-atlanta.html">Drone Hospital</a> is in the same shop. Add a note to your reservation or call (404) 408-9063 and we will quote the repair.</p></details>
@@ -981,39 +384,14 @@
         <details><summary>Can I return it?</summary><p>Yes, unopened and complete within 14 days of pickup or delivery, for a full refund of the purchase price. Opened units are covered by Antigravity's warranty for defects, and we help you with the claim.</p></details>
         <details><summary>Can I pay with a credit card?</summary><p>Not online yet. Right now we take Zelle, Venmo and checks. Call <a href="tel:+14044089063">(404) 408-9063</a> if you need another option.</p></details>
       </div>
-    </section>
-  </div>
-
-  </main>
-
-  <footer>
-    <div class="footer-logo">PQ <span>ROBOTICS</span></div>
-    <ul class="footer-links">
-      <li><a href="/drone-repair-atlanta.html"><span class="nav-x">✚</span>Drone Hospital</a></li>
-      <li><a href="/drone-classes-atlanta.html">Education</a></li>
-      <li><a href="/part-107-drone-license-georgia.html">Part 107 Classes</a></li>
-      <li><a href="/drone-gift-certificates.html">Gift Certificates</a></li>
-      <li><a href="/drone-shop-atlanta.html">Shop</a></li>
-      <li><a href="/drone-news.html" title="Drone Hospital Daily" aria-label="DHD, Drone Hospital Daily"><svg class="nav-dhd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18h-5"/><path d="M18 14h-8"/><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><rect width="8" height="4" x="10" y="6" rx="1"/></svg>DHD</a></li>
-      <li><a href="/footage.html">Footage</a></li>
-      <li><a href="/#about">About Us</a></li>
-    </ul>
-    <div class="footer-copy">© 2026 PQ Technologies LLC &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a></div>
-    <div class="site-nap">
-      <span><b>PQ Robotics</b> · Shop</span>
-      <span>6059 Boylston Dr NE, Atlanta, GA 30328</span>
-      <span><a href="tel:+14044089063">(404) 408-9063</a></span>
-    </div>
-  </footer>
-
-  <div class="looks" id="looks" aria-label="Design options">
-    <span>Design option</span>
-    <a href="?look=4" data-l="4">4 · North Pole</a>
-    <a href="?look=1" data-l="1">1 · Workshop</a>
-    <a href="?look=2" data-l="2">2 · Spec sheet</a>
-    <a href="?look=3" data-l="3">3 · Snow globe</a>
-  </div>
-
+</div></section>
+</main>
+<footer>
+  <a class="logo" href="/"><img src="assets/images/pq-robotics-logo.svg" alt="">PQ ROBOTICS</a>
+  <ul><li><a href="/drone-repair-atlanta.html">Drone Hospital</a></li><li><a href="/drone-classes-atlanta.html">Education</a></li><li><a href="/part-107-drone-license-georgia.html">Part 107 Classes</a></li><li><a href="/drone-gift-certificates.html">Gift Certificates</a></li><li><a href="/drone-shop-atlanta.html">Shop</a></li><li><a href="/drone-news.html">DHD</a></li></ul>
+  <p>6059 Boylston Dr NE, Atlanta, GA 30328 · <a href="tel:+14044089063">(404) 408-9063</a></p>
+  <p style="margin-top:8px">© 2026 PQ Technologies LLC · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p>
+</footer>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1047,39 +425,6 @@
     }
   ]
 }
-</script>
-<script>
-/* A1 photos. Put the files in assets/images/shop/ and list them here, first one is the main photo.
-   Empty list = the photo section and the hero snapshot stay hidden. */
-window.A1_PHOTOS = [
-  { src: "assets/images/shop/a1-trio.jpg", alt: "Antigravity A1 drone with the Grip motion controller and Vision goggles", caption: "The A1, Grip and Vision goggles" },
-  { src: "assets/images/shop/a1-hero.jpg", alt: "Antigravity A1 8K 360 drone with the Grip and Vision goggles", caption: "Antigravity A1, 8K 360" },
-  { src: "assets/images/shop/a1-flying.jpg", alt: "A pilot in Vision goggles flying the A1 with the Grip controller", caption: "Point the Grip and fly" },
-  { src: "assets/images/shop/a1-bundle.jpg", alt: "Everything in the A1 Essential Bundle laid out", caption: "Everything in the bundle" },
-  { src: "assets/images/shop/a1-drone.jpg", alt: "Antigravity A1 drone with arms unfolded, 360 lenses on top and bottom", caption: "Lenses top and bottom for 8K 360" },
-  { src: "assets/images/shop/a1-goggles.jpg", alt: "Antigravity Vision goggles", caption: "Vision goggles" },
-  { src: "assets/images/shop/a1-goggles-view.jpg", alt: "Wearing the Vision goggles with a 360 view around the pilot", caption: "2560 × 2560 per eye" },
-  { src: "assets/images/shop/a1-grip.jpg", alt: "Antigravity Grip motion controller", caption: "Grip motion controller" }
-];
-(function () {
-  var P = window.A1_PHOTOS || [];
-  if (!P.length) return;
-  var sec = document.getElementById("photos"), big = document.getElementById("ph-big"), cap = document.getElementById("ph-cap"), th = document.getElementById("ph-thumbs");
-  function show(i) {
-    big.src = P[i].src; big.alt = P[i].alt; cap.textContent = P[i].caption || "";
-    th.querySelectorAll("button").forEach(function (b, j) { b.classList.toggle("on", i === j); });
-  }
-  P.forEach(function (p, i) {
-    var b = document.createElement("button"); b.type = "button"; b.setAttribute("aria-label", "Show photo: " + p.alt);
-    var im = document.createElement("img"); im.src = p.src; im.alt = ""; im.loading = "lazy";
-    b.appendChild(im); b.addEventListener("click", function () { show(i); }); th.appendChild(b);
-  });
-  show(0); sec.hidden = false;
-  // thumbnail on the shelf card
-  var f = document.querySelector(".feature .fno");
-  if (f) { var t = document.createElement("img"); t.className = "fthumb"; t.src = P[0].src; t.alt = P[0].alt; f.parentNode.insertBefore(t, f.nextSibling); f.parentNode.style.gridTemplateColumns = "auto auto 1fr auto"; }
-  if (window.innerWidth < 900 && f) f.parentNode.style.gridTemplateColumns = "";
-})();
 </script>
 <script type="application/ld+json">
 {
@@ -1515,81 +860,8 @@ window.A1_PHOTOS = [
  ]
 }
 </script>
-<script src="assets/js/shop-scenes.js?v=20261119e" defer></script>
-<script>
-(function () {
-  // Days to Christmas
-  var el = document.getElementById("xmas"), now = new Date();
-  var xmas = new Date(now.getFullYear(), 11, 25), today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  var days = Math.round((xmas - today) / 864e5);
-  if (days > 0) { el.textContent = days + (days === 1 ? " day" : " days") + " to Christmas"; el.hidden = false; }
-  else if (days === 0) { el.textContent = "Merry Christmas"; el.hidden = false; }
-
-  // Details tabs
-  var tabs = [].slice.call(document.querySelectorAll('.tabs [role="tab"]'));
-  function pick(t) {
-    tabs.forEach(function (b) { var on = b === t; b.setAttribute("aria-selected", on); b.tabIndex = on ? 0 : -1; document.getElementById(b.getAttribute("aria-controls")).hidden = !on; });
-  }
-  tabs.forEach(function (b, i) {
-    b.addEventListener("click", function () { pick(b); });
-    b.addEventListener("keydown", function (e) {
-      var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
-      if (d) { var n = tabs[(i + d + tabs.length) % tabs.length]; pick(n); n.focus(); }
-    });
-  });
-
-  // Parts filter by drone
-  var chips = document.querySelectorAll(".fits-filter button");
-  chips.forEach(function (c) {
-    c.addEventListener("click", function () {
-      var f = c.getAttribute("data-f");
-      chips.forEach(function (x) { x.classList.toggle("on", x === c); });
-      document.querySelectorAll(".prod[data-fits]").forEach(function (p) { p.classList.toggle("dim", f !== "all" && p.getAttribute("data-fits").split(" ").indexOf(f) < 0); });
-    });
-  });
-
-  // Design option picker
-  var lk = document.documentElement.getAttribute("data-look");
-  document.querySelectorAll(".looks a").forEach(function (a) { if (a.getAttribute("data-l") === lk) a.classList.add("on"); });
-  var hk = document.documentElement.getAttribute("data-hero");
-  document.querySelectorAll(".heroes a").forEach(function (a) { if (a.getAttribute("data-h") === hk) a.classList.add("on"); });
-
-  // Order form
-  var sel = document.getElementById("f-item"), qty = document.getElementById("f-qty");
-  var totalEl = document.getElementById("f-total"), totalHidden = document.getElementById("f-total-hidden");
-  function total() {
-    var p = sel.options[sel.selectedIndex].getAttribute("data-price");
-    return p ? parseInt(p, 10) * parseInt(qty.value, 10) : 0;
-  }
-  function money(n) { return "$" + n.toLocaleString("en-US"); }
-  function refresh() { var t = total(); totalEl.textContent = t ? money(t) : "We'll quote"; totalHidden.value = t ? money(t) : ""; }
-  sel.addEventListener("change", refresh); qty.addEventListener("change", refresh);
-  document.querySelectorAll("[data-pick]").forEach(function (a) { a.addEventListener("click", function () { sel.value = a.getAttribute("data-pick"); refresh(); }); });
-  refresh();
-
-  var form = document.getElementById("shop-form");
-  if (!form || !window.fetch) return;
-  var status = form.querySelector(".contact-status"), btn = form.querySelector('button[type="submit"]');
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    btn.disabled = true; btn.textContent = "Sending...";
-    status.textContent = "";
-    fetch(form.action, { method: "POST", headers: { Accept: "application/json" }, body: new FormData(form) })
-      .then(function (r) { return r.json(); })
-      .then(function (data) {
-        if (!data.success) throw new Error(data.message || "Send failed");
-        form.reset(); refresh();
-        status.style.color = "#48bb78";
-        status.textContent = "Reserved, thank you! We'll confirm stock and a pickup time by text or email, usually within 24 hours. Please wait for our confirmation before you send any payment.";
-      })
-      .catch(function () {
-        status.style.color = "#e53e3e";
-        status.textContent = "Sorry, that did not go through. Please call (404) 408-9063 or try again.";
-      })
-      .finally(function () { btn.disabled = false; btn.textContent = "Reserve it"; });
-  });
-})();
-</script>
+<script src="assets/js/shop-new.js?v=20261125" defer></script>
+<script src="assets/js/shop-xmas.js?v=20261125" defer></script>
 <script src="/assets/js/mobile-nav.js?v=20261119c" defer></script>
 </body>
 </html>

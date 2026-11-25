@@ -6,7 +6,7 @@
   'use strict';
   var IMG = 'assets/images/shop/';
   var P = [
-    { id: 'a1', cat: 'Drones', name: 'Antigravity A1', sub: '8K 360 drone, Essential Bundle', price: 1450, was: 1650, cond: 'New', tag: 'Holiday deal',
+    { id: 'a1', anchor: 'bundle', cat: 'Drones', name: 'Antigravity A1', sub: '8K 360 drone, Essential Bundle', price: 1450, was: 1650, cond: 'New', tag: 'Holiday deal',
       img: IMG + 'a1-hero.jpg', gallery: ['a1-hero.jpg', 'a1-trio.jpg', 'a1-bundle.jpg', 'a1-grip.jpg', 'a1-goggles.jpg', 'a1-flying.jpg'],
       fits: [], blurb: 'Fly with goggles and a point-to-fly grip. Everything you need is in the box.',
       stats: [['8K', '360° video'], ['<249 g', 'No FAA registration for fun'], ['24 min', 'Per battery, 2 included'], ['10 km', 'Video link']],
@@ -14,29 +14,29 @@
             ['case', 'Drone case'], ['bag', 'Sling bag'], ['pad', 'Landing pad'], ['vbatt', 'Goggle battery'], ['lens', 'Lens kit'], ['sd', '256 GB card']],
       opts: [['a1', 'Essential Bundle', 1450]],
       notes: ['14-day returns, unopened', 'Antigravity warranty, we help with claims'] },
-    { id: 'rc2', cat: 'Controllers', name: 'DJI RC 2 Controller', price: 399, cond: 'Used', img: IMG + 'used/rc2.jpg',
+    { id: 'rc2', anchor: 'item-rc2', cat: 'Controllers', name: 'DJI RC 2 Controller', price: 399, cond: 'Used', img: IMG + 'used/rc2.jpg',
       fits: ['Mini 4 Pro', 'Air 3', 'Air 3S', 'Neo'], blurb: 'Built-in screen. No phone needed.', opts: [['rc2', 'RC 2', 399]] },
-    { id: 'rc-n', cat: 'Controllers', name: 'DJI RC-N Controller', price: 145, cond: 'Used', img: IMG + 'used/rc-n.jpg',
+    { id: 'rc-n', anchor: 'item-rc-n', cat: 'Controllers', name: 'DJI RC-N Controller', price: 145, cond: 'Used', img: IMG + 'used/rc-n.jpg',
       fits: ['Mini 3', 'Mini 3 Pro', 'Mini 4 Pro', 'Mini 5 Pro'], blurb: 'Uses your phone as the screen. Pick the one for your drone.',
       opts: [['rc-n1', 'RC-N1 · Mini 3, Mini 3 Pro', 145], ['rc-n2', 'RC-N2 · Mini 4 Pro', 145], ['rc-n3', 'RC-N3 · Mini 4 Pro, Mini 5 Pro', 145]] },
-    { id: 'm4arms', cat: 'Arms', name: 'Mini 4 Pro Arms', price: 59, cond: 'Used', img: IMG + 'used/mini4pro-arms.jpg',
+    { id: 'm4arms', anchor: 'item-mini4pro-arms', cat: 'Arms', name: 'DJI Mini 4 Pro Arms', price: 59, cond: 'Used', img: IMG + 'used/mini4pro-arms.jpg',
       fits: ['Mini 4 Pro'], blurb: 'Motor included. Priced per arm.',
       opts: [['mini4pro-arm-front-left', 'Front left', 59], ['mini4pro-arm-front-right', 'Front right', 59], ['mini4pro-arm-rear-left', 'Rear left', 59], ['mini4pro-arm-rear-right', 'Rear right', 59]] },
-    { id: 'm5arms', cat: 'Arms', name: 'Mini 5 Pro Arms', price: 95, from: true, cond: 'Used', img: IMG + 'used/mini5pro-arms.jpg',
+    { id: 'm5arms', anchor: 'item-mini5pro-arms', cat: 'Arms', name: 'DJI Mini 5 Pro Arms', price: 95, from: true, cond: 'Used', img: IMG + 'used/mini5pro-arms.jpg',
       fits: ['Mini 5 Pro'], blurb: 'Motor included. Priced per arm.',
       opts: [['mini5pro-arm-front-left', 'Front left', 110], ['mini5pro-arm-front-right', 'Front right', 110], ['mini5pro-arm-rear-left', 'Rear left', 95], ['mini5pro-arm-rear-right', 'Rear right', 95]] },
-    { id: 'm3arms', cat: 'Arms', name: 'Mini 3 Pro Arms', price: 49, from: true, cond: 'Used', img: IMG + 'used/mini3-arms.jpg',
+    { id: 'm3arms', anchor: 'item-mini3-arms', cat: 'Arms', name: 'DJI Mini 3 Pro Arms', price: 49, from: true, cond: 'Used', img: IMG + 'used/mini3-arms.jpg',
       fits: ['Mini 3 Pro'], blurb: 'Motor included. Mini 3 Pro only, not the plain Mini 3.',
       opts: [['mini3pro-arm-front-left', 'Front left', 69], ['mini3pro-arm-front-right', 'Front right', 69], ['mini3pro-arm-rear-left', 'Rear left', 49], ['mini3pro-arm-rear-right', 'Rear right', 49]] },
-    { id: 'batt', cat: 'Power & cases', name: 'Mini 4 Pro Batteries', price: 119, from: true, cond: 'Used', img: IMG + 'used/mini4pro-batteries.jpg',
+    { id: 'batt', anchor: 'item-mini4pro-batteries', cat: 'Power & cases', name: 'DJI Mini 4 Pro Batteries', price: 119, from: true, cond: 'Used', img: IMG + 'used/mini4pro-batteries.jpg',
       fits: ['Mini 4 Pro', 'Mini 3 Pro'], blurb: 'Single battery, or the full set with the charging hub.',
       opts: [['mini4pro-battery', '1 battery', 119], ['mini4pro-batteries', '2 batteries + hub', 299]] },
-    { id: 'case', cat: 'Power & cases', name: 'Mini 4 Pro Hard Case', price: 100, cond: 'Used', img: IMG + 'used/mini4pro-case.jpg',
+    { id: 'case', anchor: 'item-mini4pro-case', cat: 'Power & cases', name: 'DJI Mini 4 Pro Hard Case', price: 100, cond: 'Used', img: IMG + 'used/mini4pro-case.jpg',
       fits: ['Mini 4 Pro'], blurb: 'HPRC 2300. Holds the drone, controller, batteries and hub.', opts: [['mini4pro-case', 'HPRC 2300', 100]] },
-    { id: 'springs', cat: 'Small parts', name: 'Arm Axis Springs', price: 20, from: true, cond: 'Used', img: IMG + 'used/axis-springs.jpg',
+    { id: 'springs', anchor: 'item-axis-springs', cat: 'Small parts', name: 'Arm Axis Springs', price: 20, from: true, cond: 'Used', img: IMG + 'used/axis-springs.jpg',
       fits: ['Mini 3', 'Mini 3 Pro', 'Mini 4 Pro'], blurb: 'Front arm hinge shaft and spring.',
       opts: [['axis-springs', '1 axis', 20], ['axis-springs-kit', 'Kit: 2 axes + tools', 39]] },
-    { id: 'dampers', cat: 'Small parts', name: 'Gimbal Dampers', price: 15, cond: 'New', img: IMG + 'used/gimbal-dampers.jpg',
+    { id: 'dampers', anchor: 'item-gimbal-dampers', cat: 'Small parts', name: 'Gimbal Dampers', price: 15, cond: 'New', img: IMG + 'used/gimbal-dampers.jpg',
       fits: ['Mini 3', 'Mini 3 Pro', 'Mini 4 Pro'], blurb: 'The rubber mounts that keep the camera steady. Left and right pair.',
       opts: [['gimbal-dampers', 'Pair', 15]] }
   ];
@@ -52,7 +52,7 @@
   var grouped = grid.hasAttribute('data-grouped');
 
   function card(p) {
-    return '<button type="button" class="card" data-id="' + p.id + '" data-fits="' + p.fits.join('|') + '" aria-haspopup="dialog">' +
+    return '<button type="button" class="card' + (p.price <= 39 ? ' small-gift' : '') + '"' + (p.anchor ? ' id="' + p.anchor + '"' : '') + ' data-id="' + p.id + '" data-fits="' + p.fits.join('|') + '" aria-haspopup="dialog">' +
       '<span class="card-ph"><img src="' + p.img + '" alt="" loading="lazy"></span>' +
       '<span class="card-tx"><span class="card-tag' + (p.cond === 'New' ? ' new' : '') + '">' + (p.tag || p.cond) + '</span>' +
       '<span class="card-name">' + esc(p.name) + '</span>' +
@@ -177,7 +177,10 @@
     if (!c) return;
     open(c.getAttribute('data-id') || c.getAttribute('data-open'), c.classList.contains('card') ? c : document.querySelector('.card[data-id="' + c.getAttribute('data-open') + '"]') || c);
   });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && openCard) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && openCard) close();
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.hasAttribute && e.target.hasAttribute('data-open')) { e.preventDefault(); e.target.click(); }
+  });
 
   // Shop-by-drone chips
   Array.prototype.forEach.call(document.querySelectorAll('.chips button'), function (b) {
@@ -192,6 +195,18 @@
       document.querySelectorAll('.aisle').forEach(function (a) { a.hidden = !a.querySelector('.card:not([hidden])'); });
     });
   });
+
+  // Links like #item-rc2 (Google Shopping) open that product's details
+  function fromHash() {
+    var h = decodeURIComponent(location.hash.slice(1)); if (!h) return;
+    var hit = null; P.forEach(function (p) { if (p.anchor === h) hit = p; });
+    if (!hit) return;
+    var el = document.getElementById(h);
+    if (el && el.scrollIntoView) el.scrollIntoView({ block: 'center' });
+    setTimeout(function () { open(hit.id, document.querySelector('.card[data-id="' + hit.id + '"]') || el); }, 250);
+  }
+  window.addEventListener('hashchange', fromHash);
+  if (document.readyState === 'complete') fromHash(); else window.addEventListener('load', fromHash);
 
   // Order form
   var sel = document.getElementById('f-item'), qty = document.getElementById('f-qty'), tot = document.getElementById('f-total'), hid = document.getElementById('f-total-hidden');
