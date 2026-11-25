@@ -5,7 +5,7 @@
 (function () {
   'use strict';
   var IMG = 'assets/images/shop/';
-  var V = '?v=20261125f';   // change this when a photo is replaced, so browsers load the new one
+  var V = '?v=20261125g';   // change this when a photo is replaced, so browsers load the new one
   var P = [
     { id: 'a1', anchor: 'bundle', cat: 'Drones', name: 'Antigravity A1', sub: '8K 360 drone, Essential Bundle', price: 1450, was: 1650, cond: 'New', tag: 'Holiday deal',
       img: IMG + 'a1-hero.jpg', gallery: ['a1-hero.jpg', 'a1-trio.jpg', 'a1-bundle.jpg', 'a1-grip.jpg', 'a1-goggles.jpg', 'a1-flying.jpg'],
