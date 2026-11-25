@@ -243,9 +243,10 @@ nav .mnav-btn span{background:#e8eaf0!important}
 @keyframes twinkle{0%,100%{opacity:1}50%{opacity:.45}}
 [data-season=christmas] .hero{padding-top:110px}
 [data-season=christmas] #top{background:linear-gradient(180deg,#a9c6e8 0,#c4d9f0 200px,#dde9f7 360px,#fff 500px);margin-bottom:60px}
-[data-season=christmas] .hero{padding-bottom:10px}
+[data-season=christmas] .hero{padding-bottom:50px}
+[data-season=christmas] .hero:has(+ .x-meadow){padding-bottom:10px}
 .x-meadow{display:block;position:relative;z-index:0;width:100%;height:auto;margin-top:-20px;pointer-events:none}
-[data-season=christmas] #top .feature{margin-top:-64px}
+[data-season=christmas] #top .x-meadow + .wrap .feature{margin-top:-64px}
 [data-season=christmas] .hero p{color:#33415c}
 [data-season=christmas] .pill{background:#fff}
 [data-season=christmas] .feature{background:rgba(255,255,255,.96);box-shadow:0 24px 60px rgba(13,22,39,.16);margin-bottom:70px}
@@ -278,7 +279,7 @@ nav .mnav-btn span{background:#e8eaf0!important}
 @media (max-width:980px){
  [data-season=christmas] .hero{padding-top:84px}
  .x-meadow{margin-top:-6px}
- [data-season=christmas] #top .feature{margin-top:-22px}
+ [data-season=christmas] #top .x-meadow + .wrap .feature{margin-top:-22px}
  .x-hat{left:-8px;top:-16px;width:22px}
  .pill{font-size:12px;letter-spacing:.05em;padding:7px 12px}
  .x-ribbon{display:none}
@@ -313,7 +314,7 @@ nav .mnav-btn span{background:#e8eaf0!important}
 </header>
 <div class="wrap">
   <div class="feature" id="bundle" data-open="a1" role="button" tabindex="0" aria-label="Antigravity A1 details">
-    <img src="assets/images/shop/a1-hero.jpg" alt="Antigravity A1 drone with Grip and Vision goggles">
+    <img src="assets/images/shop/a1-hero.jpg?v=20261125c" alt="Antigravity A1 drone with Grip and Vision goggles">
     <div>
       <span class="card-tag"><span class="s-d">New · In stock</span><span class="s-x">Holiday deal</span></span>
       <h2>Antigravity A1</h2>
@@ -894,8 +895,8 @@ nav .mnav-btn span{background:#e8eaf0!important}
  ]
 }
 </script>
-<script src="assets/js/shop-new.js?v=20261125" defer></script>
-<script src="assets/js/shop-xmas.js?v=20261125" defer></script>
+<script src="assets/js/shop-new.js?v=20261125c" defer></script>
+<script src="assets/js/shop-xmas.js?v=20261125c" defer></script>
 <script src="/assets/js/mobile-nav.js?v=20261119c" defer></script>
 </body>
 </html>

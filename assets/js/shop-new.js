@@ -5,6 +5,7 @@
 (function () {
   'use strict';
   var IMG = 'assets/images/shop/';
+  var V = '?v=20261125c';   // change this when a photo is replaced, so browsers load the new one
   var P = [
     { id: 'a1', anchor: 'bundle', cat: 'Drones', name: 'Antigravity A1', sub: '8K 360 drone, Essential Bundle', price: 1450, was: 1650, cond: 'New', tag: 'Holiday deal',
       img: IMG + 'a1-hero.jpg', gallery: ['a1-hero.jpg', 'a1-trio.jpg', 'a1-bundle.jpg', 'a1-grip.jpg', 'a1-goggles.jpg', 'a1-flying.jpg'],
@@ -53,7 +54,7 @@
 
   function card(p) {
     return '<button type="button" class="card' + (p.price <= 39 ? ' small-gift' : '') + '"' + (p.anchor ? ' id="' + p.anchor + '"' : '') + ' data-id="' + p.id + '" data-fits="' + p.fits.join('|') + '" aria-haspopup="dialog">' +
-      '<span class="card-ph"><img src="' + p.img + '" alt="" loading="lazy"></span>' +
+      '<span class="card-ph"><img src="' + p.img + V + '" alt="" loading="lazy"></span>' +
       '<span class="card-tx"><span class="card-tag' + (p.cond === 'New' ? ' new' : '') + '">' + (p.tag || p.cond) + '</span>' +
       '<span class="card-name">' + esc(p.name) + '</span>' +
       '<span class="card-price">' + priceLabel(p) + (p.was ? ' <s>' + money(p.was) + '</s>' : '') + '</span></span>' +
@@ -75,7 +76,7 @@
   // Detail content
   function detail(p) {
     var gal = p.gallery ? '<div class="d-thumbs">' + p.gallery.map(function (g, i) {
-      return '<button type="button" class="d-th' + (i ? '' : ' on') + '" data-src="' + IMG + g + '"><img src="' + IMG + g + '" alt=""></button>';
+      return '<button type="button" class="d-th' + (i ? '' : ' on') + '" data-src="' + IMG + g + V + '"><img src="' + IMG + g + V + '" alt=""></button>';
     }).join('') + '</div>' : '';
     var opts = p.opts.length > 1 ? '<div class="d-lbl">Choose</div><div class="d-opts">' + p.opts.map(function (o, i) {
       return '<button type="button" class="d-opt' + (i ? '' : ' on') + '" data-v="' + o[0] + '" data-p="' + o[2] + '">' + esc(o[1]) +
@@ -84,12 +85,12 @@
     var fits = p.fits.length ? '<div class="d-lbl">Fits</div><div class="d-fits">' + p.fits.map(function (f) { return '<span>' + f + '</span>'; }).join('') + '</div>' : '';
     var stats = p.stats ? '<div class="d-stats">' + p.stats.map(function (s) { return '<div><b>' + s[0] + '</b><span>' + s[1] + '</span></div>'; }).join('') + '</div>' : '';
     var box = p.box ? '<div class="d-lbl">In the box</div><div class="d-box">' + p.box.map(function (b) {
-      return '<figure><img src="' + IMG + 'box/' + b[0] + '.jpg" alt="" loading="lazy"><figcaption>' + b[1] + '</figcaption></figure>';
+      return '<figure><img src="' + IMG + 'box/' + b[0] + '.jpg' + V + '" alt="" loading="lazy"><figcaption>' + b[1] + '</figcaption></figure>';
     }).join('') + '</div>' : '';
     var notes = p.notes ? '<ul class="d-notes">' + p.notes.map(function (n) { return '<li>' + n + '</li>'; }).join('') + '</ul>' : '';
     return '<div class="d-wrap" data-id="' + p.id + '">' +
       '<button type="button" class="d-x" aria-label="Close">&times;</button>' +
-      '<div class="d-media"><div class="d-big"><img src="' + p.img + '" alt="' + esc(p.name) + '"></div>' + gal + '</div>' +
+      '<div class="d-media"><div class="d-big"><img src="' + p.img + V + '" alt="' + esc(p.name) + '"></div>' + gal + '</div>' +
       '<div class="d-info"><span class="card-tag' + (p.cond === 'New' ? ' new' : '') + '">' + p.cond + ' · In stock</span>' +
       '<h3 class="d-name">' + esc(p.name) + '</h3>' + (p.sub ? '<p class="d-sub">' + esc(p.sub) + '</p>' : '') +
       '<div class="d-price"><b>' + money(p.opts[0][2]) + '</b>' + (p.was ? ' <s>' + money(p.was) + '</s> <em>Save ' + money(p.was - p.price) + '</em>' : '') + '</div>' +
