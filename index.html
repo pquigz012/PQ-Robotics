@@ -422,6 +422,15 @@
     @media (prefers-reduced-motion: reduce) {
       .o1-mark, .o1-mark::before, .o1-rb::after, .o1-line { animation: none !important; }
     }
+    /* Nov 25 (owner): the hero lettering in plain Helvetica / Arial, as in the approved preview, not Exo 2
+       (Exo 2's Q has a swash tail). The nav logo and the rest of the site keep Exo 2. */
+    #home .hero-tag, #home .o1-mark, #home .o1-line { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+    #home .o1-mark { font-weight: 700; }
+    #home .o1-line { font-weight: 400; }
+    @media (min-width: 769px) and (orientation: landscape), (min-width: 1101px) {
+      #home:not(.cam) .o1-mark { font-size: max(4.2rem, calc(var(--u) * 7.8)); }  /* proportions of the approved preview */
+      #home:not(.cam) .o1-line { font-size: max(.95rem, calc(var(--u) * 1.5)); }
+    }
 
     /* Drone photo pins: part name and how often it needs repair */
     .bp-pin b em { font-style: normal; margin-left: .55em; padding-left: .55em; border-left: 1px solid currentColor; color: #d63c35; font-weight: 700; letter-spacing: .04em; }
