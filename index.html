@@ -183,6 +183,8 @@
     .hero-route .helipad circle + circle { stroke: #ffffff; stroke-opacity: .35; stroke-width: 1; fill: none; }
     .hero-route .wp text, .hero-route .lbl { fill: #ffffff; fill-opacity: .55; font: 600 11px ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; letter-spacing: .12em; }
     .hero-route .search rect { fill: rgba(229,57,53,.05); stroke: #ffffff; stroke-opacity: .35; stroke-dasharray: 4 6; }
+    .hero-route .lbl-edge { paint-order: stroke; stroke: #0a1324; stroke-width: 10px; stroke-linejoin: round; }
+    html[data-theme="light"] .hero-route .lbl-edge { stroke: #f4f6fa; }
     .hero-route .search path { fill: none; stroke: #ffffff; stroke-opacity: .16; stroke-width: 1.2; }
     .hero-route .ping { fill: none; stroke: #e53935; stroke-width: 1.5; animation: ping 2.4s ease-out infinite; transform-box: fill-box; transform-origin: center; }
     @keyframes route-march { to { stroke-dashoffset: -32; } }
@@ -392,6 +394,53 @@
       #home:not(.cam) .hero-cta { gap: max(12px, calc(var(--u) * 0.75)); }
       #home:not(.cam) .hero-cta .btn-primary, #home:not(.cam) .hero-cta .btn-ghost { font-size: max(13px, calc(var(--u) * 0.8125)); padding: max(12px, calc(var(--u) * 0.75)) max(28px, calc(var(--u) * 1.75)); }
       #home:not(.cam) .hero-btn svg { width: max(17px, calc(var(--u) * 1.06)); height: max(17px, calc(var(--u) * 1.06)); }
+    }
+
+    /* Hero nameplate (Nov 24): PQ ROBOTICS wordmark, styled like the nav logo (Exo 2 600, 0.22em spacing, plain Q), just bigger. */
+    #home h1.o1 { max-width: none; font-size: inherit; line-height: 1; letter-spacing: 0; margin-bottom: 1.6rem; }
+    .o1-mark { position: relative; display: block; font-family: var(--font-display); font-weight: 600; font-size: clamp(2.2rem, 9vw, 7rem); line-height: 1; letter-spacing: .22em; margin-right: -.22em; color: var(--text-primary); white-space: nowrap; animation: o1in 1.2s cubic-bezier(.2,.7,.2,1) backwards; }
+    .o1-mark::before { content: ""; position: absolute; top: -4%; bottom: -4%; left: 0; width: 3px; background: var(--accent); box-shadow: 0 0 18px 3px rgba(229,57,53,.6); opacity: 0; animation: o1bar 1.2s cubic-bezier(.2,.7,.2,1); pointer-events: none; }
+    @keyframes o1in { from { clip-path: inset(-40% 100% -40% 0); } to { clip-path: inset(-40% 0 -40% 0); } }
+    @keyframes o1bar { 0% { left: 0; opacity: 1; } 90% { left: 100%; opacity: 1; } 100% { left: 100%; opacity: 0; } }
+    .o1-rb { position: relative; color: var(--accent); }
+    .o1-rb::after { content: attr(data-text) / ""; position: absolute; inset: 0; color: transparent; background: linear-gradient(100deg, transparent 40%, rgba(255,255,255,.92) 50%, transparent 60%) no-repeat; background-size: 260% 100%; background-position: 130% 0; -webkit-background-clip: text; background-clip: text; animation: o1sweep 7s ease-in-out 1.4s infinite; }
+    @keyframes o1sweep { 0% { background-position: 130% 0; } 30%, 100% { background-position: -30% 0; } }
+    .o1-line { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 1.1rem; font-family: var(--font-display); font-weight: 500; font-size: clamp(.78rem, 1.5vw, 1.2rem); letter-spacing: .3em; text-transform: uppercase; color: var(--text-secondary); white-space: nowrap; animation: o1up .8s .9s both; }
+    .o1-line i { flex: 0 1 90px; height: 1px; position: relative; background: linear-gradient(90deg, transparent, var(--accent)); }
+    .o1-line i:last-child { transform: scaleX(-1); }
+    .o1-line i::after { content: ""; position: absolute; right: 0; top: -3px; width: 1px; height: 7px; background: var(--accent); }
+    @keyframes o1up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+    @media (min-width: 769px) and (orientation: landscape), (min-width: 1101px) {
+      #home:not(.cam) h1.o1 { font-size: inherit; max-width: none; margin-bottom: max(1.6rem, calc(var(--u) * 1.7)); }
+      #home:not(.cam) .o1-mark { font-size: max(4.2rem, calc(var(--u) * 5.4)); }
+      #home:not(.cam) .o1-line { font-size: max(.95rem, calc(var(--u) * 1.15)); }
+    }
+    #home.cam .o1-mark { font-size: 9vw; }
+    #home.cam .o1-line { font-size: 2.7vw; letter-spacing: .12em; }
+    #home.cam .o1-line i { display: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .o1-mark, .o1-mark::before, .o1-rb::after, .o1-line { animation: none !important; }
+    }
+
+    /* Drone photo pins: part name and how often it needs repair */
+    .bp-pin b em { font-style: normal; margin-left: .55em; padding-left: .55em; border-left: 1px solid currentColor; color: #d63c35; font-weight: 700; letter-spacing: .04em; }
+    .bp-pin-red b em { color: #ff6a60; }
+    .bp-key { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 14px; color: #a9bbdc; }
+    .bp-key b { display: inline-grid; place-items: center; width: 26px; height: 26px; flex: none; background: #ffffff; color: #d63c35; font-family: var(--font-display); font-weight: 700; font-size: 14px; }
+
+    /* Team cards (Nov 24, version B): name and role over the photo */
+    .crew { position: relative; border-radius: 14px; overflow: hidden; border: 1px solid var(--border); background: var(--bg-card); }
+    .crew img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 28%; }
+    .crew-t { position: absolute; left: 0; right: 0; bottom: 0; padding: 4.5rem 1.1rem 1.1rem; background: linear-gradient(to top, rgba(6,11,22,.96) 0%, rgba(6,11,22,.82) 45%, rgba(6,11,22,0) 100%); }
+    .crew-n { font-family: var(--font-display); font-size: 24px; font-weight: 700; line-height: 1.1; color: #ffffff; }
+    .crew-r { margin-top: 6px; padding-left: 10px; border-left: 3px solid var(--accent); font-family: var(--font-display); font-size: 15px; font-weight: 600; color: #ffffff; }
+    .crew-f { margin-top: 6px; font-size: 13px; line-height: 1.4; color: rgba(255,255,255,.8); }
+    @media (max-width: 768px) {
+      .crew-t { padding: 2.4rem .7rem .7rem; }
+      .crew-n { font-size: 17px; }
+      .crew-r { font-size: 13px; line-height: 1.25; padding-left: 7px; margin-top: 4px; }
+      .crew-f { display: none; }
     }
 
     /* R&D button + restricted popup */
@@ -1484,7 +1533,7 @@
       <path id="flight" class="route" d="M170 760 C230 650 250 600 300 540 C350 470 200 380 190 270 C185 190 380 150 560 140 C760 128 920 150 1080 160 C1180 166 1230 200 1250 240 L1470 240 L1470 290 L1250 290 L1250 340 L1470 340 L1470 390 L1250 390 L1250 440 L1470 440 C1470 520 1460 580 1420 640 C1360 712 1250 756 1120 768"/>
       <g class="search"><rect x="1230" y="222" width="260" height="236"/>
         <path d="M1250 265H1470M1250 315H1470M1250 365H1470M1250 415H1470"/>
-        <text class="lbl" x="1232" y="212">SEARCH AREA 04</text></g>
+        <text class="lbl lbl-edge" x="1360" y="462" text-anchor="middle">SEARCH AREA 04</text></g>
       <g class="wp helipad"><circle cx="170" cy="760" r="20" fill="#0a1324" stroke="#e53935" stroke-width="2"/><circle cx="170" cy="760" r="14.5" fill="none" stroke="#e53935" stroke-opacity=".45" stroke-width="1"/><text x="170" y="760" text-anchor="middle" dominant-baseline="central" style="fill:#e53935;fill-opacity:.95;font-size:14px;font-weight:700;letter-spacing:0">H</text><text x="200" y="764">HOME</text></g>
       <g class="wp"><circle cx="300" cy="540" r="7"/><text x="316" y="544">WP 01</text></g>
       <g class="wp"><circle cx="190" cy="270" r="7"/><text x="206" y="274">WP 02</text></g>
@@ -1551,7 +1600,7 @@
     </svg>
     <div class="hero-scrim" aria-hidden="true"></div>
     <div class="hero-tag">Autonomous Robotics Development · Atlanta, GA</div>
-    <h1><em>Autonomous Robotics</em><br>Specialized in Drones</h1>
+    <h1 class="o1"><span class="o1-mark">PQ <span class="o1-rb" data-text="ROBOTICS">ROBOTICS</span></span><span class="o1-line"><i></i><span>Autonomous Robotics · Specialized in Drones</span><i></i></span></h1>
     <p class="hero-sub">We develop autonomous drone systems for public safety and EMS, and bring the same engineering to drone repair, custom builds and pilot education.</p>
     <div class="hero-cta">
       <a class="btn-primary hero-btn" href="/drone-repair-atlanta.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6v4"/><path d="M14 8h-4"/><path d="M14 14h-4"/><path d="M14 18h-4"/><path d="M18 12h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h2"/><path d="M18 22V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v18"/></svg>Drone Hospital</a>
@@ -1685,12 +1734,13 @@
         <div class="bp-plane">
           <div class="bp-photo">
             <img loading="lazy" decoding="async" src="assets/images/DJI_Assembly.jpeg" width="2200" height="967" alt="DJI drone components">
-            <div class="bp-pin" style="--x:9%;--y:74%;--h:68px"><b>Shell repair</b><i></i><u></u></div>
-            <div class="bp-pin bp-pin-red" style="--x:25%;--y:60%;--h:96px"><b>Mainboard repair</b><i></i><u></u></div>
-            <div class="bp-pin" style="--x:21%;--y:80%;--h:40px"><b>Gimbal replacement</b><i></i><u></u></div>
-            <div class="bp-pin" style="--x:46.5%;--y:27%;--h:44px"><b>Motor replacement</b><i></i><u></u></div>
-            <div class="bp-pin bp-pin-red" style="--x:63%;--y:70%;--h:104px"><b>ESC repair</b><i></i><u></u></div>
-            <div class="bp-pin" style="--x:54%;--y:81%;--h:26px"><b>Arm replacement</b><i></i><u></u></div>
+            <div class="bp-pin" style="--x:9%;--y:74%;--h:68px"><b>Shell</b><i></i><u></u></div>
+            <div class="bp-pin" style="--x:25%;--y:60%;--h:96px"><b>Mainboard</b><i></i><u></u></div>
+            <div class="bp-pin bp-pin-red" style="--x:21%;--y:80%;--h:40px"><b>Gimbal</b><i></i><u></u></div>
+            <div class="bp-pin bp-pin-red" style="--x:20.5%;--y:21%;--h:30px"><b>Sensors</b><i></i><u></u></div>
+            <div class="bp-pin" style="--x:46.5%;--y:27%;--h:44px"><b>Motors</b><i></i><u></u></div>
+            <div class="bp-pin" style="--x:63%;--y:70%;--h:104px"><b>ESC</b><i></i><u></u></div>
+            <div class="bp-pin bp-pin-red" style="--x:54%;--y:81%;--h:26px"><b>Arms</b><i></i><u></u></div>
           </div>
           <figure class="bp-reel">
             <figcaption>Service log // M300 RTK</figcaption>
@@ -1837,18 +1887,20 @@
 
       <div style="display:grid;grid-template-columns:300px 1fr;gap:2rem;align-items:start;margin-bottom:2.5rem" class="about-bio-grid">
         <div class="team-col" style="display:flex;flex-direction:column;gap:1rem">
-          <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:14px;overflow:hidden">
-            <img loading="lazy" decoding="async" src="assets/images/founder.jpg" alt="Paul Quigley, PQ Robotics founder" style="width:100%;display:block;object-fit:cover;object-position:50% 28%;aspect-ratio:1/1">
-            <div style="padding:0.9rem 1rem;border-top:1px solid var(--border)">
-              <div style="font-family:var(--font-display);font-size:14px;font-weight:500;color:var(--text-primary)">Paul Quigley</div>
-              <div style="font-size:12px;color:var(--text-muted);margin-top:2px">Founder & Lead Engineer</div>
+          <div class="crew">
+            <img loading="lazy" decoding="async" src="assets/images/founder.jpg" alt="Paul Quigley, PQ Robotics founder">
+            <div class="crew-t">
+              <div class="crew-n">Paul Quigley</div>
+              <div class="crew-r">Founder &amp; Lead Engineer</div>
+              <div class="crew-f">Autonomy R&amp;D, custom builds and flight lessons</div>
             </div>
           </div>
-          <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:14px;overflow:hidden">
-            <img loading="lazy" decoding="async" src="assets/images/team-robbie.jpg" alt="Robbie Maimone, PQ Robotics DJI technician" style="width:100%;display:block;object-fit:cover;object-position:50% 28%;aspect-ratio:1/1">
-            <div style="padding:0.9rem 1rem;border-top:1px solid var(--border)">
-              <div style="font-family:var(--font-display);font-size:14px;font-weight:500;color:var(--text-primary)">Robbie Maimone</div>
-              <div style="font-size:12px;color:var(--text-muted);margin-top:2px">DJI Technician &amp; Marketing</div>
+          <div class="crew">
+            <img loading="lazy" decoding="async" src="assets/images/team-robbie.jpg" alt="Robbie Maimone, PQ Robotics DJI technician">
+            <div class="crew-t">
+              <div class="crew-n">Robbie Maimone</div>
+              <div class="crew-r">DJI Technician &amp; Marketing</div>
+              <div class="crew-f">DJI repairs, diagnostics and our social media</div>
             </div>
           </div>
         </div>
