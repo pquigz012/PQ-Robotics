@@ -63,7 +63,7 @@
       return { c: COLORS.closed, status: "Closed right now", body: "Please reach out by text with your name and what's wrong, and we'll get back to you once we open back up. " + nextLine };
     if (mode === "client")
       return staffNow || techNow
-        ? { c: COLORS.staff, status: "Out with a client", body: "The tech is out with a client right now. You can drop your drone off at the inbox upstairs in Suite 200 \u2014 add your name, number and what's wrong \u2014 and we'll call you about the repair. Or send a text and we'll ring you back." }
+        ? { c: COLORS.staff, status: "Out with a client", body: "The tech is out with a client right now. You can drop your drone off at the inbox in Suite 010 (basement level) \u2014 add your name, number and what's wrong \u2014 and we'll call you about the repair. Or send a text and we'll ring you back." }
         : { c: COLORS.lunch, status: "Out with a client", body: "We'll miss the call right now. Send a text with your name and what's wrong and we'll ring you straight back." };
     if (mode === "open")
       return { open: true, c: COLORS.open, status: "Open", body: "Someone's here now. Walk in, no appointment needed." };
@@ -71,9 +71,9 @@
     if (techNow)
       return { open: true, c: COLORS.open, status: "Open, tech on site", body: "We're in until " + clock(w.tech[1]) + ", so you can get it looked at and quoted today. Walk in, no appointment needed." };
     if (staffNow)
-      return { open: true, c: COLORS.staff, status: "Front desk open", body: "Our front desk in Suite 200 can take your drone in now and write up the job. The tech is in at " + clock(w.tech[0]) + " and will call you with a diagnosis." };
+      return { open: true, c: COLORS.staff, status: "Front desk open", body: "Our front desk in Suite 010 (basement level) can take your drone in now and write up the job. The tech is in at " + clock(w.tech[0]) + " and will call you with a diagnosis." };
     if (w.staff && w.tech && m >= w.staff[1] && m < w.tech[0])
-      return { c: COLORS.lunch, status: "Out to lunch", body: "Back at " + clock(w.tech[0]) + ". The safe mailbox upstairs in Suite 200 is open if you'd rather leave it now — add your name, number and what's wrong." };
+      return { c: COLORS.lunch, status: "Out to lunch", body: "Back at " + clock(w.tech[0]) + ". The safe mailbox in Suite 010 (basement level) is open if you'd rather leave it now — add your name, number and what's wrong." };
     return { c: COLORS.closed, status: "Closed right now", body: "Please reach out by text with your name and what's wrong, and we'll get back to you once we open back up. " + nextLine };
   }
 
