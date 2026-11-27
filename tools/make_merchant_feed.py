@@ -27,7 +27,7 @@ STORE_CODE = "PQ-ATL-1"
 ITEMS = {
     ("a1", None): ("a1",
         "Antigravity A1 8K 360 Drone Essential Bundle with Vision Goggles, New",
-        "New Antigravity A1 8K 360 camera drone, under 249 g. Essential Bundle: drone, Vision goggles, Grip motion controller, two flight batteries, charging hub, carry case, sling bag, landing pad and a Lexar 256 GB microSD card. In stock at our Atlanta shop. Reserve online and pick up at 6059 Boylston Dr NE."),
+        "New Antigravity A1 8K 360 camera drone, under 249 g. Essential Bundle: drone, Vision goggles, Grip motion controller, two flight batteries, charging hub, carry case, sling bag, landing pad and a Lexar 256 GB microSD card. In stock at our Atlanta shop. Reserve online and pick up at 6059 Boylston Dr NE, Suite 010."),
     ("item-rc2", "RC 2"): ("rc2",
         "DJI RC 2 Remote Controller with Screen, Used",
         "Used DJI RC 2 controller with a built-in screen, so you don't need your phone to fly. Fits DJI Mini 4 Pro, Air 3, Air 3S and Neo. Used and working. In stock in Atlanta, reserve online and pick up today."),

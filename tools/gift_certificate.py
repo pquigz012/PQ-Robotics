@@ -135,7 +135,7 @@ def draw(path, to, frm, gift_name, value, detail, message, code, issued, expires
     c.setFillColor(NAVY); c.setFont("Helvetica-Bold", 15)
     c.drawString(L, base + 10, "(404) 408-9063")
     c.setFont("Helvetica", 10); c.setFillColor(MUTED)
-    c.drawString(L, base - 6, "6059 Boylston Dr NE, Atlanta, GA 30328  ·  pq-robotics.com")
+    c.drawString(L, base - 6, "6059 Boylston Dr NE, Suite 010, Atlanta, GA 30328  ·  pq-robotics.com")
 
     spaced(c, R, base + 30, "CERTIFICATE CODE", "Helvetica", 8, 2, MUTED, align="right")
     spaced(c, R, base + 9, code, "Courier-Bold", 17, 2.2, NAVY, align="right")

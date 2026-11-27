@@ -33,7 +33,7 @@ REVIEW_URL = "https://g.page/r/CZclEzNK8hfgEBM/review"
 LESSON_URL = "https://pq-robotics.com/drone-classes-atlanta.html#contact"
 SITE = "pq-robotics.com"
 PHONE = "(404) 408-9063"
-ADDRESS = "6059 Boylston Dr NE, Atlanta, GA 30328"
+ADDRESS = "6059 Boylston Dr NE, Suite 010, Atlanta, GA 30328"
 
 CW, CH = 3.5 * inch, 2 * inch
 
